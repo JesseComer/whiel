@@ -1,0 +1,103 @@
+{
+  "_comment": "Short tag vocabulary for this benchmark, chosen for what makes a program interesting to database people. 'auto' tags are computed by build_report.py from the Datalog rules and the Whiel text; the others are assigned per case in curated.json (manual_tags) or by the prophecy_status lists. Edit here and rerun build_report.py.",
+  "groups": [
+    "rules",
+    "query",
+    "evaluation",
+    "semantics",
+    "systems",
+    "verification"
+  ],
+  "tags": {
+    "nonlinear-recursion": {
+      "group": "rules",
+      "auto": true,
+      "description": "A recursive rule joins two recursive relations (T(x,y) :- T(x,z), T(z,y)), or a hand-written loop composes a relation with itself (squaring): recursion beyond the linear recursion that SQL recursive CTEs support."
+    },
+    "mutual-recursion": {
+      "group": "rules",
+      "auto": true,
+      "description": "Two or more relations defined in terms of each other (odd/even paths, RDFS classes and properties), which SQL recursive CTEs do not express directly."
+    },
+    "negation": {
+      "group": "rules",
+      "auto": true,
+      "description": "Negation with semantic content: negated body atoms (stratified, or unstratified as in win-move), set difference in the claim, or a program whose meaning is an exclusion or a deletion (policy exclusion, edge filtering, overdeletion, a surviving-reference check). The set differences of frontier bookkeeping (Delta ∖ Acc, a cursor over an order) do not count."
+    },
+    "linear-vs-nonlinear": {
+      "group": "query",
+      "auto": false,
+      "description": "Two formulations of one recursive query compared: linear versus nonlinear (T∘T), or left- versus right-linear, the classic rewriting question for recursive SQL."
+    },
+    "views": {
+      "group": "query",
+      "auto": false,
+      "description": "Query reformulation over views (answering queries using views): LAV views, exact views stated as precondition equations, sound views stated as an implication in the claim, Datalog-defined views. A view that only links two schemas inside a claim does not count."
+    },
+    "magic-sets": {
+      "group": "query",
+      "auto": false,
+      "description": "Magic-set / demand transformation of a recursive query."
+    },
+    "dependencies": {
+      "group": "query",
+      "auto": false,
+      "description": "Two programs compared under tuple-generating dependencies between their input relations, stated as the precondition, including existential ones (a witness must exist): containment or equivalence under constraints, the setting of the chase."
+    },
+    "fixpoint-witness": {
+      "group": "query",
+      "auto": true,
+      "description": "The claim is stated through a free witness relation, never assigned by the command and occurring in the postcondition, that ranges over all pre-fixpoints (or post-fixpoints) of a rule set (RBound, Ra, Closed, ...): the executed program is compared with the least (or greatest) fixpoint of the rules, the equ.pdf method, instead of with a second executed program."
+    },
+    "evaluation-strategies": {
+      "group": "evaluation",
+      "auto": false,
+      "description": "Two evaluation algorithms of one recursive query are compared, or a non-naive evaluation algorithm is verified against the declarative meaning of its rules: naive versus semi-naive, worklist/BFS, per-source search, squaring, Warshall or topological sweeps, delta-driven or recomputing maintenance, chase orders, top-down versus bottom-up, materialize-then-join versus recursive plan. A naive iteration verified against the least fixpoint of its own rules does not count."
+    },
+    "semi-naive": {
+      "group": "evaluation",
+      "auto": true,
+      "description": "One side evaluates the recursion by the semi-naive (delta/frontier) technique of Datalog engines and SQL recursive CTE executors: only the facts new in the last round are joined and the loop stops on an empty frontier, whatever the source calls it (PostgreSQL working table, Datafrog delta, GC grey set, BFS worklist, trigger queue, SPARQL visited set, DRed rounds). Computed from the command."
+    },
+    "view-maintenance": {
+      "group": "evaluation",
+      "auto": false,
+      "description": "Incremental maintenance of a materialized recursive view (insertions, deletions with DRed, delta-driven) against recomputation from scratch."
+    },
+    "recursion-limit": {
+      "group": "evaluation",
+      "auto": false,
+      "description": "One side truncates the recursion: SQL recursion limits (MySQL cte_max_recursion_depth, SQL Server MAXRECURSION), a depth bound (Casbin maxHierarchyLevel), a search cutoff."
+    },
+    "chase": {
+      "group": "semantics",
+      "auto": false,
+      "description": "The chase with tuple-generating dependencies (data exchange, ChaseBench scenarios)."
+    },
+    "greatest-fixpoint": {
+      "group": "semantics",
+      "auto": false,
+      "description": "The meaning is a greatest fixpoint or an alternating fixpoint: safe sets, integrity cores, the well-founded semantics of win-move."
+    },
+    "integrity-constraints": {
+      "group": "semantics",
+      "auto": false,
+      "description": "Foreign keys, ON DELETE CASCADE / RESTRICT, referential-integrity cores."
+    },
+    "database-engine": {
+      "group": "systems",
+      "auto": false,
+      "description": "The program is a production database or Datalog engine's own mechanism, read from its source or documentation: PostgreSQL recursive union and RI triggers, Soufflé's magic-set transformation and semi-naive translation, Datafrog, MySQL / SQL Server recursion limits. A system that is only the setting of the claim (the streaming engines behind an insert-only restart) or a paper algorithm (DRed) does not count."
+    },
+    "access-control": {
+      "group": "systems",
+      "auto": false,
+      "description": "Relationship-based access control and role hierarchies as production systems compute them (Zanzibar-style OpenFGA/SpiceDB, Casbin RBAC): Datalog-like reachability in production authorization databases. The LLM-generated delegation stories carry dependencies instead."
+    },
+    "prophecy": {
+      "group": "verification",
+      "auto": false,
+      "description": "The one verification tag: known or expected to need a prophecy-level invariant, formerly 'obstructed'; the case page says whether this is established or only expected."
+    }
+  }
+}

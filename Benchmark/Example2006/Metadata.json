@@ -1,0 +1,42 @@
+{
+  "canonicalId": "Example2006",
+  "canonicalInput": "Example2006/Input.lean",
+  "canonicalModule": "Benchmark.Example2006.Input",
+  "category": "Production",
+  "compilerCommandCheck": "unavailable",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "datalogSource": "unavailable",
+  "declarationNamespace": "Whiel.Benchmark.Example2006",
+  "formatVersion": 1,
+  "goldInvariantStatus": "missing",
+  "historicalCandidatePresent": false,
+  "historicalClaim": "no-invariant",
+  "notes": [
+    "Historical collaborator claims are unverified provenance.",
+    "Provenance note: documentation-level model (denied-link set); no source function cited."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Production",
+      "sourceId": "production_6"
+    }
+  ],
+  "suites": [
+    "collaborator",
+    "all-benchmark"
+  ],
+  "title": "Policy-filtered connectivity is contained in raw topological connectivity",
+  "explanation": "The program computes reachability (Conn) over an edge set filtered by removing denied links (LinkE ∖ Denied), modeling how a network-policy engine like Cilium restricts which nodes remain connected under an access policy, contrasted with the unrestricted topological reachability a tool like Batfish would compute over the full link set LinkE. The Hoare triple is a containment claim: the precondition makes RBound a pre-fixpoint of the reachability operator over the full, unfiltered edge set LinkE, and the postcondition asserts the policy-filtered connectivity Conn is contained in RBound, i.e. contained in unrestricted reachability, since network policies can only remove connectivity, never add it.",
+  "preInWords": "The precondition asserts RBound contains LinkE and is closed under one more step of composing itself with LinkE, i.e. RBound is a pre-fixpoint of full-topology reachability.",
+  "postInWords": "The postcondition asserts the policy-filtered connectivity relation Conn is contained in RBound.",
+  "notation": "canonical",
+  "datalog": [
+    {
+      "label": "prog_p",
+      "text": "ConnC(x1, y1) :- AllowedC(x1, y1).\nConnC(x1, z1) :- ConnC(x1, y1), AllowedC(y1, z1).",
+      "provenance": "production check (the hand-written loop equals this program's naive compilation on the check instances)"
+    }
+  ],
+  "expectedVerdict": "valid"
+}

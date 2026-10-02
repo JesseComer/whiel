@@ -1,0 +1,58 @@
+{
+  "canonicalId": "Example5031",
+  "canonicalInput": "Example5031/Input.lean",
+  "title": "NetworkX per-source search with cutoff 2 versus PostgreSQL recursive-union rounds (invalid twin of Example5030)",
+  "explanation": "This is the invalid twin of Example5030: side 2 is the same PostgreSQL recursive-union closure, but side 1 replaces the unbounded per-source search with NetworkX's single_source_shortest_path_length run with cutoff=2, so for each source it only collects the nodes reachable within two edges (levels 1 and 2), accumulated into TcB. The Hoare triple claims TcB = Res, i.e. that this depth-2-bounded per-source search still equals the full transitive closure computed by PostgreSQL's rounds. This fails because a depth cutoff silently drops longer paths: the case gives an explicit witness (a length-4 path under a compatible order) where the executor derives a pair the bounded search never reaches, so the claim is refuted by a kernel-checked counterexample.",
+  "preInWords": "Lt is a strict total order over the nodes of Edge, exactly as in Example5030.",
+  "postInWords": "It is claimed that TcB, the union over sources of the nodes reachable within 2 edges (per NetworkX's single_source_shortest_path_length with cutoff=2), equals Res, the full transitive closure computed by PostgreSQL's recursive union — a claim the case shows to be false.",
+  "family": "production algorithm pair (rate mismatch), invalid twin",
+  "kind": "equivalence",
+  "claim": "(TcB = Res)",
+  "precondition": "((((σ[#0 = #1] Lt) = ∅) ∧\n    ((π[0, 3] (σ[#1 = #2] (Lt × Lt))) ⊆ Lt)) ∧\n  ((Lt ⊆ ((π[0] Edge ∪ π[1] Edge) × (π[0] Edge ∪ π[1] Edge))) ∧\n    ((σ[¬(#0 = #1)] ((π[0] Edge ∪ π[1] Edge) × (π[0] Edge ∪ π[1] Edge))) ⊆ (Lt ∪ π[1, 0] Lt))))",
+  "expectedVerdict": "invalid",
+  "obstructionExpectation": "invalid (depth cutoff); rate mismatch as in Example5030",
+  "currentClassification": "invalid",
+  "currentEvidence": "kernel counterexample (Certificate/Invalid.lean)",
+  "rateMismatch": true,
+  "sides": [
+    "hand-written: for each node in Lt order, the levels 1 and 2 of single_source_shortest_path_length(G, v, cutoff=2) (loop-free per node)",
+    "hand-written: PostgreSQL ExecRecursiveUnion rounds (legacy Example2037) seeded with Edge"
+  ],
+  "schemaLinking": "same schema on both sides; direct equality of the computed relations",
+  "sourceProgram": null,
+  "sources": [
+    {
+      "system": "NetworkX",
+      "repo": "networkx/networkx",
+      "branch": "main",
+      "commit": "4e74880b0da0 (2026-09-12)",
+      "file": "networkx/algorithms/shortest_paths/unweighted.py",
+      "function": "single_source_shortest_path_length, _single_shortest_path_length (seen = set(firstlevel); while nextlevel and cutoff > level)",
+      "url": "https://github.com/networkx/networkx/blob/main/networkx/algorithms/shortest_paths/unweighted.py",
+      "read": "2026-09-15"
+    },
+    {
+      "system": "PostgreSQL",
+      "repo": "postgres/postgres",
+      "branch": "master",
+      "commit": "6e58d6356fcb (2026-09-15)",
+      "file": "src/backend/executor/nodeRecursiveunion.c",
+      "function": "ExecRecursiveUnion (header comment steps 2.1-2.6; 'Ignore tuple if already seen'; working/intermediate table swap)",
+      "url": "https://github.com/postgres/postgres/blob/master/src/backend/executor/nodeRecursiveunion.c",
+      "read": "2026-09-15",
+      "encodedAs": "legacy Example2037 / Example5001 hand side with the base term equal to the edge relation"
+    }
+  ],
+  "encoding": "canonical five-declaration form; order as the input relation Lt with the Lt-least unprocessed node as cursor; the bounded search is loop-free inside the cursor loop; both sides hand-written and pinned as the two segments of the command (Fidelity/); the executor side compared with the naive compilation of the closure on the check instances",
+  "created": "2026-09-15",
+  "certificatePath": "Example5031/Certificate/Invalid.lean",
+  "twin": "Example5030 (valid: unbounded per-source closure)",
+  "datalog": [
+    {
+      "label": "prog_T — The Datalog program(s) of the header: compiled sides are their naive compilation; reference programs are compared with the hand-written sides on the check instances.",
+      "text": "T(x1, y1) :- Edge(x1, y1).\nT(x1, y1) :- T(x1, z1), Edge(z1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5031/Fidelity/Example5031.lean"
+    }
+  ]
+}

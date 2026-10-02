@@ -1,0 +1,446 @@
+{
+  "version": 2,
+  "limitKb": 4194304,
+  "certificates": {
+    "Example0001": {
+      "treeSha256": "efd09d1fe3eb9f29d1cf69f44d7ce007a1cd33bc4958e7b9c64b53e5c3aaa382",
+      "fits": true,
+      "peakKb": 1632320
+    },
+    "Example0013": {
+      "treeSha256": "9c570692e349fb099d1c270daf412470b4b42a9d9c658a5b9a8421c6da180487",
+      "fits": true,
+      "peakKb": 1606912
+    },
+    "Example0106": {
+      "treeSha256": "e1823d6a1c0cc7f3882f3001f080ebb78cd34b91faa5e1d753eea1669e3d2518",
+      "fits": true,
+      "peakKb": 1635424
+    },
+    "Example0107": {
+      "treeSha256": "f1800ca9a0fcd916ae4967dc53ca99fde81d81e572afc685e08f0fd89fd5cba1",
+      "fits": true,
+      "peakKb": 1638528
+    },
+    "Example0108": {
+      "treeSha256": "79a50ee7e99ec4556377a296d21258e023c5a19730fa6dfdf2d51322764e7a01",
+      "fits": true,
+      "peakKb": 1643232
+    },
+    "Example0109": {
+      "treeSha256": "c7407e21669871408cd46735f0d88b0665fdba738c03598322bc55dfdb768a1a",
+      "fits": true,
+      "peakKb": 1677008
+    },
+    "Example0115": {
+      "treeSha256": "0cf916d5f44180e7451c8d7d6b4ea7ac48b9992c1a25dadf2cb2a3add59672ef",
+      "fits": true,
+      "peakKb": 1661088
+    },
+    "Example0117": {
+      "treeSha256": "04a9fb1b874982da80355b49a49763146c698333f3df9d6e2d838a2d37ac6742",
+      "fits": true,
+      "peakKb": 1677504
+    },
+    "Example0119": {
+      "treeSha256": "35a0721726603f051dc642d0671568e2bcba1756116ab7d18b2202b5170b7c4a",
+      "fits": true,
+      "peakKb": 1655536
+    },
+    "Example0123": {
+      "treeSha256": "a98774083e822633df4bd5a214d13bcfc979f63a0f244d760ceea50294e1dca5",
+      "fits": true,
+      "peakKb": 1661392
+    },
+    "Example0125": {
+      "treeSha256": "d049c3a4a15703fe69802105670ac714f105041a9fb97929f95ae6438bc0b68a",
+      "fits": true,
+      "peakKb": 1651600
+    },
+    "Example0128": {
+      "treeSha256": "a27080e2cd1d6f029da714b7ed25f269e0599539cec8cdf6ceb2eadfeae0d1da",
+      "fits": true,
+      "peakKb": 1701968
+    },
+    "Example0130": {
+      "treeSha256": "d96cfe2635fac291330e7260662e5677eec1940d4fffb6b3fdd568cb3fd3960a",
+      "fits": true,
+      "peakKb": 1649504
+    },
+    "Example0132": {
+      "treeSha256": "cafbba6ae7ccd811aa5264baccad2dbe50cc0115f7a41010a60e3814151043d2",
+      "fits": true,
+      "peakKb": 1681632
+    },
+    "Example0133": {
+      "treeSha256": "9b755da4ef874732f57291e735fdabc8fda41579324ccf25487f30c7f6d5e337",
+      "fits": true,
+      "peakKb": 1700912
+    },
+    "Example0134": {
+      "treeSha256": "77393e809147798ddae0c8098bc13057a95934bb363f3073d425933e59bf3075",
+      "fits": false,
+      "peakKb": 1746544,
+      "note": "a proof module imported by Certificate/Valid.lean does not build under the library build's 4194304 KB limit; it builds under 12582912 KB"
+    },
+    "Example0136": {
+      "treeSha256": "178b29e0cc67b1c76a6d985a1124bb5102694001bcf025acd3d9319d87439b9b",
+      "fits": true,
+      "peakKb": 1668448
+    },
+    "Example0137": {
+      "treeSha256": "8020265395ba47439d022f72ef4ecf5644cf5dcf6beb18433e6fe60a9831ba70",
+      "fits": true,
+      "peakKb": 1669600
+    },
+    "Example0138": {
+      "treeSha256": "834be1ad698caf39d78e50e35e2f113e5360d71e3af5635b134990944b748398",
+      "fits": true,
+      "peakKb": 1658176
+    },
+    "Example0162": {
+      "treeSha256": "05f04c4e83a2f48b710456cff8a4a7c9520716c327798be3cad7c0dd5e7109a5",
+      "fits": true,
+      "peakKb": 1643200
+    },
+    "Example0163": {
+      "treeSha256": "f9c310deabeafdf6b7c0c3a679000c289ad31346de4ac1c5856370108a79430b",
+      "fits": true,
+      "peakKb": 1639088
+    },
+    "Example1030": {
+      "treeSha256": "f26e2560a1c0c022038ec1b60cd7915db4348f12258e893af87dd5c18ed7f07e",
+      "fits": true,
+      "peakKb": 1671568
+    },
+    "Example1061": {
+      "treeSha256": "f415bbf9b8195ce0c6050a6ad8553924005e78bc994456abeca5b16d8559b1ce",
+      "fits": true,
+      "peakKb": 1636512
+    },
+    "Example1081": {
+      "treeSha256": "dba8f79279085ed7d68100c15e94f4ede20b921c82bead89efdf2cd7ff2fb54b",
+      "fits": true,
+      "peakKb": 1683952
+    },
+    "Example1088": {
+      "treeSha256": "526acebe6d6c27aff6214e407e41d77b69a4f8c70c0a92b89e9a6e932c8f2c79",
+      "fits": true,
+      "peakKb": 1677776
+    },
+    "Example1090": {
+      "treeSha256": "3c1f0f278dffff1408449ecdc3c7a42bc7175f14f6de97e448563d4ab37011c7",
+      "fits": true,
+      "peakKb": 1716128
+    },
+    "Example1091": {
+      "treeSha256": "e0dcfae6b3eb54a1390c1ebf9691a56ffde699b14dcba0071216301afd46435e",
+      "fits": true,
+      "peakKb": 1673488
+    },
+    "Example1093": {
+      "treeSha256": "da57b10fa79c60075026fbe0bc7a9a1e81c60e7b1d4f033014155bc873a00624",
+      "fits": true,
+      "peakKb": 1696912
+    },
+    "Example1094": {
+      "treeSha256": "a6599d0055e7b488c6e195b5fb3ce8d0d3b1571b8f77b88006944e9012286565",
+      "fits": true,
+      "peakKb": 1667680
+    },
+    "Example2004": {
+      "treeSha256": "ea0b45d68f0ed36a8a9cc59cf26f121506ad0d45527016ba179d93a1901f45af",
+      "fits": true,
+      "peakKb": 1652688
+    },
+    "Example2005": {
+      "treeSha256": "5138f71d98f3820336ece023c2f497e2e7c39ea99e76e289e460a5e610a084a1",
+      "fits": true,
+      "peakKb": 1638096
+    },
+    "Example2006": {
+      "treeSha256": "5b9b5f7b1aaedefee47612922e803bc6a5319dc7670e9390329a51ac6264952e",
+      "fits": true,
+      "peakKb": 1637280
+    },
+    "Example2007": {
+      "treeSha256": "b5500a83d66410f4cc9e60e2dbd43cb65632c88415a11a63a5085299102f0b4e",
+      "fits": true,
+      "peakKb": 1637216
+    },
+    "Example2010": {
+      "treeSha256": "bb37e34709c3fcd3d822b7e51a5326b3ba79b75d2cb2e31a10edbc99e88db467",
+      "fits": true,
+      "peakKb": 1639392
+    },
+    "Example2011": {
+      "treeSha256": "40a4ffabc9079d5f2b6ef632338d6f2aa52336f4c427be3c0694a82fba874e90",
+      "fits": true,
+      "peakKb": 1639536
+    },
+    "Example2012": {
+      "treeSha256": "cbae2fe9d8ec5465ccaebae3984025c9ac5fe00d3e0df23d46247b10aa5469ba",
+      "fits": true,
+      "peakKb": 1638304
+    },
+    "Example3001": {
+      "treeSha256": "7d72472c5150aa3fadbeef925edb7f521a75e872b58d584b53b0b2fd2dd61241",
+      "fits": true,
+      "peakKb": 2118176
+    },
+    "Example3009": {
+      "treeSha256": "e8fb864360234f380c26d8991032c0e800b40adfb204161e87fa8b0d2bc2d81c",
+      "fits": true,
+      "peakKb": 2363600
+    },
+    "Example3014": {
+      "treeSha256": "34aa048a9604597c23e19a62fb09278ff59f672a2b3afa9df536b85de5ea8e94",
+      "fits": true,
+      "peakKb": 3983904
+    },
+    "Example4001": {
+      "treeSha256": "e916bea5486743d83707165e7559cf74f2934bb8022c3744bb9d6bffcca4fab1",
+      "fits": true,
+      "peakKb": 1647808
+    },
+    "Example4002": {
+      "treeSha256": "1d96eab38657cbcfd1ed7b6d725d4eeec976137313928a24827c6657c02d70e2",
+      "fits": true,
+      "peakKb": 1606192
+    },
+    "Example4003": {
+      "treeSha256": "a0aa02939e21fcaa22834b0cbdc987944617343786ab39aaa0142bab2664a7b6",
+      "fits": true,
+      "peakKb": 1644912
+    },
+    "Example4004": {
+      "treeSha256": "e7cc1bb258dd54ac38c6bded26e4f9ab309a09211555cbe1cf5c8be321326012",
+      "fits": true,
+      "peakKb": 1656656
+    },
+    "Example4034": {
+      "treeSha256": "20d0f0b90f86f4a42f41a8581d6a9a2c6e2fa349709da203385ac116100a4fae",
+      "fits": true,
+      "peakKb": 1664704
+    },
+    "Example4035": {
+      "treeSha256": "22e0d47e5bcc7a6e6b09691e3d9b5e7b9ca9e93d847626d9aa59c3ca7113c995",
+      "fits": true,
+      "peakKb": 1654752
+    },
+    "Example4036": {
+      "treeSha256": "f7c6f01ba0224cb878bf673f3e0d247d878c5f6bb5b31e7eeefd2373303c8e68",
+      "fits": true,
+      "peakKb": 1661296
+    },
+    "Example4037": {
+      "treeSha256": "5e3dadd95b2bf3a7d51d91306ed4987f40606764dedfd5b9a7cd6e41c782c617",
+      "fits": true,
+      "peakKb": 1647920
+    },
+    "Example4040": {
+      "treeSha256": "2682ed7f244c9236beeff4a683cc1bb2ef4a6fd34a2cb6d4437de2445c8f484a",
+      "fits": false,
+      "peakKb": 1691552,
+      "note": "a proof module imported by Certificate/Valid.lean does not build under the library build's 4194304 KB limit; it builds under 12582912 KB"
+    },
+    "Example4041": {
+      "treeSha256": "d18bc99a2ae74e5c6d27a9c9b4f547be00a3e7510eaebf5c692ab421cf8c8c70",
+      "fits": true,
+      "peakKb": 1667824
+    },
+    "Example5001": {
+      "treeSha256": "8521cdf62f8c5a4609db31e419267a6e0a8677376d3240befbccb1c37f30937e",
+      "fits": true,
+      "peakKb": 1648000
+    },
+    "Example5002": {
+      "treeSha256": "ca3ee6b6dcdce28dfe0a0d1555ae6d594c029870d3e0bf002bed72ab4e205732",
+      "fits": true,
+      "peakKb": 1647104
+    },
+    "Example5003": {
+      "treeSha256": "0e6931193761a0ceeb0083afd9a8263a326f81498d1fc0b5726ac04e52115431",
+      "fits": true,
+      "peakKb": 1646528
+    },
+    "Example5004": {
+      "treeSha256": "156e7dec3aad4f3c5e6dccebe09f7da8f11dec9d3666c3bb342ca3d3feb7a29d",
+      "fits": true,
+      "peakKb": 1662144
+    },
+    "Example5005": {
+      "treeSha256": "e304628a2f1a868d865e1d32f3afab52fffa26448945892a60258d0593bf9b8d",
+      "fits": true,
+      "peakKb": 1661968
+    },
+    "Example5006": {
+      "treeSha256": "70e8fd50a01f44159b5a7c0d96b8e7ca8254a253ecc804839efa3d9e4df39016",
+      "fits": true,
+      "peakKb": 1653104
+    },
+    "Example5007": {
+      "treeSha256": "5aea54ecb5bccae2b579b3767f0ee1bddcc39d2ea8a634784fed4586a0d9040a",
+      "fits": true,
+      "peakKb": 1646576
+    },
+    "Example5008": {
+      "treeSha256": "6a8369f4d4ed1310d4d464eb4bb774b4c63a9c55e1d7378bba071175861c369d",
+      "fits": false,
+      "peakKb": 1727200,
+      "note": "a proof module imported by Certificate/Valid.lean does not build under the library build's 4194304 KB limit; it builds under 12582912 KB"
+    },
+    "Example5009": {
+      "treeSha256": "b14e04649f95b8e428e141658b57a36e18bd78d41dda93eae30358db0175cfc5",
+      "fits": false,
+      "peakKb": 1708128,
+      "note": "a proof module imported by Certificate/Valid.lean does not build under the library build's 4194304 KB limit; it builds under 12582912 KB"
+    },
+    "Example5010": {
+      "treeSha256": "8767b5119b1b519e5c7e1b6a7e22a9168ffb3abc993136daacecd12ba20d8b21",
+      "fits": true,
+      "peakKb": 1676896
+    },
+    "Example5011": {
+      "treeSha256": "9b6b3422341d46c6ba131db105203b828f9a7b5ddcfd1797408adbf2d79f397d",
+      "fits": true,
+      "peakKb": 2127616
+    },
+    "Example5012": {
+      "treeSha256": "d59f0f74c303b51fd8d5fdf5b09376b907faaa5f43509ddc86dfc14ad11c10bf",
+      "fits": true,
+      "peakKb": 1737328
+    },
+    "Example5013": {
+      "treeSha256": "ad3fd94b99b5544b5543c92b7e7a1f75311e763c7ce4d0f1d5260bf1096e4d75",
+      "fits": false,
+      "peakKb": 6935552,
+      "note": "peak resident memory 6935552 KB while checking Certificate/Invalid.lean exceeds the library build's 4194304 KB limit"
+    },
+    "Example5014": {
+      "treeSha256": "961dbce19889124f44ae6254b9d99d36a4864599946505e9b99fabb7745e6a8f",
+      "fits": true,
+      "peakKb": 1672736
+    },
+    "Example5015": {
+      "treeSha256": "5bd8581151e231c8efdb1fcf966c68cc3e71076271067d1badadd7c667692265",
+      "fits": true,
+      "peakKb": 1629008
+    },
+    "Example5016": {
+      "treeSha256": "66c4c0978b827abefec95271b42354199c9b0ca5a758a43161904197c118590c",
+      "fits": false,
+      "peakKb": 1714064,
+      "note": "a proof module imported by Certificate/Valid.lean does not build under the library build's 4194304 KB limit; it builds under 12582912 KB"
+    },
+    "Example5017": {
+      "treeSha256": "c1e09d9a888ba784866943bee0150b834a6fa924bbd43adfacf07731f0307587",
+      "fits": true,
+      "peakKb": 1644816
+    },
+    "Example5018": {
+      "treeSha256": "15888287c38f584d24bcc1d03fbb62cec02b981dd17569871b5fef506169a227",
+      "fits": false,
+      "peakKb": 1755168,
+      "note": "a proof module imported by Certificate/Valid.lean does not build under the library build's 4194304 KB limit; it builds under 12582912 KB"
+    },
+    "Example5019": {
+      "treeSha256": "16172701ef57d1650fe8c3152597fbb7e5350361bc8bffa15ccb24539b4a12e8",
+      "fits": true,
+      "peakKb": 1643152
+    },
+    "Example5020": {
+      "treeSha256": "af2df400db2f30bb3226f09898955f6272145bed23ef46172948b1afb7f44390",
+      "fits": false,
+      "peakKb": 1795072,
+      "note": "a proof module imported by Certificate/Valid.lean does not build under the library build's 4194304 KB limit; it builds under 12582912 KB"
+    },
+    "Example5021": {
+      "treeSha256": "9588788be574976cbd2dcf993a6b4509a0e6561154dcc03d4cd24769a33920b2",
+      "fits": true,
+      "peakKb": 1727248
+    },
+    "Example5022": {
+      "treeSha256": "e7e28b2da44025abd237932ffc93275683c428c99d24e0639ecad3b0c540b2f3",
+      "fits": true,
+      "peakKb": 1674032
+    },
+    "Example5023": {
+      "treeSha256": "2b3a60529b2a59c5f48041e23f833a78914936a12242b3fd1f578e3858786811",
+      "fits": false,
+      "peakKb": 1713104,
+      "note": "a proof module imported by Certificate/Valid.lean does not build under the library build's 4194304 KB limit; it builds under 12582912 KB"
+    },
+    "Example5024": {
+      "treeSha256": "c9604470afd17930825eeea8d16e214198213b64074814d82dfda4acd76cb5d9",
+      "fits": true,
+      "peakKb": 1638848
+    },
+    "Example5030": {
+      "treeSha256": "7560de51111a531a706171b139f453500969964293a19ff6997042ad697f1aff",
+      "fits": false,
+      "peakKb": 1720016,
+      "note": "a proof module imported by Certificate/Valid.lean does not build under the library build's 4194304 KB limit; it builds under 12582912 KB"
+    },
+    "Example5031": {
+      "treeSha256": "98d9253792fa2d16e0645f60738c189b3689cead0d0d6be1320acbc80f37932d",
+      "fits": true,
+      "peakKb": 1912208
+    },
+    "Example5032": {
+      "treeSha256": "7f7a4b1d1ee37f2234387a1cbb2d78edf10ab4a08b64ac0555d058d08e931dac",
+      "fits": true,
+      "peakKb": 1678928
+    },
+    "Example5033": {
+      "treeSha256": "2981be5cb5c0ed251ffa192274c056e2c50736b3d63b1fe9c632bdcf5da7b0aa",
+      "fits": true,
+      "peakKb": 1659904
+    },
+    "Example5034": {
+      "treeSha256": "20b075cc75a23999099474ac63347a784f4a9df2f08a8656b4fc05b5918ad8e7",
+      "fits": true,
+      "peakKb": 1676672
+    },
+    "Example5035": {
+      "treeSha256": "0632474c504129c4d675fa03eece692d20bdcb295cb4eba255e4f7a83c85dbc8",
+      "fits": true,
+      "peakKb": 1874320
+    },
+    "Example5036": {
+      "treeSha256": "c2937eaff8e72adada6a0406c6af8c2dc4d7858d284fdc8f70eaf0f4b1583579",
+      "fits": true,
+      "peakKb": 1676128
+    },
+    "Example5037": {
+      "treeSha256": "d49735f117a4af473495b3e5c5bc97d54dddbb009d43dd490dd1079cf8181683",
+      "fits": true,
+      "peakKb": 1646992
+    },
+    "Example5038": {
+      "treeSha256": "9e574df2cd0a600653b4d8747c034e8e2db395def7c12cbb3b1e90c1602ee00a",
+      "fits": true,
+      "peakKb": 1652832
+    },
+    "Example5039": {
+      "treeSha256": "8177686c735e6e290f8aa1ee84f37bbdf80221ed714b66fd2b089a38e5ae89df",
+      "fits": true,
+      "peakKb": 1640752
+    },
+    "Example5040": {
+      "treeSha256": "32502fd773af9562b9d857e4d1b06f7ee45053fceb5ccc65f482b9bfade7b17d",
+      "fits": true,
+      "peakKb": 1625584
+    },
+    "Example5041": {
+      "treeSha256": "edd3f1633763ed049db68750ffef1243ffbea5580d01a0054fb737c75e7c2090",
+      "fits": true,
+      "peakKb": 1657888
+    },
+    "Example5042": {
+      "treeSha256": "c5e58a1e4221596e4a022622943e3b4309ff346bdaaae1b95e10ecd713a812ef",
+      "fits": true,
+      "peakKb": 1642960
+    }
+  }
+}

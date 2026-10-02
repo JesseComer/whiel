@@ -1,0 +1,134 @@
+{
+  "observation": {
+    "schema_version": 4,
+    "operation": "proposer_observation",
+    "binding": {
+      "task_digest": "14018864ac45402faecb5a2d01a24a655fdbc7921bbfac8404794fbb4c9e84b6",
+      "scope_digest": "734596aa7f866ef458768a8a04df05abcde6ec4a44e1a16ccb7047d47702af14",
+      "run_digest": "71ae14612617cfc34000e997d6d560b42766449eb88a84919847509f51aa75a6",
+      "consultation_digest": "73f272cffb5cb7b703165741fe6a3f82794171f305350824c8bf7428e06e1d9a",
+      "state_snapshot_digest": "b0966888b9184cf7938b26f91dfb2a9aeca8eaefae80572b8a774c35d859a745",
+      "validation_manifest_digest": "fe57ee319b2906b9fe411cf2b9cd6849fc6bb4d6d47d78779cab72725215de4f",
+      "validation_ordinal": 0,
+      "policy_digest": "82bd29c106f357381ca9e53b468ff03c6c8bf8b7645b23230786feb4634fdd61"
+    },
+    "correction": null,
+    "feedback": {
+      "schema_version": 10,
+      "binding": {
+        "task_digest": "14018864ac45402faecb5a2d01a24a655fdbc7921bbfac8404794fbb4c9e84b6",
+        "scope_digest": "734596aa7f866ef458768a8a04df05abcde6ec4a44e1a16ccb7047d47702af14",
+        "run_digest": "71ae14612617cfc34000e997d6d560b42766449eb88a84919847509f51aa75a6",
+        "consultation_digest": "73f272cffb5cb7b703165741fe6a3f82794171f305350824c8bf7428e06e1d9a",
+        "state_snapshot_digest": "b0966888b9184cf7938b26f91dfb2a9aeca8eaefae80572b8a774c35d859a745",
+        "validation_manifest_digest": "fe57ee319b2906b9fe411cf2b9cd6849fc6bb4d6d47d78779cab72725215de4f"
+      },
+      "iteration": 1,
+      "remaining_search_budget_ns": "239878798959",
+      "presentation": {
+        "schema_version": 16,
+        "task": {
+          "canonical_id": "Example0001",
+          "task_digest": "14018864ac45402faecb5a2d01a24a655fdbc7921bbfac8404794fbb4c9e84b6",
+          "semantic_version": 1,
+          "encoding_version": 1,
+          "schema": "{E (arity: 2), S (arity: 2), S∞ (arity: 2), T (arity: 2), T∞ (arity: 2)}",
+          "original": {
+            "precondition": "true",
+            "command": "T := ∅[2];\nS := (E ∪ π[0,3] (σ[#1 = #2] ((E × T))));\nWHILE (¬((S = T))) DO\nT := S;\nS := (E ∪ π[0,3] (σ[#1 = #2] ((E × T))))\nEND",
+            "postcondition": "(π[0,3] (σ[#1 = #2] ((T × T))) ⊆ T)"
+          },
+          "preprocessed": {
+            "precondition": "((true ∧ (T = ∅[2])) ∧ (S = (E ∪ π[0,3] (σ[#1 = #2] ((E × T))))))",
+            "command": "WHILE (¬((S = T))) DO\nT := S;\nS := (E ∪ π[0,3] (σ[#1 = #2] ((E × T))))\nEND",
+            "postcondition": "(π[0,3] (σ[#1 = #2] ((T × T))) ⊆ T)"
+          }
+        },
+        "ambient_schema": {
+          "scope_digest": "734596aa7f866ef458768a8a04df05abcde6ec4a44e1a16ccb7047d47702af14",
+          "relations": [
+            {
+              "key": "o:p::E",
+              "arity": 2
+            },
+            {
+              "key": "o:p::S",
+              "arity": 2
+            },
+            {
+              "key": "o:p::T",
+              "arity": 2
+            },
+            {
+              "key": "y:p::S",
+              "arity": 2
+            },
+            {
+              "key": "y:p::T",
+              "arity": 2
+            }
+          ],
+          "prophecy_map": [
+            {
+              "program_relation": "o:p::S",
+              "prophecy_relation": "y:p::S",
+              "arity": 2
+            },
+            {
+              "program_relation": "o:p::T",
+              "prophecy_relation": "y:p::T",
+              "arity": 2
+            }
+          ]
+        },
+        "host_limits": [],
+        "resource_limits": {
+          "api_packet_bytes": 67108864,
+          "configured": {
+            "api_traffic_bytes": 1073741824,
+            "api_messages": 16384,
+            "artifact_bytes": 4294967296,
+            "artifact_files": 50000,
+            "workspace_bytes": 8589934592,
+            "workspace_files": 100000,
+            "minimum_free_bytes": 2147483648,
+            "workspace_entries": 200000,
+            "workspace_directories": 25000
+          }
+        },
+        "presentation_digest": "518f7f3f134a0008bb6bf9e35119e378a1b49f5445ef5c6d957e005eb99a3a79"
+      },
+      "core": [],
+      "last_round": [],
+      "pending": [],
+      "latest": {
+        "kind": "initial"
+      },
+      "tools": [
+        "countermodel",
+        "strongest_refutations",
+        "history",
+        "ledger",
+        "validate_clauses",
+        "evaluate_clauses"
+      ],
+      "state_revision": 0
+    }
+  },
+  "response_example": {
+    "binding": {
+      "consultation_digest": "73f272cffb5cb7b703165741fe6a3f82794171f305350824c8bf7428e06e1d9a",
+      "request_digest": "40d1279c22746a158a8b8f1493bff1bb4b04edc8d689f7a3d5be2e8502a82c62",
+      "run_digest": "71ae14612617cfc34000e997d6d560b42766449eb88a84919847509f51aa75a6",
+      "scope_digest": "734596aa7f866ef458768a8a04df05abcde6ec4a44e1a16ccb7047d47702af14",
+      "state_snapshot_digest": "b0966888b9184cf7938b26f91dfb2a9aeca8eaefae80572b8a774c35d859a745",
+      "task_digest": "14018864ac45402faecb5a2d01a24a655fdbc7921bbfac8404794fbb4c9e84b6",
+      "validation_manifest_digest": "fe57ee319b2906b9fe411cf2b9cd6849fc6bb4d6d47d78779cab72725215de4f",
+      "validation_ordinal": 0
+    },
+    "clauses": [],
+    "dropped": [],
+    "kind": "candidate_clauses",
+    "schema_version": 4
+  }
+}

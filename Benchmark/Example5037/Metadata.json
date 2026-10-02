@@ -1,0 +1,73 @@
+{
+  "canonicalId": "Example5037",
+  "canonicalInput": "Example5037/Input.lean",
+  "title": "Go runtime frontier marking versus the materialised Soufflé closure of the pointer graph joined with the roots",
+  "explanation": "Two distinct Datalog programs are involved: a unary marking program Marked(x) :- RootPtr(x); Marked(y) :- Marked(x), HeapPtr(x,y), and Soufflé's benchmark transitive-closure program Tc(x,y) :- HeapPtr(x,y); Tc(x,z) :- Tc(x,y), Tc(y,z) over the same pointer-graph edges HeapPtr. Side 1 encodes the Go runtime's garbage-collector marking (gcDrain/scanObject/greyobject): a worklist ('grey set') traversal that starts at the roots and, level by level, marks and enqueues every newly reached object, stopping when the queue is empty. Side 2 is the non-linear (doubling) naive fixpoint computation of Tc, the full pointer-graph reachability closure, independent of any roots. The Hoare triple links the two different schemas by a view stated in the postcondition: it claims the GC's marked set equals the roots together with everything the materialized closure Tc says is reachable from some root — i.e. that frontier-by-frontier marking from the roots computes exactly the root-restricted transitive closure of the pointer graph.",
+  "preInWords": "The precondition is simply true; no constraints are placed on RootPtr or HeapPtr.",
+  "postInWords": "Marked, the set produced by the GC's root-seeded frontier marking traversal, equals RootPtr unioned with the objects reachable from some root according to the separately computed pointer-graph transitive closure Tc.",
+  "family": "production algorithm pair (dependent phases, schema link by view)",
+  "kind": "equivalence",
+  "claim": "(Marked = (RootPtr ∪ (π[2] (σ[#0 = #1] (RootPtr × Tc)))))",
+  "precondition": "true",
+  "expectedVerdict": "valid",
+  "obstructionExpectation": "rate mismatch (one pointer per round versus path-length doubling) with the join applied to the finished closure; leveled-framework target; with prophecy the non-linear fixpoint equation gives transitivity, so both containments follow from the fixpoint facts",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "rateMismatch": true,
+  "sides": [
+    "hand-written: Go gcDrain/scanObject/greyobject frontier marking (legacy Example2012 program)",
+    "naive compiler: Soufflé tc (non-linear closure of HeapPtr), joined with RootPtr in the postcondition"
+  ],
+  "schemaLinking": "the unary marked set and the binary closure are linked by the view Marked = RootPtr ∪ π[2](σ[#0 = #1](RootPtr × Tc)) stated as the postcondition (method 3 of the handoff)",
+  "sourceProgram": null,
+  "sources": [
+    {
+      "system": "Go runtime",
+      "repo": "golang/go",
+      "branch": "master",
+      "commit": "8f5d82065574 (2026-09-15)",
+      "file": "src/runtime/mgcmark.go",
+      "function": "gcDrain (root jobs via markroot, then the heap marking loop popping objects/spans and calling scanObject/scanSpan until no work), greyobject ('If marked we have nothing to do'; setMarked; noscan fast path; putObj)",
+      "url": "https://github.com/golang/go/blob/master/src/runtime/mgcmark.go",
+      "read": "2026-09-15"
+    },
+    {
+      "system": "Go runtime",
+      "repo": "golang/go",
+      "branch": "master",
+      "commit": "8f5d82065574 (2026-09-15)",
+      "file": "src/runtime/mgcmark_greenteagc.go; src/runtime/mgcmark_nogreenteagc.go",
+      "function": "scanObject (for each pointer slot: findObject then greyobject)",
+      "url": "https://github.com/golang/go/blob/master/src/runtime/mgcmark_greenteagc.go",
+      "read": "2026-09-15"
+    },
+    {
+      "system": "Soufflé benchmark tc",
+      "file": "tc.dl of the Soufflé benchmark suite (naive translation) (normalised from the Soufflé benchmark suite tc.dl)",
+      "function": "tc(X, Y) :- base(X, Y). tc(X, Y) :- tc(X, Z), tc(Z, Y).",
+      "read": "2026-09-15"
+    }
+  ],
+  "encoding": "canonical five-declaration form; side 1 hand-written and pinned as a segment, side 2 naive-compiler output pinned by Fidelity/ (decide +kernel); independent loops merged side by side; the schemas are linked by the view in the postcondition; the marking side compared with the naive compilation of the marking rules on the check instances",
+  "created": "2026-09-15",
+  "datalog": [
+    {
+      "label": "prog_Tc — The Datalog program(s) of the header: compiled sides are their naive compilation; reference programs are compared with the hand-written sides on the check instances.",
+      "text": "Tc(x1, y1) :- HeapPtr(x1, y1).\nTc(x1, z1) :- Tc(x1, y1), Tc(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5037/Fidelity/Example5037.lean"
+    },
+    {
+      "label": "prog_MarkedR",
+      "text": "MarkedR(x1) :- RootPtr(x1).\nMarkedR(y1) :- MarkedR(x1), HeapPtr(x1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5037/Fidelity/Example5037.lean"
+    },
+    {
+      "label": "rules as stated in the header comment of Input.lean",
+      "text": "Marked(x) :- RootPtr(x)\nMarked(y) :- Marked(x), HeapPtr(x, y)\nTc(x, y) :- HeapPtr(x, y)\nTc(x, z) :- Tc(x, y), Tc(y, z)",
+      "provenance": "header comment",
+      "source_file": "Benchmark/Example5037/Input.lean"
+    }
+  ]
+}

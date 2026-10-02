@@ -1,0 +1,7 @@
+{
+  "model": "gpt-5.5",
+  "reasoning_effort": "medium",
+  "provider_cli": "artifacts/provider-cli/0.148.0/x86_64-unknown-linux-musl/codex",
+  "model_catalog": "artifacts/provider-cli/0.148.0/x86_64-unknown-linux-musl/models.json",
+  "agent_seconds": null
+}

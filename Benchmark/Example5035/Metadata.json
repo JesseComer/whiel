@@ -1,0 +1,68 @@
+{
+  "canonicalId": "Example5035",
+  "canonicalInput": "Example5035/Input.lean",
+  "title": "Warshall's sweep truncated to the first two vertices versus PostgreSQL recursive-union rounds (invalid twin of Example5034)",
+  "explanation": "This is the invalid twin of Example5034: side 2 is again PostgreSQL's recursive-union closure, but side 1 truncates Warshall's sweep to only the first two vertices of the order (a loop-free computation of TWa then TWb, each adding the pairs composed through one more intermediate vertex). The Hoare triple claims TWb = Res, i.e. that sweeping only two intermediate vertices already produces the full transitive closure. This is false in general: cutting a sweep short is not the same as bounding path length, since it misses every path whose intermediate vertices lie outside the swept prefix regardless of the path's length, and the case gives an explicit witness graph (a 4-node path, and separately a 3-cycle) where the two relations differ, backed by a kernel-checked counterexample.",
+  "preInWords": "Lt is a strict total order over the nodes of Edge, exactly as in Example5034.",
+  "postInWords": "It is claimed that TWb, the result of sweeping only the first two vertices of Lt as intermediate vertices, equals Res, the full transitive closure from PostgreSQL's recursive union — a claim the case shows to be false.",
+  "family": "production algorithm pair (rate mismatch), invalid twin",
+  "kind": "equivalence",
+  "claim": "(TWb = Res)",
+  "precondition": "((((σ[#0 = #1] Lt) = ∅) ∧\n    ((π[0, 3] (σ[#1 = #2] (Lt × Lt))) ⊆ Lt)) ∧\n  ((Lt ⊆ ((π[0] Edge ∪ π[1] Edge) × (π[0] Edge ∪ π[1] Edge))) ∧\n    ((σ[¬(#0 = #1)] ((π[0] Edge ∪ π[1] Edge) × (π[0] Edge ∪ π[1] Edge))) ⊆ (Lt ∪ π[1, 0] Lt))))",
+  "expectedVerdict": "invalid",
+  "obstructionExpectation": "invalid (bounded number of sweeps); the bounded side is loop-free and enters the precondition, the verified loop is the executor's",
+  "currentClassification": "invalid",
+  "currentEvidence": "kernel counterexample (Certificate/Invalid.lean)",
+  "rateMismatch": true,
+  "sides": [
+    "hand-written: boolean Floyd-Warshall sweeps of the first two vertices of the order only (loop-free)",
+    "hand-written: PostgreSQL ExecRecursiveUnion rounds (legacy Example2037) seeded with Edge"
+  ],
+  "schemaLinking": "same schema on both sides; direct equality of the computed relations",
+  "sourceProgram": null,
+  "sources": [
+    {
+      "system": "SciPy",
+      "repo": "scipy/scipy",
+      "branch": "main",
+      "commit": "884ac0b6fc53 (2026-09-15)",
+      "file": "scipy/sparse/csgraph/_shortest_path.pyx",
+      "function": "floyd_warshall (wrapper, unweighted option sets finite entries to 1), _floyd_warshall (for k in range(N): for i in range(N): if dist_matrix[i, k] == INFINITY: continue; for j in range(N): d_ijk = dist_matrix[i, k] + dist_matrix[k, j]; if d_ijk < dist_matrix[i, j]: dist_matrix[i, j] = d_ijk; comment 'In each loop, this finds the shortest path from point i to point j using intermediate nodes 0 ... k')",
+      "url": "https://github.com/scipy/scipy/blob/main/scipy/sparse/csgraph/_shortest_path.pyx",
+      "read": "2026-09-15"
+    },
+    {
+      "system": "NetworkX",
+      "repo": "networkx/networkx",
+      "branch": "main",
+      "commit": "4e74880b0da0 (2026-09-12)",
+      "file": "networkx/algorithms/shortest_paths/dense.py",
+      "function": "floyd_warshall_predecessor_and_distance (for w in G: for u in G: for v in G: d = dist_u[w] + dist_w[v]; if dist_u[v] > d: ...), floyd_warshall, floyd_warshall_numpy (for i in range(n): A = np.minimum(A, A[i, :][np.newaxis, :] + A[:, i][:, np.newaxis]))",
+      "url": "https://github.com/networkx/networkx/blob/main/networkx/algorithms/shortest_paths/dense.py",
+      "read": "2026-09-15"
+    },
+    {
+      "system": "PostgreSQL",
+      "repo": "postgres/postgres",
+      "branch": "master",
+      "commit": "6e58d6356fcb (2026-09-15)",
+      "file": "src/backend/executor/nodeRecursiveunion.c",
+      "function": "ExecRecursiveUnion (header comment steps 2.1-2.6; 'Ignore tuple if already seen'; working/intermediate table swap)",
+      "url": "https://github.com/postgres/postgres/blob/master/src/backend/executor/nodeRecursiveunion.c",
+      "read": "2026-09-15",
+      "encodedAs": "legacy Example2037 / Example5001 hand side with the base term equal to the edge relation"
+    }
+  ],
+  "encoding": "canonical five-declaration form; order as the input relation Lt; the two sweeps are loop-free with distinct relations (KA, KB, TWa, TWb) so that they enter the precondition; both sides hand-written and pinned as the two segments of the command (Fidelity/); the executor side compared with the naive compilation of the closure on the check instances",
+  "created": "2026-09-15",
+  "certificatePath": "Example5035/Certificate/Invalid.lean",
+  "twin": "Example5034 (valid: all vertices swept)",
+  "datalog": [
+    {
+      "label": "prog_T — The Datalog program(s) of the header: compiled sides are their naive compilation; reference programs are compared with the hand-written sides on the check instances.",
+      "text": "T(x1, y1) :- Edge(x1, y1).\nT(x1, y1) :- T(x1, z1), Edge(z1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5035/Fidelity/Example5035.lean"
+    }
+  ]
+}

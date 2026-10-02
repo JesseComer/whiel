@@ -1,0 +1,118 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zB × op_zR))) ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zRX × op_zR))) ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zSa × op_zR))) ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zSa × op_zSc))) ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zSa × op_zSd))) ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zSb × op_zR))) ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zSc × op_zR))) ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zSd × op_zR))) ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zSd × op_zSa))) ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zSd × op_zSb))) ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zTa × op_zR))) ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zTa × op_zTc))) ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zTa × op_zTd))) ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zTb × op_zR))) ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zTc × op_zR))) ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zTd × op_zR))) ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zTd × op_zTa))) ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zTd × op_zTb))) ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zB ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zRX ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSa ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSb ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSc ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSd ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTa ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTb ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTc ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTd ⊆ op_zR)"
+    }
+  ],
+  "version": 1
+}

@@ -1,0 +1,49 @@
+{
+  "canonicalId": "Example0138",
+  "canonicalInput": "Example0138/Input.lean",
+  "canonicalModule": "Benchmark.Example0138.Input",
+  "category": "Synthetic",
+  "compilerCommandCheck": "unavailable",
+  "currentClassification": "valid",
+  "currentEvidence": "accepted invariant (Core.json); certificate not yet built",
+  "datalogSource": "unavailable",
+  "declarationNamespace": "Whiel.Benchmark.Example0138",
+  "formatVersion": 1,
+  "goldInvariantStatus": "missing",
+  "historicalCandidatePresent": false,
+  "historicalClaim": null,
+  "notes": [
+    "Converted from the retired classic Datalog-program benchmark collection (the 0428 wave).",
+    "Re-encoded as two compiled loops in sequence; the retired corpus certificate for Example0138 is for the lockstep encoding."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Synthetic",
+      "sourceId": "v2__equiv_pairs__tc_nonlin_vs_all_paths_via_eo_nonlinear__naive"
+    }
+  ],
+  "suites": [
+    "classic-programs",
+    "classic-equiv-pair"
+  ],
+  "title": "Joint-loop equivalence: tc_nonlinear vs all_paths_via_even_odd (non-linear, naive)",
+  "explanation": "The command runs two independently compiled Datalog programs in sequence — a non-linear transitive-closure program producing TX by squaring, and a non-linear even/odd program producing TaY, TbY and their union TcY, also by squaring — merged by the preprocessor into a single verified loop. The postcondition TX=TcY is an equivalence claim: the transitive closure of E equals the union of the even-length and odd-length path relations, both computed non-linearly, since every nonempty path has odd or even length; the header notes this re-encodes a retired hand-written lockstep-loop version of the same case.",
+  "preInWords": "The precondition is simply true, imposing no constraint on the input relations.",
+  "postInWords": "The postcondition asserts that the transitive closure TX computed by the first program equals TcY, the union of even- and odd-length paths computed by the second.",
+  "notation": "canonical",
+  "datalog": [
+    {
+      "label": "programX — Transitive closure, non-linearly.",
+      "text": "TX(x1, y1) :- E(x1, y1).\nTX(x1, y1) :- TX(x1, z1), TX(z1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example0138/Fidelity/Example0138.lean"
+    },
+    {
+      "label": "programY — Odd and even paths and their union, non-linearly.",
+      "text": "TaY(x1, y1) :- E(x1, z1), E(z1, y1).\nTaY(x1, y1) :- TaY(x1, z1), TaY(z1, y1).\nTaY(x1, y1) :- TbY(x1, z1), TbY(z1, y1).\nTbY(x1, y1) :- E(x1, y1).\nTbY(x1, y1) :- TbY(x1, z1), TaY(z1, y1).\nTbY(x1, y1) :- TaY(x1, z1), TbY(z1, y1).\nTcY(x1, y1) :- TaY(x1, y1).\nTcY(x1, y1) :- TbY(x1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example0138/Fidelity/Example0138.lean"
+    }
+  ],
+  "expectedVerdict": "valid"
+}

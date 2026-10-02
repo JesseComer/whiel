@@ -1,0 +1,57 @@
+{
+  "canonicalId": "Example4035",
+  "canonicalInput": "Example4035/Input.lean",
+  "canonicalModule": "Benchmark.Example4035.Input",
+  "category": "Core",
+  "certificatePath": "Example4035/Certificate/Valid.lean",
+  "compilerCommandCheck": "Benchmark.Example4035.Fidelity.Example4035",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "currentValidation": {
+    "attempt": "benchmark-fidelity-20260907",
+    "lean": "4.30.0-rc1",
+    "proofBackend": "lean-kernel",
+    "status": "input-only"
+  },
+  "datalogSource": "Benchmark.Example4035.Fidelity.Example4035",
+  "declarationNamespace": "Whiel.Benchmark.Example4035",
+  "formatVersion": 1,
+  "goldInvariantStatus": "not-applicable",
+  "historicalCandidatePresent": false,
+  "historicalClaim": null,
+  "notes": [
+    "`reports/VerificationTasks.pdf` section 10.1, Task 6: verify `T = T↑` under the views `Vb = G ⋈ E` and `Ve = E ⋈ G`. Global schema `{E, G}` with `E` the digraph edge relation and the unary `G` marking the \"good\" vertices; local schema `{Vb, Ve}` with the exact conjunctive views `Vb(x, y) ↔ G(x) ∧ E(x, y)` and `Ve(x, y) ↔ E(x, y) ∧ G(y)`.",
+    "The source documents the reformulations task document (sha256 `32a3ac6b428d851f0aaa4fb7acdbf2fe4ad5dacca93ee118837888ff91b7a1c6`) and `reports/VerificationTasks.pdf` (sha256 `796ff97c082c6fc70e75a60c0dd40ec0680b738d7184a8b8aefea8c681b3ebff`) carry the same section 10.1 text, so both name this task.",
+    "The command is not hand-authored: `Fidelity/Example4035.lean` states the PDF's Datalog programs, compiles each with `Datalog.WhielCompiler.Naive`, writes the two compiled commands one after the other, renames the generated snapshots `T_1` and `TUp_1` to the auxiliary input names `T_aux` and `TUp_aux`, and proves the result equal to `inputCmd` by `decide +kernel`; the same module fixes `inputPre` as the pair of view equations and `inputPost` as the claim `T = TUp` and pins the single loop `Hoare.preprocess` computes from the sequence.",
+    "Expected verdict valid. Substituting the view definitions turns each `TUp` rule into the matching `T` rule, so the two least fixpoints coincide. The classification stays `unknown` because this corpus carries no certificate.",
+    "Reference encoding for intent only: `Benchmark/Example4035/Input.lean` on `origin/reformulation-multiview` at commit `7b793fe36c02d051a0771d110333d1c9bbca40cd`, an `IndexAlphaName` hand-written input in the earlier single-level framework whose precondition states the views as bi-inclusions. Nothing is copied from it; the canonical file states each view as one equation and its selection conditions are the compiler's own."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Core",
+      "path": "Example4035/Input.lean",
+      "sourceId": "verification-tasks-pdf-10.1-task6"
+    }
+  ],
+  "suites": [
+    "leveled-framework"
+  ],
+  "title": "Good-interior path query versus its begin-good and end-good edge-view reformulation",
+  "explanation": "The global program T computes walks of length at least two through digraph E whose interior vertices are all \"good\" (marked by unary relation G): T(x,y):-E(x,z),G(z),E(z,y), and T(x,y):-E(x,z),G(z),T(z,y) — a good-interior-vertex reachability query. The local reformulation TUp is defined over two exact conjunctive views, Vb (begin-good edges, G(x) ∧ E(x,y)) and Ve (end-good edges, E(x,y) ∧ G(y)): TUp(x,y):-Ve(x,z),Vb(z,y), and TUp(x,y):-Ve(x,z),TUp(z,y). The Hoare triple claims the two programs compute the same relation, T = TUp — an equivalence claim that follows from substituting the view definitions into each TUp rule to recover the matching T rule. Expected valid; no certificate exists yet, so the classification stays unknown.",
+  "preInWords": "The precondition states the two view equations exactly: Vb is the join of G and E giving good-start edges, and Ve is the join of E and G giving good-end edges.",
+  "postInWords": "The postcondition asserts T = TUp, that the good-interior path query and its two-view reformulation agree.",
+  "datalog": [
+    {
+      "label": "globalProgram — `T xy :- Exz, Gz, Ezy` and `T xy :- Exz, Gz, T zy`.",
+      "text": "T(x1, y1) :- E(x1, z1), G(z1), E(z1, y1).\nT(x1, y1) :- E(x1, z1), G(z1), T(z1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example4035/Fidelity/Example4035.lean"
+    },
+    {
+      "label": "localProgram — `T↑ xy :- Ve xz, Vb zy` and `T↑ xy :- Ve xz, T↑ zy`.",
+      "text": "TUp(x1, y1) :- Ve(x1, z1), Vb(z1, y1).\nTUp(x1, y1) :- Ve(x1, z1), TUp(z1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example4035/Fidelity/Example4035.lean"
+    }
+  ]
+}

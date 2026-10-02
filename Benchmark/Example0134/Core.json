@@ -1,0 +1,138 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((oa_zTaX × op_zR))) ⊆ op_zTbX)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((oa_zTdX × op_zB))) ⊆ op_zTcX)"
+    },
+    {
+      "level": 0,
+      "source": "((π[0,3] (σ[#1 = #2] ((op_zB × op_zR))) ∪ π[0,3] (σ[#1 = #2] ((oa_zTaY × oa_zTdY)))) ⊆ op_zTbY)"
+    },
+    {
+      "level": 0,
+      "source": "((π[0,3] (σ[#1 = #2] ((op_zR × op_zB))) ∪ π[0,3] (σ[#1 = #2] ((oa_zTdY × oa_zTaY)))) ⊆ op_zTcY)"
+    },
+    {
+      "level": 0,
+      "source": "((op_zB ∪ π[0,3] (σ[#1 = #2] ((oa_zTaY × oa_zTcY)))) ⊆ op_zTaY)"
+    },
+    {
+      "level": 0,
+      "source": "((op_zB ∪ π[0,3] (σ[#1 = #2] ((op_zB × oa_zTcX)))) ⊆ op_zTaX)"
+    },
+    {
+      "level": 0,
+      "source": "((op_zR ∪ π[0,3] (σ[#1 = #2] ((oa_zTdY × oa_zTbY)))) ⊆ op_zTdY)"
+    },
+    {
+      "level": 0,
+      "source": "((op_zR ∪ π[0,3] (σ[#1 = #2] ((op_zR × oa_zTbX)))) ⊆ op_zTdX)"
+    },
+    {
+      "level": 1,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zTaX × π[0,3] (σ[#1 = #2] ((op_zR × op_zB)))))) ⊆ yp_zTaX)"
+    },
+    {
+      "level": 1,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zTbX × π[0,3] (σ[#1 = #2] ((op_zB × op_zR)))))) ⊆ yp_zTbX)"
+    },
+    {
+      "level": 1,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zTcX × π[0,3] (σ[#1 = #2] ((op_zR × op_zB)))))) ⊆ yp_zTcX)"
+    },
+    {
+      "level": 1,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zTcX × op_zR))) ⊆ yp_zTdX)"
+    },
+    {
+      "level": 1,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zTdX × π[0,3] (σ[#1 = #2] ((op_zB × op_zR)))))) ⊆ yp_zTdX)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zTaX ⊆ yp_zTaY)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zTaX ⊆ (op_zB ∪ π[0,3] (σ[#1 = #2] ((op_zB × op_zTcX)))))"
+    },
+    {
+      "level": 1,
+      "source": "(op_zTbX ⊆ π[0,3] (σ[#1 = #2] ((op_zTaX × op_zR))))"
+    },
+    {
+      "level": 1,
+      "source": "(op_zTbX ⊆ yp_zTbY)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zTcX ⊆ π[0,3] (σ[#1 = #2] ((op_zTdX × op_zB))))"
+    },
+    {
+      "level": 1,
+      "source": "(op_zTcX ⊆ yp_zTcY)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zTdX ⊆ yp_zTdY)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zTdX ⊆ (op_zR ∪ π[0,3] (σ[#1 = #2] ((op_zR × op_zTbX)))))"
+    },
+    {
+      "level": 2,
+      "source": "(π[0,3] (σ[#1 = #2] ((yp_zTaX × op_zTcX))) ⊆ yp_zTaX)"
+    },
+    {
+      "level": 2,
+      "source": "(π[0,3] (σ[#1 = #2] ((yp_zTaX × op_zTdX))) ⊆ yp_zTbX)"
+    },
+    {
+      "level": 2,
+      "source": "(π[0,3] (σ[#1 = #2] ((yp_zTbX × op_zTaX))) ⊆ yp_zTaX)"
+    },
+    {
+      "level": 2,
+      "source": "(π[0,3] (σ[#1 = #2] ((yp_zTbX × op_zTbX))) ⊆ yp_zTbX)"
+    },
+    {
+      "level": 2,
+      "source": "(π[0,3] (σ[#1 = #2] ((yp_zTcX × op_zTcX))) ⊆ yp_zTcX)"
+    },
+    {
+      "level": 2,
+      "source": "(π[0,3] (σ[#1 = #2] ((yp_zTcX × op_zTdX))) ⊆ yp_zTdX)"
+    },
+    {
+      "level": 2,
+      "source": "(π[0,3] (σ[#1 = #2] ((yp_zTdX × op_zTaX))) ⊆ yp_zTcX)"
+    },
+    {
+      "level": 2,
+      "source": "(π[0,3] (σ[#1 = #2] ((yp_zTdX × op_zTbX))) ⊆ yp_zTdX)"
+    },
+    {
+      "level": 3,
+      "source": "(op_zTaY ⊆ yp_zTaX)"
+    },
+    {
+      "level": 3,
+      "source": "(op_zTbY ⊆ yp_zTbX)"
+    },
+    {
+      "level": 3,
+      "source": "(op_zTcY ⊆ yp_zTcX)"
+    },
+    {
+      "level": 3,
+      "source": "(op_zTdY ⊆ yp_zTdX)"
+    }
+  ],
+  "version": 1
+}

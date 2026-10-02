@@ -1,0 +1,86 @@
+{
+  "fuel_consumed": 13,
+  "fuel_policy": {
+    "host_fuel_bound": null,
+    "kind": "structural_replay",
+    "validation_limit_nanos": 30000000000
+  },
+  "instance": {
+    "relations": [
+      {
+        "name": "a::T",
+        "rows": []
+      },
+      {
+        "name": "a::Tn",
+        "rows": []
+      },
+      {
+        "name": "p::Cand",
+        "rows": []
+      },
+      {
+        "name": "p::Del",
+        "rows": [
+          [
+            "num:0",
+            "num:1"
+          ]
+        ]
+      },
+      {
+        "name": "p::E",
+        "rows": [
+          [
+            "num:0",
+            "num:1"
+          ],
+          [
+            "num:0",
+            "num:2"
+          ],
+          [
+            "num:1",
+            "num:2"
+          ]
+        ]
+      },
+      {
+        "name": "p::EN",
+        "rows": []
+      },
+      {
+        "name": "p::New",
+        "rows": []
+      },
+      {
+        "name": "p::Over",
+        "rows": []
+      },
+      {
+        "name": "p::T",
+        "rows": []
+      },
+      {
+        "name": "p::Tn",
+        "rows": []
+      }
+    ]
+  },
+  "instance_identity": "90ececf560b082f445ef5c6b82b72028f78ba99827a1ce22e68e98b983573d22",
+  "kind": "whiel_framework_ii_counterexample",
+  "provenance": {
+    "kind": "recorded_witness",
+    "source": "counterexample instance contributed with the case by Shuo Zhang"
+  },
+  "scope_identity_sha256": "59b57ddbf70c9878422a8423d60c58af6544b246971478112e4a98968424168d",
+  "task": {
+    "canonical_id": "Example5017",
+    "encoding_version": 1,
+    "module": "Benchmark.Example5017.Input",
+    "namespace": "Whiel.Benchmark.Example5017",
+    "semantic_version": 1,
+    "source_sha256": "d39cc4451ca3d4844a58b4803ca962a580733f37b75fbf5010f967bf6236044d"
+  },
+  "version": 1
+}

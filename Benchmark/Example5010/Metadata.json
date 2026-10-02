@@ -1,0 +1,30 @@
+{
+  "canonicalId": "Example5010",
+  "canonicalInput": "Example5010/Input.lean",
+  "title": "Soufflé orbits benchmark: naive versus semi-naive evaluation",
+  "explanation": "Soufflé's orbits.dl benchmark computes the transitive closure of a seed relation, orbits (the orbits of the seed relation under composition), together with intermediate (a two-step composition of orbits with itself) and satellite (orbit pairs not reachable by such an intermediate two-step path) built on top of it — a graph-composition closure computation. The triple compares naive versus semi-naive evaluation of the whole program, claiming all three output relations agree between the two strategies.",
+  "preInWords": "True; no precondition constrains the inputs.",
+  "postInWords": "The naively computed intermediate, orbits, and satellite relations each equal their semi-naive counterparts.",
+  "family": "Soufflé naive vs semi-naive",
+  "kind": "equivalence",
+  "claim": "((intermediate = intermediateS) ∧ (orbits = orbitsS) ∧ (satellite = satelliteS))",
+  "precondition": "true",
+  "expectedVerdict": "valid",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "rateMismatch": false,
+  "sides": [
+    "naive translation of orbits.dl (Soufflé benchmark suite)",
+    "semi-naive translation of orbits.dl (Soufflé benchmark suite)"
+  ],
+  "sourceProgram": "orbits.dl of the Soufflé benchmark suite (naive translation)",
+  "encoding": "canonical five-declaration form; programs run in sequence and merged by Hoare.preprocess; compiled sides are naive-compiler output pinned by Fidelity/ (decide +kernel); hand-written sides are the retired corpus commands verbatim under a bijective rename of relation names",
+  "created": "2026-09-15",
+  "datalog": [
+    {
+      "label": "normalized Soufflé source (orbits.dl of the Soufflé benchmark suite (naive translation))",
+      "text": ".decl orbits_seed(v0:symbol, v1:symbol) input\n.decl orbits(v0:symbol, v1:symbol) output\n.decl intermediate(v0:symbol, v1:symbol) output\n.decl satellite(v0:symbol, v1:symbol) output\n\norbits(V0, V1) :- orbits_seed(V0, V1).\norbits(X, Y) :- orbits(X, Z), orbits(Z, Y).\nsatellite(X, Y) :- orbits(X, Y), !intermediate(X, Y).\nintermediate(X, Y) :- orbits(X, Z), orbits(Z, Y).",
+      "provenance": "Soufflé benchmark program, normalized (both sides are script translations of it)"
+    }
+  ]
+}

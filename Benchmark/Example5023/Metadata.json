@@ -1,0 +1,76 @@
+{
+  "canonicalId": "Example5023",
+  "canonicalInput": "Example5023/Input.lean",
+  "title": "Win-move: the alternating fixpoint of the well-founded semantics (nested loops) versus the attractor computation",
+  "explanation": "Both sides compute the well-founded semantics of the classic win-move game program (a position wins if it has a move to a position that is not a win), whose model is three-valued (winning/losing/drawn); side 1 computes Van Gelder's alternating fixpoint directly, alternating an outer loop between an even sequence (Under) and odd sequence (Over), each obtained via an inner positive-program least-fixpoint loop — the first nested-loop case in this corpus — while side 2 computes the same sets via the game-theoretic attractor construction (simultaneously updating Win/Lose sets by one half-step each iteration), as in Example0162. The triple states the alternating fixpoint's even limit and the complement of its odd limit coincide exactly with the attractor's Win and Lose sets, the standard correspondence between well-founded semantics and attractor-based game solving.",
+  "preInWords": "True; no precondition constrains the inputs.",
+  "postInWords": "The alternating fixpoint's even limit Under equals the attractor's Win set, and the complement of the odd limit Over (relative to all positions) equals the attractor's Lose set.",
+  "family": "two computations of one semantics",
+  "kind": "equivalence",
+  "claim": "((Under = Win) ∧ ((Nodes ∖ Over) = Lose))",
+  "precondition": "true",
+  "expectedVerdict": "valid",
+  "obstructionExpectation": "rate mismatch with dependent phases (inner fixpoints flattened under flags flag_0_0..flag_2_0; attractor advances half a step per iteration; invariant refreshed at outer-round boundaries)",
+  "currentClassification": "valid",
+  "currentEvidence": "accepted invariant (Core.json); certificate not yet built",
+  "notes": [
+    "Some maintenance obligations of this invariant are proved only under the pinned solver's portfolio strategy; the direct strategy alone does not prove them."
+  ],
+  "rateMismatch": true,
+  "sides": [
+    "hand-written: alternating fixpoint A_0 = ∅, A_{i+1} = S_P(A_i) with Under (even) / Over (odd), each S_P an inner least-fixpoint loop in the naive compiler's form for OverI(x) :- Move(x,y), NotUnder(y) and UnderI(x) :- Move(x,y), NotOver(y)",
+    "hand-written: attractor (Example0162 / legacy 2019 style, simultaneous update of Win and Lose)"
+  ],
+  "sourceProgram": "win(X) :- move(X,Y), not win(Y)",
+  "sources": [
+    {
+      "title": "A. Van Gelder, K. A. Ross, J. S. Schlipf, The Well-Founded Semantics for General Logic Programs, JACM 38(3), 1991",
+      "url": "https://doi.org/10.1145/116825.116838",
+      "read": "not retrievable 2026-09-15 (ACM DL 403 / bot check)"
+    },
+    {
+      "title": "A. Van Gelder, The Alternating Fixpoint of Logic Programs with Negation, PODS 1989",
+      "url": "https://doi.org/10.1145/73721.73722",
+      "read": "not retrievable 2026-09-15 (ACM DL 403 / bot check)"
+    },
+    {
+      "title": "A. Van Gelder, The Alternating Fixpoint of Logic Programs with Negation, JCSS 47(1), 1993",
+      "url": "https://doi.org/10.1016/0022-0000(93)90024-Q",
+      "read": "not retrievable 2026-09-15 (ScienceDirect 403, also in the in-app browser)"
+    },
+    {
+      "title": "S. Abiteboul, R. Hull, V. Vianu, Foundations of Databases, chapter 15 (Example 15.3.1; 15.3 A Fixpoint Definition; Example 15.3.8(b); Theorem 15.3.9)",
+      "url": "http://webdam.inria.fr/Alice/pdfs/Chapter-15.pdf",
+      "read": "2026-09-15",
+      "note": "used to check the alternating-fixpoint definitions and the win-move example"
+    },
+    {
+      "title": "Example0162 and the retired corpus case Example2019 (attractor side)",
+      "url": "local",
+      "read": "2026-09-15"
+    }
+  ],
+  "encoding": "canonical five-declaration form; first case with nested loops (flattened by Hoare.preprocess); Fidelity/ pins each inner loop to the compiler's output and assembles the whole command from raw pieces (decide +kernel); datalog! has no negation, so the inner positive programs take the complements NotUnder/NotOver as EDBs computed in the outer body",
+  "created": "2026-09-15",
+  "twin": "Example5024 (invalid: Over = Win, i.e. no draws)",
+  "datalog": [
+    {
+      "label": "prog_pO — The positive programs P^I of the two half-steps of the alternation (`not win(Y)` read as `NotUnder(Y)`, resp. `NotOver(Y)`); their naive compilation is the inner loop of each half-step.",
+      "text": "OverI(x1) :- Move(x1, y1), NotUnder(y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5023/Fidelity/Example5023.lean"
+    },
+    {
+      "label": "prog_pU",
+      "text": "UnderI(x1) :- Move(x1, y1), NotOver(y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5023/Fidelity/Example5023.lean"
+    },
+    {
+      "label": "rules as stated in the header comment of Input.lean",
+      "text": "win(X) :- move(X, Y), not win(Y)\nOverI(x) :- Move(x, y), NotUnder(y)\nUnderI(x) :- Move(x, y), NotOver(y)",
+      "provenance": "header comment",
+      "source_file": "Benchmark/Example5023/Input.lean"
+    }
+  ]
+}

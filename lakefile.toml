@@ -1,0 +1,47 @@
+name = "Databases"
+version = "0.1.0"
+keywords = ["math"]
+defaultTargets = ["Databases", "Whiel"]
+
+[leanOptions]
+pp.unicode.fun = true # pretty-prints `fun a ↦ b`
+relaxedAutoImplicit = false
+weak.linter.mathlibStandardSet = true
+maxSynthPendingDepth = 3
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.30.0-rc1"
+
+[[require]]
+name = "vamp_lean"
+git = "https://github.com/vprover/vamplean.git"
+rev = "8f42ff7d83428848c4a28286a23c3f00dd45766b"
+
+[[lean_lib]]
+name = "Databases"
+
+[[lean_lib]]
+name = "Whiel"
+
+[[lean_lib]]
+name = "Benchmark"
+
+# Lean fixtures for the `whiel_runner` integration suites: the minimal source
+# closure of the retired corpus's encoding worker, which those suites build and
+# run. Its modules keep the `Benchmark2` prefix so the canonical `Benchmark`
+# names stay with the live corpus.
+[[lean_lib]]
+name = "EngineFixtures"
+srcDir = "whiel_runner/tests/fixtures/lean"
+roots = ["Benchmark2"]
+
+[[lean_exe]]
+name = "example0012_encoding_worker"
+srcDir = "whiel_runner/tests/fixtures/lean"
+root = "Benchmark2.Example0012EncodingWorker"
+
+[[lean_exe]]
+name = "fixed_ambient_encoding_worker"
+root = "Whiel.Synthesis.Runtime.FixedAmbientWorker"

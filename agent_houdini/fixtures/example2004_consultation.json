@@ -1,0 +1,383 @@
+{
+  "observation": {
+    "schema_version": 4,
+    "operation": "proposer_observation",
+    "binding": {
+      "task_digest": "e75731708ab1f243f312d29ad27a77497ff0b477ac52096ff9d7dd349ea78584",
+      "scope_digest": "a7a2746de146c2d9d7a1d9eea26ee96f52ddc164398ade8184314c183ad032e1",
+      "run_digest": "8c5210ae3a4690b301a12f2b89aaaffa48e3eb799226d3707e6c69b484997d56",
+      "consultation_digest": "61bdbd1602c087f6d15d097edae8b926bec6038aec800a9396ad01e5b053d940",
+      "state_snapshot_digest": "0ca011a3192177626e6c8fffdfc0ba2449154697fd23c08755ee631b43593f04",
+      "validation_manifest_digest": "bbf909b45576068408e379b2c92f5b38001afc1c9ca562762783c376e2f40e5f",
+      "validation_ordinal": 0,
+      "policy_digest": "fccccb4f7b52b008b0212c2eb7fe84c2d1cba4fc12e5b1ec3c48d87e5e311b2c"
+    },
+    "feedback": {
+      "schema_version": 10,
+      "binding": {
+        "task_digest": "e75731708ab1f243f312d29ad27a77497ff0b477ac52096ff9d7dd349ea78584",
+        "scope_digest": "a7a2746de146c2d9d7a1d9eea26ee96f52ddc164398ade8184314c183ad032e1",
+        "run_digest": "8c5210ae3a4690b301a12f2b89aaaffa48e3eb799226d3707e6c69b484997d56",
+        "consultation_digest": "61bdbd1602c087f6d15d097edae8b926bec6038aec800a9396ad01e5b053d940",
+        "state_snapshot_digest": "0ca011a3192177626e6c8fffdfc0ba2449154697fd23c08755ee631b43593f04",
+        "validation_manifest_digest": "bbf909b45576068408e379b2c92f5b38001afc1c9ca562762783c376e2f40e5f"
+      },
+      "iteration": 2,
+      "remaining_search_budget_ns": "125911859792",
+      "presentation": {
+        "schema_version": 16,
+        "task": {
+          "canonical_id": "Example2004",
+          "task_digest": "e75731708ab1f243f312d29ad27a77497ff0b477ac52096ff9d7dd349ea78584",
+          "semantic_version": 1,
+          "encoding_version": 1,
+          "schema": "{Edge (arity: 2), MPath (arity: 1), MPath_aux (arity: 1), MPath_aux∞ (arity: 1), MPath∞ (arity: 1), Path (arity: 2), PathBF (arity: 2), PathBF_aux (arity: 2), PathBF_aux∞ (arity: 2), PathBF∞ (arity: 2), Path_aux (arity: 2), Path_aux∞ (arity: 2), Path∞ (arity: 2), Root (arity: 1)}",
+          "original": {
+            "precondition": "(Root = {\"root\"})",
+            "command": "MPath_aux := ∅[1];\nPathBF_aux := ∅[2];\nMPath := (Root ∪ π[2] (σ[#0 = #1] ((MPath_aux × Edge))));\nPathBF := (π[0,2] (σ[#0 = #1] ((MPath_aux × Edge))) ∪ π[0,4] (σ[(#0 = #1 ∧ #2 = #3)] ((MPath_aux × (Edge × PathBF_aux)))));\nWHILE (¬(((MPath = MPath_aux) ∧ (PathBF = PathBF_aux)))) DO\nMPath_aux := MPath;\nPathBF_aux := PathBF;\nMPath := (MPath ∪ (Root ∪ π[2] (σ[#0 = #1] ((MPath_aux × Edge)))));\nPathBF := (PathBF ∪ (π[0,2] (σ[#0 = #1] ((MPath_aux × Edge))) ∪ π[0,4] (σ[(#0 = #1 ∧ #2 = #3)] ((MPath_aux × (Edge × PathBF_aux))))))\nEND;\nPath_aux := ∅[2];\nPath := (Edge ∪ π[0,3] (σ[#1 = #2] ((Edge × Path_aux))));\nWHILE (¬((Path = Path_aux))) DO\nPath_aux := Path;\nPath := (Path ∪ (Edge ∪ π[0,3] (σ[#1 = #2] ((Edge × Path_aux)))))\nEND",
+            "postcondition": "((π[1,2] (σ[#0 = #1] ((MPath × Path))) ⊆ PathBF) ∧ (PathBF ⊆ Path))"
+          },
+          "preprocessed": {
+            "precondition": "(((((((Root = {\"root\"}) ∧ (MPath_aux = ∅[1])) ∧ (PathBF_aux = ∅[2])) ∧ (MPath = (Root ∪ π[2] (σ[#0 = #1] ((MPath_aux × Edge)))))) ∧ (PathBF = (π[0,2] (σ[#0 = #1] ((MPath_aux × Edge))) ∪ π[0,4] (σ[(#0 = #1 ∧ #2 = #3)] ((MPath_aux × (Edge × PathBF_aux))))))) ∧ (Path_aux = ∅[2])) ∧ (Path = (Edge ∪ π[0,3] (σ[#1 = #2] ((Edge × Path_aux))))))",
+            "command": "WHILE ((¬(((MPath = MPath_aux) ∧ (PathBF = PathBF_aux)))) ∨ (¬((Path = Path_aux)))) DO\nIF (¬(((MPath = MPath_aux) ∧ (PathBF = PathBF_aux)))) THEN\nMPath_aux := MPath;\nPathBF_aux := PathBF;\nMPath := (MPath ∪ (Root ∪ π[2] (σ[#0 = #1] ((MPath_aux × Edge)))));\nPathBF := (PathBF ∪ (π[0,2] (σ[#0 = #1] ((MPath_aux × Edge))) ∪ π[0,4] (σ[(#0 = #1 ∧ #2 = #3)] ((MPath_aux × (Edge × PathBF_aux))))))\nELSE\nSKIP\nEND;\nIF (¬((Path = Path_aux))) THEN\nPath_aux := Path;\nPath := (Path ∪ (Edge ∪ π[0,3] (σ[#1 = #2] ((Edge × Path_aux)))))\nELSE\nSKIP\nEND\nEND",
+            "postcondition": "((π[1,2] (σ[#0 = #1] ((MPath × Path))) ⊆ PathBF) ∧ (PathBF ⊆ Path))"
+          }
+        },
+        "ambient_schema": {
+          "scope_digest": "a7a2746de146c2d9d7a1d9eea26ee96f52ddc164398ade8184314c183ad032e1",
+          "relations": [
+            {
+              "key": "o:p::Edge",
+              "arity": 2
+            },
+            {
+              "key": "o:p::MPath",
+              "arity": 1
+            },
+            {
+              "key": "o:p::Path",
+              "arity": 2
+            },
+            {
+              "key": "o:p::PathBF",
+              "arity": 2
+            },
+            {
+              "key": "o:p::Root",
+              "arity": 1
+            },
+            {
+              "key": "o:a::MPath",
+              "arity": 1
+            },
+            {
+              "key": "o:a::Path",
+              "arity": 2
+            },
+            {
+              "key": "o:a::PathBF",
+              "arity": 2
+            },
+            {
+              "key": "y:p::MPath",
+              "arity": 1
+            },
+            {
+              "key": "y:p::Path",
+              "arity": 2
+            },
+            {
+              "key": "y:p::PathBF",
+              "arity": 2
+            },
+            {
+              "key": "y:a::MPath",
+              "arity": 1
+            },
+            {
+              "key": "y:a::Path",
+              "arity": 2
+            },
+            {
+              "key": "y:a::PathBF",
+              "arity": 2
+            }
+          ],
+          "prophecy_map": [
+            {
+              "program_relation": "o:p::MPath",
+              "prophecy_relation": "y:p::MPath",
+              "arity": 1
+            },
+            {
+              "program_relation": "o:p::Path",
+              "prophecy_relation": "y:p::Path",
+              "arity": 2
+            },
+            {
+              "program_relation": "o:p::PathBF",
+              "prophecy_relation": "y:p::PathBF",
+              "arity": 2
+            },
+            {
+              "program_relation": "o:a::MPath",
+              "prophecy_relation": "y:a::MPath",
+              "arity": 1
+            },
+            {
+              "program_relation": "o:a::Path",
+              "prophecy_relation": "y:a::Path",
+              "arity": 2
+            },
+            {
+              "program_relation": "o:a::PathBF",
+              "prophecy_relation": "y:a::PathBF",
+              "arity": 2
+            }
+          ]
+        },
+        "host_limits": [],
+        "resource_limits": {
+          "api_packet_bytes": 67108864,
+          "configured": {
+            "api_traffic_bytes": 1073741824,
+            "api_messages": 16384,
+            "artifact_bytes": 4294967296,
+            "artifact_files": 50000,
+            "workspace_bytes": 8589934592,
+            "workspace_files": 100000,
+            "minimum_free_bytes": 2147483648,
+            "workspace_entries": 200000,
+            "workspace_directories": 25000
+          }
+        },
+        "presentation_digest": "8d4f78a520f7e72eeeae838f9447c6842556a06dd7944340fa6268f238c95c03"
+      },
+      "core": [
+        {
+          "clause": {
+            "clause_id": 0,
+            "record_digest": "faa7e9d4adf0c5ff9bd6c997792a823bbd220fab14159b1ee7232c5f9f7f095e",
+            "formula_digest": "c15b4e2b9a7fc8ec263600dbb6bcca1f07f8c5c18667eaeccd3fd2bd5eb6d524",
+            "canonical_source": "(op_zRoot = {\"root\"})",
+            "display": "(Root = {\"root\"})"
+          },
+          "source": "edb_precondition_system",
+          "level": 0
+        }
+      ],
+      "last_round": [
+        {
+          "clause": {
+            "clause_id": 1,
+            "record_digest": "51c27a9b1174b69ef32931aa1a3153a4dfe9cada66dd9d25cc51d50b3b186c55",
+            "formula_digest": "9ebb6b1ec9bfd3c5f9d7c22b1f9b089daf66be1cce56c8d5a7f409ab007ead9e",
+            "canonical_source": "(π[1,2] (σ[#0 = #1] ((op_zMPath × op_zPath))) ⊆ yp_zPathBF)",
+            "display": "(π[1,2] (σ[#0 = #1] ((MPath × Path))) ⊆ PathBF∞)"
+          },
+          "source": "submitted",
+          "outcome": {
+            "kind": "pending",
+            "level": 1
+          }
+        },
+        {
+          "clause": {
+            "clause_id": 2,
+            "record_digest": "524c179f3e85cb2b2cce40a5aecb824986fc83efa2199ba9d2bc288db44e7410",
+            "formula_digest": "30e81811a032a58d763c0027ee390136779c60667a98036dde49d730ab768364",
+            "canonical_source": "(op_zMPath ⊆ yp_zMPath)",
+            "display": "(MPath ⊆ MPath∞)"
+          },
+          "source": "submitted",
+          "outcome": {
+            "kind": "pending",
+            "level": 1
+          }
+        },
+        {
+          "clause": {
+            "clause_id": 3,
+            "record_digest": "0c9f3a6effcc518e7fe6c4bc0016eb1bf59d14b9ce8166bfe49a86a6ab63f406",
+            "formula_digest": "5e4f1e803c9e9d006c80433b0330a2c1df0afc696803c7db61dd2f7fc25e9a2a",
+            "canonical_source": "(op_zPath ⊆ yp_zPath)",
+            "display": "(Path ⊆ Path∞)"
+          },
+          "source": "submitted",
+          "outcome": {
+            "kind": "pending",
+            "level": 1
+          }
+        },
+        {
+          "clause": {
+            "clause_id": 4,
+            "record_digest": "4e289b8367a481317bb7c60a79660b9f7450a56c08c9773445308ed5d02f0b92",
+            "formula_digest": "7a3c14d758a00c0d8709a96d7fbc5d5acc2baa146c31d519f48cce25c6c29da1",
+            "canonical_source": "(op_zPathBF ⊆ yp_zPathBF)",
+            "display": "(PathBF ⊆ PathBF∞)"
+          },
+          "source": "submitted",
+          "outcome": {
+            "kind": "pending",
+            "level": 1
+          }
+        },
+        {
+          "clause": {
+            "clause_id": 5,
+            "record_digest": "a72b328ca89fa145c48c6da7faf7394a33a1857fe9598e8057d3526aae6bb6f6",
+            "formula_digest": "80d1d8307bf91cc4ab2ff0172ebc5be9511b8099df5d3a88d35bef7bb6168686",
+            "canonical_source": "(yp_zPathBF ⊆ yp_zPath)",
+            "display": "(PathBF∞ ⊆ Path∞)"
+          },
+          "source": "submitted",
+          "outcome": {
+            "kind": "pending",
+            "level": 1
+          }
+        }
+      ],
+      "pending": [
+        {
+          "clause": {
+            "clause_id": 1,
+            "record_digest": "51c27a9b1174b69ef32931aa1a3153a4dfe9cada66dd9d25cc51d50b3b186c55",
+            "formula_digest": "9ebb6b1ec9bfd3c5f9d7c22b1f9b089daf66be1cce56c8d5a7f409ab007ead9e",
+            "canonical_source": "(π[1,2] (σ[#0 = #1] ((op_zMPath × op_zPath))) ⊆ yp_zPathBF)",
+            "display": "(π[1,2] (σ[#0 = #1] ((MPath × Path))) ⊆ PathBF∞)"
+          },
+          "source": "submitted",
+          "minimum_level": 1,
+          "current_level": 1,
+          "drop_reference": {
+            "clause": {
+              "clause_id": 1,
+              "record_digest": "51c27a9b1174b69ef32931aa1a3153a4dfe9cada66dd9d25cc51d50b3b186c55",
+              "formula_digest": "9ebb6b1ec9bfd3c5f9d7c22b1f9b089daf66be1cce56c8d5a7f409ab007ead9e"
+            },
+            "consultation_digest": "61bdbd1602c087f6d15d097edae8b926bec6038aec800a9396ad01e5b053d940",
+            "authorization_digest": "829a22c95d50b2f6d49ff2b3100ba13d4cc4e0ffb68e1f3f428617bcdeb6d963"
+          }
+        },
+        {
+          "clause": {
+            "clause_id": 2,
+            "record_digest": "524c179f3e85cb2b2cce40a5aecb824986fc83efa2199ba9d2bc288db44e7410",
+            "formula_digest": "30e81811a032a58d763c0027ee390136779c60667a98036dde49d730ab768364",
+            "canonical_source": "(op_zMPath ⊆ yp_zMPath)",
+            "display": "(MPath ⊆ MPath∞)"
+          },
+          "source": "submitted",
+          "minimum_level": 1,
+          "current_level": 1,
+          "drop_reference": {
+            "clause": {
+              "clause_id": 2,
+              "record_digest": "524c179f3e85cb2b2cce40a5aecb824986fc83efa2199ba9d2bc288db44e7410",
+              "formula_digest": "30e81811a032a58d763c0027ee390136779c60667a98036dde49d730ab768364"
+            },
+            "consultation_digest": "61bdbd1602c087f6d15d097edae8b926bec6038aec800a9396ad01e5b053d940",
+            "authorization_digest": "a87f19ca4728bdb7e35511d1527a2d84e5ec5ee90f8fc07157851f8dda8479f9"
+          }
+        },
+        {
+          "clause": {
+            "clause_id": 3,
+            "record_digest": "0c9f3a6effcc518e7fe6c4bc0016eb1bf59d14b9ce8166bfe49a86a6ab63f406",
+            "formula_digest": "5e4f1e803c9e9d006c80433b0330a2c1df0afc696803c7db61dd2f7fc25e9a2a",
+            "canonical_source": "(op_zPath ⊆ yp_zPath)",
+            "display": "(Path ⊆ Path∞)"
+          },
+          "source": "submitted",
+          "minimum_level": 1,
+          "current_level": 1,
+          "drop_reference": {
+            "clause": {
+              "clause_id": 3,
+              "record_digest": "0c9f3a6effcc518e7fe6c4bc0016eb1bf59d14b9ce8166bfe49a86a6ab63f406",
+              "formula_digest": "5e4f1e803c9e9d006c80433b0330a2c1df0afc696803c7db61dd2f7fc25e9a2a"
+            },
+            "consultation_digest": "61bdbd1602c087f6d15d097edae8b926bec6038aec800a9396ad01e5b053d940",
+            "authorization_digest": "58fac8620b353cf8aa829caca3512e5984d8dbb23826dd21d604204e16981fe5"
+          }
+        },
+        {
+          "clause": {
+            "clause_id": 4,
+            "record_digest": "4e289b8367a481317bb7c60a79660b9f7450a56c08c9773445308ed5d02f0b92",
+            "formula_digest": "7a3c14d758a00c0d8709a96d7fbc5d5acc2baa146c31d519f48cce25c6c29da1",
+            "canonical_source": "(op_zPathBF ⊆ yp_zPathBF)",
+            "display": "(PathBF ⊆ PathBF∞)"
+          },
+          "source": "submitted",
+          "minimum_level": 1,
+          "current_level": 1,
+          "drop_reference": {
+            "clause": {
+              "clause_id": 4,
+              "record_digest": "4e289b8367a481317bb7c60a79660b9f7450a56c08c9773445308ed5d02f0b92",
+              "formula_digest": "7a3c14d758a00c0d8709a96d7fbc5d5acc2baa146c31d519f48cce25c6c29da1"
+            },
+            "consultation_digest": "61bdbd1602c087f6d15d097edae8b926bec6038aec800a9396ad01e5b053d940",
+            "authorization_digest": "e495481f118bc9ad2e7ed82ef30466fcbefb4773d13db79012974159d1398806"
+          }
+        },
+        {
+          "clause": {
+            "clause_id": 5,
+            "record_digest": "a72b328ca89fa145c48c6da7faf7394a33a1857fe9598e8057d3526aae6bb6f6",
+            "formula_digest": "80d1d8307bf91cc4ab2ff0172ebc5be9511b8099df5d3a88d35bef7bb6168686",
+            "canonical_source": "(yp_zPathBF ⊆ yp_zPath)",
+            "display": "(PathBF∞ ⊆ Path∞)"
+          },
+          "source": "submitted",
+          "minimum_level": 1,
+          "current_level": 1,
+          "drop_reference": {
+            "clause": {
+              "clause_id": 5,
+              "record_digest": "a72b328ca89fa145c48c6da7faf7394a33a1857fe9598e8057d3526aae6bb6f6",
+              "formula_digest": "80d1d8307bf91cc4ab2ff0172ebc5be9511b8099df5d3a88d35bef7bb6168686"
+            },
+            "consultation_digest": "61bdbd1602c087f6d15d097edae8b926bec6038aec800a9396ad01e5b053d940",
+            "authorization_digest": "e7e1a6fd6f1b150b76351c9f8190d663d96a12b17e61b567ef721f900128303e"
+          }
+        }
+      ],
+      "latest": {
+        "kind": "postcondition_open",
+        "postcondition_open": {
+          "outcome": "inconclusive",
+          "reason": "solver_unknown"
+        }
+      },
+      "tools": [
+        "countermodel",
+        "strongest_refutations",
+        "history",
+        "ledger",
+        "validate_clauses",
+        "evaluate_clauses"
+      ],
+      "state_revision": 3
+    },
+    "correction": null
+  },
+  "response_example": {
+    "binding": {
+      "consultation_digest": "61bdbd1602c087f6d15d097edae8b926bec6038aec800a9396ad01e5b053d940",
+      "request_digest": "d091e0a5b203bb8c7230e007f7e02a05abadd6297bb5e7a25af1cea1ee63dff9",
+      "run_digest": "8c5210ae3a4690b301a12f2b89aaaffa48e3eb799226d3707e6c69b484997d56",
+      "scope_digest": "a7a2746de146c2d9d7a1d9eea26ee96f52ddc164398ade8184314c183ad032e1",
+      "state_snapshot_digest": "0ca011a3192177626e6c8fffdfc0ba2449154697fd23c08755ee631b43593f04",
+      "task_digest": "e75731708ab1f243f312d29ad27a77497ff0b477ac52096ff9d7dd349ea78584",
+      "validation_manifest_digest": "bbf909b45576068408e379b2c92f5b38001afc1c9ca562762783c376e2f40e5f",
+      "validation_ordinal": 0
+    },
+    "clauses": [],
+    "dropped": [],
+    "kind": "candidate_clauses",
+    "schema_version": 4
+  }
+}

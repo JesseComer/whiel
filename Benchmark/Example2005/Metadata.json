@@ -1,0 +1,41 @@
+{
+  "canonicalId": "Example2005",
+  "canonicalInput": "Example2005/Input.lean",
+  "canonicalModule": "Benchmark.Example2005.Input",
+  "category": "Production",
+  "compilerCommandCheck": "unavailable",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "datalogSource": "unavailable",
+  "declarationNamespace": "Whiel.Benchmark.Example2005",
+  "formatVersion": 1,
+  "goldInvariantStatus": "missing",
+  "historicalCandidatePresent": false,
+  "historicalClaim": "no-invariant",
+  "notes": [
+    "Historical collaborator claims are unverified provenance."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Production",
+      "sourceId": "production_5"
+    }
+  ],
+  "suites": [
+    "collaborator",
+    "all-benchmark"
+  ],
+  "title": "Restricted-edge reachability is contained in full-edge reachability (edge-monotonicity)",
+  "explanation": "The program computes graph reachability from a root set RootN restricted to \"hard\" (non-optional) edges only, modeling the analysis a dependency resolver like npm's Arborist uses to decide which packages keep a required (non-optional) dependency path from the root. The Hoare triple is a containment claim rather than full equivalence: the precondition makes RBound a pre-fixpoint of the reachability operator over the unrestricted edge set EdgeAll, and the postcondition asserts the hard-edge-only reachable set NonOpt is contained in RBound, i.e. contained in full-edge reachability, the standard edge-monotonicity fact that removing edges (here, optional ones) can only shrink what is reachable.",
+  "preInWords": "The precondition asserts RBound contains RootN and is closed under one more step of reachability through the full edge set EdgeAll, i.e. RBound is a pre-fixpoint of full-edge reachability.",
+  "postInWords": "The postcondition asserts the hard-edge-restricted reachable set NonOpt is contained in RBound.",
+  "notation": "canonical",
+  "datalog": [
+    {
+      "label": "prog_p",
+      "text": "NonOptC(x1) :- RootN(x1).\nNonOptC(y1) :- NonOptC(x1), EdgeHardC(x1, y1).",
+      "provenance": "production check (the hand-written loop equals this program's naive compilation on the check instances)"
+    }
+  ],
+  "expectedVerdict": "valid"
+}

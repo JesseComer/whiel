@@ -1,0 +1,41 @@
+{
+  "canonicalId": "Example2007",
+  "canonicalInput": "Example2007/Input.lean",
+  "canonicalModule": "Benchmark.Example2007.Input",
+  "category": "Production",
+  "compilerCommandCheck": "unavailable",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "datalogSource": "unavailable",
+  "declarationNamespace": "Whiel.Benchmark.Example2007",
+  "formatVersion": 1,
+  "goldInvariantStatus": "missing",
+  "historicalCandidatePresent": false,
+  "historicalClaim": "no-invariant",
+  "notes": [
+    "Historical collaborator claims are unverified provenance."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Production",
+      "sourceId": "production_7"
+    }
+  ],
+  "suites": [
+    "collaborator",
+    "all-benchmark"
+  ],
+  "title": "E[f U g] is contained in EF g",
+  "explanation": "The loop computes a CTL-style backward-reachability fixpoint: starting from states satisfying g (SatG) and repeatedly adding predecessors along Trans that also satisfy f (SatF), it computes the states satisfying the until formula E[f U g], mirroring the frontier-based eu() computation in a model checker such as NuSMV. The Hoare triple is a containment claim: the precondition makes RBound a pre-fixpoint of the unconstrained backward-reachability operator that computes EF g (reachability with no f-restriction), and the postcondition asserts the E[f U g] result Y is contained in RBound, the textbook CTL fact that any until-witness for g is in particular an eventually-witness for g.",
+  "preInWords": "The precondition asserts RBound contains SatG and is closed under taking one more step of predecessors through Trans, i.e. RBound is a pre-fixpoint of the operator computing EF g.",
+  "postInWords": "The postcondition asserts the computed until-set Y is contained in RBound.",
+  "notation": "canonical",
+  "datalog": [
+    {
+      "label": "prog_p",
+      "text": "YC(x1) :- SatG(x1).\nYC(x1) :- SatF(x1), Trans(x1, y1), YC(y1).",
+      "provenance": "production check (the hand-written loop equals this program's naive compilation on the check instances)"
+    }
+  ],
+  "expectedVerdict": "valid"
+}

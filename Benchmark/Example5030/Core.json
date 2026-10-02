@@ -1,0 +1,74 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "((of_z0 = ∅[0]) ∨ (π[0,0] (op_zCur) ⊆ op_zVis))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ∅[0]) ∨ (π[0,3] (σ[#1 = #2] ((π[0,0] (op_zCur) × op_zTca))) ⊆ op_zVis))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ∅[0]) ∨ (π[0,3] (σ[#1 = #2] ((op_zVis × op_zEdge))) ⊆ (op_zTca ∪ π[0,3] (σ[#1 = #2] ((op_zFr × op_zEdge))))))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ∅[0]) ∨ (π[0] (op_zTca) ⊆ (((π[0] (op_zEdge) ∪ π[1] (op_zEdge)) ∖ op_zRest) ∪ op_zCur)))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ∅[0]) ∨ (π[0] (op_zVis) ⊆ op_zCur))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ∅[0]) ∨ (op_zCur ⊆ op_zRest))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ∅[0]) ∨ (op_zFr ⊆ op_zVis))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ∅[0]) ∨ (op_zVis ⊆ (π[0,0] (op_zCur) ∪ op_zTca)))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (π[0] (op_zTca) ⊆ ((π[0] (op_zEdge) ∪ π[1] (op_zEdge)) ∖ op_zRest)))"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((π[0,0] (((π[0] (op_zEdge) ∪ π[1] (op_zEdge)) ∖ op_zRest)) × op_zEdge))) ⊆ op_zTca)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((π[0,3] (σ[#1 = #2] ((π[0,0] (((π[0] (op_zEdge) ∪ π[1] (op_zEdge)) ∖ op_zRest)) × op_zTca))) × op_zEdge))) ⊆ op_zTca)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zRes × op_zEdge))) ⊆ (op_zRes ∪ π[0,3] (σ[#1 = #2] ((op_zWorkT × op_zEdge)))))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zEdge ⊆ op_zRes)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zRest ⊆ (π[0] (op_zEdge) ∪ π[1] (op_zEdge)))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zWorkT ⊆ op_zRes)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zRes ⊆ yp_zTca)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zTca ⊆ yp_zRes)"
+    }
+  ],
+  "version": 1
+}

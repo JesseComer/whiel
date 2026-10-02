@@ -1,0 +1,68 @@
+{
+  "canonicalId": "Example3009",
+  "canonicalInput": "Example3009/Input.lean",
+  "title": "Certified delegation closure exceeds audit-bound authorization",
+  "explanation": "Program C1 computes a grant set GrantA in which a pending principal, once checked against only a Certified/Trust pair, is promoted, and can then reopen pending status via a further Review hop even while relying on a previously certified check. Program C2 computes AllowB with an analogous pending/vetted structure but requires a matching Audit triple, linking the certified pair to a trusted endpoint, each time a vetted principal is promoted via Delegate/Audit composition, rather than only a Review hop. This models staged authorization delegation compared against a version that insists on a matching audit record for every promotion. The Hoare triple claims containment GrantA ⊆ AllowB under four TGDs, including an existential one guaranteeing every root an audited delegate, but the claim fails: the recorded witness instance exhibits a principal that C1 grants via a reviewed hop with no matching audit tuple, which C2's audit-bound promotion rule fails to allow.",
+  "preInWords": "The precondition is four TGDs: every Root element has some Delegate/Audit witness pairing it with itself, Audit triples are backed by a Certified pair and a Trust element, every certified Delegate pair is also a Review pair, and composing a Review pair with an Audit triple through shared coordinates yields a Delegate pair.",
+  "postInWords": "The postcondition claims GrantA ⊆ AllowB, but the case is invalid: the recorded witness instance shows a principal in GrantA that is not in AllowB, because C2 requires an audit tuple that C1's reviewed promotion does not guarantee.",
+  "family": "two programs under TGD constraints (LLM-generated, GPT (raw_invalid_gpt batch); legacy raw_new pipeline), invalid",
+  "kind": "containment",
+  "claim": "(GrantA ⊆ AllowB)",
+  "precondition": "((Root ⊆ π[0] (σ[((#0 = #2 ∧ #1 = #3) ∧ #0 = #4)] ((Delegate × Audit)))) ∧ ((Audit ⊆ (Certified × Trust)) ∧ ((π[0,1] (σ[(#0 = #2 ∧ #1 = #3)] ((Delegate × Certified))) ⊆ Review) ∧ (π[1,4] (σ[(#0 = #2 ∧ #1 = #3)] ((Review × Audit))) ⊆ π[1,0] (Delegate)))))",
+  "expectedVerdict": "invalid",
+  "obstructionExpectation": "invalid (legacy kernel counterexample)",
+  "currentClassification": "invalid",
+  "currentEvidence": "kernel counterexample (Certificate/Invalid.lean)",
+  "rateMismatch": false,
+  "sides": [
+    "naive compiler: program C1 of the retired corpus case Example3009 (output GrantA)",
+    "naive compiler: program C2 of the retired corpus case Example3009 (output AllowB)"
+  ],
+  "schemaLinking": "the two programs share the input relations; the dependencies of the precondition relate them",
+  "sourceProgram": null,
+  "sources": [
+    {
+      "system": "LLM-generated (GPT (raw_invalid_gpt batch)), legacy raw_new TGD pipeline",
+      "repo": "this repository",
+      "file": "the retired corpus case Example3009 (programs C1, C2 and the TGD list tgd0..)",
+      "function": "TGD pipeline run raw-new-tgd-0002-product: TGDs translated to relational algebra by RelCalc.TGD.listToAssertExpr; programs compiled with the certified naive compiler",
+      "url": null,
+      "read": "2026-09-15"
+    },
+    {
+      "system": "method",
+      "repo": "this repository",
+      "file": "the equivalence-under-constraints paper draft (technical appendix: reduction of containment/equivalence under TGDs to a Hoare triple)",
+      "url": null,
+      "read": "2026-09-15"
+    }
+  ],
+  "encoding": "canonical five-declaration form; both sides naive-compiler output pinned by Fidelity/ (decide +kernel); independent loops merged side by side; the TGD precondition is the legacy text verbatim; the legacy concurrent-product loop compared with the sequence on the check instances",
+  "created": "2026-09-15",
+  "certificatePath": "Example3009/Certificate/Invalid.lean",
+  "llmGenerated": "GPT (raw_invalid_gpt batch)",
+  "tgds": [
+    "∀ x1. Root(x1) → ∃ y1. (Delegate(x1, y1) ∧ Audit(x1, y1, x1))",
+    "∀ x1. ∀ y1. ∀ z1. Audit(x1, y1, z1) → (Certified(x1, y1) ∧ Trust(z1))",
+    "∀ x1. ∀ y1. (Delegate(x1, y1) ∧ Certified(x1, y1)) → Review(x1, y1)",
+    "∀ x1. ∀ y1. ∀ z1. (Review(x1, y1) ∧ Audit(x1, y1, z1)) → Delegate(z1, y1)"
+  ],
+  "outputs": {
+    "C1": "GrantA",
+    "C2": "AllowB"
+  },
+  "datalog": [
+    {
+      "label": "prog_c1",
+      "text": "GrantA(x1) :- Root(x1).\nPendingA(y1) :- GrantA(x1), Delegate(x1, y1).\nCheckedA(y1) :- PendingA(y1), Certified(x1, y1), Trust(x1).\nGrantA(y1) :- CheckedA(y1).\nPendingA(y1) :- CheckedA(x1), GrantA(z1), Review(x1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example3009/Fidelity/Example3009.lean"
+    },
+    {
+      "label": "prog_c2",
+      "text": "AllowB(x1) :- Root(x1).\nQueueB(y1) :- AllowB(x1), Delegate(x1, y1).\nVettedB(y1) :- QueueB(y1), Certified(x1, y1), Trust(x1).\nAllowB(y1) :- VettedB(y1), Audit(x1, y1, z1), AllowB(z1).\nQueueB(y1) :- VettedB(x1), Review(x1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example3009/Fidelity/Example3009.lean"
+    }
+  ]
+}

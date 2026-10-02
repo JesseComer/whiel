@@ -1,0 +1,42 @@
+{
+  "canonicalId": "Example5015",
+  "canonicalInput": "Example5015/Input.lean",
+  "title": "W3C SPARQL 1.1 ALP evaluation of p* versus closure plus identity over the p endpoints (invalid twin of Example5014)",
+  "explanation": "Same ALP procedure (side 1) as Example5014, but side 2's reflexive pairs are seeded only over the endpoints of P (the p-labeled triples) rather than over every node of the whole graph G — what one gets by naively translating p* as closure-plus-identity restricted to the p-subgraph. The expected verdict is invalid: the W3C specification's node set ranges over all of G, so a node occurring only in triples with other predicates still satisfies ?x p* ?x under the specification but is missing from this narrower Star relation, breaking the claimed equality.",
+  "preInWords": "The predicate-specific relation P is a subset of the full graph relation G.",
+  "postInWords": "The claim (which fails) is that the ALP visited-set relation Alp equals Star, here seeded reflexively only over the endpoints of P, and that one P-step composed with Alp equals Tc.",
+  "family": "specification versus declarative program (invalid twin)",
+  "kind": "equivalence",
+  "claim": "((Alp = Star) ∧ (π[0, 3] (σ[#1 = #2] (P × Alp)) = Tc))",
+  "precondition": "(P ⊆ G)",
+  "expectedVerdict": "invalid",
+  "obstructionExpectation": "n/a (invalid; kernel counterexample)",
+  "currentClassification": "invalid",
+  "currentEvidence": "kernel counterexample (Certificate/Invalid.lean)",
+  "rateMismatch": false,
+  "sides": [
+    "hand-written: W3C ALP procedure as in Example5014",
+    "naive compiler: Tc = closure of P; Star = Tc plus reflexive pairs over the endpoints of P (the misreading)"
+  ],
+  "sourceProgram": null,
+  "sources": [
+    {
+      "title": "W3C SPARQL 1.1 Query Language, Recommendation 21 March 2013",
+      "url": "https://www.w3.org/TR/sparql11-query/",
+      "sections": "9.1 (ZeroOrMorePath, OneOrMorePath), 9.4 (Arbitrary Length Path Matching, set semantics), 18.4 (Definition: Node set of a graph; Definition: Function ALP; Evaluation of ZeroOrMorePath; Evaluation of OneOrMorePath)",
+      "read": "2026-09-15"
+    }
+  ],
+  "encoding": "as Example5014; only the two zero-length rules differ (G replaced by P)",
+  "created": "2026-09-15",
+  "certificatePath": "Example5015/Certificate/Invalid.lean",
+  "twin": "Example5014 (valid)",
+  "datalog": [
+    {
+      "label": "prog_p — The closure `p+` and \"closure plus identity\" over the endpoints of `p` (the misreading of `p*`).",
+      "text": "Tc(x1, y1) :- P(x1, y1).\nTc(x1, z1) :- Tc(x1, y1), P(y1, z1).\nStar(x1, x1) :- P(x1, y1).\nStar(y1, y1) :- P(x1, y1).\nStar(x1, y1) :- Tc(x1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5015/Fidelity/Example5015.lean"
+    }
+  ]
+}

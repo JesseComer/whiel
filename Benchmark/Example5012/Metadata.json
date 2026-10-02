@@ -1,0 +1,30 @@
+{
+  "canonicalId": "Example5012",
+  "canonicalInput": "Example5012/Input.lean",
+  "title": "Casbin depth-bounded role resolution contained in the unbounded role closure",
+  "explanation": "Side 1 encodes Casbin's default role manager, which resolves role inheritance only up to a fixed depth bound (maxHierarchyLevel = 10) by unrolling ten loop-free steps of composition with RoleInh into HasB; side 2 is the naive-compiler translation of the unbounded recursive has-role Datalog program (Has derived from UserRole directly, and from Has composed with RoleInh) evaluated to its least fixpoint. The Hoare triple states that Casbin's depth-bounded role resolution is contained in the true unbounded transitive closure of role inheritance: every role grant the bounded lookup produces is also justified by the full closure.",
+  "preInWords": "True; no precondition constrains the inputs.",
+  "postInWords": "The depth-bounded role relation HasB is a subset of the unbounded role-closure relation Has.",
+  "family": "production discrepancy pair (Casbin depth bound)",
+  "kind": "containment",
+  "claim": "(HasB ⊆ Has)",
+  "precondition": "true",
+  "expectedVerdict": "valid",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "sides": [
+    "Casbin HasLink with maxHierarchyLevel = 10, encoded as StepA = UserRole and ten distinct step relations StepB..StepK (role_manager.go, enforcer.go)",
+    "naive compiler on the recursive has-role program (Example2035 / 5004)"
+  ],
+  "rateMismatch": true,
+  "created": "2026-09-15",
+  "reencoded": "distinct step relations StepA..StepK replace the ten reassignments of HasB (same relation computed; keeps the bounded side in the precondition)",
+  "datalog": [
+    {
+      "label": "prog_p",
+      "text": "Has(x1, y1) :- UserRole(x1, y1).\nHas(x1, z1) :- Has(x1, y1), RoleInh(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5012/Fidelity/Example5012.lean"
+    }
+  ]
+}

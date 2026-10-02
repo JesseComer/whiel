@@ -1,0 +1,70 @@
+{
+  "format_version": 1,
+  "rust_roots": [
+    "whiel_runner/src",
+    "whiel_runner/Cargo.toml",
+    "whiel_runner/Cargo.lock",
+    "whiel_runner/build.rs"
+  ],
+  "rust_exclusions": [
+    {
+      "path": "whiel_runner/src/campaign_certify.rs",
+      "reason": "the `campaign certify` phase (crate::campaign_cli::certify_phase); campaign_run.rs calls it only after every input's search has finished and the search tokio runtime has been dropped, and it is also the standalone `campaign certify` CLI subcommand; nothing on the search path references it"
+    },
+    {
+      "path": "whiel_runner/src/reporting.rs",
+      "reason": "human/machine campaign report rendering; used only by campaign.rs's and cli.rs's own report-building commands, never by campaign_run.rs's search setup or framework2/search.rs"
+    },
+    {
+      "path": "whiel_runner/src/framework2/acceptance.rs",
+      "reason": "records written at publication time by publication.rs's post-search publish_valid/publish_invalid path; framework2/search.rs never references this module"
+    },
+    {
+      "path": "whiel_runner/src/framework2/aggregate.rs",
+      "reason": "re-proves a frozen Core's exact 2N+1 batch for certification; referenced only from publication.rs's post-search certification path"
+    },
+    {
+      "path": "whiel_runner/src/framework2/certificate.rs",
+      "reason": "end-to-end durable certificate construction (build_certificate); reached only via publication.rs's post-search path, acceptance.rs and aggregate.rs, never from framework2/search.rs or campaign_run.rs's pre-search setup"
+    },
+    {
+      "path": "whiel_runner/src/framework2/certificate_ops.rs",
+      "reason": "Lean-owned certificate emission and proof-packaging wrappers (emit_certificate/package_proof); reached only via certificate.rs, aggregate.rs and publication.rs"
+    },
+    {
+      "path": "whiel_runner/src/framework2/proof_transform/mod.rs",
+      "reason": "certificate-only proof transformation; executable use is in post-search certificate construction; pre-search source hashing and invocation identity are provenance only; owner-authorized boundary correction recorded in implementation_manifests/certifier-freeze-scope-correction.json"
+    },
+    {
+      "path": "whiel_runner/src/framework2/proof_transform/canonical.rs",
+      "reason": "certificate-only proof transformation; executable use is in post-search certificate construction; pre-search source hashing and invocation identity are provenance only; owner-authorized boundary correction recorded in implementation_manifests/certifier-freeze-scope-correction.json"
+    },
+    {
+      "path": "whiel_runner/src/framework2/proof_transform/prenex.rs",
+      "reason": "certificate-only proof transformation; executable use is in post-search certificate construction; pre-search source hashing and invocation identity are provenance only; owner-authorized boundary correction recorded in implementation_manifests/certifier-freeze-scope-correction.json"
+    },
+    {
+      "path": "whiel_runner/src/framework2/proof_transform/projection.rs",
+      "reason": "certificate-only proof transformation; executable use is in post-search certificate construction; pre-search source hashing and invocation identity are provenance only; owner-authorized boundary correction recorded in implementation_manifests/certifier-freeze-scope-correction.json"
+    },
+    {
+      "path": "whiel_runner/src/framework2/proof_transform/lrat.rs",
+      "reason": "certificate-only proof transformation; executable use is in post-search certificate construction; pre-search source hashing and invocation identity are provenance only; owner-authorized boundary correction recorded in implementation_manifests/certifier-freeze-scope-correction.json"
+    }
+  ],
+  "lean_root_module": "Whiel.Synthesis.Runtime.FixedAmbientWorker",
+  "lean_source_roots": [
+    "Whiel",
+    "Databases",
+    "VampLean",
+    "Benchmark"
+  ],
+  "lean_extra_files": [
+    "lakefile.toml",
+    "lake-manifest.json",
+    "lean-toolchain"
+  ],
+  "pins": [
+    "toolchain.lock.json"
+  ]
+}

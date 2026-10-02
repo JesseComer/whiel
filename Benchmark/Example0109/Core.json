@@ -1,0 +1,78 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zRBound × op_zBB))) ⊆ op_zRBound)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zRBound × op_zBR))) ⊆ op_zRBound)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zRBound × op_zRB))) ⊆ op_zRBound)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zRBound × op_zRR))) ⊆ op_zRBound)"
+    },
+    {
+      "level": 0,
+      "source": "(oa_zBB ⊆ op_zBB)"
+    },
+    {
+      "level": 0,
+      "source": "(oa_zBB ⊆ op_zRBound)"
+    },
+    {
+      "level": 0,
+      "source": "(oa_zBR ⊆ op_zBR)"
+    },
+    {
+      "level": 0,
+      "source": "(oa_zBR ⊆ op_zRBound)"
+    },
+    {
+      "level": 0,
+      "source": "(oa_zRB ⊆ op_zRB)"
+    },
+    {
+      "level": 0,
+      "source": "(oa_zRB ⊆ op_zRBound)"
+    },
+    {
+      "level": 0,
+      "source": "(oa_zRR ⊆ op_zRBound)"
+    },
+    {
+      "level": 0,
+      "source": "(oa_zRR ⊆ op_zRR)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zB ⊆ op_zRBound)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zBB ⊆ op_zRBound)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zBR ⊆ op_zRBound)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zR ⊆ op_zRBound)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zRB ⊆ op_zRBound)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zRR ⊆ op_zRBound)"
+    }
+  ],
+  "version": 1
+}

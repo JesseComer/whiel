@@ -1,0 +1,34 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(oa_zG ⊆ op_zG)"
+    },
+    {
+      "level": 0,
+      "source": "(oa_zP ⊆ op_zP)"
+    },
+    {
+      "level": 0,
+      "source": "(oa_zQ ⊆ op_zQ)"
+    },
+    {
+      "level": 0,
+      "source": "(oa_zT ⊆ op_zT)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zC ⊆ op_zT)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zP ⊆ op_zC)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zQ ⊆ op_zC)"
+    }
+  ],
+  "version": 1
+}

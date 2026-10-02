@@ -1,0 +1,68 @@
+{
+  "canonicalId": "Example1093",
+  "canonicalInput": "Example1093/Input.lean",
+  "title": "Lineage triples contained in a closed ternary cover",
+  "explanation": "Program C1 derives ternary lineage/provenance triples Lin(item, derived-item, source) by propagating an initial Fact triple along a computed reachability relation Reach (built from graph edges Edge and fed back by Lin's own second coordinate) and along generation edges Gen. Program C2 instead reads answers from Prov, defined via a ternary Cover relation the TGD constraints force to be closed under the same edge-traversal, generation-transfer, and self-composition steps, so Cover is guaranteed to dominate any lineage C1's rules could derive. The claim is the containment Lin ⊆ Prov under these dependencies, a chase-style containment check with an existential dependency (every Edge pair needs a Fact witness), expected valid.",
+  "preInWords": "The precondition is five TGDs: Fact triples are all in Cover; Cover is closed under extending its second coordinate along Edge, under moving its first coordinate along Gen, and under composing two Cover triples through a shared middle value; and every Edge pair has some Fact triple witnessing it.",
+  "postInWords": "The postcondition is the containment Lin ⊆ Prov: every lineage triple C1 derives is already present in C2's closed cover relation.",
+  "family": "two programs under TGD constraints (LLM-generated, Claude Opus; legacy raw_new pipeline)",
+  "kind": "containment",
+  "claim": "(Lin ⊆ Prov)",
+  "precondition": "((Fact ⊆ Cover) ∧ ((π[0,2,4] (σ[#1 = #3] ((Cover × Edge))) ⊆ π[0,2,1] (Cover)) ∧ ((π[1,2,4] (σ[#0 = #3] ((Cover × Gen))) ⊆ π[1,2,0] (Cover)) ∧ ((π[0,2,4] (σ[#1 = #3] ((Cover × Cover))) ⊆ π[0,2,1] (Cover)) ∧ (Edge ⊆ π[0,1] (Fact))))))",
+  "expectedVerdict": "valid",
+  "obstructionExpectation": "anchored: both sides are naive closures at the same rate and the legacy product loop was certified with a quantifier-free invariant; no prophecy level expected",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "rateMismatch": false,
+  "sides": [
+    "naive compiler: program C1 of the retired corpus case Example1093 (output Lin)",
+    "naive compiler: program C2 of the retired corpus case Example1093 (output Prov)"
+  ],
+  "schemaLinking": "the two programs share the input relations; the dependencies of the precondition relate them",
+  "sourceProgram": null,
+  "sources": [
+    {
+      "system": "LLM-generated (Claude Opus), legacy raw_new TGD pipeline",
+      "repo": "this repository",
+      "file": "the retired corpus case Example1093 (programs C1, C2 and the TGD list tgd0..)",
+      "function": "TGD pipeline run raw-new-tgd-0002-product: TGDs translated to relational algebra by RelCalc.TGD.listToAssertExpr; programs compiled with the certified naive compiler",
+      "url": null,
+      "read": "2026-09-15"
+    },
+    {
+      "system": "method",
+      "repo": "this repository",
+      "file": "the equivalence-under-constraints paper draft (technical appendix: reduction of containment/equivalence under TGDs to a Hoare triple)",
+      "url": null,
+      "read": "2026-09-15"
+    }
+  ],
+  "encoding": "canonical five-declaration form; both sides naive-compiler output pinned by Fidelity/ (decide +kernel); independent loops merged side by side; the TGD precondition is the legacy text verbatim; the legacy concurrent-product loop compared with the sequence on the check instances",
+  "created": "2026-09-15",
+  "llmGenerated": "Claude Opus",
+  "tgds": [
+    "∀ x1. ∀ y1. ∀ z1. Fact(x1, y1, z1) → Cover(x1, y1, z1)",
+    "∀ x1. ∀ y1. ∀ z1. ∀ x2. (Cover(x1, y1, z1) ∧ Edge(y1, x2)) → Cover(x1, x2, z1)",
+    "∀ x1. ∀ y1. ∀ z1. ∀ x2. (Cover(x1, y1, z1) ∧ Gen(x1, x2)) → Cover(x2, y1, z1)",
+    "∀ x1. ∀ y1. ∀ z1. ∀ y2. ∀ z2. (Cover(x1, y1, z1) ∧ Cover(y1, y2, z2)) → Cover(x1, y2, z1)",
+    "∀ x1. ∀ y1. Edge(x1, y1) → ∃ z1. Fact(x1, y1, z1)"
+  ],
+  "outputs": {
+    "C1": "Lin",
+    "C2": "Prov"
+  },
+  "datalog": [
+    {
+      "label": "prog_c1",
+      "text": "Reach(x1, y1) :- Edge(x1, y1).\nReach(x1, z1) :- Reach(x1, y1), Reach(y1, z1).\nReach(x1, y1) :- Lin(x1, y1, z1).\nLin(x1, y1, z1) :- Fact(x1, y1, z1).\nLin(x1, z1, z2) :- Lin(x1, y1, z2), Reach(y1, z1).\nLin(x2, y1, z1) :- Lin(x1, y1, z1), Gen(x1, x2).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example1093/Fidelity/Example1093.lean"
+    },
+    {
+      "label": "prog_c2",
+      "text": "Prov(x1, y1, z1) :- Cover(x1, y1, z1).\nTrav(x1, y1) :- Edge(x1, y1).\nTrav(x1, z1) :- Trav(x1, y1), Trav(y1, z1).\nProv(x1, z1, z2) :- Prov(x1, y1, z2), Trav(y1, z1).\nProv(x2, y1, z1) :- Prov(x1, y1, z1), Gen(x1, x2).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example1093/Fidelity/Example1093.lean"
+    }
+  ]
+}

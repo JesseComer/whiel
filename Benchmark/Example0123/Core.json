@@ -1,0 +1,54 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(op_zSa = ((π[0,3] (σ[#1 = #2] ((op_zE × op_zE))) ∪ π[0,3] (σ[#1 = #2] ((op_zTa × op_zTa)))) ∪ π[0,3] (σ[#1 = #2] ((op_zTb × op_zTb)))))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSb = ((op_zE ∪ π[0,3] (σ[#1 = #2] ((op_zTb × op_zTa)))) ∪ π[0,3] (σ[#1 = #2] ((op_zTa × op_zTb)))))"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zE × op_zTb))) ⊆ op_zSa)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zSa × op_zRa))) ⊆ op_zRa)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zSa × op_zRb))) ⊆ op_zRb)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zSb × op_zRa))) ⊆ op_zRb)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zSb × op_zRb))) ⊆ op_zRa)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSa ⊆ op_zRa)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSb ⊆ op_zRb)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTa ⊆ op_zSa)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTb ⊆ op_zSb)"
+    },
+    {
+      "level": 0,
+      "source": "((op_zE ∪ π[0,3] (σ[#1 = #2] ((op_zE × op_zTa)))) ⊆ op_zSb)"
+    }
+  ],
+  "version": 1
+}

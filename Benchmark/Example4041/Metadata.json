@@ -1,0 +1,74 @@
+{
+  "canonicalId": "Example4041",
+  "canonicalInput": "Example4041/Input.lean",
+  "canonicalModule": "Benchmark.Example4041.Input",
+  "category": "Core",
+  "certificatePath": "Example4041/Certificate/Valid.lean",
+  "compilerCommandCheck": "Benchmark.Example4041.Fidelity.Example4041",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "currentValidation": {
+    "attempt": "fixed-ambient-framework-ii-avatar-v4-20260908",
+    "lean": "4.30.0-rc1",
+    "obligationJobs": 23,
+    "proofBackend": "lean-kernel",
+    "status": "certificate-validated",
+    "vampireProfile": "direct",
+    "vampireProfileId": "direct-then-casc-2025-single-core-v4",
+    "vampireTimeoutSeconds": 60
+  },
+  "datalogSource": "Benchmark.Example4041.Fidelity.Example4041",
+  "declarationNamespace": "Whiel.Benchmark.Example4041",
+  "formatVersion": 1,
+  "goldInvariantStatus": "not-applicable",
+  "historicalCandidatePresent": false,
+  "historicalClaim": null,
+  "notes": [
+    "`reports/VerificationTasks.pdf` section 10.1, Task 4: verify `T↑ = T` under the exact LAV views `To` and `Te`. Global schema `{E}` (binary) with the standard left-linear transitive closure; local schema `{To, Te}` given by the odd/even path program over `E`, with `T↑(x, y) :- To(x, y)` and `T↑(x, y) :- Te(x, y)`.",
+    "The source documents the reformulations task document (sha256 `32a3ac6b428d851f0aaa4fb7acdbf2fe4ad5dacca93ee118837888ff91b7a1c6`) and `reports/VerificationTasks.pdf` (sha256 `796ff97c082c6fc70e75a60c0dd40ec0680b738d7184a8b8aefea8c681b3ebff`) carry the same section 10.1 text, so both name this task.",
+    "The command is not hand-authored: `Fidelity/Example4041.lean` states the PDF's three Datalog programs, compiles each with `Datalog.WhielCompiler.Naive`, writes the three compiled commands one after the other (the closure, the views, then the reformulation, which reads what the views compute), renames the generated snapshots `T_1`, `To_1`, `Te_1` and `TUp_1` to the auxiliary input names `T_aux`, `To_aux`, `Te_aux` and `TUp_aux`, and proves the result equal to `inputCmd` by `decide +kernel`; the same module fixes `inputPre` as `true` and `inputPost` as the claim `TUp = T` and pins the single loop `Hoare.preprocess` computes from the sequence.",
+    "Because the LAV is exact, the views are not free source tables: the local side is one Datalog program with the three IDBs `To`, `Te` and `TUp` over the global edge relation, so exactness is carried by the computation and the precondition is `true`.",
+    "Verdict valid, certified: `To` collects paths of odd length and `Te` paths of even length at least two, so their union is exactly the transitive closure.",
+    "New id, the next free one in the 40xx band; there is no reference encoding for this task, so it is encoded from the PDF alone. the retired corpus case Example0135 is a single-schema cousin proving the same fact without the global/local split, for intent only; nothing is copied from it.",
+    "The hand-derived loop invariant for this Task 4 input is frozen in `Core.json` and certified over the computed prophecy schema. It has exactly eleven clauses: eight at level 0 and three at level 1. Writing `X·Y` for `π[0,3] (σ[#1 = #2] ((X × Y)))`, the eleven clauses are, at level 0: `(op_zE ⊆ op_zT)`, `(π[0,3] (σ[#1 = #2] ((op_zE × oa_zT))) ⊆ op_zT)`, `(op_zTo = (oa_zTo ∪ (op_zE ∪ π[0,3] (σ[#1 = #2] ((op_zE × oa_zTe))))))`, `(op_zTe = (oa_zTe ∪ π[0,3] (σ[#1 = #2] ((op_zE × oa_zTo)))))`, `((of_z0 = ⊤) ∨ (op_zTo ⊆ oa_zTo))`, `((of_z0 = ⊤) ∨ (op_zTe ⊆ oa_zTe))`, `((of_z0 = ⊤) ∨ (op_zTUp ⊆ (op_zTo ∪ op_zTe)))`, `((of_z0 = ⊤) ∨ ((op_zTo ∪ op_zTe) ⊆ op_zTUp))`; and at level 1: `(op_zTo ⊆ yp_zT)`, `(op_zTe ⊆ yp_zT)`, `(op_zT ⊆ (yp_zTo ∪ yp_zTe))`.",
+    "How the invariant closes. The two level-0 `T` rows say that `T` is a pre-fixpoint of the closure operator relative to its own snapshot; their `θ` images, together with `T∞ = T_aux∞` from the negated `θ` guard, give the terminal facts `E ⊆ T∞` and `E·T∞ ⊆ T∞`, which is what the two level-1 view rows need. The two level-0 round equations are the view program's own body, and their `θ` images together with the two guarded `⊆ _aux` rows turn `To_aux∞` and `Te_aux∞` into `To∞` and `Te∞`, which is what the level-1 covering row needs. At exit the negated guard gives `flag_0_0 = ∅[0]` and `T = T_aux`, and the collapsed rows give `TUp ⊆ To ∪ Te ⊆ T ⊆ To ∪ Te ⊆ TUp`, hence the postcondition `TUp = T`. The same eleven clauses were also tried under a four-level assignment, with the two round equations lifted to level 2 and the covering row to level 3, purely to keep the round equations out of the lower maintenance jobs' axiom sets; that re-levelling is sound by the same argument but was not re-verified under the portfolio profile.",
+    "Historical evidence: three maintenance obligations were not discharged by the former AVATAR-off `direct` vector. The hardest saturated to 330 MB and ended with `Refutation not found, non-redundant clauses discarded` after 574 s; switching that one argument to AVATAR on refuted it in 0.036 s. A portfolio attempt discharged the obligations but reconstructed through `bv_decide`, so the exact-std3 audit rejected that earlier tree. These measurements describe the old profile/proof state, not the current classification.",
+    "Historical registration probe: before a certifiable tree existed, this first dependent input exercised `Entry.ofInput`, `liftedTaskJson%`, the emitter and Rust scope service, including `of_z0`/`of_z1` and guarded 0-ary comparisons; the temporary entry was then reverted. The certified task is now registered.",
+    "Current evidence: all 23 obligations from the eleven-clause Task 4 Core close under the AVATAR-on `direct` profile `direct-then-casc-2025-single-core-v4`. `Certificate/Valid.lean` is the first flag-carrying certificate and audits to exactly propext, Classical.choice, and Quot.sound.",
+    "`Certificate/timing.csv` carries the measured solver, transformation and Lean times of the run that produced this certificate. The solver evidence (problem files and solver output) is not kept in the tree; `Core.json` alone regenerates the certificate."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Core",
+      "path": "Example4041/Input.lean",
+      "sourceId": "verification-tasks-pdf-10.1-task4"
+    }
+  ],
+  "suites": [
+    "leveled-framework"
+  ],
+  "title": "Transitive closure versus its reformulation over exact odd/even views",
+  "explanation": "The global program T is the standard right-linear transitive closure of E. The local reformulation computes the odd/even path decomposition of E by mutual recursion (To for odd-length paths, Te for even-length paths) and then unions them, TUp(x,y):-To(x,y), TUp(x,y):-Te(x,y). Because the views are exact — computed within the same command rather than assumed as free source tables — the precondition is trivially true and correctness is carried entirely by the computation itself. The Hoare triple claims equality, TUp = T: the union of the odd- and even-length-path relations is exactly the transitive closure. Certified valid, via an eleven-clause loop invariant (eight clauses at level 0, three at level 1) closing all 23 verification obligations.",
+  "preInWords": "The precondition is simply true.",
+  "postInWords": "The postcondition asserts TUp = T, that the union of the odd- and even-length path views equals the transitive closure.",
+  "datalog": [
+    {
+      "label": "globalProgram — `T xy :- Exy` and `T xy :- Exz, T zy`.",
+      "text": "T(x1, y1) :- E(x1, y1).\nT(x1, y1) :- E(x1, z1), T(z1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example4041/Fidelity/Example4041.lean"
+    },
+    {
+      "label": "viewProgram — The odd/even program that computes the two views.",
+      "text": "To(x1, y1) :- E(x1, y1).\nTo(x1, y1) :- E(x1, z1), Te(z1, y1).\nTe(x1, y1) :- E(x1, z1), To(z1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example4041/Fidelity/Example4041.lean"
+    },
+    {
+      "label": "reformProgram — The reformulation `T↑ :- To`, `T↑ :- Te`.",
+      "text": "TUp(x1, y1) :- To(x1, y1).\nTUp(x1, y1) :- Te(x1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example4041/Fidelity/Example4041.lean"
+    }
+  ]
+}

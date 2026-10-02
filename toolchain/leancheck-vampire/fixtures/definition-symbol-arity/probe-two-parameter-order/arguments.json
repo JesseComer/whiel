@@ -1,0 +1,12 @@
+{
+  "arguments": [
+    "--proof", "leancheck",
+    "--proof_extra", "lean",
+    "--skolemization", "syntactic",
+    "--output_mode", "lean",
+    "--twee_goal_transformation", "full",
+    "--time_limit", "10",
+    "--random_seed", "1",
+    "problem.p"
+  ]
+}

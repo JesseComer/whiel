@@ -1,0 +1,68 @@
+{
+  "canonicalId": "Example1091",
+  "canonicalInput": "Example1091/Input.lean",
+  "title": "Delegation reachability bounded by a transitively closed policy view",
+  "explanation": "Program C1 recursively derives grantable accesses P via direct delegation (Link, Mid) and composition with Q, where Q is built from ternary relay facts Tri and further composed with P, a mutually recursive delegation/role-composition propagation typical of access-control reachability analysis. Program C2 recomputes reachability T as the transitive closure of BaseTwo composed with a separately closed relation G built from Jump edges. The Hoare triple is a containment claim under tuple-generating dependencies (the classical chase setting): the precondition encodes five TGDs forcing C to be transitively closed, to contain Mid and the first/third coordinates of every Tri triple, to guarantee every Link edge a two-hop Mid-Mid witness, and to force BaseTwo to contain all of C; under these constraints the postcondition claims P ⊆ T, expected valid because both programs are naive closures advancing at the same rate.",
+  "preInWords": "The precondition is five TGDs: C is transitively closed and contains Mid and the first/third coordinates of every Tri triple; every Link edge has some two-hop Mid-Mid witness; and BaseTwo contains all of C.",
+  "postInWords": "The postcondition states that every pair C1 derives into P is also derived by C2 into T, i.e. P ⊆ T.",
+  "family": "two programs under TGD constraints (LLM-generated, Claude Opus; legacy raw_new pipeline)",
+  "kind": "containment",
+  "claim": "(P ⊆ T)",
+  "precondition": "((π[0,3] (σ[#1 = #2] ((C × C))) ⊆ C) ∧ ((Mid ⊆ C) ∧ ((Link ⊆ π[0,3] (σ[#1 = #2] ((Mid × Mid)))) ∧ ((π[0,2] (Tri) ⊆ C) ∧ (C ⊆ BaseTwo)))))",
+  "expectedVerdict": "valid",
+  "obstructionExpectation": "anchored: both sides are naive closures at the same rate and the legacy product loop was certified with a quantifier-free invariant; no prophecy level expected",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "rateMismatch": false,
+  "sides": [
+    "naive compiler: program C1 of the retired corpus case Example1091 (output P)",
+    "naive compiler: program C2 of the retired corpus case Example1091 (output T)"
+  ],
+  "schemaLinking": "the two programs share the input relations; the dependencies of the precondition relate them",
+  "sourceProgram": null,
+  "sources": [
+    {
+      "system": "LLM-generated (Claude Opus), legacy raw_new TGD pipeline",
+      "repo": "this repository",
+      "file": "the retired corpus case Example1091 (programs C1, C2 and the TGD list tgd0..)",
+      "function": "TGD pipeline run raw-new-tgd-0002-product: TGDs translated to relational algebra by RelCalc.TGD.listToAssertExpr; programs compiled with the certified naive compiler",
+      "url": null,
+      "read": "2026-09-15"
+    },
+    {
+      "system": "method",
+      "repo": "this repository",
+      "file": "the equivalence-under-constraints paper draft (technical appendix: reduction of containment/equivalence under TGDs to a Hoare triple)",
+      "url": null,
+      "read": "2026-09-15"
+    }
+  ],
+  "encoding": "canonical five-declaration form; both sides naive-compiler output pinned by Fidelity/ (decide +kernel); independent loops merged side by side; the TGD precondition is the legacy text verbatim; the legacy concurrent-product loop compared with the sequence on the check instances",
+  "created": "2026-09-15",
+  "llmGenerated": "Claude Opus",
+  "tgds": [
+    "∀ x1. ∀ y1. ∀ z1. (C(x1, y1) ∧ C(y1, z1)) → C(x1, z1)",
+    "∀ x1. ∀ y1. Mid(x1, y1) → C(x1, y1)",
+    "∀ x1. ∀ y1. Link(x1, y1) → ∃ z1. (Mid(x1, z1) ∧ Mid(z1, y1))",
+    "∀ x1. ∀ y1. ∀ z1. Tri(x1, y1, z1) → C(x1, z1)",
+    "∀ x1. ∀ y1. C(x1, y1) → BaseTwo(x1, y1)"
+  ],
+  "outputs": {
+    "C1": "P",
+    "C2": "T"
+  },
+  "datalog": [
+    {
+      "label": "prog_c1",
+      "text": "P(x1, y1) :- Link(x1, y1).\nP(x1, y1) :- Mid(x1, y1).\nP(x1, z1) :- P(x1, y1), Q(y1, z1).\nP(x1, x2) :- P(x1, y1), Mid(y1, z1), P(z1, x2).\nQ(x1, y1) :- Tri(x1, z1, y1).\nQ(x1, z1) :- Q(x1, y1), P(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example1091/Fidelity/Example1091.lean"
+    },
+    {
+      "label": "prog_c2",
+      "text": "T(x1, y1) :- BaseTwo(x1, y1).\nG(x1, y1) :- Jump(x1, y1).\nG(x1, z1) :- G(x1, y1), Jump(y1, z1).\nT(x1, z1) :- T(x1, y1), G(y1, z1).\nT(x1, z1) :- T(x1, y1), T(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example1091/Fidelity/Example1091.lean"
+    }
+  ]
+}

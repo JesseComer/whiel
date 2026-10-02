@@ -1,0 +1,63 @@
+{
+  "canonicalId": "Example5022",
+  "canonicalInput": "Example5022/Input.lean",
+  "title": "SQL recursion limits (MySQL cte_max_recursion_depth, SQL Server MAXRECURSION): completion within the limit implies the closure",
+  "explanation": "Side 1 encodes, loop-free, four semi-naive iterations of a recursive common table expression under a fixed recursion-depth limit (k = 4), as implemented by MySQL's cte_max_recursion_depth or SQL Server's MAXRECURSION, tracking new rows and cumulative results per iteration; side 2 is the naive-compiler translation of the closure the CTE is meant to compute. The triple states a conditional correctness property for bounded-recursion SQL engines: if the engine's iteration limit is not exceeded (the final iteration produces no new rows), the truncated result actually equals the full transitive closure — a limited engine only ever silently under-approximates by aborting, never by returning a wrong-but-apparently-complete answer.",
+  "preInWords": "True; no precondition constrains the inputs.",
+  "postInWords": "Either the final iteration still produced new rows (the recursion-depth limit was exhausted), or the limited engine's result equals the true closure.",
+  "family": "engine semantics versus declarative program (conditional claim)",
+  "kind": "implication (disjunction in the postcondition)",
+  "claim": "((NewE ≠ ∅) ∨ (Cl = ResE))",
+  "precondition": "true",
+  "expectedVerdict": "valid",
+  "obstructionExpectation": "disjunctive invariant (NewE ≠ ∅ ∨ Cl ⊆ ResE): no conjunction of inclusions is inductive because instances beyond the bound have Cl ⊄ ResE; engine side in the precondition, single compiled loop",
+  "currentClassification": "valid",
+  "currentEvidence": "accepted invariant (Core.json); certificate not yet built",
+  "rateMismatch": false,
+  "sides": [
+    "hand-written, loop-free: four semi-naive iterations of the recursive CTE under limit k = 4 (ResA = anchor; NewB..NewE new rows per iteration; ResB..ResE cumulative), MySQL UNION DISTINCT semantics; SQL Server's UNION ALL termination implies the modelled condition",
+    "naive compiler: Cl = closure (the CTE's Datalog meaning)"
+  ],
+  "sourceProgram": null,
+  "sources": [
+    {
+      "title": "MySQL 8.4 Reference Manual, WITH (Common Table Expressions): Recursive Common Table Expressions; Limiting Common Table Expression Recursion",
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/with.html",
+      "read": "2026-09-15"
+    },
+    {
+      "title": "MySQL server source, share/messages_to_clients.txt (ER_CTE_MAX_RECURSION_DEPTH = 3636)",
+      "url": "https://github.com/mysql/mysql-server/blob/8.4/share/messages_to_clients.txt",
+      "commit": "99960bf74fa919347e4f4e3ca47672f333d6e91f (branch 8.4)",
+      "read": "2026-09-15",
+      "note": "the error-reference web page refused automated access; the number follows from the file's start-error-number 3500 sequence"
+    },
+    {
+      "title": "Microsoft SQL Server, WITH common_table_expression (Transact-SQL)",
+      "url": "https://learn.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql",
+      "read": "2026-09-15"
+    },
+    {
+      "title": "Microsoft SQL Server, Hints (Transact-SQL) - Query (MAXRECURSION)",
+      "url": "https://learn.microsoft.com/en-us/sql/t-sql/queries/hints-transact-sql-query",
+      "read": "2026-09-15"
+    },
+    {
+      "title": "Microsoft SQL Server, Database Engine events and errors (0 to 999) (error 530)",
+      "url": "https://learn.microsoft.com/en-us/sql/relational-databases/errors-events/database-engine-events-and-errors-0-to-999",
+      "read": "2026-09-15"
+    }
+  ],
+  "encoding": "canonical five-declaration form; loop-free engine side carried into the precondition by Hoare.preprocess (distinct relations per iteration); compiled side pinned by Fidelity/ (decide +kernel); k = 4 stated in the header",
+  "created": "2026-09-15",
+  "twin": null,
+  "note": "no invalid twin: the unconditional bounded-equals-closure claim would be Example5013",
+  "datalog": [
+    {
+      "label": "prog_p — The recursive CTE as Datalog.",
+      "text": "Cl(x1, y1) :- Base(x1, y1).\nCl(x1, z1) :- Cl(x1, y1), E(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5022/Fidelity/Example5022.lean"
+    }
+  ]
+}

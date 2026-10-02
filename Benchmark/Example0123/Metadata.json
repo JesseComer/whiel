@@ -1,0 +1,46 @@
+{
+  "canonicalId": "Example0123",
+  "canonicalInput": "Example0123/Input.lean",
+  "canonicalModule": "Benchmark.Example0123.Input",
+  "category": "Synthetic",
+  "compilerCommandCheck": "unavailable",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "datalogSource": "unavailable",
+  "declarationNamespace": "Whiel.Benchmark.Example0123",
+  "formatVersion": 1,
+  "goldInvariantStatus": "missing",
+  "historicalCandidatePresent": false,
+  "historicalClaim": null,
+  "notes": [
+    "Converted from the retired classic Datalog-program benchmark collection (the 0428 wave)."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Synthetic",
+      "sourceId": "v2__prefix_equivalence__even_odd_linear__even_odd_nonlinear__naive"
+    }
+  ],
+  "suites": [
+    "classic-programs",
+    "classic-prefix-equivalence"
+  ],
+  "title": "Prefix-equivalence: naive even_odd_nonlinear computes lfp of even_odd_linear",
+  "explanation": "The loop naively evaluates the non-linear even_odd_nonlinear program, computing even-length paths Ta and odd-length paths Tb by mutual squaring recursion (Ta from E∘E, Ta∘Ta and Tb∘Tb; Tb from E, Tb∘Ta and Ta∘Tb), matching even_odd_nonlinear.dl. The Hoare triple is the least-fixpoint introduction obligation for the linear even_odd_linear recursion (Ta(x,y):-E(x,z),Tb(z,y); Tb(x,y):-E(x,y) or E(x,z),Ta(z,y)): given any pair Ra,Rb already a pre-fixpoint of that linear recursion, the computed Ta,Tb must themselves form a pre-fixpoint of it and lie below Ra,Rb respectively, i.e. the non-linear program computes the least pre-fixpoint pair of the linear even/odd program.",
+  "preInWords": "The precondition states that the pair Ra, Rb is a pre-fixpoint of the linear even/odd recursion: E∘Rb ⊆ Ra and E∪(E∘Ra) ⊆ Rb.",
+  "postInWords": "The postcondition states that the computed pair Ta, Tb is itself a pre-fixpoint of the linear even/odd recursion, E∘Tb ⊆ Ta and E∪(E∘Ta) ⊆ Tb, and that Ta ⊆ Ra and Tb ⊆ Rb.",
+  "notation": "canonical",
+  "datalog": [
+    {
+      "label": "even_odd_linear",
+      "text": "-- even_odd_linear\n-- Formal PRE/POST reference only; not executed by the WHIEL command\nOL(x,y) :- E(x,y).\nOL(x,y) :- E(x,z), EL(z,y).\nEL(x,y) :- E(x,z), OL(z,y).",
+      "provenance": "legacy inventory: source programs with one executed WHIEL program and one formal PRE/POST reference (not executed); sources: even_odd_linear.dl, even_odd_nonlinear.dl"
+    },
+    {
+      "label": "even_odd_nonlinear",
+      "text": "-- even_odd_nonlinear\n-- Executed WHIEL program\nOL(x,y) :- E(x,y).\nEL(x,y) :- E(x,z), E(z,y).\nOL(x,y) :- OL(x,z), EL(z,y).\nOL(x,y) :- EL(x,z), OL(z,y).\nEL(x,y) :- EL(x,z), EL(z,y).\nEL(x,y) :- OL(x,z), OL(z,y).",
+      "provenance": "legacy inventory: source programs with one executed WHIEL program and one formal PRE/POST reference (not executed); sources: even_odd_linear.dl, even_odd_nonlinear.dl"
+    }
+  ],
+  "expectedVerdict": "valid"
+}

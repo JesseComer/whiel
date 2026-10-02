@@ -1,0 +1,71 @@
+{
+  "canonicalId": "Example5034",
+  "canonicalInput": "Example5034/Input.lean",
+  "title": "Warshall's intermediate-vertex sweep (boolean Floyd-Warshall) versus PostgreSQL recursive-union rounds",
+  "explanation": "The Datalog program is again transitive closure, T(x,y) :- Edge(x,y); T(x,y) :- T(x,z), Edge(z,y). Side 1 encodes the boolean core of Floyd-Warshall (SciPy's _floyd_warshall / NetworkX's floyd_warshall_predecessor_and_distance with weights ignored, i.e. Warshall's algorithm): for each intermediate vertex taken in a fixed order, it composes all pairs currently entering that vertex with all pairs currently leaving it and folds the result into TW, one vertex-sweep at a time. Side 2 is PostgreSQL's recursive-union rounds on Edge, as in the other cases in this batch. The Hoare triple claims TW = Res: Warshall's intermediate-vertex sweep and PostgreSQL's round-based recursive union compute the same transitive closure, for every strict total order used to sequence the sweep.",
+  "preInWords": "Lt is a strict total order over the nodes that occur in Edge.",
+  "postInWords": "TW, the relation built by sweeping intermediate vertices in Lt order and composing incoming with outgoing pairs at each vertex, equals Res, built by PostgreSQL's recursive-union rounds.",
+  "family": "production algorithm pair (rate mismatch)",
+  "kind": "equivalence",
+  "claim": "(TW = Res)",
+  "precondition": "((((σ[#0 = #1] Lt) = ∅) ∧\n    ((π[0, 3] (σ[#1 = #2] (Lt × Lt))) ⊆ Lt)) ∧\n  ((Lt ⊆ ((π[0] Edge ∪ π[1] Edge) × (π[0] Edge ∪ π[1] Edge))) ∧\n    ((σ[¬(#0 = #1)] ((π[0] Edge ∪ π[1] Edge) × (π[0] Edge ∪ π[1] Edge))) ⊆ (Lt ∪ π[1, 0] Lt))))",
+  "expectedVerdict": "valid",
+  "obstructionExpectation": "rate mismatch (after k sweeps: paths with intermediate vertices among the first k of the order; after n rounds: paths of at most n+1 edges); leveled-framework target; the containment TW ⊆ Res∞ needs the transitivity of the executor's result, a consequence of leastness only (as Example5007)",
+  "currentClassification": "valid",
+  "currentEvidence": "invariant with every obligation proved by the pinned solver; certificate not yet built",
+  "notes": [
+    "Some maintenance obligations of this invariant are proved only under the pinned solver's portfolio strategy; the direct strategy alone does not prove them.",
+    "Core.json records the accepted rows as the search left them; the emitter re-canonicalises the record when the case is certified."
+  ],
+  "rateMismatch": true,
+  "sides": [
+    "hand-written: boolean Floyd-Warshall sweep over the vertices in Lt order (SciPy _floyd_warshall / NetworkX floyd_warshall_predecessor_and_distance, weights not modelled)",
+    "hand-written: PostgreSQL ExecRecursiveUnion rounds (legacy Example2037) seeded with Edge"
+  ],
+  "schemaLinking": "same schema on both sides; direct equality of the computed relations",
+  "sourceProgram": null,
+  "sources": [
+    {
+      "system": "SciPy",
+      "repo": "scipy/scipy",
+      "branch": "main",
+      "commit": "884ac0b6fc53 (2026-09-15)",
+      "file": "scipy/sparse/csgraph/_shortest_path.pyx",
+      "function": "floyd_warshall (wrapper, unweighted option sets finite entries to 1), _floyd_warshall (for k in range(N): for i in range(N): if dist_matrix[i, k] == INFINITY: continue; for j in range(N): d_ijk = dist_matrix[i, k] + dist_matrix[k, j]; if d_ijk < dist_matrix[i, j]: dist_matrix[i, j] = d_ijk; comment 'In each loop, this finds the shortest path from point i to point j using intermediate nodes 0 ... k')",
+      "url": "https://github.com/scipy/scipy/blob/main/scipy/sparse/csgraph/_shortest_path.pyx",
+      "read": "2026-09-15"
+    },
+    {
+      "system": "NetworkX",
+      "repo": "networkx/networkx",
+      "branch": "main",
+      "commit": "4e74880b0da0 (2026-09-12)",
+      "file": "networkx/algorithms/shortest_paths/dense.py",
+      "function": "floyd_warshall_predecessor_and_distance (for w in G: for u in G: for v in G: d = dist_u[w] + dist_w[v]; if dist_u[v] > d: ...), floyd_warshall, floyd_warshall_numpy (for i in range(n): A = np.minimum(A, A[i, :][np.newaxis, :] + A[:, i][:, np.newaxis]))",
+      "url": "https://github.com/networkx/networkx/blob/main/networkx/algorithms/shortest_paths/dense.py",
+      "read": "2026-09-15"
+    },
+    {
+      "system": "PostgreSQL",
+      "repo": "postgres/postgres",
+      "branch": "master",
+      "commit": "6e58d6356fcb (2026-09-15)",
+      "file": "src/backend/executor/nodeRecursiveunion.c",
+      "function": "ExecRecursiveUnion (header comment steps 2.1-2.6; 'Ignore tuple if already seen'; working/intermediate table swap)",
+      "url": "https://github.com/postgres/postgres/blob/master/src/backend/executor/nodeRecursiveunion.c",
+      "read": "2026-09-15",
+      "encodedAs": "legacy Example2037 / Example5001 hand side with the base term equal to the edge relation"
+    }
+  ],
+  "encoding": "canonical five-declaration form; the vertex order is the input relation Lt (strict total order by the precondition) and the sweep vertex is the Lt-least unswept vertex; single loop per side, merged side by side; both sides hand-written and pinned as the two segments of the command (Fidelity/, decide +kernel); each side compared with the naive compilation of the closure on the check instances",
+  "created": "2026-09-15",
+  "twin": "Example5035 (invalid: only the first two vertices of the order are swept)",
+  "datalog": [
+    {
+      "label": "prog_T — The Datalog program(s) of the header: compiled sides are their naive compilation; reference programs are compared with the hand-written sides on the check instances.",
+      "text": "T(x1, y1) :- Edge(x1, y1).\nT(x1, y1) :- T(x1, z1), Edge(z1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5034/Fidelity/Example5034.lean"
+    }
+  ]
+}

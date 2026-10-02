@@ -1,0 +1,46 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zAccA × op_zE))) ⊆ (op_zAccA ∪ π[0,3] (σ[#1 = #2] ((op_zDeltaA × op_zE)))))"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zE × op_zAccP))) ⊆ (op_zAccP ∪ π[0,3] (σ[#1 = #2] ((op_zE × op_zDeltaP)))))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zDeltaA ⊆ op_zAccA)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zDeltaP ⊆ op_zAccP)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zE ⊆ op_zAccA)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zE ⊆ op_zAccP)"
+    },
+    {
+      "level": 1,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zAccP × op_zE))) ⊆ yp_zAccP)"
+    },
+    {
+      "level": 1,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zE × op_zAccA))) ⊆ yp_zAccA)"
+    },
+    {
+      "level": 2,
+      "source": "(op_zAccA ⊆ yp_zAccP)"
+    },
+    {
+      "level": 2,
+      "source": "(op_zAccP ⊆ yp_zAccA)"
+    }
+  ],
+  "version": 1
+}

@@ -1,0 +1,38 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(π[2] (σ[#0 = #1] ((oa_zReach × op_zE))) ⊆ op_zReach)"
+    },
+    {
+      "level": 0,
+      "source": "(π[2] (σ[#0 = #1] ((op_zR × op_zE))) ⊆ (op_zR ∪ π[2] (σ[#0 = #1] ((op_zW × op_zE)))))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSrc ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSrc ⊆ op_zReach)"
+    },
+    {
+      "level": 1,
+      "source": "(oa_zReach ⊆ yp_zR)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zR ⊆ yp_zReach)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zReach ⊆ yp_zR)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zW ⊆ yp_zReach)"
+    }
+  ],
+  "version": 1
+}

@@ -1,0 +1,24 @@
+{
+  "certificate": "<repo>/artifacts/runs/gpt-5.5-20260917-sample-5-3/verifier/Example5040/Certificate/Invalid.lean",
+  "clauses_dropped": 0,
+  "clauses_submitted": 0,
+  "consultations": 1,
+  "core": 0,
+  "dead": 0,
+  "input": "Example5040",
+  "pending": 0,
+  "rounds": [
+    {
+      "agent_seconds": 31.83,
+      "clauses_dropped": 0,
+      "clauses_proposed": 0,
+      "core": 0,
+      "latest": "initial — no round has run yet",
+      "pending": 0,
+      "round": 1,
+      "verifier_seconds": null
+    }
+  ],
+  "status": "invalid",
+  "total_seconds": 47.868748903274536
+}

@@ -1,0 +1,74 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(op_zLose = (op_zNodes ∖ π[0] ((op_zMove ∖ π[0,1] (σ[#1 = #2] ((op_zMove × op_zWinP)))))))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zWin = π[0] (σ[#1 = #2] ((op_zMove × op_zLoseP))))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ∅[0]) ∨ (op_zNotUnder = (op_zNodes ∖ op_zPrev)))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ∅[0]) ∨ (op_zOverI = π[0] (σ[#1 = #2] ((op_zMove × op_zNotUnder)))))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ∅[0]) ∨ (op_zPrev = op_zUnder))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ∅[0]) ∨ ((of_z0 = ⊤) ∨ (op_zNotOver = (op_zNodes ∖ op_zOver))))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ∅[0]) ∨ ((of_z0 = ⊤) ∨ (op_zOver = π[0] (σ[#1 = #2] ((op_zMove × op_zNotUnder))))))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ∅[0]) ∨ ((of_z0 = ⊤) ∨ (op_zUnderI = π[0] (σ[#1 = #2] ((op_zMove × op_zNotOver))))))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ⊤) ∨ ((¬((op_zUnder = op_zPrev))) ∨ (op_zOver = π[0] (σ[#1 = #2] ((op_zMove × (op_zNodes ∖ op_zPrev)))))))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ⊤) ∨ ((¬((op_zUnder = op_zPrev))) ∨ (op_zUnder = π[0] (σ[#1 = #2] ((op_zMove × (op_zNodes ∖ op_zOver)))))))"
+    },
+    {
+      "level": 1,
+      "source": "((of_z2 = ∅[0]) ∨ ((of_z0 = ⊤) ∨ ((op_zNodes ∖ op_zOver) ⊆ yp_zLose)))"
+    },
+    {
+      "level": 1,
+      "source": "((of_z2 = ⊤) ∨ ((¬((op_zUnder = op_zPrev))) ∨ ((op_zNodes ∖ op_zOver) ⊆ yp_zLose)))"
+    },
+    {
+      "level": 1,
+      "source": "(op_zLose ⊆ (op_zNodes ∖ yp_zOver))"
+    },
+    {
+      "level": 1,
+      "source": "(op_zLoseP ⊆ (op_zNodes ∖ yp_zOver))"
+    },
+    {
+      "level": 1,
+      "source": "(op_zUnder ⊆ yp_zWin)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zWin ⊆ yp_zUnder)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zWinP ⊆ yp_zUnder)"
+    }
+  ],
+  "version": 1
+}

@@ -1,0 +1,76 @@
+{
+  "canonicalId": "Example5033",
+  "canonicalInput": "Example5033/Input.lean",
+  "title": "Soufflé magic-set demand-driven evaluation versus PostgreSQL bulk evaluation restricted to the demanded sources",
+  "explanation": "The underlying query is the right-linear path program Path(x,y) :- Edge(x,y); Path(x,z) :- Edge(x,y), Path(y,z), asked with the first argument bound to a single constant. Side 1 encodes Soufflé's magic-set transformation for this adornment (bf): it introduces a demand relation MPath seeded from the bound source Root and propagated forward along edges, and an answer relation PathBF built only over pairs whose source is currently demanded — the demand-driven, top-down-restricted evaluation Soufflé's --magic-transform would produce. Side 2 encodes PostgreSQL's bulk recursive-union evaluation of the unrestricted query, producing the full path closure Res for every source, independent of any demand. The Hoare triple claims that the demand-driven answers PathBF equal the bulk answers Res restricted, by a join with MPath, to the pairs whose source is in the demand set — the standard correctness obligation of the magic-set transformation, stated directly against PostgreSQL's actual round-based executor rather than against an idealized reference program.",
+  "preInWords": "Root is fixed to the singleton set containing exactly the constant \"root\", the single bound source of the query.",
+  "postInWords": "PathBF, the magic-set/demand-driven answer relation, equals the projection of MPath × Res onto pairs whose source column matches a demanded node — i.e. the demand-driven answers equal the bulk-evaluated answers restricted to the demanded sources.",
+  "family": "production algorithm pair (rate mismatch)",
+  "kind": "equivalence",
+  "claim": "(PathBF = (π[1, 2] (σ[#0 = #1] (MPath × Res))))",
+  "precondition": "(Root = { \"root\" })",
+  "expectedVerdict": "valid",
+  "obstructionExpectation": "rate mismatch (demand-dependent depth: the transformed program reaches a source only after the demand does and then grows its rows by length, the executor grows every source by length from round one); leveled-framework target; with prophecy both containments follow from the fixpoint facts (no leastness needed)",
+  "currentClassification": "valid",
+  "currentEvidence": "accepted invariant (Core.json); certificate not yet built",
+  "rateMismatch": true,
+  "sides": [
+    "naive compiler: Soufflé MagicSetCoreTransformer output for Path with adornment bf (the program of Example2003/2004)",
+    "hand-written: PostgreSQL ExecRecursiveUnion rounds (legacy Example2037) for the original right-linear query, joined with the demand set in the postcondition"
+  ],
+  "schemaLinking": "the demand set MPath joins the executor's answers inside the postcondition (method 3 of the handoff: the linking view is an RA expression in the claim)",
+  "sourceProgram": null,
+  "sources": [
+    {
+      "system": "Soufflé",
+      "repo": "souffle-lang/souffle",
+      "branch": "master",
+      "commit": "a1303be3c016 (2026-07-13)",
+      "file": "src/ast/transform/MagicSet.cpp",
+      "function": "MagicSetCoreTransformer::transform, createMagicClause, createMagicAtom, getMagicName",
+      "url": "https://github.com/souffle-lang/souffle/blob/master/src/ast/transform/MagicSet.cpp",
+      "read": "2026-09-15"
+    },
+    {
+      "system": "Soufflé documentation",
+      "repo": "souffle-lang/souffle-lang.github.io",
+      "file": "pages/docs/magicset.md",
+      "function": "The Algorithm: constraint normalisation, adornment (SIPS), the magic set transformation ('For all adorned predicates ... Add the clause magic(Ai_ai) :- magic(A_a), A1_a1, ..., A(i-1)_a(i-1) ... Replace C with A_a :- magic(A_a), T')",
+      "url": "https://souffle-lang.github.io/magicset",
+      "read": "2026-09-15"
+    },
+    {
+      "system": "PostgreSQL",
+      "repo": "postgres/postgres",
+      "branch": "master",
+      "commit": "6e58d6356fcb (2026-09-15)",
+      "file": "src/backend/executor/nodeRecursiveunion.c",
+      "function": "ExecRecursiveUnion (header comment steps 2.1-2.6; 'Ignore tuple if already seen'; working/intermediate table swap)",
+      "url": "https://github.com/postgres/postgres/blob/master/src/backend/executor/nodeRecursiveunion.c",
+      "read": "2026-09-15",
+      "encodedAs": "legacy Example2037 / Example5001 hand side with the base term equal to the edge relation"
+    }
+  ],
+  "encoding": "canonical five-declaration form; side 1 is naive-compiler output pinned by Fidelity/ (decide +kernel), side 2 hand-written and pinned as a segment; independent loops merged side by side; the executor side compared with the naive compilation of the original program on the check instances; the demand seed is an input relation pinned by the precondition as in Example2004",
+  "created": "2026-09-15",
+  "datalog": [
+    {
+      "label": "prog_magic",
+      "text": "MPath(x1) :- Root(x1).\nMPath(y1) :- MPath(x1), Edge(x1, y1).\nPathBF(x1, y1) :- MPath(x1), Edge(x1, y1).\nPathBF(x1, z1) :- MPath(x1), Edge(x1, y1), PathBF(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5033/Fidelity/Example5033.lean"
+    },
+    {
+      "label": "prog_PathR",
+      "text": "PathR(x1, y1) :- Edge(x1, y1).\nPathR(x1, z1) :- Edge(x1, y1), PathR(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5033/Fidelity/Example5033.lean"
+    },
+    {
+      "label": "rules as stated in the header comment of Input.lean",
+      "text": "Path(x, y) :- Edge(x, y)\nPath(x, z) :- Edge(x, y), Path(y, z)\nA_a :- A1_a1, ..., An_an\nMPath(x) :- Root(x)\nMPath(y) :- MPath(x), Edge(x, y)\nPathBF(x, y) :- MPath(x), Edge(x, y)\nPathBF(x, z) :- MPath(x), Edge(x, y), PathBF(y, z)",
+      "provenance": "header comment",
+      "source_file": "Benchmark/Example5033/Input.lean"
+    }
+  ]
+}

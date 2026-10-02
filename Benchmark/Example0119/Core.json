@@ -1,0 +1,54 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(op_zSa = π[0,3] (σ[#1 = #2] ((op_zE × op_zTb))))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSb = (op_zE ∪ π[0,3] (σ[#1 = #2] ((op_zE × op_zTa)))))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSc = (op_zTa ∪ op_zTb))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSa ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSb ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSc ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTa ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTb ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTc ⊆ op_zR)"
+    },
+    {
+      "level": 1,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zTa × yp_zTc))) ⊆ yp_zTc)"
+    },
+    {
+      "level": 1,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zTb × yp_zTc))) ⊆ yp_zTc)"
+    },
+    {
+      "level": 1,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zTc × yp_zTc))) ⊆ yp_zTc)"
+    }
+  ],
+  "version": 1
+}

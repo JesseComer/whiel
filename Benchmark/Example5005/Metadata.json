@@ -1,0 +1,38 @@
+{
+  "canonicalId": "Example5005",
+  "canonicalInput": "Example5005/Input.lean",
+  "title": "Incremental maintenance of a reachability view versus recomputation from scratch",
+  "explanation": "All three programs concern reachability from Roots over an edge relation that is updated by an insertion EDelta. Program 1 (compiled) computes the old view ReachOld using only the base edges EBase. Program 2 is an incremental-view-maintenance algorithm, in the style used by systems like Differential Dataflow or Materialize: it restarts from ReachOld ∪ Roots and iterates over the combined edges EBase ∪ EDelta, an insert-only re-evaluation seeded from the previously materialized view rather than computed from scratch; it reads program 1's output, so the sequence is dependent. Program 3 (compiled) recomputes ReachNew from scratch directly over the updated graph EBase ∪ EDelta. The Hoare triple claims the incrementally maintained result equals full recomputation, Reach = ReachNew — the standard correctness statement for incremental view maintenance under an insertion-only update.",
+  "preInWords": "The precondition is simply true.",
+  "postInWords": "The postcondition asserts Reach = ReachNew, that incrementally maintaining the reachability view from the old result equals recomputing it from scratch on the updated graph.",
+  "family": "direct-equality pair",
+  "kind": "equivalence",
+  "claim": "(Reach = ReachNew)",
+  "precondition": "true",
+  "expectedVerdict": "valid",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "rateMismatch": true,
+  "sides": [
+    "naive compiler: old view",
+    "legacy Example2025 (incremental maintainer)",
+    "naive compiler: recomputation on EBase ∪ EDelta"
+  ],
+  "sourceProgram": null,
+  "encoding": "canonical five-declaration form; programs run in sequence and merged by Hoare.preprocess; compiled sides are naive-compiler output pinned by Fidelity/ (decide +kernel); hand-written sides are the retired corpus commands verbatim under a bijective rename of relation names",
+  "created": "2026-09-15",
+  "datalog": [
+    {
+      "label": "prog_pa",
+      "text": "ReachOld(x1) :- Roots(x1).\nReachOld(y1) :- ReachOld(x1), EBase(x1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5005/Fidelity/Example5005.lean"
+    },
+    {
+      "label": "prog_pc",
+      "text": "ReachNew(x1) :- Roots(x1).\nReachNew(y1) :- ReachNew(x1), EBase(x1, y1).\nReachNew(y1) :- ReachNew(x1), EDelta(x1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5005/Fidelity/Example5005.lean"
+    }
+  ]
+}

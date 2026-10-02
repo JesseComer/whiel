@@ -1,0 +1,42 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(op_zT = (oa_zT ∪ (op_zE ∪ π[0,3] (σ[#1 = #2] ((op_zE × oa_zT))))))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTUp = (oa_zTUp ∪ (op_zVo ∪ op_zVe)))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTe = (oa_zTe ∪ π[0,3] (σ[#1 = #2] ((op_zE × oa_zTo)))))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTo = (oa_zTo ∪ (op_zE ∪ π[0,3] (σ[#1 = #2] ((op_zE × oa_zTe))))))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTUp ⊆ (op_zVo ∪ op_zVe))"
+    },
+    {
+      "level": 1,
+      "source": "(oa_zTe ⊆ yp_zT)"
+    },
+    {
+      "level": 1,
+      "source": "(oa_zTo ⊆ yp_zT)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zTe ⊆ yp_zT)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zTo ⊆ yp_zT)"
+    }
+  ],
+  "version": 1
+}

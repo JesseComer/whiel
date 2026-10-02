@@ -1,0 +1,58 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(op_zBad = π[0,1] (op_zBadNeed))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zBadNeed = (op_zNeed ∖ op_zGood))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zGood = π[0,1,2] (σ[(#2 = #3 ∧ #1 = #4)] ((op_zNeed × oa_zKeep))))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zKeep = (oa_zKeep ∖ op_zBad))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zNeed = π[0,1,3] (σ[#0 = #2] ((oa_zKeep × op_zReq))))"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,1] (op_zNeed) ⊆ oa_zKeep)"
+    },
+    {
+      "level": 0,
+      "source": "(oa_zKeep ⊆ op_zBase)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zBad ⊆ π[0,1] (op_zNeed))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zBad ⊆ oa_zKeep)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zBadNeed ⊆ op_zNeed)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zKeep ⊆ oa_zKeep)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zKeep ⊆ op_zBase)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zRb ⊆ op_zKeep)"
+    }
+  ],
+  "version": 1
+}

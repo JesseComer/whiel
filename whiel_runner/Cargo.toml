@@ -1,0 +1,28 @@
+[package]
+name = "whiel_runner"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+libc = "0.2"
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["arbitrary_precision"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "sync", "time", "process", "io-util", "fs", "net"] }
+
+[dev-dependencies]
+# Self dev-dependency so `cargo test` (unit tests and every `tests/*.rs`
+# integration binary alike) gets `test-hooks` unified in automatically,
+# with no extra flags, while `cargo build --release` (which never pulls in
+# dev-dependencies) compiles it out entirely.
+whiel_runner = { path = ".", features = ["test-hooks"] }
+
+[features]
+# Gates test-only fixture seams (`PinnedLeancheckVampire::unverified_for_tests`,
+# `CertificateBuildHooks`) out of ordinary release builds; see the
+# `[dev-dependencies]` self-reference above for how `cargo test` still gets it.
+test-hooks = []
+
+# Debug builds and test binaries only need line tables for backtraces; full
+# DWARF for this crate and its test suites costs several GB on disk.
+[profile.dev]
+debug = "line-tables-only"

@@ -1,0 +1,56 @@
+{
+  "canonicalId": "Example0130",
+  "canonicalInput": "Example0130/Input.lean",
+  "category": "Synthetic",
+  "kind": "containment",
+  "algorithm": "naive",
+  "title": "Containment: even/odd/ambiguous-depth path-system program ⊆ every set closed under the basic path-system rules",
+  "explanation": "The Datalog programs classify the nodes a Cook path system (unary axioms A, ternary rules R(x,y,z) meaning x is accessible if y and z both are) makes accessible, by the parity of their derivation trees' leaf depths: EH, OH and AH hold for a node with a derivation whose leaves are all at even depth, all at odd depth, or mixed, respectively. The precondition says a free relation Closed already contains every axiom and is closed under the path-system rule (a pre-fixpoint); the postcondition says the three depth-parity outputs are each contained in Closed. Since Closed ranges over every such closed set and the accessible-node relation is the least one, this is the standard least-fixpoint-containment argument, applied to three refinements of the accessible set at once.",
+  "preInWords": "PRE says Closed contains every axiom A(x) and is closed under the path-system rule: whenever R(x,y,z) holds and y and z are both already in Closed, x is too.",
+  "postInWords": "POST says the even-depth, odd-depth and mixed-depth output relations AH, EH and OH are each contained in Closed.",
+  "programs": {
+    "executed": "path_systems_height (outputs AH, EH, OH)",
+    "reference": "path_systems_basic (its pre-fixpoints are the free relation Closed)"
+  },
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "legacyGoldInvariant": [
+    "A ⊆ Closed",
+    "π[0] (σ[#2 = #4] (σ[#1 = #3] ((R × Closed) × Closed))) ⊆ Closed",
+    "AHNext ⊆ Closed",
+    "EHNext ⊆ Closed",
+    "OHNext ⊆ Closed",
+    "AH ⊆ Closed",
+    "EH ⊆ Closed",
+    "OH ⊆ Closed"
+  ],
+  "datalogSources": [
+    "path_systems_basic.dl",
+    "path_systems_height.dl"
+  ],
+  "notes": [
+    "EH/OH/AH classify derivation trees of the path system by leaf-depth parity (all even / all odd / mixed); with the (AH,AH) rule present their union is exactly the accessible set T of path_systems_basic. path_systems_height_old.dl lacks that rule and would make the reverse containment T ⊆ EH ∪ OH ∪ AH false.",
+    "The claim is the containment direction only (outputs ⊆ every closed set, i.e. ⊆ T). The reverse direction can be stated as a postcondition on the computed union U = AH ∪ EH ∪ OH: A ∪ π[0](σ(R × U × U)) ⊆ U (U is closed), which by least-fixpoint introduction gives T ⊆ U. Not yet added.",
+    "The case was reworked after Val Tannen's Part 1 review questioned the original formulation: 'Is this formulation correct? What does it compute? KEEP SEPARATE TO BE FIXED'. The rework is a bijective renaming of the relation names (`RX` to `R`, `R` to `Closed`, `Ta`/`Tb`/`Tc` to `AH`/`EH`/`OH` and `Sa`/`Sb`/`Sc` to `AHNext`/`EHNext`/`OHNext`), one rule per line with its Datalog reading, and an explanatory header; the precondition, command and postcondition are token-identical to the original under that rename map, checked by script, and the file elaborates."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Synthetic",
+      "sourceId": "v2__containment__path_systems_basic__path_systems_height__naive"
+    }
+  ],
+  "suites": [
+    "classic-programs",
+    "classic-containment"
+  ],
+  "notation": "canonical",
+  "datalog": [
+    {
+      "label": "rules as stated in the header comment of Input.lean",
+      "text": "T(x) :- A(x).\nT(x) :- R(x,y,z), T(y), T(z).\nEH(x) :- A(x). x has a derivation whose leaves all lie at even depth\nOH(x) :- R(x,y,z), EH(y), EH(z). ... all at odd depth\nEH(x) :- R(x,y,z), OH(y), OH(z).\nAH(x) :- R(x,y,z), Y(y), Z(z) for every other pair (Y,Z) over EH/OH/AH:",
+      "provenance": "header comment",
+      "source_file": "Benchmark/Example0130/Input.lean"
+    }
+  ],
+  "expectedVerdict": "valid"
+}

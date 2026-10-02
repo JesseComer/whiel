@@ -1,0 +1,12 @@
+job,profile,vampire_elapsed_s,vampire_peak_mb,transform_s,proof_module_lean_s,reconstruction_lean_s
+init_clause_0,direct,0.003,6.000,0.025,1.152,1.957
+init_clause_1,direct,0.002,6.000,0.022,0.804,1.878
+init_clause_2,direct,0.002,6.000,0.021,0.780,1.873
+init_clause_3,direct,0.002,6.000,0.021,0.780,1.888
+init_clause_4,direct,0.002,7.000,0.044,0.947,1.930
+maint_clause_0,direct,0.005,7.000,0.084,2.027,2.338
+maint_clause_1,direct,0.002,7.000,0.041,1.344,2.118
+maint_clause_2,direct,0.003,7.000,0.051,1.012,2.099
+maint_clause_3,direct,0.002,6.000,0.030,1.362,2.155
+maint_clause_4,direct,0.003,7.000,0.050,0.991,2.076
+term_check,direct,0.003,7.000,0.058,1.453,2.101

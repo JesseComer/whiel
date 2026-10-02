@@ -1,0 +1,31 @@
+{
+  "canonicalId": "Example5003",
+  "canonicalInput": "Example5003/Input.lean",
+  "title": "Worklist breadth-first reachability versus naive evaluation",
+  "explanation": "Both sides compute the set of vertices reachable from a source set Src over edge relation E. Side 1 is an explicit worklist/frontier breadth-first search: R is the visited set and W the current frontier; each round computes the newly discovered vertices N as E-successors of W not already in R, adds them to R, and advances the frontier W := N — the classic BFS-as-fixpoint-iteration pattern. Side 2 is naive Datalog evaluation of Reach(x):-Src(x), Reach(y):-Reach(x),E(x,y). The Hoare triple, running the two independent programs side by side, claims equality, R = Reach — that the explicit worklist BFS and full naive evaluation compute the same reachable set.",
+  "preInWords": "The precondition is simply true.",
+  "postInWords": "The postcondition asserts R = Reach, that worklist BFS and naive Datalog evaluation compute the same reachable set.",
+  "family": "direct-equality pair",
+  "kind": "equivalence",
+  "claim": "(R = Reach)",
+  "precondition": "true",
+  "expectedVerdict": "valid",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "rateMismatch": false,
+  "sides": [
+    "hard case Example0161 (worklist BFS with explicit frontier)",
+    "naive compiler on the reachability program"
+  ],
+  "sourceProgram": null,
+  "encoding": "canonical five-declaration form; programs run in sequence and merged by Hoare.preprocess; compiled sides are naive-compiler output pinned by Fidelity/ (decide +kernel); hand-written sides are the retired corpus commands verbatim under a bijective rename of relation names",
+  "created": "2026-09-15",
+  "datalog": [
+    {
+      "label": "prog_p",
+      "text": "Reach(x1) :- Src(x1).\nReach(y1) :- Reach(x1), E(x1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5003/Fidelity/Example5003.lean"
+    }
+  ]
+}

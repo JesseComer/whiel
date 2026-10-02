@@ -1,0 +1,67 @@
+{
+  "canonicalId": "Example4001",
+  "canonicalInput": "Example4001/Input.lean",
+  "canonicalModule": "Benchmark.Example4001.Input",
+  "category": "Core",
+  "certificatePath": "Example4001/Certificate/Valid.lean",
+  "compilerCommandCheck": "Benchmark.Example4001.Fidelity.Example4001",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "currentValidation": {
+    "attempt": "fixed-ambient-framework-ii-avatar-v4-20260908",
+    "lean": "4.30.0-rc1",
+    "obligationJobs": 15,
+    "proofBackend": "lean-kernel",
+    "status": "certificate-validated",
+    "vampireProfile": "direct",
+    "vampireProfileId": "direct-then-casc-2025-single-core-v4",
+    "vampireTimeoutSeconds": 60
+  },
+  "datalogSource": "Benchmark.Example4001.Fidelity.Example4001",
+  "declarationNamespace": "Whiel.Benchmark.Example4001",
+  "formatVersion": 1,
+  "goldInvariantStatus": "certified",
+  "historicalCandidatePresent": false,
+  "historicalClaim": null,
+  "notes": [
+    "`reports/VerificationTasks.pdf` section 10.1, the preamble to Task 1: check that the directed triangle query `Q(x) :- E(x, y), E(y, z), E(z, x)` and its reformulation `Q↑(x) :- V(x, y, z), V(y, z, x)` agree under `V = E ∘ E`. Global schema `{E}` (binary), local schema `{V}` (ternary) with the LAV view `V(a, b, c) ↔ E(a, b) ∧ E(b, c)`.",
+    "The source documents the reformulations task document (sha256 `32a3ac6b428d851f0aaa4fb7acdbf2fe4ad5dacca93ee118837888ff91b7a1c6`) and `reports/VerificationTasks.pdf` (sha256 `796ff97c082c6fc70e75a60c0dd40ec0680b738d7184a8b8aefea8c681b3ebff`) carry the same section 10.1 text, so both name this task.",
+    "The command is not hand-authored: `Fidelity/Example4001.lean` states the PDF's two Datalog programs, compiles each with `Datalog.WhielCompiler.Naive`, writes the two compiled commands one after the other, renames the generated snapshots `Q_1` and `QUp_1` to the auxiliary input names `Q_aux` and `QUp_aux`, and proves the result equal to `inputCmd` by `decide +kernel`; the same module fixes `inputPre` as the view constraint and `inputPost` as the claim `Q = QUp` and pins the single loop `Hoare.preprocess` computes from the sequence.",
+    "Neither program is recursive. Both are compiled by the same naive compiler anyway, so the canonical input carries exactly one WHILE loop, as `Hoare.preprocess` requires; the joint loop converges after a single iteration.",
+    "Verdict valid, certified under set semantics: the triangle query is reconstructed by joining two copies of the path view on overlapping variables.",
+    "Reference encoding for intent only: the retired corpus case Example4001, an `IndexAlphaName` hand-written input in the earlier single-level framework. Nothing is copied from it.",
+    "The the reference encoding's certified invariant into six leveled-framework clauses over the computed prophecy schema, all prophecy-free and therefore at level 0: `(op_zQ ⊆ π[0] (σ[((#1 = #2 ∧ #3 = #4) ∧ #0 = #5)] ((op_zE × (op_zE × op_zE)))))`, `(op_zQUp ⊆ π[0] (σ[((#1 = #3 ∧ #2 = #4) ∧ #0 = #5)] ((op_zV × op_zV))))`, `(op_zV ⊆ π[0,1,3] (σ[#1 = #2] ((op_zE × op_zE))))`, `(π[0,1,3] (σ[#1 = #2] ((op_zE × op_zE))) ⊆ op_zV)`, `(π[0] (σ[((#1 = #2 ∧ #3 = #4) ∧ #0 = #5)] ((op_zE × (op_zE × op_zE)))) ⊆ op_zQ)` and `(π[0] (σ[((#1 = #3 ∧ #2 = #4) ∧ #0 = #5)] ((op_zV × op_zV))) ⊆ op_zQUp)`. These six rows are now frozen in `Core.json`; the certificate additionally carries the emitter's own definitional clause `(op_zV = π[0,1,3] (σ[#1 = #2] ((op_zE × op_zE))))`, restating the two `op_zV` containments above as one equality, for seven candidate clauses in total.",
+    "Historical evidence: with the former AVATAR-off `direct` vector, all six initialization obligations discharged, but no maintenance proof was found at 60 s or 600 s; the isolated first maintenance premise also ended with `Refutation not found, non-redundant clauses discarded`. The then-separate `casc_2025` attempt discharged all thirteen obligations, but its six maintenance proofs and termination proof initially reconstructed through `bv_decide`, so the exact-std3 audit rejected that earlier tree. These are historical results for old profile/proof-processing states, not the current classification.",
+    "Historical evidence: `casc_2025` first produced a published thirteen-job certificate after the proof transformations replaced AVATAR `bv_decide` helpers with kernel-checked LRAT and replaced the global prenex/CNF package with the Whiel-owned projection tactic. That prior certificate audited to exact std3; The tree was subsequently regenerated under the common direct baseline.",
+    "Current evidence: the same six-row `Core.json` closes all 15 jobs (seven initialization, seven maintenance, one termination) under the AVATAR-on `direct` profile `direct-then-casc-2025-single-core-v4`; the checked-in validity theorem depends on exactly propext, Classical.choice, and Quot.sound.",
+    "`Certificate/timing.csv` carries the measured solver, transformation and Lean times of the run that produced this certificate. The solver evidence (problem files and solver output) is not kept in the tree; `Core.json` alone regenerates the certificate."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Core",
+      "path": "Example4001/Input.lean",
+      "sourceId": "verification-tasks-pdf-10.1-preamble"
+    }
+  ],
+  "suites": [
+    "leveled-framework"
+  ],
+  "title": "Directed triangle query versus its path-view reformulation",
+  "explanation": "The two Datalog programs compute the directed-triangle query Q(x) :- E(x,y), E(y,z), E(z,x) over an edge relation E, and its reformulation Q↑(x) :- V(x,y,z), V(y,z,x) over a length-two path view V. Under the view constraint that V records exactly the length-two paths of E together with their midpoint (V = E ∘ E), the Hoare triple claims the two queries compute equal results, Q = Q↑; this is an equivalence claim. The claim is certified valid: joining two copies of the view on overlapping variables reconstructs the directed-triangle detection under set semantics.",
+  "preInWords": "The precondition states that V equals the set of length-two paths through E: V is E composed with E, projected onto the start, midpoint and end columns with the middle columns equated.",
+  "postInWords": "The postcondition asserts the two queries agree exactly, Q = QUp.",
+  "datalog": [
+    {
+      "label": "globalProgram — `Q x :- Exy, Eyz, Ezx`.",
+      "text": "Q(x1) :- E(x1, y1), E(y1, z1), E(z1, x1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example4001/Fidelity/Example4001.lean"
+    },
+    {
+      "label": "localProgram — `Q↑ x :- V xyz, V yzx`.",
+      "text": "QUp(x1) :- V(x1, y1, z1), V(y1, z1, x1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example4001/Fidelity/Example4001.lean"
+    }
+  ]
+}

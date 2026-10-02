@@ -1,0 +1,24 @@
+{
+  "name": "sample-5",
+  "notes": "5-input sample: 4 valid (0001, 0134, 4001, 4041) and 1 invalid (5040). Search only; certify the run directory afterwards with `campaign certify --run <run>/verifier`.",
+  "provider": "codex",
+  "model": "gpt-5.5",
+  "reasoning_effort": "medium",
+  "provider_cli": "artifacts/provider-cli/0.148.0/x86_64-unknown-linux-musl/codex",
+  "isolation": "bwrap",
+  "inputs": [
+    "Example0001",
+    "Example0134",
+    "Example4001",
+    "Example4041",
+    "Example5040"
+  ],
+  "output_root": "artifacts/runs",
+  "search_limit_seconds": 600,
+  "certification_limit_seconds": 1800,
+  "iteration_limit": null,
+  "workers": 4,
+  "retention": "all",
+  "agent_retention": "all",
+  "certify": "never"
+}

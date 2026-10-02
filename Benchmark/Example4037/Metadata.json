@@ -1,0 +1,61 @@
+{
+  "canonicalId": "Example4037",
+  "canonicalInput": "Example4037/Input.lean",
+  "canonicalModule": "Benchmark.Example4037.Input",
+  "category": "Core",
+  "certificatePath": "Example4037/Certificate/Invalid.lean",
+  "compilerCommandCheck": "Benchmark.Example4037.Fidelity.Example4037",
+  "currentClassification": "invalid",
+  "currentEvidence": "kernel-counterexample-certificate",
+  "currentValidation": {
+    "attempt": "fixed-ambient-counterexample-regeneration-20260908",
+    "durableCounterexampleRecord": true,
+    "fuelConsumed": 12,
+    "lean": "4.30.0-rc1",
+    "proofBackend": "lean-kernel",
+    "status": "certificate-validated"
+  },
+  "datalogSource": "Benchmark.Example4037.Fidelity.Example4037",
+  "declarationNamespace": "Whiel.Benchmark.Example4037",
+  "formatVersion": 1,
+  "goldInvariantStatus": "not-applicable",
+  "historicalCandidatePresent": false,
+  "historicalClaim": null,
+  "notes": [
+    "`reports/VerificationTasks.pdf` section 10.1, Task 8: find a counterexample for `Q ⊆ Q↑` under the views `Va`, `Vb`, `Vc`. The schema, precondition and command are those of Example4036 (Task 7); only the direction of the containment differs.",
+    "The source documents the reformulations task document (sha256 `32a3ac6b428d851f0aaa4fb7acdbf2fe4ad5dacca93ee118837888ff91b7a1c6`) and `reports/VerificationTasks.pdf` (sha256 `796ff97c082c6fc70e75a60c0dd40ec0680b738d7184a8b8aefea8c681b3ebff`) carry the same section 10.1 text, so both name this task.",
+    "The command is not hand-authored: `Fidelity/Example4037.lean` states the PDF's Datalog programs, compiles each with `Datalog.WhielCompiler.Naive`, writes the two compiled commands one after the other, renames the generated snapshots `T_1`, `Q_1` and `QUp_1` to the auxiliary input names `T_aux`, `Q_aux` and `QUp_aux`, and proves the result equal to `inputCmd` by `decide +kernel`; the same module fixes `inputPre` as the three view equations and `inputPost` as the claim `Q ⊆ QUp`, and pins the single loop `Hoare.preprocess` computes from the sequence.",
+    "Verdict invalid, certified. The source paper's reformulation is only maximally contained in `Q`, so the reverse containment fails. The witness `F = {(\"b\", \"x\", \"d\"), (\"x\", \"y\", \"d\")}` with `Vb = {(\"x\", \"d\")}` and `Va = Vc = ∅` is the one `Fidelity/Example4037.lean` kernel-checks through `Hoare.CounterExample.kernelRefutes`: at exit `Q = {\"x\", \"y\"}` while `QUp = {\"x\"}`, so a two-hop route out of `\"b\"` on airline `\"d\"` refutes the triple. It was replayed through the Lean-owned `validate_counterexample` path, frozen as the durable record `Counterexample.json` (instance identity `3440c0ced55a518c0ae22fc8751223a3c05d404959fad4e70d6c03a1876fb0e0`, fuel consumed 12), and `Certificate/Invalid.lean` is rebuilt from exactly that record by `whiel-symbolic certificate build --counterexample`.",
+    "Reference encoding for intent only: `Benchmark/Example4037/Input.lean` on `origin/reformulation-multiview` at commit `7b793fe36c02d051a0771d110333d1c9bbca40cd`, an `IndexAlphaName` hand-written input in the earlier single-level framework. Nothing is copied from it.",
+    "The PDF's rule is `Q(y) :- T(\"b\", y, u)` although its prose says the airports reachable \"from a\"; the rule is encoded literally, with the constant \"b\".",
+    "`Counterexample.json` was re-frozen with this header-corrected input's source and scope identities while preserving the canonical instance, provenance, Lean-issued instance identity `3440c0ced55a518c0ae22fc8751223a3c05d404959fad4e70d6c03a1876fb0e0`, structural replay policy, and fuel consumed 12. `Certificate/Invalid.lean` is regenerated from exactly that durable record, uses only `programInst![…]` for the instance, omits the former `counterExampleRows` and `counterExampleInput_eq_keyedRows` declarations, and revalidates at exactly propext, Classical.choice, and Quot.sound."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Core",
+      "path": "Example4037/Input.lean",
+      "sourceId": "verification-tasks-pdf-10.1-task8"
+    }
+  ],
+  "suites": [
+    "leveled-framework"
+  ],
+  "title": "Airline reachability query versus its three-view reformulation, reverse containment",
+  "explanation": "This case uses the same global and local programs, views, and precondition as Example4036 (per-airline reachability T restricted to departures from \"b\" for Q, versus the three-view reformulation QUp), but tests the opposite direction of containment, Q ⊆ QUp: that every airport genuinely reachable from \"b\" on a single airline is also captured by the reformulation. This claim is invalid, certified by a kernel-checked counterexample: the reformulation is only maximally (forward-) contained in Q, not surjective onto it, so a two-hop route out of \"b\" on an airline other than \"a\" or \"c\" is invisible to all three views. The witness is F = {(\"b\",\"x\",\"d\"), (\"x\",\"y\",\"d\")}, where at exit Q = {\"x\",\"y\"} but QUp = {\"x\"}.",
+  "preInWords": "The precondition states the same three view equations as Example4036: Va is F restricted to airline \"a\", Vb is F restricted to flights departing \"b\", and Vc is the two-hop composition of two airline-\"c\" flights.",
+  "postInWords": "The postcondition asserts Q ⊆ QUp, that every airport genuinely reachable from \"b\" on one airline is captured by the reformulation — a claim that fails.",
+  "datalog": [
+    {
+      "label": "globalProgram — `T xyu :- Fxyu`, `T xyu :- Fxzu, T zyu`, and `Qy :- T byu`.",
+      "text": "T(x1, y1, x2) :- F(x1, y1, x2).\nT(x1, y1, x2) :- F(x1, z1, x2), T(z1, y1, x2).\nQ(y1) :- T(\"b\", y1, x2).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example4037/Fidelity/Example4037.lean"
+    },
+    {
+      "label": "localProgram — `Q↑ y :- Va by`, `Q↑ z :- Vb yc, Vc yz`, and `Q↑ y :- Vb yu`.",
+      "text": "QUp(y1) :- Va(\"b\", y1).\nQUp(z1) :- Vb(y1, \"c\"), Vc(y1, z1).\nQUp(y1) :- Vb(y1, x2).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example4037/Fidelity/Example4037.lean"
+    }
+  ]
+}

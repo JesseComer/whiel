@@ -1,0 +1,7 @@
+{
+  "description": "The twee goal transformation of the casc_2025 schedule (`tgt=full`) introduced each definition symbol as a constant while typing it over the defined term's variables, so the emitted proof declared `_sF41 : ι → ι → ι` and then applied it to nothing. The corrected preprocessing gives the symbol its parameters, and the emitter reads the `let` binders off the symbol's own application so declaration, definition, and use agree.",
+  "patch": "toolchain/leancheck-vampire/patches/0002-leancheck-definition-symbol-arity.patch",
+  "defect": "introduced_symbol_arity",
+  "uncorrected_error_contains": "Type mismatch",
+  "minimum_parameterised_definitions": 1
+}

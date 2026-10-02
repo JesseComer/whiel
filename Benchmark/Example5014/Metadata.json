@@ -1,0 +1,41 @@
+{
+  "canonicalId": "Example5014",
+  "canonicalInput": "Example5014/Input.lean",
+  "title": "W3C SPARQL 1.1 ALP evaluation of p* and p+ versus the Datalog closure with reflexive pairs over nodes(G)",
+  "explanation": "Side 1 implements the W3C SPARQL 1.1 ALP (arbitrary-length-path) evaluation procedure for property paths ?x p* ?y and ?x p+ ?y, run set-at-a-time from every node of the graph via a frontier/visited-set loop; side 2 is the naive-compiler translation of the corresponding Datalog transitive-closure program (Tc, the closure of the predicate-specific relation P) together with a reflexive relation Star seeded over every node of the whole graph G. The triple states the specification's ALP procedure computes exactly the same result as this declarative closure formulation: the visited set Alp equals Star, and one P-step composed with Alp equals the closure Tc, the equivalence that licenses implementing p*/p+ by a recursive query instead of explicit graph traversal.",
+  "preInWords": "The predicate-specific relation P (triples with the path's predicate) is a subset of the full graph relation G.",
+  "postInWords": "The ALP visited-set relation Alp equals Star (the closure of P plus reflexive pairs over every node of G), and composing one P-step with Alp equals the transitive-closure relation Tc.",
+  "family": "specification versus declarative program",
+  "kind": "equivalence",
+  "claim": "((Alp = Star) ∧ (π[0, 3] (σ[#1 = #2] (P × Alp)) = Tc))",
+  "precondition": "(P ⊆ G)",
+  "expectedVerdict": "valid",
+  "obstructionExpectation": "anchored (independent loops merged side by side, lockstep frontiers: Front = Star ∖ Star_aux; the p+ conjunct needs the closure inclusions P ⊆ Tc, P ∘ Tc ⊆ Tc, Tc ⊆ P ∪ P ∘ Tc)",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "rateMismatch": false,
+  "sides": [
+    "hand-written: W3C ALP procedure set-at-a-time, visited set indexed by start, seeded with the reflexive pairs over nodes(G); OneOrMorePath = P ∘ Alp stated in the postcondition",
+    "naive compiler: Tc = closure of P; Star = Tc plus reflexive pairs over nodes(G)"
+  ],
+  "sourceProgram": null,
+  "sources": [
+    {
+      "title": "W3C SPARQL 1.1 Query Language, Recommendation 21 March 2013",
+      "url": "https://www.w3.org/TR/sparql11-query/",
+      "sections": "9.1 (ZeroOrMorePath, OneOrMorePath), 9.4 (Arbitrary Length Path Matching, set semantics), 18.4 (Definition: Node set of a graph; Definition: Function ALP; Evaluation of ZeroOrMorePath; Evaluation of OneOrMorePath)",
+      "read": "2026-09-15"
+    }
+  ],
+  "encoding": "canonical five-declaration form; programs run in sequence and merged by Hoare.preprocess; compiled side is naive-compiler output pinned by Fidelity/ (decide +kernel); the p+ result is an RA expression in the postcondition because a trailing assignment would serialise the loops",
+  "created": "2026-09-15",
+  "twin": "Example5015 (invalid: reflexive pairs over the endpoints of P only)",
+  "datalog": [
+    {
+      "label": "prog_p — `p*` over nodes(G) and the closure `p+`, as Datalog.",
+      "text": "Tc(x1, y1) :- P(x1, y1).\nTc(x1, z1) :- Tc(x1, y1), P(y1, z1).\nStar(x1, x1) :- G(x1, y1).\nStar(y1, y1) :- G(x1, y1).\nStar(x1, y1) :- Tc(x1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5014/Fidelity/Example5014.lean"
+    }
+  ]
+}

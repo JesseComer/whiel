@@ -1,0 +1,66 @@
+{
+  "canonicalId": "Example5039",
+  "canonicalInput": "Example5039/Input.lean",
+  "title": "Permission exclusion applied at every object (SpiceDB/OpenFGA) is contained in the exclusion applied once to the finished closure",
+  "explanation": "The permission modelled is SpiceDB/OpenFGA-style exclusion over an inherited relation, permission view = (reader + parent->view) - banned: a user views a document if they read it directly or view its parent, except when banned on that document. Side 1 encodes how SpiceDB and OpenFGA's checkSetOperation/checkTTU actually evaluate this, applying the exclusion at every object in the recursive closure, so a ban on a document also blocks the permission from propagating further down through its descendants. Side 2 computes the unrestricted inheritance closure ViewC by the naive compiler and then subtracts the banned pairs Banned only once, after the closure is complete, giving Filtered. The Hoare triple claims View ⊆ Filtered: applying the exclusion at every recursive step only ever removes pairs relative to the unrestricted closure and never produces a banned pair, so the per-step-filtered relation is necessarily contained in the once-filtered relation — though, as Example5040 shows, the two are not equal.",
+  "preInWords": "The precondition is simply true; no constraints are placed on Reader, Banned, or ParentRel.",
+  "postInWords": "View, computed with the ban exclusion applied at every object of the recursive permission definition, is contained in Filtered, computed as the unrestricted inheritance closure with the ban exclusion subtracted only once at the end.",
+  "family": "engine semantics versus a rewriting (replaces legacy correctness case Example2036)",
+  "kind": "containment",
+  "claim": "(View ⊆ Filtered)",
+  "precondition": "true",
+  "expectedVerdict": "valid",
+  "obstructionExpectation": "anchored: View ⊆ ViewC and View ∩ Banned = ∅ hold round by round and the exclusion of side 2 is a loop-free suffix; no prophecy level expected",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "rateMismatch": false,
+  "sides": [
+    "hand-written: the permission closure with the exclusion applied at every object (legacy Example2036: SpiceDB (reader + parent->view) - banned, OpenFGA but-not)",
+    "naive compiler: the unrestricted closure reader + parent->view, then the exclusion applied once to the finished closure (loop-free suffix)"
+  ],
+  "schemaLinking": "same schema; the filtered closure is computed by a loop-free suffix after the compiled loop",
+  "sourceProgram": null,
+  "sources": [
+    {
+      "system": "SpiceDB",
+      "repo": "authzed/spicedb (documentation)",
+      "file": "Schema language: permissions, union, arrow, exclusion",
+      "function": "permission view = (reader + parent->view) - banned: the exclusion applies to the permission computed at each object, and the arrow reads the parent's permission",
+      "url": "https://authzed.com/docs/spicedb/concepts/schema",
+      "read": "2026-09-15"
+    },
+    {
+      "system": "OpenFGA",
+      "repo": "openfga/openfga",
+      "branch": "main",
+      "file": "internal/graph/check.go",
+      "function": "checkSetOperation with the exclusion handler (base ∧ ¬subtract, evaluated per object) and checkTTU (the arrow parent->view: the check is dispatched to the parent object)",
+      "url": "https://github.com/openfga/openfga/blob/main/internal/graph/check.go",
+      "read": "2026-09-15"
+    }
+  ],
+  "encoding": "canonical five-declaration form; side 1 hand-written and pinned as a segment, side 2 naive-compiler output pinned by Fidelity/ (decide +kernel) followed by a loop-free suffix; independent loops merged side by side; the hand side compared with the naive compilation of the exclusion program (with an explicit Allowed complement, since datalog! has no negation) on the check instances",
+  "created": "2026-09-15",
+  "twin": "Example5040 (invalid: the two claimed equal)",
+  "replaces": "Example2036",
+  "datalog": [
+    {
+      "label": "prog_ViewC",
+      "text": "ViewC(x1, y1) :- Reader(x1, y1).\nViewC(x1, y1) :- ParentRel(y1, z1), ViewC(x1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5039/Fidelity/Example5039.lean"
+    },
+    {
+      "label": "prog_ViewR",
+      "text": "ViewR(x1, y1) :- Reader(x1, y1), Allowed(x1, y1).\nViewR(x1, y1) :- ParentRel(y1, z1), ViewR(x1, z1), Allowed(x1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5039/Fidelity/Example5039.lean"
+    },
+    {
+      "label": "rules as stated in the header comment of Input.lean",
+      "text": "View(u, d) :- Reader(u, d), not Banned(u, d)\nView(u, d) :- ParentRel(d, p), View(u, p), not Banned(u, d)\nViewC(u, d) :- Reader(u, d)\nViewC(u, d) :- ParentRel(d, p), ViewC(u, p)",
+      "provenance": "header comment",
+      "source_file": "Benchmark/Example5039/Input.lean"
+    }
+  ]
+}

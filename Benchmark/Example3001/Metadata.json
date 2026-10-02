@@ -1,0 +1,69 @@
+{
+  "canonicalId": "Example3001",
+  "canonicalInput": "Example3001/Input.lean",
+  "title": "Audited delegation alternation loses an uncertified reviewed hop",
+  "explanation": "Program C1 computes an access set AccessOne via delegation that alternates between a certified-state check and a reviewer-backed review state, allowing a step whenever either state alone combines with a background Delegates edge, and additionally whenever a certified hop and a reviewed hop chain together (certified-then-reviewed or reviewed-then-certified). Program C2 computes AccessTwo with an analogous structure but replaces that alternation with a stricter JointStateTwo requiring a reviewed hop to also be independently certified before it can combine with Delegates. This models an authorization engine comparing an alternating certified/reviewed delegation policy against a stricter one that insists a reviewed transition also be certified. The Hoare triple claims containment AccessOne ⊆ AccessTwo under five TGDs relating Certified, Review, Reviewer, and Delegates, but the claim fails: the case records an explicit witness instance on which C1's alternating chaining reaches a principal that C2's stricter jointly-certified-and-reviewed requirement cannot reach, because C2 loses a deeply authorized principal that is only reachable through an uncertified reviewed hop.",
+  "preInWords": "The precondition is five TGDs: Certified and the first two coordinates of Review are contained in Delegates, the third coordinate of Review is a Reviewer, every Certified pair has a Review/Reviewer witness, and composing a Certified pair with a Review triple through their shared value lands in Delegates.",
+  "postInWords": "The postcondition claims AccessOne ⊆ AccessTwo, but the case is invalid: the recorded witness instance shows a principal that C1's alternating certified/reviewed delegation reaches while C2's stricter jointly-certified delegation does not.",
+  "family": "two programs under TGD constraints (LLM-generated, GPT (raw_invalid_gpt batch); legacy raw_new pipeline), invalid",
+  "kind": "containment",
+  "claim": "(AccessOne ⊆ AccessTwo)",
+  "precondition": "((Certified ⊆ Delegates) ∧ ((π[0,1] (Review) ⊆ Delegates) ∧ ((π[2] (Review) ⊆ Reviewer) ∧ ((Certified ⊆ π[0,1] (σ[#2 = #3] ((Review × Reviewer)))) ∧ (π[0,3] (σ[#1 = #2] ((Certified × Review))) ⊆ Delegates)))))",
+  "expectedVerdict": "invalid",
+  "obstructionExpectation": "invalid (legacy kernel counterexample)",
+  "currentClassification": "invalid",
+  "currentEvidence": "kernel counterexample (Certificate/Invalid.lean)",
+  "rateMismatch": false,
+  "sides": [
+    "naive compiler: program C1 of the retired corpus case Example3001 (output AccessOne)",
+    "naive compiler: program C2 of the retired corpus case Example3001 (output AccessTwo)"
+  ],
+  "schemaLinking": "the two programs share the input relations; the dependencies of the precondition relate them",
+  "sourceProgram": null,
+  "sources": [
+    {
+      "system": "LLM-generated (GPT (raw_invalid_gpt batch)), legacy raw_new TGD pipeline",
+      "repo": "this repository",
+      "file": "the retired corpus case Example3001 (programs C1, C2 and the TGD list tgd0..)",
+      "function": "TGD pipeline run raw-new-tgd-0002-product: TGDs translated to relational algebra by RelCalc.TGD.listToAssertExpr; programs compiled with the certified naive compiler",
+      "url": null,
+      "read": "2026-09-15"
+    },
+    {
+      "system": "method",
+      "repo": "this repository",
+      "file": "the equivalence-under-constraints paper draft (technical appendix: reduction of containment/equivalence under TGDs to a Hoare triple)",
+      "url": null,
+      "read": "2026-09-15"
+    }
+  ],
+  "encoding": "canonical five-declaration form; both sides naive-compiler output pinned by Fidelity/ (decide +kernel); independent loops merged side by side; the TGD precondition is the legacy text verbatim; the legacy concurrent-product loop compared with the sequence on the check instances",
+  "created": "2026-09-15",
+  "certificatePath": "Example3001/Certificate/Invalid.lean",
+  "llmGenerated": "GPT (raw_invalid_gpt batch)",
+  "tgds": [
+    "∀ x1. ∀ y1. Certified(x1, y1) → Delegates(x1, y1)",
+    "∀ x1. ∀ y1. ∀ z1. Review(x1, y1, z1) → Delegates(x1, y1)",
+    "∀ x1. ∀ y1. ∀ z1. Review(x1, y1, z1) → Reviewer(z1)",
+    "∀ x1. ∀ y1. Certified(x1, y1) → ∃ z1. (Review(x1, y1, z1) ∧ Reviewer(z1))",
+    "∀ x1. ∀ y1. ∀ z1. ∀ x2. (Certified(x1, y1) ∧ Review(y1, z1, x2)) → Delegates(x1, z1)"
+  ],
+  "outputs": {
+    "C1": "AccessOne",
+    "C2": "AccessTwo"
+  },
+  "datalog": [
+    {
+      "label": "prog_c1",
+      "text": "AccessOne(x1) :- Root(x1).\nCertStateOne(y1) :- AccessOne(x1), Certified(x1, y1).\nReviewStateOne(y1) :- AccessOne(x1), Review(x1, y1, z1), Reviewer(z1).\nAccessOne(y1) :- CertStateOne(x1), Review(x1, y1, z1), Reviewer(z1).\nAccessOne(y1) :- ReviewStateOne(x1), Certified(x1, y1).\nAccessOne(y1) :- CertStateOne(y1), ReviewStateOne(y1), Delegates(x1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example3001/Fidelity/Example3001.lean"
+    },
+    {
+      "label": "prog_c2",
+      "text": "AccessTwo(x1) :- Root(x1).\nCertStateTwo(y1) :- AccessTwo(x1), Certified(x1, y1).\nReviewStateTwo(y1) :- AccessTwo(x1), Review(x1, y1, z1), Reviewer(z1).\nJointStateTwo(y1) :- CertStateTwo(x1), Review(x1, y1, z1), Reviewer(z1), Certified(x1, y1).\nAccessTwo(y1) :- JointStateTwo(y1), Delegates(x1, y1).\nAccessTwo(y1) :- CertStateTwo(y1), ReviewStateTwo(y1), Delegates(x1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example3001/Fidelity/Example3001.lean"
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "((of_z2 = ∅[0]) ∨ (π[0,3] (σ[#1 = #2] ((oa_zT × op_zE))) ⊆ op_zT))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ∅[0]) ∨ (op_zE ⊆ op_zT))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ⊤) ∨ (op_zEN = (op_zE ∖ op_zDel)))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ⊤) ∨ ((of_z0 = ∅[0]) ∨ (π[0,3] (σ[#1 = #2] ((op_zOver × op_zE))) ⊆ (op_zOver ∪ op_zCand))))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ⊤) ∨ ((of_z0 = ∅[0]) ∨ (π[0,3] (σ[#1 = #2] ((op_zT × op_zE))) ⊆ op_zT)))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ⊤) ∨ ((of_z0 = ∅[0]) ∨ (op_zE ⊆ op_zT)))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ⊤) ∨ ((of_z0 = ⊤) ∨ ((of_z1 = ⊤) ∨ (π[0,3] (σ[#1 = #2] ((op_zT × op_zEN))) ⊆ op_zT))))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ⊤) ∨ ((of_z0 = ⊤) ∨ ((of_z1 = ⊤) ∨ (π[0,3] (σ[#1 = #2] ((op_zTn × op_zEN))) ⊆ op_zTn))))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ⊤) ∨ ((of_z0 = ⊤) ∨ ((of_z1 = ⊤) ∨ (op_zEN ⊆ op_zT))))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ⊤) ∨ ((of_z0 = ⊤) ∨ (π[0,3] (σ[#1 = #2] ((oa_zTn × op_zEN))) ⊆ op_zTn)))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ⊤) ∨ ((of_z0 = ⊤) ∨ (π[0,3] (σ[#1 = #2] ((op_zOver × op_zE))) ⊆ op_zOver)))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ⊤) ∨ ((of_z0 = ⊤) ∨ (π[0,3] (σ[#1 = #2] ((op_zOver × op_zTn))) ⊆ op_zOver)))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ⊤) ∨ ((of_z0 = ⊤) ∨ (π[0,3] (σ[#1 = #2] ((op_zT × op_zEN))) ⊆ (op_zT ∪ op_zCand))))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ⊤) ∨ ((of_z0 = ⊤) ∨ (op_zCand ⊆ op_zOver)))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ⊤) ∨ ((of_z0 = ⊤) ∨ (op_zEN ⊆ op_zTn)))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ⊤) ∨ ((of_z0 = ⊤) ∨ (op_zEN ⊆ (op_zT ∪ op_zCand))))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ⊤) ∨ ((of_z3 = ⊤) ∨ (of_z0 = ∅[0])))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z2 = ⊤) ∨ ((of_z3 = ⊤) ∨ (of_z1 = ∅[0])))"
+    },
+    {
+      "level": 1,
+      "source": "((of_z2 = ∅[0]) ∨ (op_zT ⊆ (yp_zTn ∪ ((op_zDel ∪ π[0,3] (σ[#1 = #2] ((op_zT × op_zDel)))) ∪ π[0,3] (σ[#1 = #2] (((op_zDel ∪ π[0,3] (σ[#1 = #2] ((op_zT × op_zDel)))) × yp_zTn)))))))"
+    },
+    {
+      "level": 1,
+      "source": "((of_z2 = ⊤) ∨ ((of_z0 = ∅[0]) ∨ (op_zT ⊆ (yp_zTn ∪ ((op_zOver ∪ op_zCand) ∪ π[0,3] (σ[#1 = #2] (((op_zOver ∪ op_zCand) × yp_zTn))))))))"
+    },
+    {
+      "level": 1,
+      "source": "((of_z2 = ⊤) ∨ ((of_z0 = ⊤) ∨ ((op_zT ∖ op_zOver) ⊆ (yp_zTn ∪ π[0,3] (σ[#1 = #2] ((op_zOver × yp_zTn)))))))"
+    },
+    {
+      "level": 1,
+      "source": "((of_z2 = ⊤) ∨ ((of_z0 = ⊤) ∨ (op_zCand ⊆ (yp_zTn ∪ π[0,3] (σ[#1 = #2] ((((op_zT ∖ op_zOver) ∖ yp_zTn) × yp_zTn)))))))"
+    },
+    {
+      "level": 1,
+      "source": "((of_z2 = ⊤) ∨ ((of_z0 = ⊤) ∨ (op_zT ⊆ ((yp_zTn ∪ ((op_zT ∖ op_zOver) ∖ yp_zTn)) ∪ π[0,3] (σ[#1 = #2] ((((op_zT ∖ op_zOver) ∖ yp_zTn) × yp_zTn)))))))"
+    },
+    {
+      "level": 1,
+      "source": "((of_z2 = ⊤) ∨ ((of_z0 = ⊤) ∨ (op_zTn ⊆ yp_zT)))"
+    },
+    {
+      "level": 1,
+      "source": "((op_zE ∖ op_zDel) ⊆ yp_zTn)"
+    },
+    {
+      "level": 1,
+      "source": "(π[0,3] (σ[#1 = #2] ((yp_zTn × (op_zE ∖ op_zDel)))) ⊆ yp_zTn)"
+    }
+  ],
+  "version": 1
+}

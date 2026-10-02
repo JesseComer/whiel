@@ -1,0 +1,22 @@
+{
+  "name": "paper-whiel-tools-skills",
+  "notes": "Whiel + Tools + Skills (tools, six skills): the GPT-5.5 stage of the paper's 'base_skill6' configuration over the full benchmark. This first GPT-5.5 pass is capped at 6 iterations; the reported counts then rerun its failures from scratch with iteration_limit null (uncapped), before escalating. Escalation: rerun the remaining failures (set 'inputs' to them) with model 'gpt-5.6-sol', then with model 'gpt-6-astra'; the gpt-6-astra stage needs Codex CLI 0.154.0 (provider_cli artifacts/provider-cli/0.154.0/x86_64-unknown-linux-musl/codex), because 0.148.0 rejects that model. Each stage is a fresh attempt with no prior state. The recorded runs used the default (neutral) prompt.",
+  "proposer": "agent",
+  "provider": "codex",
+  "model": "gpt-5.5",
+  "reasoning_effort": "medium",
+  "provider_cli": "artifacts/provider-cli/0.148.0/x86_64-unknown-linux-musl/codex",
+  "isolation": "bwrap",
+  "all_inputs": true,
+  "output_root": "artifacts/runs",
+  "search_limit_seconds": 600,
+  "certification_limit_seconds": 1800,
+  "iteration_limit": 6,
+  "workers": 4,
+  "retention": "all",
+  "agent_retention": "all",
+  "certify": "never",
+  "skills_dir": "agent_houdini/skills/v1",
+  "token_usage": "codex-rollout",
+  "verifier_args": []
+}

@@ -1,0 +1,134 @@
+leancheck: give introduced definition symbols a consistent arity
+
+Applies to the tree the previous patch of the series leaves behind
+(commit a75412b2650f731ba5fc670d610a28636b4fe8fd on vprover/vampire
+commit d3a6306601ef988fb11438019fba192eb0305a2d, branch `leancheck`).
+
+The `Shell/TweeGoalTransformation.cpp` hunk is byte for byte upstream
+commit c098eb89a3dcb7a1e5fcd139b75f84a1b144648c (Marton Hajdu,
+2026-05-07, "Remove secondary term variables stack to prevent
+unsoundness"); the `leancheck` branch base simply predates it.
+`Definizator::scanVars` collected the defined subterm's term variables
+into `_termVars` but appended a different, never-populated stack to
+`_allVars`, so the introduced symbol was created with arity zero while
+its `OperatorType` was built over `_termVarSorts` and carried the
+subterm's real arity. Upstream `5f498d2f1015f9fc96a716812eb35f2e63e5534c`
+("Fix Twee goal transformation inference type", 2026-08-07) touches the
+same file and is worth examining at the next rebase onto `leancheck`.
+
+The `Shell/LeanChecker/LeanChecker.cpp` hunk is this repository's own,
+and is the robustness fix that does not depend on the first.
+`LeanChecker::functionDefinitionIntroduction` took the `let`'s binder
+list from a traversal of the equation's variable map, ordered by that
+map's allocation and sized by the equation's variables rather than by
+the symbol's arity. It now reads the binders off the introduced symbol's
+own application inside the defining equation, and emits them without
+`outputVariables`'s index sort, so the declaration, the `let`, the
+defining equation's `fun ... => rfl`, and every later use agree on how
+many parameters the symbol has and in what order by construction. The
+twee transformation orders a symbol's parameters by first occurrence in
+the defined subterm, which need not be ascending in the variable index,
+so sorting the binder list would silently permute them.
+
+diff --git a/Shell/LeanChecker/LeanChecker.cpp b/Shell/LeanChecker/LeanChecker.cpp
+index 4c7a2d1ef..31195e56d 100644
+--- a/Shell/LeanChecker/LeanChecker.cpp
++++ b/Shell/LeanChecker/LeanChecker.cpp
+@@ -850,25 +850,60 @@ void LeanChecker::functionDefinitionIntroduction(std::ostream &out, SortMap &con
+   //auto [parent] = getParents<1>(concl);
+   out << indent << "-- step" << concl->number() << " " << concl->inference().name() << "\n";
+   auto introducedFunctionSymbols = _is->getIntroducedSymbols(concl);
+-  auto fun = env.signature->getFunction(introducedFunctionSymbols.top().second);
+-  out << indent << "let " << FunctionName(fun) << " ";
++  unsigned functor = introducedFunctionSymbols.top().second;
++  auto fun = env.signature->getFunction(functor);
+   auto lit = concl->asClause()->literals()[0];
+-  SortMap variableMap;
+-  SortHelper::collectVariableSorts(lit, variableMap);
+-  ASS(fun->arity() == variableMap.size());
+-  auto domain = variableMap.domain();
+-  outputVariables(out, domain, conclSorts, conclSorts);
+-  out << ":= ";
+   ASS(lit->isEquality())
+-  auto lhsEqDefinition = lit->termArg(0);
+-  out << Args{&lhsEqDefinition, conclSorts, conclSorts} << "\n";
++  // One side of the definition is the introduced symbol applied to its own
++  // parameters; the other side is the term it abbreviates. Read the binder
++  // list off that application, so the emitted `let`, the applications of
++  // the symbol in the emitted statement, and the symbol's declared type
++  // agree on both the number of parameters and their order. A traversal of
++  // the literal's variables agrees on neither: it is ordered by the
++  // variable map's allocation, and its size is the number of variables in
++  // the equation rather than the symbol's arity.
++  TermList definiens = lit->termArg(0);
++  std::vector<unsigned> parameters;
++  bool oriented = false;
++  for(unsigned side = 0; !oriented && side < 2; side++){
++    TermList candidate = lit->termArg(side);
++    if(!candidate.isTerm() || candidate.term()->isSort()
++       || candidate.term()->functor() != functor)
++      continue;
++    Term *defined = candidate.term();
++    parameters.clear();
++    for(unsigned i = 0; i < defined->arity(); i++){
++      TermList argument = *defined->nthArgument(i);
++      if(!argument.isVar())
++        break;
++      parameters.push_back(argument.var());
++    }
++    if(parameters.size() != defined->arity()){
++      parameters.clear();
++      continue;
++    }
++    definiens = lit->termArg(1 - side);
++    oriented = true;
++  }
++  // Fail closed rather than guess: an equation that does not apply the
++  // introduced symbol to distinct parameters is emitted as before and does
++  // not elaborate, instead of being papered over with a wrong binder list.
++  ASS(oriented)
++  // `outputVariables` sorts its binder list by variable index unless the
++  // sort argument is 0, and a sorted list is exactly what must not be
++  // emitted here: the parameters are already in the introduced symbol's
++  // own application order, which the twee transformation fixes by first
++  // occurrence in the defined subterm and which need not be ascending.
++  out << indent << "let " << FunctionName(fun) << " ";
++  outputVariables(out, &parameters, conclSorts, conclSorts, Identity{}, 0);
++  out << ":= ";
++  out << Args{&definiens, conclSorts, conclSorts} << "\n";
+   out << indent << "have " << stepIdent << concl->number() << " : ";
+   outputUnit(out, concl);
+   out << " := ";
+-  if(fun->arity()>0){
++  if(!parameters.empty()){
+     out << "fun ";
+-    auto domain = variableMap.domain();
+-    outputVariables(out, domain, conclSorts, conclSorts);
++    outputVariables(out, &parameters, conclSorts, conclSorts, Identity{}, 0);
+     out << " => ";
+   }
+   out << "rfl\n";
+diff --git a/Shell/TweeGoalTransformation.cpp b/Shell/TweeGoalTransformation.cpp
+index 104e2fae8..0a8a385b1 100644
+--- a/Shell/TweeGoalTransformation.cpp
++++ b/Shell/TweeGoalTransformation.cpp
+@@ -84,8 +84,6 @@ class Definizator : public BottomUpTermTransformer {
+       _typeVars.reset();
+       _termVars.reset();
+       _allVars.reset();
+-      static TermStack termVars;
+-      termVars.reset();
+       _termVarSorts.reset();
+ 
+       // fake scanVars cheaply
+@@ -103,8 +101,8 @@ class Definizator : public BottomUpTermTransformer {
+         }
+       }
+       _typeArity = _allVars.size(); // allVars only collected typeVars until now
+-      for(unsigned i = 0; i < termVars.size(); i++){
+-        _allVars.push(termVars[i]);
++      for(unsigned i = 0; i < _termVars.size(); i++){
++        _allVars.push(_termVars[i]);
+       }
+ 
+       SortHelper::normaliseArgSorts(_typeVars, _termVarSorts);

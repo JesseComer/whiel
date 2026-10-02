@@ -1,0 +1,114 @@
+{
+  "fuel_consumed": 14,
+  "fuel_policy": {
+    "host_fuel_bound": null,
+    "kind": "structural_replay",
+    "validation_limit_nanos": 30000000000
+  },
+  "instance": {
+    "relations": [
+      {
+        "name": "p::Cur",
+        "rows": []
+      },
+      {
+        "name": "p::Edge",
+        "rows": [
+          [
+            "num:0",
+            "num:1"
+          ],
+          [
+            "num:1",
+            "num:2"
+          ],
+          [
+            "num:2",
+            "num:3"
+          ]
+        ]
+      },
+      {
+        "name": "p::Inter",
+        "rows": []
+      },
+      {
+        "name": "p::Lt",
+        "rows": [
+          [
+            "num:0",
+            "num:1"
+          ],
+          [
+            "num:0",
+            "num:2"
+          ],
+          [
+            "num:0",
+            "num:3"
+          ],
+          [
+            "num:1",
+            "num:2"
+          ],
+          [
+            "num:1",
+            "num:3"
+          ],
+          [
+            "num:2",
+            "num:3"
+          ]
+        ]
+      },
+      {
+        "name": "p::LvlA",
+        "rows": []
+      },
+      {
+        "name": "p::LvlB",
+        "rows": []
+      },
+      {
+        "name": "p::Res",
+        "rows": []
+      },
+      {
+        "name": "p::Rest",
+        "rows": []
+      },
+      {
+        "name": "p::SeenA",
+        "rows": []
+      },
+      {
+        "name": "p::SeenB",
+        "rows": []
+      },
+      {
+        "name": "p::TcB",
+        "rows": []
+      },
+      {
+        "name": "p::WorkT",
+        "rows": []
+      }
+    ]
+  },
+  "instance_identity": "1ccb0f8f7d3d331ad0228253a153a68908b5b41ce7bec1ee1deed929a9efe982",
+  "kind": "whiel_framework_ii_counterexample",
+  "provenance": {
+    "kind": "recorded_witness",
+    "source": "counterexample instance contributed with the case by Shuo Zhang"
+  },
+  "scope_identity_sha256": "0707f716c2cb033fac1163cfbdb9ba0de5bed4f75ea93dbebbbd8831f6eb9ab1",
+  "task": {
+    "canonical_id": "Example5031",
+    "encoding_version": 1,
+    "module": "Benchmark.Example5031.Input",
+    "namespace": "Whiel.Benchmark.Example5031",
+    "semantic_version": 1,
+    "source_sha256": "6bd393f495cdc99cb0db24e66b3ceabac09f235564abae1b00c4c5aefd33e871"
+  },
+  "version": 1
+}

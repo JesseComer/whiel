@@ -1,0 +1,78 @@
+leancheck: emit rectify helpers over retained binders only
+
+Applies to vprover/vampire commit d3a6306601ef988fb11438019fba192eb0305a2d
+(branch `leancheck`). Rectification drops every quantified variable that
+does not occur in its quantifier body. The Lean emitter built its generic
+`have rN (P : ...) : (∃ x y, P x y) ↔ (∃ x' y', P x y)` helper over every
+binder of the original quantifier, so a dropped binder was substituted by a
+variable with no in-scope name (printed as `default`) or by the name of a
+surviving binder. The helper now ranges over the retained binders only and
+is skipped when the substitution is the identity on them; the emitted
+`simp only [forall_const, exists_const]` step already removes the dropped
+binders from the premise.
+
+diff --git a/Shell/LeanChecker/LeanChecker.cpp b/Shell/LeanChecker/LeanChecker.cpp
+index dee801cb9..4c7a2d1ef 100644
+--- a/Shell/LeanChecker/LeanChecker.cpp
++++ b/Shell/LeanChecker/LeanChecker.cpp
+@@ -4,6 +4,7 @@
+ #include "Kernel/Clause.hpp"
+ #include "Kernel/Connective.hpp"
+ #include "Kernel/FormulaUnit.hpp"
++#include "Kernel/FormulaVarIterator.hpp"
+ #include "Kernel/Inference.hpp"
+ #include "Kernel/OperatorType.hpp"
+ #include "Kernel/Signature.hpp"
+@@ -1282,17 +1283,6 @@ void LeanChecker::rectify(std::ostream &out, SortMap &conclSorts, Unit *concl, c
+   unsigned counter = 0;
+   for(auto [newFormula, formulaAndSubst] : rectifyInfo->renamings) {
+     auto [formula, subst] = formulaAndSubst;
+-    //check if subst is identity, if so we can skip this formula
+-    bool identity = true;
+-    for(auto [var, term] : iterTraits(subst.items())){
+-      if(term != TermList::var(var)){
+-        identity = false;
+-        break;
+-      }
+-    }
+-    if(identity){
+-      continue;
+-    }
+     SortMap allFormulaSorts;
+     SortHelper::collectVariableSorts(formula, allFormulaSorts);
+     SortMap allNewFormulaSorts;
+@@ -1301,13 +1291,33 @@ void LeanChecker::rectify(std::ostream &out, SortMap &conclSorts, Unit *concl, c
+     SortMap newFormulaSorts;
+     auto conn = formula->connective();
+     if(conn==Kernel::FORALL || conn==Kernel::EXISTS){
++      // Rectification drops every quantified variable that does not occur
++      // in the quantifier body, so a dropped binder has no counterpart in
++      // newFormula. The generic helper below must range over the retained
++      // binders only: a dropped binder has no in-scope name on the
++      // substituted side and would print as `default` or alias a survivor.
++      VList* retained = Kernel::freeVariables(formula->qarg());
+       for(auto var : iterTraits(formula->vars()->iter())){
+-        sorts.insert(var.first, allFormulaSorts.get(var.first));
++        if(VList::member(var.first, retained)){
++          sorts.insert(var.first, allFormulaSorts.get(var.first));
++        }
+       }
++      VList::destroy(retained);
+       for(auto var : iterTraits(newFormula->vars()->iter())){
+         newFormulaSorts.insert(var.first, allNewFormulaSorts.get(var.first));
+       }
+     }
++    //check if subst is the identity on the retained binders, if so we can skip this formula
++    bool identity = true;
++    for(auto var : iterTraits(sorts.domain())){
++      if(subst.apply(var) != TermList::var(var)){
++        identity = false;
++        break;
++      }
++    }
++    if(identity){
++      continue;
++    }
+     out << indent << "have r" << counter << " (P :";
+     //Todo sort sorts here
+     for(auto [var, sort] : iterTraits(sorts.items())){

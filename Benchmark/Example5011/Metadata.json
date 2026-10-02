@@ -1,0 +1,33 @@
+{
+  "canonicalId": "Example5011",
+  "canonicalInput": "Example5011/Input.lean",
+  "title": "Soufflé topological_ordering benchmark: naive versus semi-naive evaluation",
+  "explanation": "Soufflé's topological_ordering.dl benchmark computes a topological layering of a directed graph. is_before and is_after are the transitive closure of the edge relation and of its reverse; isolated vertices receive rank zero and source vertices rank one, and a vertex that comes after a vertex of rank i also receives the next rank (ranks are symbols ordered by the input relation Succ). index keeps, for each vertex, the rank that has no successor rank assigned to the same vertex, that is, its maximal rank: on an acyclic graph, one more than the length of the longest path reaching it from a source. The triple compares naive and semi-naive evaluation of this whole stratified program and claims that all eight output relations agree.",
+  "preInWords": "True; no precondition constrains the inputs.",
+  "postInWords": "Each of the eight output relations (hasSuccessorRank, index, indices, isAfter, isBefore, isolated, source, vertex) computed naively equals its semi-naive counterpart.",
+  "family": "Soufflé naive vs semi-naive",
+  "kind": "equivalence",
+  "claim": "((hasSuccessorRank = hasSuccessorRankS) ∧ (index = indexS) ∧ (indices = indicesS) ∧ (isAfter = isAfterS) ∧ (isBefore = isBeforeS) ∧ (isolated = isolatedS) ∧ (source = sourceS) ∧ (vertex = vertexS))",
+  "precondition": "true",
+  "expectedVerdict": "invalid",
+  "currentClassification": "invalid",
+  "currentEvidence": "kernel counterexample (Certificate/Invalid.lean)",
+  "notes": [
+    "The original expectation of validity was disproved by the recorded counterexample. The certificate proves the negation of the exact encoded Hoare triple; this corrects the label without changing the program or its precondition."
+  ],
+  "rateMismatch": false,
+  "sides": [
+    "naive translation of topological_ordering.dl (Soufflé benchmark suite)",
+    "semi-naive translation of topological_ordering.dl (Soufflé benchmark suite)"
+  ],
+  "sourceProgram": "topological_ordering.dl of the Soufflé benchmark suite (naive translation)",
+  "encoding": "canonical five-declaration form; programs run in sequence and merged by Hoare.preprocess; compiled sides are naive-compiler output pinned by Fidelity/ (decide +kernel); hand-written sides are the retired corpus commands verbatim under a bijective rename of relation names",
+  "created": "2026-09-15",
+  "datalog": [
+    {
+      "label": "normalized Soufflé source (topological_ordering.dl of the Soufflé benchmark suite (naive translation))",
+      "text": ".decl edge(v0:symbol, v1:symbol) input\n.decl RankZero(v0:symbol) input\n.decl RankOne(v0:symbol) input\n.decl Succ(v0:symbol, v1:symbol) input\n.decl vertex(v0:symbol) output\n.decl is_before(v0:symbol, v1:symbol) output\n.decl is_after(v0:symbol, v1:symbol) output\n.decl isolated(v0:symbol) output\n.decl source(v0:symbol) output\n.decl indices(v0:symbol, v1:symbol) output\n.decl has_successor_rank(v0:symbol, v1:symbol) output\n.decl index(v0:symbol, v1:symbol) output\n\nvertex(v) :- edge(v, __anon_1).\nvertex(v) :- edge(__anon_2, v).\nis_before(x, y) :- edge(x, y).\nis_before(x, y) :- is_before(x, z), is_before(z, y).\nis_after(x, y) :- edge(y, x).\nis_after(x, y) :- is_after(z, x), is_after(y, z).\nisolated(x) :- vertex(x), !edge(__anon_3, x), !edge(x, __anon_4).\nsource(x) :- vertex(x), !edge(__anon_5, x), edge(x, __anon_6).\nindices(x, i) :- isolated(x), RankZero(i).\nindices(x, i) :- source(x), RankOne(i).\nindices(x, i1) :- is_after(x, y), indices(y, i), Succ(i, i1).\nhas_successor_rank(x, i) :- indices(x, i), Succ(i, i1), indices(x, i1).\nindex(x, i) :- indices(x, i), !has_successor_rank(x, i).",
+      "provenance": "Soufflé benchmark program, normalized (both sides are script translations of it)"
+    }
+  ]
+}

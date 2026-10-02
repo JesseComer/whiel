@@ -1,0 +1,94 @@
+{
+  "canonicalId": "Example5038",
+  "canonicalInput": "Example5038/Input.lean",
+  "title": "OpenFGA Check by top-down userset dispatch versus OpenFGA ListObjects by reverse expansion from the user",
+  "explanation": "The underlying query is group membership through nested usersets, Member(u,g) :- DirectMember(u,g); Member(u,g) :- Member(u,h), SubGroup(h,g), the object-relationship-model membership relation used by systems like OpenFGA. Side 1 encodes OpenFGA's Check API in its default top-down strategy (checkDirect/checkDirectUsersetTuples): it first pushes demand for a queried object down through subgroups (Demand), then builds membership answers Ans back up from the direct memberships of demanded groups. Side 2 encodes OpenFGA's ListObjects API via reverse expansion (readTuplesAndExecute/ReadStartingWithUser): it grows a reachability relation Reach upward from the queried users' direct group memberships through subgroups, with no notion of a queried object. The Hoare triple claims that, restricted to the queried users and queried objects, the two APIs' answers agree — Check's top-down, demand-restricted evaluation and ListObjects' bottom-up reverse expansion compute the same membership relation on the questions actually asked.",
+  "preInWords": "The precondition is simply true; no constraints are placed on DirectMember, SubGroup, QUser, or Query.",
+  "postInWords": "Restricted to pairs whose object is in Query, the answer relation Ans produced by OpenFGA's top-down Check equals the answer relation Reach produced by OpenFGA's reverse-expansion ListObjects.",
+  "family": "production algorithm pair (rate mismatch; two evaluation directions in one codebase; replaces legacy correctness case Example2032)",
+  "kind": "equivalence",
+  "claim": "((π[0, 1] (σ[#1 = #2] (Ans × Query))) = (π[0, 1] (σ[#1 = #2] (Reach × Query))))",
+  "precondition": "true",
+  "expectedVerdict": "valid",
+  "obstructionExpectation": "rate mismatch (reverse expansion climbs one level per round from the user; the top-down check first pushes the demand down and then builds the answers up, about twice the rounds for the same pair); leveled-framework target; with prophecy both containments follow from the fixpoint facts (no leastness needed)",
+  "currentClassification": "valid",
+  "currentEvidence": "accepted invariant (Core.json); certificate not yet built",
+  "rateMismatch": true,
+  "sides": [
+    "naive compiler: OpenFGA Check, default top-down userset dispatch (checkDirect / checkDirectUsersetTuples), as the demand-driven form of the membership program restricted to the queried users",
+    "naive compiler: OpenFGA ListObjects, reverse expansion (readTuplesAndExecute / ReadStartingWithUser) as the membership closure seeded at the queried users"
+  ],
+  "schemaLinking": "both sides restricted to the queried objects inside the postcondition; the Check side is restricted to the queried users by its rules, the ListObjects side by its seed",
+  "sourceProgram": null,
+  "sources": [
+    {
+      "system": "OpenFGA",
+      "repo": "openfga/openfga",
+      "branch": "main",
+      "file": "internal/graph/check.go",
+      "function": "LocalChecker.checkDirect, checkDirectUserTuple, checkDirectUsersetTuples (default strategy defaultUserset dispatches Check(user, h#member) for every userset tuple of the object), ResolveCheck (maxResolutionDepth, hasCycle)",
+      "url": "https://github.com/openfga/openfga/blob/main/internal/graph/check.go",
+      "read": "2026-09-15 (the derivation of legacy Example2032, verified against the source)",
+      "commit": "73591ef16ce5 (2026-09-08)"
+    },
+    {
+      "system": "OpenFGA",
+      "repo": "openfga/openfga",
+      "branch": "main",
+      "commit": "73591ef16ce5 (2026-09-08)",
+      "file": "internal/graph/recursive_resolver.go",
+      "function": "recursiveFastPath, recursiveMatchUserUserset, breadthFirstRecursiveMatch (the planner's alternative Check strategy for recursive usersets: usersets of the user loaded once, breadth-first from the object until a level meets them; not modelled)",
+      "url": "https://github.com/openfga/openfga/blob/main/internal/graph/recursive_resolver.go",
+      "read": "2026-09-15"
+    },
+    {
+      "system": "OpenFGA",
+      "repo": "openfga/openfga",
+      "branch": "main",
+      "commit": "73591ef16ce5 (2026-09-08)",
+      "file": "pkg/server/commands/reverseexpand/reverse_expand.go",
+      "function": "ReverseExpandQuery.execute (edges from the type system, candidate emission by trySendCandidate with candidateObjectsMap, visitedUsersetsMap, resolveNodeLimit), reverseExpandDirect, readTuplesAndExecute (ReadStartingWithUser, each found object#relation becomes a new source)",
+      "url": "https://github.com/openfga/openfga/blob/main/pkg/server/commands/reverseexpand/reverse_expand.go",
+      "read": "2026-09-15"
+    },
+    {
+      "system": "OpenFGA",
+      "repo": "openfga/openfga",
+      "branch": "main",
+      "commit": "73591ef16ce5 (2026-09-08)",
+      "file": "pkg/server/commands/list_objects.go",
+      "function": "ListObjectsQuery.evaluate (delegates to ReverseExpand.Execute; candidates with NoFurtherEvalStatus are results, RequiresFurtherEvalStatus goes to Check)",
+      "url": "https://github.com/openfga/openfga/blob/main/pkg/server/commands/list_objects.go",
+      "read": "2026-09-15"
+    }
+  ],
+  "encoding": "canonical five-declaration form; both sides are naive-compiler output pinned by Fidelity/ (decide +kernel); independent loops merged side by side; both sides compared with the naive compilation of the membership program, restricted to the demand and to the queried users respectively, on the check instances",
+  "created": "2026-09-15",
+  "replaces": "Example2032",
+  "datalog": [
+    {
+      "label": "prog_demand",
+      "text": "Demand(x1) :- Query(x1).\nDemand(y1) :- Demand(x1), SubGroup(y1, x1).\nAns(x1, y1) :- Demand(y1), QUser(x1), DirectMember(x1, y1).\nAns(x1, y1) :- Demand(y1), SubGroup(z1, y1), Ans(x1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5038/Fidelity/Example5038.lean"
+    },
+    {
+      "label": "prog_reach",
+      "text": "Reach(x1, y1) :- QUser(x1), DirectMember(x1, y1).\nReach(x1, z1) :- Reach(x1, y1), SubGroup(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5038/Fidelity/Example5038.lean"
+    },
+    {
+      "label": "prog_MemberR",
+      "text": "MemberR(x1, y1) :- DirectMember(x1, y1).\nMemberR(x1, z1) :- MemberR(x1, y1), SubGroup(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5038/Fidelity/Example5038.lean"
+    },
+    {
+      "label": "rules as stated in the header comment of Input.lean",
+      "text": "Member(u, g) :- DirectMember(u, g)\nMember(u, g) :- Member(u, h), SubGroup(h, g)\nDemand(g) :- Query(g)\nDemand(h) :- Demand(g), SubGroup(h, g)\nAns(u, g) :- Demand(g), QUser(u), DirectMember(u, g)\nAns(u, g) :- Demand(g), SubGroup(h, g), Ans(u, h)\nReach(u, g) :- QUser(u), DirectMember(u, g)\nReach(u, g) :- Reach(u, h), SubGroup(h, g)",
+      "provenance": "header comment",
+      "source_file": "Benchmark/Example5038/Input.lean"
+    }
+  ]
+}

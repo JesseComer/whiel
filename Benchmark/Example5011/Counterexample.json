@@ -1,0 +1,174 @@
+{
+  "fuel_consumed": 40,
+  "fuel_policy": {
+    "host_fuel_bound": null,
+    "kind": "structural_replay",
+    "validation_limit_nanos": 30000000000
+  },
+  "instance": {
+    "relations": [
+      {
+        "name": "p::RankOne",
+        "rows": [
+          [
+            "num:1"
+          ]
+        ]
+      },
+      {
+        "name": "p::RankZero",
+        "rows": []
+      },
+      {
+        "name": "p::Succ",
+        "rows": [
+          [
+            "num:1",
+            "num:2"
+          ]
+        ]
+      },
+      {
+        "name": "p::deltaIndicesOldS",
+        "rows": []
+      },
+      {
+        "name": "p::deltaIndicesS",
+        "rows": []
+      },
+      {
+        "name": "p::deltaIsAfterOldS",
+        "rows": []
+      },
+      {
+        "name": "p::deltaIsAfterS",
+        "rows": []
+      },
+      {
+        "name": "p::deltaIsBeforeOldS",
+        "rows": []
+      },
+      {
+        "name": "p::deltaIsBeforeS",
+        "rows": []
+      },
+      {
+        "name": "p::edge",
+        "rows": [
+          [
+            "num:1",
+            "num:1"
+          ],
+          [
+            "num:2",
+            "num:1"
+          ]
+        ]
+      },
+      {
+        "name": "p::hasSuccessorRank",
+        "rows": []
+      },
+      {
+        "name": "p::hasSuccessorRankS",
+        "rows": []
+      },
+      {
+        "name": "p::index",
+        "rows": []
+      },
+      {
+        "name": "p::indexS",
+        "rows": []
+      },
+      {
+        "name": "p::indices",
+        "rows": []
+      },
+      {
+        "name": "p::indicesNew",
+        "rows": []
+      },
+      {
+        "name": "p::indicesOld",
+        "rows": []
+      },
+      {
+        "name": "p::indicesS",
+        "rows": []
+      },
+      {
+        "name": "p::isAfter",
+        "rows": []
+      },
+      {
+        "name": "p::isAfterNew",
+        "rows": []
+      },
+      {
+        "name": "p::isAfterOld",
+        "rows": []
+      },
+      {
+        "name": "p::isAfterS",
+        "rows": []
+      },
+      {
+        "name": "p::isBefore",
+        "rows": []
+      },
+      {
+        "name": "p::isBeforeNew",
+        "rows": []
+      },
+      {
+        "name": "p::isBeforeOld",
+        "rows": []
+      },
+      {
+        "name": "p::isBeforeS",
+        "rows": []
+      },
+      {
+        "name": "p::isolated",
+        "rows": []
+      },
+      {
+        "name": "p::isolatedS",
+        "rows": []
+      },
+      {
+        "name": "p::source",
+        "rows": []
+      },
+      {
+        "name": "p::sourceS",
+        "rows": []
+      },
+      {
+        "name": "p::vertex",
+        "rows": []
+      },
+      {
+        "name": "p::vertexS",
+        "rows": []
+      }
+    ]
+  },
+  "instance_identity": "9b3c8f3c44d5e198b2251964620600d6ad4738ff99ebd54e449ef0d082768acc",
+  "kind": "whiel_framework_ii_counterexample",
+  "provenance": {
+    "kind": "recorded_witness",
+    "source": "a minimal counterexample found by exhaustive search"
+  },
+  "scope_identity_sha256": "d8c4534562ec09885cf9a54b6274c307fca1174ca7d5861b0eea65feb00e2a8a",
+  "task": {
+    "canonical_id": "Example5011",
+    "encoding_version": 1,
+    "module": "Benchmark.Example5011.Input",
+    "namespace": "Whiel.Benchmark.Example5011",
+    "semantic_version": 1,
+    "source_sha256": "3debeb43c314a263f4b062056ddf70ba0ab8424183edacd8bb1be414ac451975"
+  },
+  "version": 1
+}

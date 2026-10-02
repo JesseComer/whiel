@@ -1,0 +1,18 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(oa_zConn ⊆ op_zRBound)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zAllowedE ⊆ op_zLinkE)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zConn ⊆ op_zRBound)"
+    }
+  ],
+  "version": 1
+}

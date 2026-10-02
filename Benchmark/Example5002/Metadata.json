@@ -1,0 +1,31 @@
+{
+  "canonicalId": "Example5002",
+  "canonicalInput": "Example5002/Input.lean",
+  "title": "Datafrog semi-naive delta evaluation versus naive evaluation",
+  "explanation": "Both sides compute the transpose of the transitive closure of EdgeF: Nodes/Reach(y,x) holds when y is reachable from x by one or more EdgeF steps. Side 1 models Datafrog's (and similarly Soufflé's) semi-naive delta evaluation: it maintains only the newly derived facts DeltaN from the previous round, joins them with EdgeF, subtracts what is already known, and halts when the delta becomes empty. Side 2 is naive evaluation of Reach(y,x):-EdgeF(x,y), Reach(z,x):-Reach(y,x),EdgeF(y,z), recomputing the full relation every round. The Hoare triple, running the two independent programs side by side, claims equality, Nodes = Reach — the standard semi-naive-evaluation correctness statement, that restricting joins to newly derived facts each round yields the same least fixpoint as full naive evaluation.",
+  "preInWords": "The precondition is simply true.",
+  "postInWords": "The postcondition asserts Nodes = Reach, that the semi-naive delta evaluation and naive evaluation compute the same reachability relation.",
+  "family": "direct-equality pair",
+  "kind": "equivalence",
+  "claim": "(Nodes = Reach)",
+  "precondition": "true",
+  "expectedVerdict": "valid",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "rateMismatch": false,
+  "sides": [
+    "legacy Example2039 (Datafrog / Soufflé semi-naive delta loop)",
+    "naive compiler on the transposed reachability program"
+  ],
+  "sourceProgram": null,
+  "encoding": "canonical five-declaration form; programs run in sequence and merged by Hoare.preprocess; compiled sides are naive-compiler output pinned by Fidelity/ (decide +kernel); hand-written sides are the retired corpus commands verbatim under a bijective rename of relation names",
+  "created": "2026-09-15",
+  "datalog": [
+    {
+      "label": "prog_p",
+      "text": "Reach(y1, x1) :- EdgeF(x1, y1).\nReach(z1, x1) :- Reach(y1, x1), EdgeF(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5002/Fidelity/Example5002.lean"
+    }
+  ]
+}

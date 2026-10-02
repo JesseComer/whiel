@@ -1,0 +1,31 @@
+{
+  "canonicalId": "Example5001",
+  "canonicalInput": "Example5001/Input.lean",
+  "title": "PostgreSQL recursive UNION versus naive seeded closure",
+  "explanation": "Both programs compute Base ∘ Edge*, the rows reachable from a base relation by following zero or more Edge steps — a standard recursive-transitive-closure computation of the kind PostgreSQL's WITH RECURSIVE executor performs. Side 1 models that executor: it maintains a working table WorkT holding only the previous round's newly derived rows, joins WorkT with Edge, subtracts rows already in the accumulated result Res, and halts once nothing new is produced — a frontier/delta-based fixpoint evaluation. Side 2 is the standard naive evaluation of Tcl(x,y):-Base(x,y), Tcl(x,y):-Tcl(x,z),Edge(z,y), recomputing the whole relation each round. Run one after the other as independent programs, the Hoare triple claims the two agree, Res = Tcl — the standard correctness statement that a delta-restricted (semi-naive-style) executor computes the same least fixpoint as full naive evaluation.",
+  "preInWords": "The precondition is simply true.",
+  "postInWords": "The postcondition asserts Res = Tcl, that the PostgreSQL-style recursive-union executor and naive evaluation compute the same closure.",
+  "family": "direct-equality pair",
+  "kind": "equivalence",
+  "claim": "(Res = Tcl)",
+  "precondition": "true",
+  "expectedVerdict": "valid",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "rateMismatch": false,
+  "sides": [
+    "legacy Example2037 (PostgreSQL nodeRecursiveunion.c model)",
+    "naive compiler on the seeded closure program"
+  ],
+  "sourceProgram": null,
+  "encoding": "canonical five-declaration form; programs run in sequence and merged by Hoare.preprocess; compiled sides are naive-compiler output pinned by Fidelity/ (decide +kernel); hand-written sides are the retired corpus commands verbatim under a bijective rename of relation names",
+  "created": "2026-09-15",
+  "datalog": [
+    {
+      "label": "prog_p",
+      "text": "Tcl(x1, y1) :- Base(x1, y1).\nTcl(x1, y1) :- Tcl(x1, z1), Edge(z1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5001/Fidelity/Example5001.lean"
+    }
+  ]
+}

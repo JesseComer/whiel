@@ -1,0 +1,98 @@
+# macOS filesystem metadata
+.DS_Store
+
+# Lean build output
+# (no trailing slash: these names are symlinks to their .nosync twins,
+# and dir-only patterns do not match symlinks)
+.lake
+lake-packages/
+*.olean
+*.ilean
+
+# iCloud-excluded twins of generated trees (a name ending in .nosync is
+# never entered into the iCloud sync set)
+*.nosync
+
+# Rust build output
+Legacy/vampire_runner/target
+vampire_batch_runner/target
+whiel_runner/target
+
+# Python caches and virtual environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv
+venv/
+
+# Generated synthesis/Vampire artifacts
+artifacts
+
+# Toolchain build output (the pinned leancheck Vampire checkout and its
+# compiled binary; see toolchain/leancheck-vampire/README.md). No trailing
+# slash: setup_nosync.sh may replace this with a symlink to its .nosync
+# twin, and dir-only patterns do not match symlinks.
+toolchain/build
+
+# Local logs, notes, and result summaries
+temp-llm-output/
+# Kept run transcripts (export-transcript files) for local replays
+/transcripts/
+results_summary
+*.log
+Record.*
+customization/
+TEMP.md
+FIX.md
+INEFFICIENCIES.md
+Whiel/Synthesis/RUNTIME_ARCHITECTURE.md
+
+# Secrets and LLM credentials
+.env
+.env.local
+
+# Local agent/tooling state
+.claude/
+/reference/
+
+# Paper build output
+/main.pdf
+/Record.*
+
+# local-only recovery trees and diagnostic records, never published
+whiel_recovery/
+history/
+fpd.txt
+
+# LaTeX build artifacts, at any depth. `.out`/`.log` collide with
+# non-TeX uses in this repo (search outputs, run logs), so those two
+# are scoped to the reports tree instead of global.
+*.aux
+*.toc
+*.fls
+*.synctex.gz
+*.fdb_latexmk
+*.bbl
+*.blg
+*.nav
+*.snm
+*.vrb
+reports/**/*.out
+reports/**/*.log
+
+# PDFs generated from tracked LaTeX report sources. Standalone/source PDFs
+# without a corresponding tracked `.tex` file remain versioned.
+/reports/auxiliary-prophecy-ghost/auxiliary-prophecy-ghost.pdf
+/reports/benchmark-proposal/benchmark-proposal.pdf
+/reports/extended-synthesis/extended-synthesis.pdf
+/reports/lfp-eq/lfp-eq.pdf
+/reports/lfp_feasibility/lfp_feasibility.pdf
+/reports/pfp-reduction/pfp-reduction.pdf
+/reports/soundness_postmortem/soundness_postmortem.pdf
+/reports/tc-example/tc-example.pdf
+/reports/unobstructed/unobstructed.pdf
+
+# Persistent, empty output locks left beside published certificate trees.
+.whiel-output-*.lock

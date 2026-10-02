@@ -1,0 +1,18 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(op_zS = ((op_zTarget ∪ π[0] (σ[#0 = #1] ((op_zPa × π[0] (σ[#1 = #2] ((op_zE × op_zT))))))) ∪ ((op_zV ∖ op_zPa) ∖ π[0] (σ[#1 = #2] ((op_zE × (op_zV ∖ op_zT)))))))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zS ⊆ op_zRc)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zT ⊆ op_zRc)"
+    }
+  ],
+  "version": 1
+}

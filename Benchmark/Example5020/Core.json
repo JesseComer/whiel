@@ -1,0 +1,126 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(π[0,0] (oa_zIsClass) ⊆ op_zSubClassF)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,0] (oa_zIsProp) ⊆ op_zSubPropF)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((oa_zSubClassF × oa_zSubClassF))) ⊆ op_zSubClassF)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((oa_zSubClassM × oa_zSubClassM))) ⊆ op_zSubClassM)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((oa_zSubPropF × oa_zSubPropF))) ⊆ op_zSubPropF)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((oa_zSubPropM × oa_zSubPropM))) ⊆ op_zSubPropM)"
+    },
+    {
+      "level": 0,
+      "source": "(π[2,1,4] (σ[#0 = #3] ((oa_zSubPropF × oa_zTripleF))) ⊆ op_zTripleF)"
+    },
+    {
+      "level": 0,
+      "source": "(π[2,1,4] (σ[#0 = #3] ((oa_zSubPropM × oa_zTripleM))) ⊆ op_zTripleM)"
+    },
+    {
+      "level": 0,
+      "source": "(π[2,1] (σ[#0 = #3] ((oa_zSubClassF × oa_zTypeF))) ⊆ op_zTypeF)"
+    },
+    {
+      "level": 0,
+      "source": "(π[2,1] (σ[#0 = #3] ((oa_zSubClassM × oa_zTypeM))) ⊆ op_zTypeM)"
+    },
+    {
+      "level": 0,
+      "source": "(π[2,1] (σ[#0 = #3] ((op_zDom × oa_zTripleF))) ⊆ op_zTypeF)"
+    },
+    {
+      "level": 0,
+      "source": "(π[2,1] (σ[#0 = #3] ((op_zDom × oa_zTripleM))) ⊆ op_zTypeM)"
+    },
+    {
+      "level": 0,
+      "source": "(π[4,1] (σ[#0 = #3] ((op_zRange × oa_zTripleF))) ⊆ op_zTypeF)"
+    },
+    {
+      "level": 0,
+      "source": "(π[4,1] (σ[#0 = #3] ((op_zRange × oa_zTripleM))) ⊆ op_zTypeM)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSubClass ⊆ op_zSubClassF)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSubClass ⊆ op_zSubClassM)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSubClassF ⊆ (op_zSubClassM ∪ π[0,0] (op_zIsClass)))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSubClassM ⊆ op_zSubClassF)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSubProp ⊆ op_zSubPropF)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSubProp ⊆ op_zSubPropM)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSubPropF ⊆ (op_zSubPropM ∪ π[0,0] (op_zIsProp)))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSubPropM ⊆ op_zSubPropF)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTriple ⊆ op_zTripleF)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTriple ⊆ op_zTripleM)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTripleF ⊆ op_zTripleM)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTripleM ⊆ op_zTripleF)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTypeF ⊆ op_zTypeM)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTypeM ⊆ op_zTypeF)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTypeOf ⊆ op_zTypeF)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTypeOf ⊆ op_zTypeM)"
+    }
+  ],
+  "version": 1
+}

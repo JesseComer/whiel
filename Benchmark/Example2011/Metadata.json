@@ -1,0 +1,42 @@
+{
+  "canonicalId": "Example2011",
+  "canonicalInput": "Example2011/Input.lean",
+  "canonicalModule": "Benchmark.Example2011.Input",
+  "category": "Production",
+  "compilerCommandCheck": "unavailable",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "datalogSource": "unavailable",
+  "declarationNamespace": "Whiel.Benchmark.Example2011",
+  "formatVersion": 1,
+  "goldInvariantStatus": "missing",
+  "historicalCandidatePresent": false,
+  "historicalClaim": "no-invariant",
+  "notes": [
+    "Historical collaborator claims are unverified provenance.",
+    "Provenance correction: encoded algorithm is insert-only re-evaluation from the old view; Differential Dataflow / Materialize are the setting, not the mechanism."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Production",
+      "sourceId": "production_11"
+    }
+  ],
+  "suites": [
+    "collaborator",
+    "all-benchmark"
+  ],
+  "title": "Incremental view maintenance ≡ from-scratch recomputation",
+  "explanation": "The loop computes reachability incrementally: it restarts from a previously maintained view ReachOld and re-propagates from Roots and ReachOld through the updated edge set EBase ∪ EDelta until stable, modeling insert-only incremental view maintenance in a streaming or materialized-view system (the case notes this is simplified insert-only re-evaluation, not full timestamped differential-dataflow propagation, though the claim being checked is the guarantee that differential dataflow systems provide). The Hoare triple is the least-fixpoint correctness statement: the precondition constrains ReachOld to be a pre-fixpoint of the old edge set's operator and RBound to be a pre-fixpoint of the updated operator with ReachOld ⊆ RBound standing in for ReachOld's minimality, and the postcondition shows the incrementally recomputed Reach is itself a pre-fixpoint of the updated operator and is contained in RBound, together pinning Reach to the least fixpoint over EBase ∪ EDelta, i.e. the incremental update yields exactly what a from-scratch recomputation would.",
+  "preInWords": "The precondition asserts ReachOld is a pre-fixpoint of reachability over EBase alone, and that RBound is a pre-fixpoint of reachability over the updated edge set EBase ∪ EDelta and contains ReachOld.",
+  "postInWords": "The postcondition asserts the incrementally updated Reach is itself a pre-fixpoint of reachability over EBase ∪ EDelta and is contained in RBound, together forcing Reach to equal the least fixpoint over the updated edges.",
+  "notation": "canonical",
+  "datalog": [
+    {
+      "label": "prog_p",
+      "text": "ReachC(x1) :- Roots(x1).\nReachC(x1) :- ReachOld(x1).\nReachC(y1) :- ReachC(x1), EBase(x1, y1).\nReachC(y1) :- ReachC(x1), EDelta(x1, y1).",
+      "provenance": "production check (the hand-written loop equals this program's naive compilation on the check instances)"
+    }
+  ],
+  "expectedVerdict": "valid"
+}

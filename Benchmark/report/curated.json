@@ -1,0 +1,1199 @@
+{
+  "_comment": "Hand-curated per-case data for build_report.py: manual (semantic/domain) tags, source links, hand-written Datalog readings for cases without machine-checked rules, and notes. Auto tags are computed by the script and merged.",
+  "prophecy_status": {
+    "established": [],
+    "certified_framework_ii": [
+      "Example0001",
+      "Example0106",
+      "Example0119",
+      "Example0125",
+      "Example0132",
+      "Example0133",
+      "Example0134",
+      "Example0136",
+      "Example0137",
+      "Example1081",
+      "Example2004",
+      "Example4003",
+      "Example4004",
+      "Example4034",
+      "Example4035",
+      "Example4036",
+      "Example4040",
+      "Example4041",
+      "Example5001",
+      "Example5002",
+      "Example5003",
+      "Example5004",
+      "Example5005",
+      "Example5006",
+      "Example5007",
+      "Example5010",
+      "Example5012",
+      "Example5018",
+      "Example5037",
+      "Example5041"
+    ],
+    "solved_framework_ii": [
+      "Example0138",
+      "Example5008",
+      "Example5009",
+      "Example5016",
+      "Example5022",
+      "Example5023",
+      "Example5030",
+      "Example5032",
+      "Example5033",
+      "Example5034",
+      "Example5036",
+      "Example5038"
+    ],
+    "expected": []
+  },
+  "manual_tags": {
+    "Example0106": [
+      "linear-vs-nonlinear"
+    ],
+    "Example0107": [
+      "linear-vs-nonlinear"
+    ],
+    "Example0108": [
+      "linear-vs-nonlinear"
+    ],
+    "Example0109": [],
+    "Example0115": [],
+    "Example0117": [
+      "linear-vs-nonlinear"
+    ],
+    "Example0119": [
+      "linear-vs-nonlinear"
+    ],
+    "Example0123": [
+      "linear-vs-nonlinear"
+    ],
+    "Example0125": [
+      "linear-vs-nonlinear"
+    ],
+    "Example0128": [],
+    "Example0130": [],
+    "Example0132": [
+      "linear-vs-nonlinear"
+    ],
+    "Example0134": [
+      "linear-vs-nonlinear"
+    ],
+    "Example0136": [
+      "linear-vs-nonlinear"
+    ],
+    "Example0137": [
+      "linear-vs-nonlinear"
+    ],
+    "Example0138": [],
+    "Example0162": [],
+    "Example0163": [
+      "greatest-fixpoint"
+    ],
+    "Example1030": [
+      "greatest-fixpoint",
+      "integrity-constraints"
+    ],
+    "Example1061": [],
+    "Example2004": [
+      "database-engine",
+      "magic-sets"
+    ],
+    "Example2005": [
+      "negation"
+    ],
+    "Example2006": [
+      "negation"
+    ],
+    "Example2007": [],
+    "Example2010": [
+      "database-engine",
+      "evaluation-strategies"
+    ],
+    "Example2011": [
+      "evaluation-strategies",
+      "view-maintenance"
+    ],
+    "Example2012": [
+      "evaluation-strategies"
+    ],
+    "Example4001": [
+      "views"
+    ],
+    "Example4002": [
+      "views"
+    ],
+    "Example4003": [
+      "views"
+    ],
+    "Example4004": [
+      "views"
+    ],
+    "Example4034": [
+      "views"
+    ],
+    "Example4035": [
+      "views"
+    ],
+    "Example4036": [
+      "views"
+    ],
+    "Example4037": [
+      "views"
+    ],
+    "Example4040": [
+      "linear-vs-nonlinear",
+      "views"
+    ],
+    "Example4041": [
+      "views"
+    ],
+    "Example5001": [
+      "database-engine",
+      "evaluation-strategies"
+    ],
+    "Example5003": [
+      "evaluation-strategies"
+    ],
+    "Example5004": [
+      "access-control",
+      "evaluation-strategies"
+    ],
+    "Example5005": [
+      "evaluation-strategies",
+      "view-maintenance"
+    ],
+    "Example5006": [
+      "evaluation-strategies",
+      "linear-vs-nonlinear"
+    ],
+    "Example5007": [
+      "evaluation-strategies",
+      "linear-vs-nonlinear"
+    ],
+    "Example5008": [
+      "database-engine",
+      "evaluation-strategies"
+    ],
+    "Example5009": [
+      "database-engine",
+      "evaluation-strategies"
+    ],
+    "Example5010": [
+      "database-engine",
+      "evaluation-strategies"
+    ],
+    "Example5011": [
+      "database-engine",
+      "evaluation-strategies"
+    ],
+    "Example5012": [
+      "access-control",
+      "recursion-limit"
+    ],
+    "Example5013": [
+      "access-control",
+      "recursion-limit"
+    ],
+    "Example5014": [
+      "evaluation-strategies"
+    ],
+    "Example5015": [
+      "evaluation-strategies"
+    ],
+    "Example5016": [
+      "evaluation-strategies",
+      "negation",
+      "view-maintenance"
+    ],
+    "Example5017": [
+      "evaluation-strategies",
+      "negation",
+      "view-maintenance"
+    ],
+    "Example5018": [
+      "chase",
+      "evaluation-strategies"
+    ],
+    "Example5019": [
+      "chase",
+      "evaluation-strategies"
+    ],
+    "Example5020": [],
+    "Example5021": [],
+    "Example5022": [
+      "database-engine",
+      "recursion-limit"
+    ],
+    "Example5023": [
+      "evaluation-strategies",
+      "greatest-fixpoint"
+    ],
+    "Example5024": [
+      "evaluation-strategies",
+      "greatest-fixpoint"
+    ],
+    "Example5030": [
+      "database-engine",
+      "evaluation-strategies"
+    ],
+    "Example5031": [
+      "database-engine",
+      "evaluation-strategies",
+      "recursion-limit"
+    ],
+    "Example5032": [
+      "database-engine",
+      "evaluation-strategies",
+      "view-maintenance"
+    ],
+    "Example5033": [
+      "database-engine",
+      "evaluation-strategies",
+      "magic-sets"
+    ],
+    "Example5034": [
+      "database-engine",
+      "evaluation-strategies"
+    ],
+    "Example5035": [
+      "database-engine",
+      "evaluation-strategies",
+      "recursion-limit"
+    ],
+    "Example5036": [
+      "database-engine",
+      "evaluation-strategies"
+    ],
+    "Example5037": [
+      "evaluation-strategies"
+    ],
+    "Example5038": [
+      "access-control",
+      "evaluation-strategies",
+      "magic-sets"
+    ],
+    "Example5039": [
+      "access-control",
+      "negation"
+    ],
+    "Example5040": [
+      "access-control",
+      "negation"
+    ],
+    "Example5041": [
+      "database-engine",
+      "evaluation-strategies",
+      "integrity-constraints",
+      "negation"
+    ],
+    "Example5042": [
+      "database-engine",
+      "evaluation-strategies",
+      "integrity-constraints",
+      "negation"
+    ],
+    "Example1081": [
+      "dependencies"
+    ],
+    "Example1088": [
+      "dependencies"
+    ],
+    "Example1090": [
+      "dependencies"
+    ],
+    "Example1091": [
+      "dependencies"
+    ],
+    "Example1093": [
+      "dependencies"
+    ],
+    "Example1094": [
+      "dependencies"
+    ],
+    "Example3001": [
+      "dependencies"
+    ],
+    "Example3009": [
+      "dependencies"
+    ],
+    "Example3014": [
+      "dependencies"
+    ],
+    "Example5002": [
+      "database-engine",
+      "evaluation-strategies"
+    ],
+    "Example0133": [
+      "linear-vs-nonlinear"
+    ],
+    "Example0001": [],
+    "Example0013": []
+  },
+  "categories": {
+    "synthetic": "synthetic (syntactic generation from the classic Datalog programs)",
+    "llm": "LLM-generated (GPT/Claude benchmark programs)",
+    "production": "production (derived from a production system's source or documentation)",
+    "verification-task": "verification task (VerificationTasks.pdf, section 10.1)",
+    "production-pair": "production pair (two algorithms from production sources or legacy production cases)",
+    "souffle-benchmark": "Soufflé benchmark program (naive versus semi-naive translation)",
+    "specification": "specification (a standard or a paper's procedure versus a declarative program)"
+  },
+  "category_by_case": {
+    "Example5001": "production-pair",
+    "Example5003": "production-pair",
+    "Example5004": "production-pair",
+    "Example5005": "production-pair",
+    "Example5006": "production-pair",
+    "Example5007": "production-pair",
+    "Example5012": "production-pair",
+    "Example5013": "production-pair",
+    "Example5008": "souffle-benchmark",
+    "Example5009": "souffle-benchmark",
+    "Example5010": "souffle-benchmark",
+    "Example5011": "souffle-benchmark",
+    "Example5014": "specification",
+    "Example5015": "specification",
+    "Example5016": "specification",
+    "Example5017": "specification",
+    "Example5018": "specification",
+    "Example5019": "specification",
+    "Example5020": "specification",
+    "Example5021": "specification",
+    "Example5022": "specification",
+    "Example5023": "specification",
+    "Example5024": "specification",
+    "Example5030": "production-pair",
+    "Example5031": "production-pair",
+    "Example5032": "production-pair",
+    "Example5033": "production-pair",
+    "Example5034": "production-pair",
+    "Example5035": "production-pair",
+    "Example5036": "production-pair",
+    "Example5037": "production-pair",
+    "Example2004": "production",
+    "Example5038": "production-pair",
+    "Example5039": "production-pair",
+    "Example5040": "production-pair",
+    "Example5041": "production-pair",
+    "Example5042": "production-pair",
+    "Example0132": "synthetic",
+    "Example0134": "synthetic",
+    "Example0136": "synthetic",
+    "Example0137": "synthetic",
+    "Example1081": "llm",
+    "Example1088": "llm",
+    "Example1090": "llm",
+    "Example1091": "llm",
+    "Example1093": "llm",
+    "Example1094": "llm",
+    "Example3001": "llm",
+    "Example3009": "llm",
+    "Example3014": "llm",
+    "Example5002": "production-pair",
+    "Example0133": "synthetic",
+    "Example0001": "synthetic",
+    "Example0013": "synthetic"
+  },
+  "source_links": {
+    "souffle-magicset": {
+      "label": "Soufflé magic-set transformation (documentation)",
+      "url": "https://souffle-lang.github.io/magicset"
+    },
+    "souffle-translate": {
+      "label": "Soufflé translation to C++ / semi-naive loop (documentation)",
+      "url": "https://souffle-lang.github.io/translate"
+    },
+    "souffle-benchmarks": {
+      "label": "souffle-lang/benchmarks (the Soufflé benchmark programs)",
+      "url": "https://github.com/souffle-lang/benchmarks"
+    },
+    "pg-recursiveunion": {
+      "label": "postgres/postgres src/backend/executor/nodeRecursiveunion.c (ExecRecursiveUnion)",
+      "url": "https://github.com/postgres/postgres/blob/master/src/backend/executor/nodeRecursiveunion.c"
+    },
+    "pg-queries-with": {
+      "label": "PostgreSQL documentation, WITH queries (recursive)",
+      "url": "https://www.postgresql.org/docs/current/queries-with.html"
+    },
+    "pg-ri-triggers": {
+      "label": "postgres/postgres src/backend/utils/adt/ri_triggers.c (RI_FKey_cascade_del, ri_restrict)",
+      "url": "https://github.com/postgres/postgres/blob/master/src/backend/utils/adt/ri_triggers.c"
+    },
+    "arborist": {
+      "label": "npm/arborist lib/calc-dep-flags.js",
+      "url": "https://github.com/npm/arborist/blob/main/lib/calc-dep-flags.js"
+    },
+    "cilium-policy": {
+      "label": "Cilium network policy (documentation)",
+      "url": "https://docs.cilium.io/en/stable/security/policy/"
+    },
+    "batfish": {
+      "label": "batfish/batfish (network configuration analysis)",
+      "url": "https://github.com/batfish/batfish"
+    },
+    "nusmv-mirror": {
+      "label": "NuSMV 2.6.0 core/mc/mcMc.c, eu() (hklarner/NuSMV-a mirror)",
+      "url": "https://github.com/hklarner/NuSMV-a"
+    },
+    "nusmv-docs": {
+      "label": "NuSMV user manual, CTL model checking",
+      "url": "https://nusmv.fbk.eu/userman/v21/nusmv_2.html"
+    },
+    "differential": {
+      "label": "TimelyDataflow/differential-dataflow",
+      "url": "https://github.com/TimelyDataflow/differential-dataflow"
+    },
+    "materialize": {
+      "label": "Materialize arrangements / incremental dataflows (documentation)",
+      "url": "https://materialize.com/docs/get-started/arrangements/"
+    },
+    "go-mgcmark": {
+      "label": "golang/go src/runtime/mgcmark.go (gcDrain, scanobject, greyobject)",
+      "url": "https://github.com/golang/go/blob/master/src/runtime/mgcmark.go"
+    },
+    "openfga-check": {
+      "label": "openfga/openfga internal/graph/check.go (checkDirect, checkDirectUsersetTuples, checkTTU, checkSetOperation)",
+      "url": "https://github.com/openfga/openfga/blob/main/internal/graph/check.go"
+    },
+    "openfga-usersets": {
+      "label": "OpenFGA usersets (documentation)",
+      "url": "https://openfga.dev/docs/modeling/building-blocks/usersets"
+    },
+    "casbin-rolemanager": {
+      "label": "casbin/casbin rbac/default-role-manager/role_manager.go (HasLink, hasLinkHelper)",
+      "url": "https://github.com/casbin/casbin/blob/master/rbac/default-role-manager/role_manager.go"
+    },
+    "casbin-enforcer": {
+      "label": "casbin/casbin enforcer.go (maxHierarchyLevel = 10)",
+      "url": "https://github.com/casbin/casbin/blob/master/enforcer.go"
+    },
+    "opa-access": {
+      "label": "OPA access-control comparison (documentation)",
+      "url": "https://openpolicyagent.org/docs/comparisons/access-control-systems"
+    },
+    "spicedb-schema": {
+      "label": "SpiceDB schema language: union, intersection, exclusion, arrows (documentation)",
+      "url": "https://authzed.com/docs/spicedb/concepts/schema"
+    },
+    "datafrog": {
+      "label": "rust-lang/datafrog (README example, src/lib.rs Variable/from_join/changed)",
+      "url": "https://github.com/rust-lang/datafrog"
+    },
+    "equ-pdf": {
+      "label": "the equivalence-and-containment paper draft (the pre-fixpoint witness method for equivalence and containment)",
+      "url": null
+    },
+    "verification-tasks": {
+      "label": "VerificationTasks.pdf, section 10.1 (Val Tannen; reports/VerificationTasks.pdf)",
+      "url": null
+    },
+    "reformulations-pdf": {
+      "label": "the reformulations task document",
+      "url": null
+    },
+    "classic-dl": {
+      "label": "classic Datalog program files of the retired gen19 collection",
+      "url": null
+    },
+    "classic-hard": {
+      "label": "hard-case source records of the retired classic-source collection (hard-*.json)",
+      "url": null
+    },
+    "llm-raw": {
+      "label": "LLM benchmark source records of the retired corpus (GPT and Claude generated; no external source)",
+      "url": null
+    },
+    "networkx-dag": {
+      "label": "networkx/networkx networkx/algorithms/dag.py (transitive_closure, transitive_closure_dag, descendants)",
+      "url": "https://github.com/networkx/networkx/blob/main/networkx/algorithms/dag.py"
+    },
+    "scipy-fw": {
+      "label": "scipy/scipy scipy/sparse/csgraph (floyd_warshall)",
+      "url": "https://github.com/scipy/scipy/tree/main/scipy/sparse/csgraph"
+    },
+    "legacy-record:synthetic_6": {
+      "label": "retired-corpus source record synthetic_6 of the Synthetic family",
+      "url": null
+    },
+    "legacy-record:synthetic_6-input": {
+      "label": "retired-corpus input record synthetic_6 of the Synthetic family",
+      "url": null
+    },
+    "classic-dl:tc-left": {
+      "label": "classic Datalog program tc-left of the retired generator suite",
+      "url": null
+    },
+    "classic-dl:tc-nonlinear": {
+      "label": "classic Datalog program tc-nonlinear of the retired generator suite",
+      "url": null
+    },
+    "legacy-record:synthetic_7": {
+      "label": "retired-corpus source record synthetic_7 of the Synthetic family",
+      "url": null
+    },
+    "legacy-record:synthetic_7-input": {
+      "label": "retired-corpus input record synthetic_7 of the Synthetic family",
+      "url": null
+    },
+    "legacy-record:synthetic_8": {
+      "label": "retired-corpus source record synthetic_8 of the Synthetic family",
+      "url": null
+    },
+    "legacy-record:synthetic_8-input": {
+      "label": "retired-corpus input record synthetic_8 of the Synthetic family",
+      "url": null
+    },
+    "classic-dl:tc-right": {
+      "label": "classic Datalog program tc-right of the retired generator suite",
+      "url": null
+    },
+    "legacy-record:synthetic_9": {
+      "label": "retired-corpus source record synthetic_9 of the Synthetic family",
+      "url": null
+    },
+    "legacy-record:synthetic_9-input": {
+      "label": "retired-corpus input record synthetic_9 of the Synthetic family",
+      "url": null
+    },
+    "legacy-record:classic-source:v2__prefix_equivalence__tc_left__all_paths_via_even_odd_linear__naive": {
+      "label": "legacy source record v2__prefix_equivalence__tc_left__all_paths_via_even_odd_linear__naive of the retired classic-source collection",
+      "url": null
+    },
+    "legacy-record:classic-source:v2__prefix_equivalence__tc_left__all_paths_via_even_odd_nonlinear__naive": {
+      "label": "legacy source record v2__prefix_equivalence__tc_left__all_paths_via_even_odd_nonlinear__naive of the retired classic-source collection",
+      "url": null
+    },
+    "legacy-record:classic-source:v2__prefix_equivalence__tc_nonlin__all_paths_via_even_odd_linear__naive": {
+      "label": "legacy source record v2__prefix_equivalence__tc_nonlin__all_paths_via_even_odd_linear__naive of the retired classic-source collection",
+      "url": null
+    },
+    "classic-dl:all_paths_via_even_odd": {
+      "label": "classic Datalog program all_paths_via_even_odd of the retired generator suite",
+      "url": null
+    },
+    "legacy-record:classic-source:v2__prefix_equivalence__even_odd_linear__even_odd_nonlinear__naive": {
+      "label": "legacy source record v2__prefix_equivalence__even_odd_linear__even_odd_nonlinear__naive of the retired classic-source collection",
+      "url": null
+    },
+    "classic-dl:even_odd_linear": {
+      "label": "classic Datalog program even_odd_linear of the retired generator suite",
+      "url": null
+    },
+    "classic-dl:even_odd_nonlinear": {
+      "label": "classic Datalog program even_odd_nonlinear of the retired generator suite",
+      "url": null
+    },
+    "legacy-record:classic-source:v2__prefix_equivalence__even_odd_nonlinear__even_odd_linear__naive": {
+      "label": "legacy source record v2__prefix_equivalence__even_odd_nonlinear__even_odd_linear__naive of the retired classic-source collection",
+      "url": null
+    },
+    "legacy-record:classic-source:v2__containment__tc_of_union__red_blue_nonlinear__naive": {
+      "label": "legacy source record v2__containment__tc_of_union__red_blue_nonlinear__naive of the retired classic-source collection",
+      "url": null
+    },
+    "classic-dl:red_blue_nonlinear": {
+      "label": "classic Datalog program red_blue_nonlinear of the retired generator suite",
+      "url": null
+    },
+    "classic-dl:tc_of_union": {
+      "label": "classic Datalog program tc_of_union of the retired generator suite",
+      "url": null
+    },
+    "legacy-record:classic-source:v2__containment__path_systems_basic__path_systems_height__naive": {
+      "label": "legacy source record v2__containment__path_systems_basic__path_systems_height__naive of the retired classic-source collection",
+      "url": null
+    },
+    "classic-dl:path_systems_basic": {
+      "label": "classic Datalog program path_systems_basic of the retired generator suite",
+      "url": null
+    },
+    "classic-dl:path_systems_height": {
+      "label": "classic Datalog program path_systems_height of the retired generator suite",
+      "url": null
+    },
+    "legacy-record:classic-source:v2__equiv_pairs__even_odd__linear_vs_nonlinear__naive": {
+      "label": "legacy source record v2__equiv_pairs__even_odd__linear_vs_nonlinear__naive of the retired classic-source collection",
+      "url": null
+    },
+    "legacy-record:classic-source:v2__equiv_pairs__all_paths_via_even_odd__linear_vs_nonlinear__naive": {
+      "label": "legacy source record v2__equiv_pairs__all_paths_via_even_odd__linear_vs_nonlinear__naive of the retired classic-source collection",
+      "url": null
+    },
+    "classic-dl:all_paths_via_even_odd_nonlinear": {
+      "label": "classic Datalog program all_paths_via_even_odd_nonlinear of the retired generator suite",
+      "url": null
+    },
+    "legacy-record:classic-source:v2__equiv_pairs__red_blue__linear_vs_nonlinear__naive": {
+      "label": "legacy source record v2__equiv_pairs__red_blue__linear_vs_nonlinear__naive of the retired classic-source collection",
+      "url": null
+    },
+    "classic-dl:red_blue_linear": {
+      "label": "classic Datalog program red_blue_linear of the retired generator suite",
+      "url": null
+    },
+    "legacy-record:classic-source:v2__equiv_pairs__tc_left_vs_all_paths_via_eo_nonlinear__naive": {
+      "label": "legacy source record v2__equiv_pairs__tc_left_vs_all_paths_via_eo_nonlinear__naive of the retired classic-source collection",
+      "url": null
+    },
+    "legacy-record:classic-source:v2__equiv_pairs__tc_nonlin_vs_all_paths_via_eo_linear__naive": {
+      "label": "legacy source record v2__equiv_pairs__tc_nonlin_vs_all_paths_via_eo_linear__naive of the retired classic-source collection",
+      "url": null
+    },
+    "legacy-record:classic-source:v2__equiv_pairs__tc_nonlin_vs_all_paths_via_eo_nonlinear__naive": {
+      "label": "legacy source record v2__equiv_pairs__tc_nonlin_vs_all_paths_via_eo_nonlinear__naive of the retired classic-source collection",
+      "url": null
+    },
+    "legacy-record:classic-source:hard-lowerbound-spec": {
+      "label": "legacy source record hard-lowerbound-spec of the retired classic-source collection",
+      "url": null
+    },
+    "legacy-record:classic-source:hard-game-reach": {
+      "label": "legacy source record hard-game-reach of the retired classic-source collection",
+      "url": null
+    },
+    "legacy-record:classic-source:hard-gfp-safeset": {
+      "label": "legacy source record hard-gfp-safeset of the retired classic-source collection",
+      "url": null
+    },
+    "legacy-record:llm_30": {
+      "label": "retired-corpus source record llm_30 of the LLM family",
+      "url": null
+    },
+    "legacy-record:llm_30-input": {
+      "label": "retired-corpus input record llm_30 of the LLM family",
+      "url": null
+    },
+    "legacy-record:llm_61": {
+      "label": "retired-corpus source record llm_61 of the LLM family",
+      "url": null
+    },
+    "legacy-record:llm_61-input": {
+      "label": "retired-corpus input record llm_61 of the LLM family",
+      "url": null
+    },
+    "legacy-record:raw_tgd_gpt56_w_inv.json": {
+      "label": "legacy source record raw_tgd_gpt56_w_inv.json",
+      "url": null
+    },
+    "legacy-record:Benchmark/Example1081/Input.lean": {
+      "label": "legacy source record Benchmark/Example1081/Input.lean",
+      "url": null
+    },
+    "legacy-datalog:Example1081": {
+      "label": "Datalog source noted in the legacy inventory of Example1081",
+      "url": null
+    },
+    "legacy-record:Benchmark/Example1088/Input.lean": {
+      "label": "legacy source record Benchmark/Example1088/Input.lean",
+      "url": null
+    },
+    "legacy-datalog:Example1088": {
+      "label": "Datalog source noted in the legacy inventory of Example1088",
+      "url": null
+    },
+    "legacy-record:Benchmark/Example1090/Input.lean": {
+      "label": "legacy source record Benchmark/Example1090/Input.lean",
+      "url": null
+    },
+    "legacy-datalog:Example1090": {
+      "label": "Datalog source noted in the legacy inventory of Example1090",
+      "url": null
+    },
+    "legacy-record:raw_tgd_opus_w_inv.json": {
+      "label": "legacy source record raw_tgd_opus_w_inv.json",
+      "url": null
+    },
+    "legacy-record:Benchmark/Example1091/Input.lean": {
+      "label": "legacy source record Benchmark/Example1091/Input.lean",
+      "url": null
+    },
+    "legacy-datalog:Example1091": {
+      "label": "Datalog source noted in the legacy inventory of Example1091",
+      "url": null
+    },
+    "legacy-record:Benchmark/Example1093/Input.lean": {
+      "label": "legacy source record Benchmark/Example1093/Input.lean",
+      "url": null
+    },
+    "legacy-datalog:Example1093": {
+      "label": "Datalog source noted in the legacy inventory of Example1093",
+      "url": null
+    },
+    "legacy-record:Benchmark/Example1094/Input.lean": {
+      "label": "legacy source record Benchmark/Example1094/Input.lean",
+      "url": null
+    },
+    "legacy-datalog:Example1094": {
+      "label": "Datalog source noted in the legacy inventory of Example1094",
+      "url": null
+    },
+    "legacy-record:production_4": {
+      "label": "retired-corpus source record production_4 of the Production family",
+      "url": null
+    },
+    "legacy-record:production_4-input": {
+      "label": "retired-corpus input record production_4 of the Production family",
+      "url": null
+    },
+    "legacy-datalog:reports/evidence/gen_examples.py": {
+      "label": "Datalog source noted in the legacy inventory reports/evidence/gen_examples.py",
+      "url": null
+    },
+    "legacy-record:production_5": {
+      "label": "retired-corpus source record production_5 of the Production family",
+      "url": null
+    },
+    "legacy-record:production_5-input": {
+      "label": "retired-corpus input record production_5 of the Production family",
+      "url": null
+    },
+    "legacy-record:production_6": {
+      "label": "retired-corpus source record production_6 of the Production family",
+      "url": null
+    },
+    "legacy-record:production_6-input": {
+      "label": "retired-corpus input record production_6 of the Production family",
+      "url": null
+    },
+    "legacy-record:production_7": {
+      "label": "retired-corpus source record production_7 of the Production family",
+      "url": null
+    },
+    "legacy-record:production_7-input": {
+      "label": "retired-corpus input record production_7 of the Production family",
+      "url": null
+    },
+    "legacy-record:production_10": {
+      "label": "retired-corpus source record production_10 of the Production family",
+      "url": null
+    },
+    "legacy-record:production_10-input": {
+      "label": "retired-corpus input record production_10 of the Production family",
+      "url": null
+    },
+    "legacy-record:production_11": {
+      "label": "retired-corpus source record production_11 of the Production family",
+      "url": null
+    },
+    "legacy-record:production_11-input": {
+      "label": "retired-corpus input record production_11 of the Production family",
+      "url": null
+    },
+    "legacy-record:production_12": {
+      "label": "retired-corpus source record production_12 of the Production family",
+      "url": null
+    },
+    "legacy-record:production_12-input": {
+      "label": "retired-corpus input record production_12 of the Production family",
+      "url": null
+    },
+    "legacy-record:raw_invalid_gpt.json": {
+      "label": "legacy source record raw_invalid_gpt.json",
+      "url": null
+    },
+    "legacy-record:Benchmark/Example3001/Input.lean": {
+      "label": "legacy source record Benchmark/Example3001/Input.lean",
+      "url": null
+    },
+    "legacy-datalog:Example3001": {
+      "label": "Datalog source noted in the legacy inventory of Example3001",
+      "url": null
+    },
+    "legacy-record:raw_invalid_gpt_2.json": {
+      "label": "legacy source record raw_invalid_gpt_2.json",
+      "url": null
+    },
+    "legacy-record:Benchmark/Example3009/Input.lean": {
+      "label": "legacy source record Benchmark/Example3009/Input.lean",
+      "url": null
+    },
+    "legacy-datalog:Example3009": {
+      "label": "Datalog source noted in the legacy inventory of Example3009",
+      "url": null
+    },
+    "legacy-record:Benchmark/Example3014/Input.lean": {
+      "label": "legacy source record Benchmark/Example3014/Input.lean",
+      "url": null
+    },
+    "legacy-datalog:Example3014": {
+      "label": "Datalog source noted in the legacy inventory of Example3014",
+      "url": null
+    },
+    "legacy-record:Benchmark/Example4001/Input.lean": {
+      "label": "legacy source record Benchmark/Example4001/Input.lean",
+      "url": null
+    },
+    "legacy-record:reformulations.pdf": {
+      "label": "legacy source record of the reformulations task document",
+      "url": null
+    },
+    "legacy-record:Benchmark/Example4002/Input.lean": {
+      "label": "legacy source record Benchmark/Example4002/Input.lean",
+      "url": null
+    },
+    "legacy-record:Benchmark/Example4003/Input.lean": {
+      "label": "legacy source record Benchmark/Example4003/Input.lean",
+      "url": null
+    },
+    "legacy-record:Benchmark/Example4004/Input.lean": {
+      "label": "legacy source record Benchmark/Example4004/Input.lean",
+      "url": null
+    }
+  },
+  "sources_by_case": {
+    "Example2004": [
+      "souffle-magicset",
+      "equ-pdf",
+      "legacy-record:production_4",
+      "legacy-record:production_4-input",
+      "legacy-datalog:reports/evidence/gen_examples.py"
+    ],
+    "Example2005": [
+      "arborist",
+      "equ-pdf",
+      "legacy-record:production_5",
+      "legacy-record:production_5-input"
+    ],
+    "Example2006": [
+      "cilium-policy",
+      "batfish",
+      "equ-pdf",
+      "legacy-record:production_6",
+      "legacy-record:production_6-input"
+    ],
+    "Example2007": [
+      "nusmv-mirror",
+      "nusmv-docs",
+      "equ-pdf",
+      "legacy-record:production_7",
+      "legacy-record:production_7-input"
+    ],
+    "Example2010": [
+      "pg-recursiveunion",
+      "souffle-translate",
+      "equ-pdf",
+      "legacy-record:production_10",
+      "legacy-record:production_10-input"
+    ],
+    "Example2011": [
+      "differential",
+      "materialize",
+      "equ-pdf",
+      "legacy-record:production_11",
+      "legacy-record:production_11-input"
+    ],
+    "Example2012": [
+      "go-mgcmark",
+      "equ-pdf",
+      "legacy-record:production_12",
+      "legacy-record:production_12-input"
+    ],
+    "Example4001": [
+      "verification-tasks",
+      "reformulations-pdf",
+      "legacy-record:Benchmark/Example4001/Input.lean",
+      "legacy-record:reformulations.pdf"
+    ],
+    "Example4002": [
+      "verification-tasks",
+      "reformulations-pdf",
+      "legacy-record:Benchmark/Example4002/Input.lean",
+      "legacy-record:reformulations.pdf"
+    ],
+    "Example4003": [
+      "verification-tasks",
+      "reformulations-pdf",
+      "legacy-record:Benchmark/Example4003/Input.lean",
+      "legacy-record:reformulations.pdf"
+    ],
+    "Example4004": [
+      "verification-tasks",
+      "reformulations-pdf",
+      "legacy-record:Benchmark/Example4004/Input.lean",
+      "legacy-record:reformulations.pdf"
+    ],
+    "Example4034": [
+      "verification-tasks",
+      "reformulations-pdf"
+    ],
+    "Example4035": [
+      "verification-tasks",
+      "reformulations-pdf"
+    ],
+    "Example4036": [
+      "verification-tasks",
+      "reformulations-pdf"
+    ],
+    "Example4037": [
+      "verification-tasks",
+      "reformulations-pdf"
+    ],
+    "Example4040": [
+      "verification-tasks",
+      "reformulations-pdf"
+    ],
+    "Example4041": [
+      "verification-tasks",
+      "reformulations-pdf"
+    ],
+    "Example5001": [
+      "pg-recursiveunion",
+      "pg-queries-with"
+    ],
+    "Example5003": [
+      "classic-hard"
+    ],
+    "Example5004": [
+      "casbin-rolemanager",
+      "casbin-enforcer"
+    ],
+    "Example5005": [
+      "differential",
+      "materialize"
+    ],
+    "Example5006": [
+      "llm-raw"
+    ],
+    "Example5007": [
+      "llm-raw"
+    ],
+    "Example5008": [
+      "souffle-benchmarks",
+      "souffle-translate"
+    ],
+    "Example5009": [
+      "souffle-benchmarks",
+      "souffle-translate"
+    ],
+    "Example5010": [
+      "souffle-benchmarks",
+      "souffle-translate"
+    ],
+    "Example5011": [
+      "souffle-benchmarks",
+      "souffle-translate"
+    ],
+    "Example5012": [
+      "casbin-rolemanager",
+      "casbin-enforcer"
+    ],
+    "Example5013": [
+      "casbin-rolemanager",
+      "casbin-enforcer"
+    ],
+    "Example5038": [],
+    "Example5039": [
+      "spicedb-schema",
+      "openfga-check",
+      "openfga-usersets"
+    ],
+    "Example5040": [
+      "spicedb-schema",
+      "openfga-check",
+      "openfga-usersets"
+    ],
+    "Example5041": [
+      "pg-ri-triggers"
+    ],
+    "Example5042": [
+      "pg-ri-triggers"
+    ],
+    "Example1081": [
+      "legacy-record:raw_tgd_gpt56_w_inv.json",
+      "legacy-record:Benchmark/Example1081/Input.lean",
+      "legacy-datalog:Example1081"
+    ],
+    "Example1088": [
+      "legacy-record:raw_tgd_gpt56_w_inv.json",
+      "legacy-record:Benchmark/Example1088/Input.lean",
+      "legacy-datalog:Example1088"
+    ],
+    "Example1090": [
+      "legacy-record:raw_tgd_gpt56_w_inv.json",
+      "legacy-record:Benchmark/Example1090/Input.lean",
+      "legacy-datalog:Example1090"
+    ],
+    "Example1091": [
+      "legacy-record:raw_tgd_opus_w_inv.json",
+      "legacy-record:Benchmark/Example1091/Input.lean",
+      "legacy-datalog:Example1091"
+    ],
+    "Example1093": [
+      "legacy-record:raw_tgd_opus_w_inv.json",
+      "legacy-record:Benchmark/Example1093/Input.lean",
+      "legacy-datalog:Example1093"
+    ],
+    "Example1094": [
+      "legacy-record:raw_tgd_opus_w_inv.json",
+      "legacy-record:Benchmark/Example1094/Input.lean",
+      "legacy-datalog:Example1094"
+    ],
+    "Example3001": [
+      "legacy-record:raw_invalid_gpt.json",
+      "legacy-record:Benchmark/Example3001/Input.lean",
+      "legacy-datalog:Example3001"
+    ],
+    "Example3009": [
+      "legacy-record:raw_invalid_gpt_2.json",
+      "legacy-record:Benchmark/Example3009/Input.lean",
+      "legacy-datalog:Example3009"
+    ],
+    "Example3014": [
+      "legacy-record:raw_invalid_gpt_2.json",
+      "legacy-record:Benchmark/Example3014/Input.lean",
+      "legacy-datalog:Example3014"
+    ],
+    "Example5002": [
+      "datafrog"
+    ],
+    "Example0106": [
+      "legacy-record:synthetic_6",
+      "legacy-record:synthetic_6-input",
+      "classic-dl:tc-left",
+      "classic-dl:tc-nonlinear"
+    ],
+    "Example0107": [
+      "legacy-record:synthetic_7",
+      "legacy-record:synthetic_7-input",
+      "classic-dl:tc-left",
+      "classic-dl:tc-nonlinear"
+    ],
+    "Example0108": [
+      "legacy-record:synthetic_8",
+      "legacy-record:synthetic_8-input",
+      "classic-dl:tc-left",
+      "classic-dl:tc-right"
+    ],
+    "Example0109": [
+      "legacy-record:synthetic_9",
+      "legacy-record:synthetic_9-input"
+    ],
+    "Example0115": [
+      "legacy-record:classic-source:v2__prefix_equivalence__tc_left__all_paths_via_even_odd_linear__naive"
+    ],
+    "Example0117": [
+      "legacy-record:classic-source:v2__prefix_equivalence__tc_left__all_paths_via_even_odd_nonlinear__naive"
+    ],
+    "Example0119": [
+      "legacy-record:classic-source:v2__prefix_equivalence__tc_nonlin__all_paths_via_even_odd_linear__naive",
+      "classic-dl:all_paths_via_even_odd",
+      "classic-dl:tc-nonlinear"
+    ],
+    "Example0123": [
+      "legacy-record:classic-source:v2__prefix_equivalence__even_odd_linear__even_odd_nonlinear__naive",
+      "classic-dl:even_odd_linear",
+      "classic-dl:even_odd_nonlinear"
+    ],
+    "Example0125": [
+      "legacy-record:classic-source:v2__prefix_equivalence__even_odd_nonlinear__even_odd_linear__naive",
+      "classic-dl:even_odd_linear",
+      "classic-dl:even_odd_nonlinear"
+    ],
+    "Example0128": [
+      "legacy-record:classic-source:v2__containment__tc_of_union__red_blue_nonlinear__naive",
+      "classic-dl:red_blue_nonlinear",
+      "classic-dl:tc_of_union"
+    ],
+    "Example0130": [
+      "legacy-record:classic-source:v2__containment__path_systems_basic__path_systems_height__naive",
+      "classic-dl:path_systems_basic",
+      "classic-dl:path_systems_height"
+    ],
+    "Example0132": [
+      "legacy-record:classic-source:v2__equiv_pairs__even_odd__linear_vs_nonlinear__naive",
+      "classic-dl:even_odd_linear",
+      "classic-dl:even_odd_nonlinear"
+    ],
+    "Example0133": [
+      "legacy-record:classic-source:v2__equiv_pairs__all_paths_via_even_odd__linear_vs_nonlinear__naive",
+      "classic-dl:all_paths_via_even_odd",
+      "classic-dl:all_paths_via_even_odd_nonlinear"
+    ],
+    "Example0134": [
+      "legacy-record:classic-source:v2__equiv_pairs__red_blue__linear_vs_nonlinear__naive",
+      "classic-dl:red_blue_linear",
+      "classic-dl:red_blue_nonlinear"
+    ],
+    "Example0136": [
+      "legacy-record:classic-source:v2__equiv_pairs__tc_left_vs_all_paths_via_eo_nonlinear__naive"
+    ],
+    "Example0137": [
+      "legacy-record:classic-source:v2__equiv_pairs__tc_nonlin_vs_all_paths_via_eo_linear__naive",
+      "classic-dl:all_paths_via_even_odd",
+      "classic-dl:tc-nonlinear"
+    ],
+    "Example0138": [
+      "legacy-record:classic-source:v2__equiv_pairs__tc_nonlin_vs_all_paths_via_eo_nonlinear__naive",
+      "classic-dl:all_paths_via_even_odd_nonlinear",
+      "classic-dl:tc-nonlinear"
+    ],
+    "Example0162": [
+      "legacy-record:classic-source:hard-game-reach"
+    ],
+    "Example0163": [
+      "legacy-record:classic-source:hard-gfp-safeset"
+    ],
+    "Example1030": [
+      "legacy-record:llm_30",
+      "legacy-record:llm_30-input"
+    ],
+    "Example1061": [
+      "legacy-record:llm_61",
+      "legacy-record:llm_61-input"
+    ],
+    "Example0001": [
+      "legacy-record:classic-source:hard-lowerbound-spec"
+    ]
+  },
+  "datalog_overrides": {
+    "Example0162": [
+      {
+        "label": "Datalog reading of the game reachability (written for this report; the operator is monotone, T is its least fixpoint; the universal step is spelled with a negated escape relation)",
+        "text": "T(x) :- Target(x).\nT(x) :- Pa(x), E(x, y), T(y).             % player-A vertex with some successor in T\nT(x) :- V(x), not Pa(x), not Escape(x).    % player-B vertex all of whose successors are in T\nEscape(x) :- E(x, y), not T(y)."
+      }
+    ],
+    "Example0163": [
+      {
+        "label": "Datalog reading of the greatest-fixpoint safe set (written for this report; complement formulation: T = V ∖ Unsafe)",
+        "text": "Unsafe(x) :- Bad(x).\nUnsafe(x) :- E(x, y), Unsafe(y).\nT(x) :- V(x), not Unsafe(x)."
+      }
+    ],
+    "Example1030": [
+      {
+        "label": "Datalog reading of the greatest-fixpoint integrity core (written for this report; complement formulation: Keep = Base ∖ Removed, a row is removed when a requirement points outside the kept rows of its shard)",
+        "text": "Removed(id, s) :- Base(id, s), Req(id, ref), not Base(ref, s).\nRemoved(id, s) :- Base(id, s), Req(id, ref), Removed(ref, s).\nKeep(id, s) :- Base(id, s), not Removed(id, s)."
+      }
+    ],
+    "Example5006": [
+      {
+        "label": "Side 1, appended delta (legacy Example1042); side 2, prepended delta (legacy Example1058); written for this report",
+        "text": "AccA(x, y) :- E(x, y).\nAccA(x, z) :- AccA(x, y), E(y, z).\n\nAccP(x, y) :- E(x, y).\nAccP(x, z) :- E(x, y), AccP(y, z)."
+      }
+    ]
+  },
+  "notes": {
+    "Example2004": "The canonical re-encoding of the legacy obstructed case; the query seed Root is pinned to {\"root\"} by the precondition.",
+    "Example2011": "Models insert-only re-evaluation restarted from the maintained view; Differential Dataflow/Materialize are the motivation, not the mechanism.",
+    "Example4036": "In an earlier (rate-matched) encoding this containment had a quantifier-free certificate; whether the compiled-sequence encoding needs a prophecy level has not been checked.",
+    "Example5038": "Replaces the legacy correctness case Example2032, whose bottom-up loop is the reference program of the check; both sides are OpenFGA algorithms (Check by top-down dispatch, ListObjects by reverse expansion).",
+    "Example5039": "Replaces the legacy correctness case Example2036 (its loop is side 1).",
+    "Example5041": "Replaces the legacy correctness case Example2024; its over-approximating RESTRICT check is the invalid twin Example5042.",
+    "Example1081": "Legacy raw_new TGD case (GPT-5.6); one representative of the specialisation-in-generalisation template (1083, 1085, 1087, 1089 are its siblings, not included).",
+    "Example1088": "Legacy raw_new TGD case (GPT-5.6): forward closure equals the transposed reverse resolution under inverse seed views and bridge-proof witnesses.",
+    "Example1090": "Legacy raw_new TGD case (GPT-5.6): a ternary mode-carrying state equals a binary projected frontier; exact only because every node has a mode (existential dependency).",
+    "Example1091": "Legacy raw_new TGD case (Claude Opus): every link has a midpoint (existential dependency); containment in a constraint-closed policy view.",
+    "Example1093": "Legacy raw_new TGD case (Claude Opus): the provenance cover is closed under propagation up to a re-projected coordinate (head-existential dependencies).",
+    "Example1094": "Legacy raw_new TGD case (Claude Opus): every peer pair has a relay (existential dependency); containment in an administratively closed distance view.",
+    "Example3001": "Legacy raw_new invalid TGD case (GPT): the second program demands a certificate on reviewed hops that the dependencies do not guarantee.",
+    "Example3009": "Legacy raw_new invalid TGD case (GPT): the second program demands a matching audit tuple per promotion.",
+    "Example3014": "Legacy raw_new invalid TGD case (GPT): the proof is checked on the resource coordinate instead of the auditor coordinate.",
+    "Example5002": "Kept after the duplicate review: the loop coincides with 5001 up to transposition and seeding, but it is the corpus's only Datafrog case (2039 was retired).",
+    "Example0133": "Kept after the duplicate review at Leo's decision: it is 0132 plus the union outputs and an implied conjunct, but Val's Part 1 review kept both and the all-paths program is a classic program in its own right.",
+    "Example0001": "Carries the kernel-checked certificate for this triple. The classic Example0160 stated the same triple and was removed as a duplicate of this case.",
+    "Example0013": "The refutable twin of Example0001: the same schema, precondition and command under the false postcondition T ⊆ E, refuted by the two-edge instance E = {(0, 1), (1, 2)}."
+  }
+}

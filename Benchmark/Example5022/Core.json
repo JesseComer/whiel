@@ -1,0 +1,46 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "((¬((op_zNewE = ∅[2]))) ∨ (π[0,3] (σ[#1 = #2] ((op_zResE × op_zE))) ⊆ op_zResE))"
+    },
+    {
+      "level": 0,
+      "source": "((¬((op_zNewE = ∅[2]))) ∨ (op_zCl ⊆ op_zResE))"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((oa_zCl × op_zE))) ⊆ op_zCl)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zResA × op_zE))) ⊆ op_zResB)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zResB × op_zE))) ⊆ op_zResC)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zResC × op_zE))) ⊆ op_zResD)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zResD × op_zE))) ⊆ op_zResE)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zBase ⊆ op_zCl)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zBase ⊆ op_zResE)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zResE ⊆ yp_zCl)"
+    }
+  ],
+  "version": 1
+}

@@ -1,0 +1,84 @@
+{
+  "fuel_consumed": 12,
+  "fuel_policy": {
+    "host_fuel_bound": null,
+    "kind": "structural_replay",
+    "validation_limit_nanos": 30000000000
+  },
+  "instance": {
+    "relations": [
+      {
+        "name": "a::Q",
+        "rows": []
+      },
+      {
+        "name": "a::QUp",
+        "rows": []
+      },
+      {
+        "name": "a::T",
+        "rows": []
+      },
+      {
+        "name": "p::F",
+        "rows": [
+          [
+            "str:b",
+            "str:x",
+            "str:d"
+          ],
+          [
+            "str:x",
+            "str:y",
+            "str:d"
+          ]
+        ]
+      },
+      {
+        "name": "p::Q",
+        "rows": []
+      },
+      {
+        "name": "p::QUp",
+        "rows": []
+      },
+      {
+        "name": "p::T",
+        "rows": []
+      },
+      {
+        "name": "p::Va",
+        "rows": []
+      },
+      {
+        "name": "p::Vb",
+        "rows": [
+          [
+            "str:x",
+            "str:d"
+          ]
+        ]
+      },
+      {
+        "name": "p::Vc",
+        "rows": []
+      }
+    ]
+  },
+  "instance_identity": "3440c0ced55a518c0ae22fc8751223a3c05d404959fad4e70d6c03a1876fb0e0",
+  "kind": "whiel_framework_ii_counterexample",
+  "provenance": {
+    "kind": "recorded_witness",
+    "source": "Benchmark/Example4037/Counterexample.json (recorded witness, re-frozen)"
+  },
+  "scope_identity_sha256": "5c41e47dd88cdd551d0a7fe3d0db66e3f07ae4b2dcab776dbbdc6cbc6bd9e00d",
+  "task": {
+    "canonical_id": "Example4037",
+    "encoding_version": 1,
+    "module": "Benchmark.Example4037.Input",
+    "namespace": "Whiel.Benchmark.Example4037",
+    "semantic_version": 1,
+    "source_sha256": "c691342416c50568869a8e5ff74100ca6417b79fe4e21bc1e131824439f16094"
+  },
+  "version": 1
+}

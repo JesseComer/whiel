@@ -1,0 +1,47 @@
+{
+  "canonicalId": "Example0106",
+  "canonicalInput": "Example0106/Input.lean",
+  "canonicalModule": "Benchmark.Example0106.Input",
+  "category": "Synthetic",
+  "compilerCommandCheck": "unavailable",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "datalogSource": "unavailable",
+  "declarationNamespace": "Whiel.Benchmark.Example0106",
+  "formatVersion": 1,
+  "goldInvariantStatus": "historical-only",
+  "historicalCandidatePresent": true,
+  "historicalClaim": "failed",
+  "notes": [
+    "Historical collaborator claims are unverified provenance.",
+    "Direct Lean semantic certificate: the kernel proves the Hoare triple from path-sound iteration history. Vampire evidence records only a countermodel to a rejected QF invariant and is not a successful proof assumption."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Synthetic",
+      "sourceId": "synthetic_6"
+    }
+  ],
+  "suites": [
+    "collaborator",
+    "all-benchmark"
+  ],
+  "title": "Prefix-equivalence: naive tc_left computes lfp of tc_nonlinear",
+  "explanation": "The executed loop naively evaluates the left-linear transitive-closure program T(x,y):-Base(x,y), T(x,y):-T(x,z),Base(z,y), while the reference program against which it is measured is the ordinary non-linear transitive closure Tc(x,y):-Base(x,y), Tc(x,y):-Tc(x,z),Tc(z,y). The Hoare triple is the standard least-fixpoint introduction obligation: given any relation RBound that is already a pre-fixpoint of the non-linear closure program, the naively computed T must itself be a pre-fixpoint of that same program and lie below RBound, establishing that the left-linear loop computes the least pre-fixpoint (i.e. the transitive closure) of the non-linear program.",
+  "preInWords": "The precondition states that RBound is a pre-fixpoint of the non-linear closure program: Base ∪ (RBound∘RBound) ⊆ RBound.",
+  "postInWords": "The postcondition states that the computed T is itself a pre-fixpoint of the non-linear closure program, Base ∪ (T∘T) ⊆ T, and that T ⊆ RBound.",
+  "notation": "canonical",
+  "datalog": [
+    {
+      "label": "tc_left",
+      "text": "-- tc_left\n-- Executed WHIEL program\ntcl(x, y) :- base(x, y).\ntcl(x, y) :- tcl(x, z), base(z, y).",
+      "provenance": "legacy inventory: source programs with one executed WHIEL program and one formal PRE/POST reference (not executed); sources: tc-left.dl, tc-nonlinear.dl"
+    },
+    {
+      "label": "tc_nonlinear",
+      "text": "-- tc_nonlinear\n-- Formal PRE/POST reference only; not executed by the WHIEL command\ntc(x, y) :- base(x, y).\ntc(x, y) :- tc(x, z), tc(z, y).",
+      "provenance": "legacy inventory: source programs with one executed WHIEL program and one formal PRE/POST reference (not executed); sources: tc-left.dl, tc-nonlinear.dl"
+    }
+  ],
+  "expectedVerdict": "valid"
+}

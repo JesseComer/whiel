@@ -1,0 +1,102 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(op_zTaX = (oa_zTaX ∪ π[0,3] (σ[#1 = #2] ((op_zE × oa_zTbX)))))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTaY = (oa_zTaY ∪ (π[0,3] (σ[#1 = #2] ((op_zE × op_zE))) ∪ (π[0,3] (σ[#1 = #2] ((oa_zTaY × oa_zTaY))) ∪ π[0,3] (σ[#1 = #2] ((oa_zTbY × oa_zTbY)))))))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTbX = (oa_zTbX ∪ (op_zE ∪ π[0,3] (σ[#1 = #2] ((op_zE × oa_zTaX))))))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTbY = (oa_zTbY ∪ (op_zE ∪ (π[0,3] (σ[#1 = #2] ((oa_zTbY × oa_zTaY))) ∪ π[0,3] (σ[#1 = #2] ((oa_zTaY × oa_zTbY)))))))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTcX = (oa_zTcX ∪ (oa_zTaX ∪ oa_zTbX)))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTcY = (oa_zTcY ∪ (oa_zTaY ∪ oa_zTbY)))"
+    },
+    {
+      "level": 1,
+      "source": "(π[0,3] (σ[#1 = #2] ((oa_zTaX × yp_zTaX))) ⊆ yp_zTaX)"
+    },
+    {
+      "level": 1,
+      "source": "(π[0,3] (σ[#1 = #2] ((oa_zTaX × yp_zTbX))) ⊆ yp_zTbX)"
+    },
+    {
+      "level": 1,
+      "source": "(π[0,3] (σ[#1 = #2] ((oa_zTbX × yp_zTaX))) ⊆ yp_zTbX)"
+    },
+    {
+      "level": 1,
+      "source": "(π[0,3] (σ[#1 = #2] ((oa_zTbX × yp_zTbX))) ⊆ yp_zTaX)"
+    },
+    {
+      "level": 1,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zTaX × yp_zTaX))) ⊆ yp_zTaX)"
+    },
+    {
+      "level": 1,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zTaX × yp_zTbX))) ⊆ yp_zTbX)"
+    },
+    {
+      "level": 1,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zTbX × yp_zTaX))) ⊆ yp_zTbX)"
+    },
+    {
+      "level": 1,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zTbX × yp_zTbX))) ⊆ yp_zTaX)"
+    },
+    {
+      "level": 1,
+      "source": "(oa_zTaX ⊆ yp_zTaY)"
+    },
+    {
+      "level": 1,
+      "source": "(oa_zTbX ⊆ yp_zTbY)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zTaX ⊆ yp_zTaY)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zTbX ⊆ yp_zTbY)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zTcX ⊆ yp_zTcY)"
+    },
+    {
+      "level": 2,
+      "source": "(oa_zTaY ⊆ yp_zTaX)"
+    },
+    {
+      "level": 2,
+      "source": "(oa_zTbY ⊆ yp_zTbX)"
+    },
+    {
+      "level": 2,
+      "source": "(op_zTaY ⊆ yp_zTaX)"
+    },
+    {
+      "level": 2,
+      "source": "(op_zTbY ⊆ yp_zTbX)"
+    },
+    {
+      "level": 2,
+      "source": "(op_zTcY ⊆ yp_zTcX)"
+    }
+  ],
+  "version": 1
+}

@@ -1,0 +1,49 @@
+{
+  "fuel_consumed": 6,
+  "fuel_policy": {
+    "host_fuel_bound": null,
+    "kind": "structural_replay",
+    "validation_limit_nanos": 30000000000
+  },
+  "instance": {
+    "relations": [
+      {
+        "name": "p::E",
+        "rows": [
+          [
+            "num:0",
+            "num:1"
+          ],
+          [
+            "num:1",
+            "num:2"
+          ]
+        ]
+      },
+      {
+        "name": "p::S",
+        "rows": []
+      },
+      {
+        "name": "p::T",
+        "rows": []
+      }
+    ]
+  },
+  "instance_identity": "7fb4ca7b93ec6f10c0e9d6ca87258086058ae9cb84c7349177125d50eb9ee64f",
+  "kind": "whiel_framework_ii_counterexample",
+  "provenance": {
+    "kind": "recorded_witness",
+    "source": "the counterexample instance in Benchmark/Example0013/Input.lean's header comment"
+  },
+  "scope_identity_sha256": "6f858e6c01804abbe2f48ece4997a73d53f580a862005e0b65f077c256d5ca81",
+  "task": {
+    "canonical_id": "Example0013",
+    "encoding_version": 1,
+    "module": "Benchmark.Example0013.Input",
+    "namespace": "Whiel.Benchmark.Example0013",
+    "semantic_version": 1,
+    "source_sha256": "c5d684e37855496e60b35e668408fd54f713716492c70864fe41c3e1493d852d"
+  },
+  "version": 1
+}

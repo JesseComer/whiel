@@ -1,0 +1,30 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(π[0,1,3] (σ[#1 = #2] ((op_zE × op_zE))) ⊆ op_zV)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0] (σ[((#1 = #2 ∧ #3 = #4) ∧ #0 = #5)] ((op_zE × (op_zE × op_zE)))) ⊆ op_zQ)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0] (σ[((#1 = #3 ∧ #2 = #4) ∧ #0 = #5)] ((op_zV × op_zV))) ⊆ op_zQUp)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zQ ⊆ π[0] (σ[((#1 = #2 ∧ #3 = #4) ∧ #0 = #5)] ((op_zE × (op_zE × op_zE)))))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zQUp ⊆ π[0] (σ[((#1 = #3 ∧ #2 = #4) ∧ #0 = #5)] ((op_zV × op_zV))))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zV ⊆ π[0,1,3] (σ[#1 = #2] ((op_zE × op_zE))))"
+    }
+  ],
+  "version": 1
+}

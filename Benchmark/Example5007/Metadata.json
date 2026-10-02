@@ -1,0 +1,31 @@
+{
+  "canonicalId": "Example5007",
+  "canonicalInput": "Example5007/Input.lean",
+  "title": "Transitive closure by repeated squaring versus linear closure",
+  "explanation": "Both sides compute the transitive closure of E. Side 1 computes it by repeated squaring: starting from E, each round unions in TSq ∘ TSq (the self-composition of the accumulated relation), doubling the walk length covered every iteration — a logarithmic-depth closure algorithm. Side 2 is standard linear naive evaluation, T(x,y):-E(x,y), T(x,y):-E(x,z),T(z,y), which extends the covered walk length by one edge per round. The Hoare triple claims the two algorithms converge to the same relation, TSq = T — the same least fixpoint reached at very different rates, walks up to length 2^(n+1) after round n for the squaring side versus length n+2 for the linear side.",
+  "preInWords": "The precondition is simply true.",
+  "postInWords": "The postcondition asserts TSq = T, that closure by repeated squaring and linear naive closure compute the same transitive-closure relation.",
+  "family": "direct-equality pair",
+  "kind": "equivalence",
+  "claim": "(TSq = T)",
+  "precondition": "true",
+  "expectedVerdict": "valid",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "rateMismatch": true,
+  "sides": [
+    "legacy Example1056 (closure by squaring)",
+    "naive compiler on the linear closure program"
+  ],
+  "sourceProgram": null,
+  "encoding": "canonical five-declaration form; programs run in sequence and merged by Hoare.preprocess; compiled sides are naive-compiler output pinned by Fidelity/ (decide +kernel); hand-written sides are the retired corpus commands verbatim under a bijective rename of relation names",
+  "created": "2026-09-15",
+  "datalog": [
+    {
+      "label": "prog_p",
+      "text": "T(x1, y1) :- E(x1, y1).\nT(x1, y1) :- E(x1, z1), T(z1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5007/Fidelity/Example5007.lean"
+    }
+  ]
+}

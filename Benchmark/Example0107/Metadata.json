@@ -1,0 +1,46 @@
+{
+  "canonicalId": "Example0107",
+  "canonicalInput": "Example0107/Input.lean",
+  "canonicalModule": "Benchmark.Example0107.Input",
+  "category": "Synthetic",
+  "compilerCommandCheck": "unavailable",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "datalogSource": "unavailable",
+  "declarationNamespace": "Whiel.Benchmark.Example0107",
+  "formatVersion": 1,
+  "goldInvariantStatus": "historical-only",
+  "historicalCandidatePresent": true,
+  "historicalClaim": "failed",
+  "notes": [
+    "Historical collaborator claims are unverified provenance."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Synthetic",
+      "sourceId": "synthetic_7"
+    }
+  ],
+  "suites": [
+    "collaborator",
+    "all-benchmark"
+  ],
+  "title": "Prefix-equivalence: naive tc_nonlinear computes lfp of tc_left",
+  "explanation": "The executed loop naively evaluates the non-linear transitive-closure program by squaring, T:=Base∪(T∘T), while the reference program is the left-linear closure T(x,y):-Base(x,y), T(x,y):-T(x,z),Base(z,y). The Hoare triple is the least-fixpoint introduction obligation for that reference: given any RBound already a pre-fixpoint of the left-linear program, the naively computed non-linear T must itself be a pre-fixpoint of the left-linear program and lie below RBound, i.e. the non-linear loop computes the least pre-fixpoint of the left-linear program, which is again the transitive closure of Base.",
+  "preInWords": "The precondition states that RBound is a pre-fixpoint of the left-linear closure program: Base ∪ (RBound∘Base) ⊆ RBound.",
+  "postInWords": "The postcondition states that the computed T is itself a pre-fixpoint of the left-linear closure program, Base ∪ (T∘Base) ⊆ T, and that T ⊆ RBound.",
+  "notation": "canonical",
+  "datalog": [
+    {
+      "label": "tc_left",
+      "text": "-- tc_left\n-- Formal PRE/POST reference only; not executed by the WHIEL command\ntcl(x, y) :- base(x, y).\ntcl(x, y) :- tcl(x, z), base(z, y).",
+      "provenance": "legacy inventory: source programs with one executed WHIEL program and one formal PRE/POST reference (not executed); sources: tc-left.dl, tc-nonlinear.dl"
+    },
+    {
+      "label": "tc_nonlinear",
+      "text": "-- tc_nonlinear\n-- Executed WHIEL program\ntc(x, y) :- base(x, y).\ntc(x, y) :- tc(x, z), tc(z, y).",
+      "provenance": "legacy inventory: source programs with one executed WHIEL program and one formal PRE/POST reference (not executed); sources: tc-left.dl, tc-nonlinear.dl"
+    }
+  ],
+  "expectedVerdict": "valid"
+}

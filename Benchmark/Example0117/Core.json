@@ -1,0 +1,90 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(op_zSa = ((π[0,3] (σ[#1 = #2] ((op_zE × op_zE))) ∪ π[0,3] (σ[#1 = #2] ((op_zTa × op_zTa)))) ∪ π[0,3] (σ[#1 = #2] ((op_zTb × op_zTb)))))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSb = ((op_zE ∪ π[0,3] (σ[#1 = #2] ((op_zTb × op_zTa)))) ∪ π[0,3] (σ[#1 = #2] ((op_zTa × op_zTb)))))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSc = (op_zTa ∪ op_zTb))"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zE × op_zR))) ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zE × op_zSc))) ⊆ (op_zSa ∪ op_zSb))"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zSa × op_zR))) ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zSb × op_zR))) ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zTa × op_zR))) ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zTb × op_zR))) ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zE ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zE ⊆ op_zSb)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSa ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSb ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSc ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTa ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTa ⊆ op_zSc)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTb ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTb ⊆ op_zSc)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTc ⊆ op_zR)"
+    },
+    {
+      "level": 0,
+      "source": "((op_zE ∪ π[0,3] (σ[#1 = #2] ((op_zE × op_zSc)))) ⊆ (op_zSa ∪ op_zSb))"
+    },
+    {
+      "level": 0,
+      "source": "((op_zSa ∪ op_zSb) ⊆ op_zR)"
+    }
+  ],
+  "version": 1
+}

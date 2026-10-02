@@ -1,0 +1,142 @@
+{
+  "fuel_consumed": 28,
+  "fuel_policy": {
+    "host_fuel_bound": null,
+    "kind": "structural_replay",
+    "validation_limit_nanos": 30000000000
+  },
+  "instance": {
+    "relations": [
+      {
+        "name": "a::Has",
+        "rows": []
+      },
+      {
+        "name": "p::Has",
+        "rows": []
+      },
+      {
+        "name": "p::HasB",
+        "rows": []
+      },
+      {
+        "name": "p::RoleInh",
+        "rows": [
+          [
+            "num:10",
+            "num:11"
+          ],
+          [
+            "num:11",
+            "num:12"
+          ],
+          [
+            "num:12",
+            "num:13"
+          ],
+          [
+            "num:13",
+            "num:14"
+          ],
+          [
+            "num:14",
+            "num:15"
+          ],
+          [
+            "num:15",
+            "num:16"
+          ],
+          [
+            "num:16",
+            "num:17"
+          ],
+          [
+            "num:17",
+            "num:18"
+          ],
+          [
+            "num:18",
+            "num:19"
+          ],
+          [
+            "num:19",
+            "num:20"
+          ],
+          [
+            "num:20",
+            "num:21"
+          ]
+        ]
+      },
+      {
+        "name": "p::StepA",
+        "rows": []
+      },
+      {
+        "name": "p::StepB",
+        "rows": []
+      },
+      {
+        "name": "p::StepC",
+        "rows": []
+      },
+      {
+        "name": "p::StepD",
+        "rows": []
+      },
+      {
+        "name": "p::StepE",
+        "rows": []
+      },
+      {
+        "name": "p::StepF",
+        "rows": []
+      },
+      {
+        "name": "p::StepG",
+        "rows": []
+      },
+      {
+        "name": "p::StepH",
+        "rows": []
+      },
+      {
+        "name": "p::StepI",
+        "rows": []
+      },
+      {
+        "name": "p::StepJ",
+        "rows": []
+      },
+      {
+        "name": "p::StepK",
+        "rows": []
+      },
+      {
+        "name": "p::UserRole",
+        "rows": [
+          [
+            "num:0",
+            "num:10"
+          ]
+        ]
+      }
+    ]
+  },
+  "instance_identity": "1280e099c6258c6b626f4b44c59fb5398dd4dc3648ab5b12e75508421f6a9e25",
+  "kind": "whiel_framework_ii_counterexample",
+  "provenance": {
+    "kind": "recorded_witness",
+    "source": "counterexample instance contributed with the case by Shuo Zhang"
+  },
+  "scope_identity_sha256": "6bcec6d2dab4d08c5c84fce8be18bf8d98731d75f13cea98f9db0fc75deec018",
+  "task": {
+    "canonical_id": "Example5013",
+    "encoding_version": 1,
+    "module": "Benchmark.Example5013.Input",
+    "namespace": "Whiel.Benchmark.Example5013",
+    "semantic_version": 1,
+    "source_sha256": "3e9346848048d8d8b7bde6477cbba7911c60269014b4e17e70e053381f6a0380"
+  },
+  "version": 1
+}

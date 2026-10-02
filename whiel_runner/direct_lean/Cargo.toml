@@ -1,0 +1,12 @@
+[package]
+name = "whiel-direct-lean"
+version = "0.1.0"
+edition = "2024"
+
+# Independent post-generation checker, not linked into the search verifier.
+[dependencies]
+libc = "0.2"
+serde_json = "1"
+
+[profile.dev]
+debug = "line-tables-only"

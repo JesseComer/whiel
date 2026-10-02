@@ -1,0 +1,46 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (op_zFront = ∅[1]))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (op_zViol = (π[0] (σ[#1 = #2] ((op_zRestrictRef × op_zDel))) ∖ op_zDel)))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ ((of_z1 = ⊤) ∨ (op_zDelC = oa_zDelC)))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (π[0] (σ[#1 = #2] ((op_zRefBy × oa_zDelC))) ⊆ op_zDelC))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (op_zDelC ⊆ op_zDel))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (op_zSeedDel ⊆ op_zDelC))"
+    },
+    {
+      "level": 0,
+      "source": "(π[0] (σ[#1 = #2] ((op_zRefBy × op_zDel))) ⊆ (op_zDel ∪ π[0] (σ[#1 = #2] ((op_zRefBy × op_zFront)))))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zSeedDel ⊆ op_zDel)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zDel ⊆ yp_zDelC)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zFront ⊆ yp_zDelC)"
+    }
+  ],
+  "version": 1
+}

@@ -1,0 +1,62 @@
+{
+  "canonicalId": "Example5016",
+  "canonicalInput": "Example5016/Input.lean",
+  "title": "DRed deletion maintenance of a materialised transitive closure versus recomputation",
+  "explanation": "The maintained program is the transitive closure T of an edge relation E; side 1 implements DRed (Delete/Rederive), the standard incremental-view-maintenance algorithm of Gupta, Mumick and Subrahmanian: it overdeletes closure facts that could depend on deleted edges, removes them, then rederives any of those facts that still have a surviving derivation on the updated edge set, propagating rederived facts back through the closure rule; side 2 recomputes the closure Tn from scratch on the updated edge set EN = E minus Del. The triple states DRed's maintained closure equals the recomputed closure, the standard correctness result for incremental deletion maintenance of a recursive Datalog view.",
+  "preInWords": "The set of edges to delete, Del, is a subset of the edge relation E.",
+  "postInWords": "The DRed-maintained closure relation T equals the freshly recomputed closure Tn on the edges remaining after deletion.",
+  "family": "maintenance algorithm versus recomputation",
+  "kind": "equivalence",
+  "claim": "(T = Tn)",
+  "precondition": "(Del ⊆ E)",
+  "expectedVerdict": "valid",
+  "obstructionExpectation": "dependent phases (materialise T; overdelete; rederive/reinsert; recompute: four flagged phases; leveled-framework target)",
+  "currentClassification": "valid",
+  "currentEvidence": "accepted invariant (Core.json); certificate not yet built",
+  "rateMismatch": true,
+  "sides": [
+    "naive compiler: T = closure of E (old materialisation)",
+    "hand-written DRed after Motik et al. DR1-DR5 / GMS section 7 steps 1-2 for the closure program, deletion-only update",
+    "naive compiler: Tn = closure of EN = E ∖ Del"
+  ],
+  "sourceProgram": null,
+  "sources": [
+    {
+      "title": "A. Gupta, I. S. Mumick, V. S. Subrahmanian, Maintaining Views Incrementally, SIGMOD 1993",
+      "url": "https://doi.org/10.1145/170035.170066",
+      "readFrom": "http://www.cs.umd.edu/projects/hermes/publications/postscripts/sigmod93_1.ps",
+      "sections": "section 7 (Incremental Maintenance of Recursive Views: steps 1-3, Theorem 7.1)",
+      "read": "2026-09-15"
+    },
+    {
+      "title": "B. Motik, Y. Nenov, R. Piro, I. Horrocks, Incremental Update of Datalog Materialisation: the Backward/Forward Algorithm, AAAI 2015",
+      "url": "https://doi.org/10.1609/aaai.v29i1.9409",
+      "readFrom": "https://www.cs.ox.ac.uk/people/ian.horrocks/Publications/download/2015/MNPH15b.pdf",
+      "sections": "section 3 (The Delete/Rederive Algorithm, steps DR1-DR5, rules (5) and (6)); Algorithm 1 and Theorem 1 (B/F)",
+      "read": "2026-09-15"
+    }
+  ],
+  "encoding": "canonical five-declaration form; three programs in sequence merged by Hoare.preprocess (flags); compiled sides pinned by Fidelity/ (decide +kernel); intersections written X ∖ (X ∖ Y)",
+  "created": "2026-09-15",
+  "twin": "Example5017 (invalid: overdeletion without rederivation)",
+  "datalog": [
+    {
+      "label": "prog_pa — The maintained program: the closure of the old edges.",
+      "text": "T(x1, y1) :- E(x1, y1).\nT(x1, z1) :- T(x1, y1), E(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5016/Fidelity/Example5016.lean"
+    },
+    {
+      "label": "prog_pc — Recomputation: the closure of the updated edges.",
+      "text": "Tn(x1, y1) :- EN(x1, y1).\nTn(x1, z1) :- Tn(x1, y1), EN(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5016/Fidelity/Example5016.lean"
+    },
+    {
+      "label": "rules as stated in the header comment of Input.lean",
+      "text": "T(x, y) :- E(x, y)\nT(x, z) :- T(x, y), E(y, z)\nT⁻(x, y) :- E⁻(x, y)\nT⁻(x, z) :- T(x, y), E⁻(y, z)\nT⁻(x, z) :- T⁻(x, y), E(y, z)\nT⁺(x, y) :- T⁻(x, y), EN(x, y)\nT⁺(x, z) :- T⁻(x, z), T(x, y), EN(y, z)\nT⁺(x, z) :- T⁺(x, y), EN(y, z)\nTn(x, y) :- EN(x, y)\nTn(x, z) :- Tn(x, y), EN(y, z)",
+      "provenance": "header comment",
+      "source_file": "Benchmark/Example5016/Input.lean"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "certificate": "<repo>/artifacts/runs/gpt-5.5-20260917-sample-5-3/verifier/Example0001/Certificate/Valid.lean",
+  "clauses_dropped": 0,
+  "clauses_submitted": 6,
+  "consultations": 1,
+  "core": 6,
+  "dead": 0,
+  "input": "Example0001",
+  "pending": 0,
+  "rounds": [
+    {
+      "agent_seconds": 41.81,
+      "clauses_dropped": 0,
+      "clauses_proposed": 6,
+      "core": 0,
+      "latest": "initial — no round has run yet",
+      "pending": 0,
+      "round": 1,
+      "verifier_seconds": null
+    }
+  ],
+  "status": "valid",
+  "total_seconds": 277.9631578922272
+}

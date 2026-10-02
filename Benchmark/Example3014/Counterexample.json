@@ -1,0 +1,182 @@
+{
+  "fuel_consumed": 25,
+  "fuel_policy": {
+    "host_fuel_bound": null,
+    "kind": "structural_replay",
+    "validation_limit_nanos": 30000000000
+  },
+  "instance": {
+    "relations": [
+      {
+        "name": "a::AccessA",
+        "rows": []
+      },
+      {
+        "name": "a::AccessB",
+        "rows": []
+      },
+      {
+        "name": "a::AuditB",
+        "rows": []
+      },
+      {
+        "name": "a::CheckedA",
+        "rows": []
+      },
+      {
+        "name": "a::ElevatedA",
+        "rows": []
+      },
+      {
+        "name": "a::ElevatedB",
+        "rows": []
+      },
+      {
+        "name": "p::AccessA",
+        "rows": []
+      },
+      {
+        "name": "p::AccessB",
+        "rows": []
+      },
+      {
+        "name": "p::AuditB",
+        "rows": []
+      },
+      {
+        "name": "p::CheckedA",
+        "rows": []
+      },
+      {
+        "name": "p::ElevatedA",
+        "rows": []
+      },
+      {
+        "name": "p::ElevatedB",
+        "rows": []
+      },
+      {
+        "name": "p::Grant",
+        "rows": [
+          [
+            "num:2",
+            "num:3"
+          ]
+        ]
+      },
+      {
+        "name": "p::Override",
+        "rows": [
+          [
+            "num:1",
+            "num:2"
+          ],
+          [
+            "num:3",
+            "num:4"
+          ]
+        ]
+      },
+      {
+        "name": "p::Permit",
+        "rows": [
+          [
+            "num:0",
+            "num:0"
+          ],
+          [
+            "num:0",
+            "num:1"
+          ],
+          [
+            "num:0",
+            "num:2"
+          ],
+          [
+            "num:0",
+            "num:4"
+          ],
+          [
+            "num:2",
+            "num:3"
+          ]
+        ]
+      },
+      {
+        "name": "p::Proof",
+        "rows": [
+          [
+            "num:0",
+            "num:0",
+            "num:0"
+          ],
+          [
+            "num:0",
+            "num:1",
+            "num:0"
+          ],
+          [
+            "num:0",
+            "num:2",
+            "num:2"
+          ],
+          [
+            "num:0",
+            "num:4",
+            "num:1"
+          ]
+        ]
+      },
+      {
+        "name": "p::Request",
+        "rows": [
+          [
+            "num:0",
+            "num:0"
+          ]
+        ]
+      },
+      {
+        "name": "p::Scope",
+        "rows": [
+          [
+            "num:1"
+          ],
+          [
+            "num:3"
+          ]
+        ]
+      },
+      {
+        "name": "p::Trusted",
+        "rows": [
+          [
+            "num:0"
+          ],
+          [
+            "num:1"
+          ],
+          [
+            "num:2"
+          ]
+        ]
+      }
+    ]
+  },
+  "instance_identity": "4e17705227952e638d7445e147480ce2861640d0cc530baeb8690f1617484d92",
+  "kind": "whiel_framework_ii_counterexample",
+  "provenance": {
+    "kind": "recorded_witness",
+    "source": "counterexample instance contributed with the case by Shuo Zhang"
+  },
+  "scope_identity_sha256": "173f159669f8372709c5e5c89f4b6fc163c3e15d766c481023702709a36ea5ff",
+  "task": {
+    "canonical_id": "Example3014",
+    "encoding_version": 1,
+    "module": "Benchmark.Example3014.Input",
+    "namespace": "Whiel.Benchmark.Example3014",
+    "semantic_version": 1,
+    "source_sha256": "1b7d03fe13f1d2fd9006fc487aae09b27d3e2668e17f7de5bc2ed9b6403d8134"
+  },
+  "version": 1
+}

@@ -1,0 +1,53 @@
+{
+  "canonicalId": "Example5018",
+  "canonicalInput": "Example5018/Input.lean",
+  "title": "Chase order-independence on the full-TGD subset of ChaseBench correctness/tgds: dependency-at-a-time versus parallel chase",
+  "explanation": "The program is the full-TGD subset of ChaseBench's tgds correctness scenario, a small chain of six dependencies (renamed S/TA/TB/TC/WA/WB) relating source and target relations in a data-exchange setting; side 1 hand-encodes the dependency-at-a-time chase (each dependency chased to its own fixpoint in file order, the sweep over all dependencies repeated until nothing new is derived), while side 2 is the naive-compiler translation applying all dependencies in parallel each round. The triple states the two chase orders converge to the same universal solution, illustrating the chase's order-independence for full (non-existential) dependencies.",
+  "preInWords": "True; no precondition constrains the inputs.",
+  "postInWords": "Each target relation computed by the dependency-at-a-time chase (TAQ, TBQ, WAQ, WBQ) equals the corresponding relation computed by the parallel chase (TA, TB, WA, WB).",
+  "family": "two evaluation orders of one chase",
+  "kind": "equivalence",
+  "claim": "(((TAQ = TA) ∧ (TBQ = TB)) ∧ ((WAQ = WA) ∧ (WBQ = WB)))",
+  "precondition": "true",
+  "expectedVerdict": "valid",
+  "obstructionExpectation": "rate mismatch (parallel round versus one dependency per flattened iteration; nested loops flattened under five flags beside the compiled loop)",
+  "currentClassification": "valid",
+  "currentEvidence": "kernel-checked exact Input validity theorem (Certificate/Valid.lean)",
+  "notes": [
+    "The reference invariant and emitter-generated certificate were promoted from the certified Base + tools experimental answer for the unchanged input; CertificateProvenance.json records their origin and hashes.",
+    "Core.json is the canonical emitted invariant with 26 rows, including six level-1 prophecy clauses. Experimental certification outcomes and timings remain a separate result set."
+  ],
+  "rateMismatch": true,
+  "sides": [
+    "hand-written: s-t TGDs once, then target TGDs in file order each to its fixpoint (inner loops), sweep repeated (outer loop)",
+    "naive compiler: the six full TGDs as a Datalog program (parallel chase)"
+  ],
+  "sourceProgram": "ChaseBench scenarios/correctness/tgds (full TGDs; the existential t2 -> t3 dropped, t3 an input)",
+  "sources": [
+    {
+      "title": "ChaseBench (dbunibas/chasebench), scenario scenarios/correctness/tgds",
+      "url": "https://github.com/dbunibas/chasebench",
+      "commit": "7427e1c1e3196769ee4ea04557465965ec26d02b (master, 2017-09-13)",
+      "files": "scenarios/correctness/tgds/dependencies/tgds.st-tgds.txt, tgds.t-tgds.txt; schema/tgds.s-schema.txt, tgds.t-schema.txt; data/s.csv (header only); README.md",
+      "read": "2026-09-15"
+    },
+    {
+      "title": "M. Benedikt, G. Konstantinidis, G. Mecca, B. Motik, P. Papotti, D. Santoro, E. Tsamoura, Benchmarking the Chase, PODS 2017",
+      "url": "https://doi.org/10.1145/3034786.3034796",
+      "readFrom": "https://www.cs.ox.ac.uk/boris.motik/pubs/bkmmpst17becnhmarking-chase.pdf",
+      "sections": "Section 2 (chase sequences, fairness), Section 3 (Algorithm 1, Chase variants), Section 8 (Restricted vs. unrestricted vs. parallel chase)",
+      "read": "2026-09-15"
+    }
+  ],
+  "encoding": "canonical five-declaration form; nested loops (first use in this corpus) flattened by Hoare.preprocess; compiled side pinned by Fidelity/ (decide +kernel); names S=s, TA=t1, TB=t2, TC=t3, WA=w1, WB=w2",
+  "created": "2026-09-15",
+  "twin": "Example5019 (invalid: one pass in file order)",
+  "datalog": [
+    {
+      "label": "prog_p — The full TGDs of ChaseBench scenarios/correctness/tgds as a Datalog program (S = s, TA = t1, TB = t2, TC = t3, WA = w1, WB = w2).",
+      "text": "TA(x1, y1, z1) :- S(x1, y1, z1).\nWA(x1, y1) :- S(x1, y1, z1).\nTB(x1, y1) :- TA(x1, y1, z1).\nTB(y1, y1) :- TC(x1, y1, z1).\nWB(x1, y1) :- WA(x1, y1).\nWA(y1, y1) :- WB(x1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5018/Fidelity/Example5018.lean"
+    }
+  ]
+}

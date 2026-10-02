@@ -1,0 +1,60 @@
+{
+  "canonicalId": "Example5020",
+  "canonicalInput": "Example5020/Input.lean",
+  "title": "RDFS closure by the rho-df rules versus the full W3C RDFS rule set: equal up to the reflexive subPropertyOf/subClassOf triples",
+  "explanation": "Both sides compute RDFS entailment closures over ground triples using rho-df vocabulary relations (subclass, subproperty, domain, range, type, generic triples); side 1 implements the minimal rho-df rule set of Munoz, Perez and Gutierrez (subproperty/subclass transitivity plus type and triple propagation), while side 2 implements the full W3C RDFS rule set restricted to the same vocabulary, additionally deriving that every recognized property or class is reflexively a subproperty/subclass of itself. The triple states the two closures agree exactly on triples and typing, and that the full closure's subproperty/subclass relations equal the minimal closure's relations unioned with the extra reflexive pairs forced by which terms are recognized as properties or classes — a precise account of what the dropped RDFS rules contribute.",
+  "preInWords": "True; no precondition constrains the inputs.",
+  "postInWords": "The two rule sets derive identical Triple and Type relations, and the full rule set's subproperty/subclass relations equal the minimal rule set's subproperty/subclass relations unioned with the reflexive pairs over the terms recognized as properties/classes.",
+  "family": "two rule sets for one semantics",
+  "kind": "equivalence",
+  "claim": "(((TripleM = TripleF) ∧ (TypeM = TypeF)) ∧ (((SubPropM ∪ π[0, 0] IsProp) = SubPropF) ∧ ((SubClassM ∪ π[0, 0] IsClass) = SubClassF)))",
+  "precondition": "true",
+  "expectedVerdict": "valid",
+  "obstructionExpectation": "anchored (independent compiled loops merged side by side, one round of the same patterns per iteration; reflexive pairs lag one round: SubPropF = SubPropM ∪ π[0,0] IsProp_aux, SubClassF = SubClassM ∪ π[0,0] IsClass_aux)",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "rateMismatch": false,
+  "sides": [
+    "naive compiler: rho-df system ⊢mrdf, rules (2a),(2b),(3a),(3b),(4a),(4b) = rdfs5, rdfs7, rdfs11, rdfs9, rdfs2, rdfs3",
+    "naive compiler: W3C RDFS entailment patterns on mrdf-graphs (the six shared patterns, rdfs6, rdfs10, rdfD2, and the typing forced by the RDFS axiomatic triples of the rho-df vocabulary, in IsProp/IsClass)"
+  ],
+  "sourceProgram": null,
+  "sources": [
+    {
+      "title": "S. Munoz, J. Perez, C. Gutierrez, Simple and Efficient Minimal RDFS, Journal of Web Semantics 7(3), 2009",
+      "url": "https://doi.org/10.1016/j.websem.2009.07.003",
+      "readFrom": "https://users.dcc.uchile.cl/~cgutierr/papers/jws09.pdf",
+      "sections": "Definition 3 (rho-df vocabulary), Table 1 (rules (1)-(7)), Definition 15 (mrdf graphs, ⊢mrdf), Proposition 17, Corollary 18",
+      "read": "2026-09-15"
+    },
+    {
+      "title": "W3C RDF 1.1 Semantics, Recommendation 25 February 2014",
+      "url": "https://www.w3.org/TR/rdf11-mt/",
+      "sections": "8.1.1 (rdfD2), 9 (RDFS axiomatic triples), 9.2.1 (rdfs1-rdfs13)",
+      "read": "2026-09-15"
+    },
+    {
+      "title": "Apache Jena, jena-core/src/main/resources/etc/rdfs.rules",
+      "url": "https://github.com/apache/jena/blob/main/jena-core/src/main/resources/etc/rdfs.rules",
+      "commit": "f9eed353614c178b80b1e099ea2598e648014074 (main, 2026-09-14)",
+      "read": "2026-09-15"
+    }
+  ],
+  "encoding": "canonical five-declaration form; two compiled programs in sequence merged by Hoare.preprocess (no flags); pinned by Fidelity/ (decide +kernel); the RDFS vocabulary is not data (mrdf-graphs), built-in classes as unary relations; rdfs1, rdfs4a/b, rdfs8, rdfs12, rdfs13 omitted (conclusions outside the vocabulary)",
+  "created": "2026-09-15",
+  "twin": "Example5021 (invalid: reflexive subClassOf triples forgotten)",
+  "datalog": [
+    {
+      "label": "prog_pm — rho-df, the system ⊢mrdf: rules (2a), (2b), (3a), (3b), (4a), (4b) of Munoz, Perez, Gutierrez (= rdfs5, rdfs7, rdfs11, rdfs9, rdfs2, rdfs3).",
+      "text": "SubPropM(x1, y1) :- SubProp(x1, y1).\nSubPropM(x1, z1) :- SubPropM(x1, y1), SubPropM(y1, z1).\nTripleM(x1, y1, z1) :- Triple(x1, y1, z1).\nTripleM(x1, z1, y1) :- SubPropM(x2, z1), TripleM(x1, x2, y1).\nSubClassM(x1, y1) :- SubClass(x1, y1).\nSubClassM(x1, z1) :- SubClassM(x1, y1), SubClassM(y1, z1).\nTypeM(x1, y1) :- TypeOf(x1, y1).\nTypeM(x1, z1) :- SubClassM(y1, z1), TypeM(x1, y1).\nTypeM(x1, z1) :- Dom(y1, z1), TripleM(x1, y1, x2).\nTypeM(y1, z1) :- Range(x2, z1), TripleM(x1, x2, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5020/Fidelity/Example5020.lean"
+    },
+    {
+      "label": "prog_pf — The W3C RDFS entailment patterns on mrdf-graphs: the six shared patterns, rdfs6, rdfs10, rdfD2 and the typing forced by the RDFS axiomatic triples of the rho-df vocabulary (IsProp = rdf:type rdf:Property, IsClass = rdf:type rdfs:Class).",
+      "text": "SubPropF(x1, y1) :- SubProp(x1, y1).\nSubPropF(x1, z1) :- SubPropF(x1, y1), SubPropF(y1, z1).\nSubPropF(x1, x1) :- IsProp(x1).\nTripleF(x1, y1, z1) :- Triple(x1, y1, z1).\nTripleF(x1, z1, y1) :- SubPropF(x2, z1), TripleF(x1, x2, y1).\nSubClassF(x1, y1) :- SubClass(x1, y1).\nSubClassF(x1, z1) :- SubClassF(x1, y1), SubClassF(y1, z1).\nSubClassF(x1, x1) :- IsClass(x1).\nTypeF(x1, y1) :- TypeOf(x1, y1).\nTypeF(x1, z1) :- SubClassF(y1, z1), TypeF(x1, y1).\nTypeF(x1, z1) :- Dom(y1, z1), TripleF(x1, y1, x2).\nTypeF(y1, z1) :- Range(x2, z1), TripleF(x1, x2, y1).\nIsProp(y1) :- TripleF(x1, y1, z1).\nIsProp(x1) :- SubPropF(x1, y1).\nIsProp(y1) :- SubPropF(x1, y1).\nIsProp(x1) :- Dom(x1, y1).\nIsProp(x1) :- Range(x1, y1).\nIsClass(y1) :- TypeF(x1, y1).\nIsClass(x1) :- SubClassF(x1, y1).\nIsClass(y1) :- SubClassF(x1, y1).\nIsClass(y1) :- Dom(x1, y1).\nIsClass(y1) :- Range(x1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5020/Fidelity/Example5020.lean"
+    }
+  ]
+}

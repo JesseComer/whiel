@@ -1,0 +1,70 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ ((of_z1 = ⊤) ∨ (op_zDelta = ∅[2])))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ ((of_z1 = ⊤) ∨ (op_zWorkT = ∅[2])))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (π[0,3] (σ[#1 = #2] ((op_zRes × (op_zEBase ∪ op_zEDelta)))) ⊆ (op_zRes ∪ π[0,3] (σ[#1 = #2] ((op_zWorkT × (op_zEBase ∪ op_zEDelta)))))))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (π[0,3] (σ[#1 = #2] ((op_zT × (op_zEBase ∪ op_zEDelta)))) ⊆ (op_zT ∪ π[0,3] (σ[#1 = #2] ((op_zDelta × (op_zEBase ∪ op_zEDelta)))))))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (π[0,3] (σ[#1 = #2] ((op_zTOld × op_zEBase))) ⊆ op_zTOld))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (op_zDelta ⊆ op_zT))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (op_zEDelta ⊆ op_zT))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (op_zTOld ⊆ op_zT))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (op_zWorkT ⊆ op_zRes))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ ((op_zEBase ∪ op_zEDelta) ⊆ op_zRes))"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((oa_zTOld × op_zEBase))) ⊆ op_zTOld)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zEBase ⊆ op_zTOld)"
+    },
+    {
+      "level": 1,
+      "source": "((of_z0 = ⊤) ∨ (op_zDelta ⊆ yp_zRes))"
+    },
+    {
+      "level": 1,
+      "source": "((of_z0 = ⊤) ∨ (op_zRes ⊆ yp_zT))"
+    },
+    {
+      "level": 1,
+      "source": "((of_z0 = ⊤) ∨ (op_zT ⊆ yp_zRes))"
+    },
+    {
+      "level": 1,
+      "source": "(op_zTOld ⊆ yp_zRes)"
+    }
+  ],
+  "version": 1
+}

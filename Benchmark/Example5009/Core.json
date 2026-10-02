@@ -1,0 +1,58 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (op_zgrandmother = π[0,3] (σ[#2 = #1] ((op_zmother × op_zancestor)))))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (op_zparentS = op_zparent))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (op_zrelativeS = op_zrelative))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (op_zsiblingS = op_zsibling))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ ((of_z1 = ⊤) ∨ (op_zdeltaAncestorS = ∅[2])))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (π[1,3] (((σ[(#2 = #0 ∧ ¬(#1 = #3))] ((op_zancestor × op_zancestor)) ∖ π[0,1,2,3] (σ[(#4 = #1 ∧ #5 = #3)] ((σ[(#2 = #0 ∧ ¬(#1 = #3))] ((op_zancestor × op_zancestor)) × op_zsibling)))) ∖ π[0,1,2,3] (σ[(#4 = #1 ∧ #5 = #3)] (((σ[(#2 = #0 ∧ ¬(#1 = #3))] ((op_zancestor × op_zancestor)) ∖ π[0,1,2,3] (σ[(#4 = #1 ∧ #5 = #3)] ((σ[(#2 = #0 ∧ ¬(#1 = #3))] ((op_zancestor × op_zancestor)) × op_zsibling)))) × op_zparent))))) ⊆ op_zcousin))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (op_zcousin ⊆ π[1,3] (((σ[(#2 = #0 ∧ ¬(#1 = #3))] ((op_zancestor × op_zancestor)) ∖ π[0,1,2,3] (σ[(#4 = #1 ∧ #5 = #3)] ((σ[(#2 = #0 ∧ ¬(#1 = #3))] ((op_zancestor × op_zancestor)) × op_zsibling)))) ∖ π[0,1,2,3] (σ[(#4 = #1 ∧ #5 = #3)] (((σ[(#2 = #0 ∧ ¬(#1 = #3))] ((op_zancestor × op_zancestor)) ∖ π[0,1,2,3] (σ[(#4 = #1 ∧ #5 = #3)] ((σ[(#2 = #0 ∧ ¬(#1 = #3))] ((op_zancestor × op_zancestor)) × op_zsibling)))) × op_zparent)))))))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ ((op_zancestorS ∪ op_zdeltaAncestorS) ⊆ op_zancestor))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ ((op_zparent ∪ π[0,3] (σ[#2 = #1] ((op_zparent × op_zancestor)))) ⊆ op_zancestor))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ ((op_zparentS ∪ π[0,3] (σ[#2 = #1] ((op_zparentS × op_zancestorS)))) ⊆ (op_zancestorS ∪ op_zdeltaAncestorS)))"
+    },
+    {
+      "level": 0,
+      "source": "((op_zparent ∪ π[0,3] (σ[#2 = #1] ((op_zparent × op_zancestorOld)))) ⊆ op_zancestorNew)"
+    },
+    {
+      "level": 1,
+      "source": "((of_z0 = ⊤) ∨ (op_zancestor ⊆ yp_zancestorS))"
+    },
+    {
+      "level": 1,
+      "source": "(op_zancestorNew ⊆ yp_zancestorS)"
+    }
+  ],
+  "version": 1
+}

@@ -1,0 +1,33 @@
+{
+  "name": "weak-model-smoke",
+  "notes": "Twenty-input smoke campaign for a cheap, weak model, with the real campaign's parameters: 4 workers, 600 s of search, full retention on both sides, and no certification (certify the run directory afterwards with `campaign certify --run <run>/verifier`). The inputs are 15 valid and 5 invalid, several of them hard, so a weak model is expected to solve only some of them; the run checks the pipeline and the cost, not the score. No epoch cap is set: the search limit is the only bound. This spec deliberately names no model: fill in `provider`, `model` and, as the machine needs, `reasoning_effort`, `provider_cli` and `isolation` before running it.",
+  "inputs": [
+    "Example0001",
+    "Example0162",
+    "Example0163",
+    "Example1061",
+    "Example2007",
+    "Example2010",
+    "Example4001",
+    "Example5039",
+    "Example1081",
+    "Example4041",
+    "Example5001",
+    "Example0134",
+    "Example0013",
+    "Example5040",
+    "Example5031",
+    "Example3001",
+    "Example4037",
+    "Example5016",
+    "Example5034",
+    "Example5036"
+  ],
+  "output_root": "artifacts/runs",
+  "search_limit_seconds": 600,
+  "certification_limit_seconds": 1800,
+  "workers": 4,
+  "retention": "all",
+  "agent_retention": "all",
+  "certify": "never"
+}

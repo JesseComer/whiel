@@ -1,0 +1,54 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(op_zReachOld = (oa_zReachOld ∪ (op_zRoots ∪ π[2] (σ[#0 = #1] ((oa_zReachOld × op_zEBase))))))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (op_zReach = ((op_zRoots ∪ op_zReachOld) ∪ π[1] (σ[#0 = #2] (((op_zEBase ∪ op_zEDelta) × op_sszReach))))))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (op_zReachNew = (oa_zReachNew ∪ (op_zRoots ∪ (π[2] (σ[#0 = #1] ((oa_zReachNew × op_zEBase))) ∪ π[2] (σ[#0 = #1] ((oa_zReachNew × op_zEDelta))))))))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ ((of_z1 = ⊤) ∨ (op_zReach ⊆ op_sszReach)))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ ((of_z1 = ⊤) ∨ (op_zReachNew ⊆ oa_zReachNew)))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (op_sszReach ⊆ op_zReach))"
+    },
+    {
+      "level": 1,
+      "source": "((of_z0 = ⊤) ∨ (oa_zReachNew ⊆ yp_zReach))"
+    },
+    {
+      "level": 1,
+      "source": "((of_z0 = ⊤) ∨ (op_zReach ⊆ yp_zReachNew))"
+    },
+    {
+      "level": 1,
+      "source": "((of_z0 = ⊤) ∨ (op_zReachNew ⊆ yp_zReach))"
+    },
+    {
+      "level": 1,
+      "source": "((of_z0 = ⊤) ∨ (op_sszReach ⊆ yp_zReachNew))"
+    },
+    {
+      "level": 1,
+      "source": "(oa_zReachOld ⊆ yp_zReachNew)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zReachOld ⊆ yp_zReachNew)"
+    }
+  ],
+  "version": 1
+}

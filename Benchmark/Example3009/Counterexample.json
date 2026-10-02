@@ -1,0 +1,151 @@
+{
+  "fuel_consumed": 26,
+  "fuel_policy": {
+    "host_fuel_bound": null,
+    "kind": "structural_replay",
+    "validation_limit_nanos": 30000000000
+  },
+  "instance": {
+    "relations": [
+      {
+        "name": "a::AllowB",
+        "rows": []
+      },
+      {
+        "name": "a::CheckedA",
+        "rows": []
+      },
+      {
+        "name": "a::GrantA",
+        "rows": []
+      },
+      {
+        "name": "a::PendingA",
+        "rows": []
+      },
+      {
+        "name": "a::QueueB",
+        "rows": []
+      },
+      {
+        "name": "a::VettedB",
+        "rows": []
+      },
+      {
+        "name": "p::AllowB",
+        "rows": []
+      },
+      {
+        "name": "p::Audit",
+        "rows": [
+          [
+            "num:0",
+            "num:1",
+            "num:0"
+          ]
+        ]
+      },
+      {
+        "name": "p::Certified",
+        "rows": [
+          [
+            "num:0",
+            "num:1"
+          ],
+          [
+            "num:1",
+            "num:2"
+          ],
+          [
+            "num:2",
+            "num:3"
+          ]
+        ]
+      },
+      {
+        "name": "p::CheckedA",
+        "rows": []
+      },
+      {
+        "name": "p::Delegate",
+        "rows": [
+          [
+            "num:0",
+            "num:1"
+          ]
+        ]
+      },
+      {
+        "name": "p::GrantA",
+        "rows": []
+      },
+      {
+        "name": "p::PendingA",
+        "rows": []
+      },
+      {
+        "name": "p::QueueB",
+        "rows": []
+      },
+      {
+        "name": "p::Review",
+        "rows": [
+          [
+            "num:0",
+            "num:1"
+          ],
+          [
+            "num:1",
+            "num:2"
+          ],
+          [
+            "num:2",
+            "num:3"
+          ]
+        ]
+      },
+      {
+        "name": "p::Root",
+        "rows": [
+          [
+            "num:0"
+          ]
+        ]
+      },
+      {
+        "name": "p::Trust",
+        "rows": [
+          [
+            "num:0"
+          ],
+          [
+            "num:1"
+          ],
+          [
+            "num:2"
+          ]
+        ]
+      },
+      {
+        "name": "p::VettedB",
+        "rows": []
+      }
+    ]
+  },
+  "instance_identity": "9b9932cc44035d6027a7a777e8ad0016b706e54e71dd55c8f1cf70f758535dfc",
+  "kind": "whiel_framework_ii_counterexample",
+  "provenance": {
+    "kind": "recorded_witness",
+    "source": "counterexample instance contributed with the case by Shuo Zhang"
+  },
+  "scope_identity_sha256": "9d8c68d03c7d458bf73bcce116259a03b7d746ffc445db6b62e1f21870d4cf5e",
+  "task": {
+    "canonical_id": "Example3009",
+    "encoding_version": 1,
+    "module": "Benchmark.Example3009.Input",
+    "namespace": "Whiel.Benchmark.Example3009",
+    "semantic_version": 1,
+    "source_sha256": "00f2c8a21d18603e3ace39754fdd0a2eba9a273b92fdc5d431db9f35396cb1d2"
+  },
+  "version": 1
+}

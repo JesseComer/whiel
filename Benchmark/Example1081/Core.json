@@ -1,0 +1,50 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(π[0,1] (σ[#2 = #3] ((op_zEvidence × op_zValid))) ⊆ op_zPermit)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[(#1 = #2 ∧ #4 = #5)] ((oa_zPermit × (op_zEvidence × op_zValid)))) ⊆ op_zTrace)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((oa_zPermit × oa_zPermit))) ⊆ op_zTrace)"
+    },
+    {
+      "level": 0,
+      "source": "(oa_zTrace ⊆ op_zPermit)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zBroad ⊆ op_zPermit)"
+    },
+    {
+      "level": 1,
+      "source": "(oa_zAudited ⊆ yp_zPermit)"
+    },
+    {
+      "level": 1,
+      "source": "(oa_zDelegated ⊆ yp_zPermit)"
+    },
+    {
+      "level": 1,
+      "source": "(oa_zGrant ⊆ yp_zPermit)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zAudited ⊆ yp_zPermit)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zDelegated ⊆ yp_zPermit)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zGrant ⊆ yp_zPermit)"
+    }
+  ],
+  "version": 1
+}

@@ -1,0 +1,79 @@
+{
+  "binding": {
+    "consultation_digest": "d7ff07b603f92054f62f707547a0f5fed5207eb47b87f2bcb8c6f6c91502e331",
+    "policy_digest": "82bd29c106f357381ca9e53b468ff03c6c8bf8b7645b23230786feb4634fdd61",
+    "run_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "scope_digest": "56444dd2cb70a6346aefbf598a3a0c5e0c9ae02a53328ac7c43b9289f9e6bdbb",
+    "state_snapshot_digest": "475f308dd2195f291cfd8afea027a0f0b09b62e01b8e9530c1e5cb93d37aba7c",
+    "task_digest": "9b401180b14d610141e2502ecd0af7e55b60f2dcf46bb3fe067f6828c694af33",
+    "validation_manifest_digest": "979449f4fc7be1beb83058d9d6def766eafa8d9a7cf2794785e395face9562d7",
+    "validation_ordinal": 0
+  },
+  "correction": null,
+  "feedback": {
+    "binding": {
+      "consultation_digest": "d7ff07b603f92054f62f707547a0f5fed5207eb47b87f2bcb8c6f6c91502e331",
+      "run_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "scope_digest": "56444dd2cb70a6346aefbf598a3a0c5e0c9ae02a53328ac7c43b9289f9e6bdbb",
+      "state_snapshot_digest": "475f308dd2195f291cfd8afea027a0f0b09b62e01b8e9530c1e5cb93d37aba7c",
+      "task_digest": "9b401180b14d610141e2502ecd0af7e55b60f2dcf46bb3fe067f6828c694af33",
+      "validation_manifest_digest": "979449f4fc7be1beb83058d9d6def766eafa8d9a7cf2794785e395face9562d7"
+    },
+    "core": [],
+    "iteration": 1,
+    "last_round": [],
+    "latest": {
+      "kind": "initial"
+    },
+    "pending": [],
+    "presentation": {
+      "ambient_schema": {
+        "prophecy_map": [],
+        "relations": [
+          {
+            "arity": 1,
+            "key": "o:p::R"
+          }
+        ],
+        "scope_digest": "56444dd2cb70a6346aefbf598a3a0c5e0c9ae02a53328ac7c43b9289f9e6bdbb"
+      },
+      "host_limits": [],
+      "presentation_digest": "9e6f48910ab1767aafa7fe748a4fde7aa0e80ae87985d01a913e64c8706c759a",
+      "resource_limits": {
+        "api_packet_bytes": 67108864,
+        "configured": null
+      },
+      "schema_version": 16,
+      "task": {
+        "canonical_id": "DefaultPromptCompatibility",
+        "encoding_version": 1,
+        "original": {
+          "command": "SKIP",
+          "postcondition": "true",
+          "precondition": "true"
+        },
+        "preprocessed": {
+          "command": "SKIP",
+          "postcondition": "true",
+          "precondition": "true"
+        },
+        "schema": "{R}",
+        "semantic_version": 1,
+        "task_digest": "9b401180b14d610141e2502ecd0af7e55b60f2dcf46bb3fe067f6828c694af33"
+      }
+    },
+    "remaining_search_budget_ns": "30000000000",
+    "schema_version": 10,
+    "state_revision": 0,
+    "tools": [
+      "countermodel",
+      "strongest_refutations",
+      "history",
+      "ledger",
+      "validate_clauses",
+      "evaluate_clauses"
+    ]
+  },
+  "operation": "proposer_observation",
+  "schema_version": 4
+}

@@ -1,0 +1,46 @@
+{
+  "canonicalId": "Example0108",
+  "canonicalInput": "Example0108/Input.lean",
+  "canonicalModule": "Benchmark.Example0108.Input",
+  "category": "Synthetic",
+  "compilerCommandCheck": "unavailable",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "datalogSource": "unavailable",
+  "declarationNamespace": "Whiel.Benchmark.Example0108",
+  "formatVersion": 1,
+  "goldInvariantStatus": "historical-only",
+  "historicalCandidatePresent": true,
+  "historicalClaim": "failed",
+  "notes": [
+    "Historical collaborator claims are unverified provenance."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Synthetic",
+      "sourceId": "synthetic_8"
+    }
+  ],
+  "suites": [
+    "collaborator",
+    "all-benchmark"
+  ],
+  "title": "Prefix-equivalence: naive tc_right computes lfp of tc_left",
+  "explanation": "The executed loop naively evaluates the right-linear transitive-closure program T(x,y):-Base(x,y), T(x,y):-Base(x,z),T(z,y), while the reference program is the left-linear closure T(x,y):-Base(x,y), T(x,y):-T(x,z),Base(z,y). The Hoare triple is the least-fixpoint introduction obligation for the left-linear reference: given any RBound already a pre-fixpoint of the left-linear program, the naively computed right-linear T must itself be a pre-fixpoint of the left-linear program and lie below RBound, i.e. right-linear naive evaluation computes the least pre-fixpoint of the left-linear program (both compute the transitive closure of Base).",
+  "preInWords": "The precondition states that RBound is a pre-fixpoint of the left-linear closure program: Base ∪ (RBound∘Base) ⊆ RBound.",
+  "postInWords": "The postcondition states that the computed T is itself a pre-fixpoint of the left-linear closure program, Base ∪ (T∘Base) ⊆ T, and that T ⊆ RBound.",
+  "notation": "canonical",
+  "datalog": [
+    {
+      "label": "tc_left",
+      "text": "-- tc_left\n-- Formal PRE/POST reference only; not executed by the WHIEL command\ntcl(x, y) :- base(x, y).\ntcl(x, y) :- tcl(x, z), base(z, y).",
+      "provenance": "legacy inventory: source programs with one executed WHIEL program and one formal PRE/POST reference (not executed); sources: tc-left.dl, tc-right.dl"
+    },
+    {
+      "label": "tc_right",
+      "text": "-- tc_right\n-- Executed WHIEL program\ntcr(x, y) :- base(x, y).\ntcr(x, y) :- base(x, z), tcr(z, y).",
+      "provenance": "legacy inventory: source programs with one executed WHIEL program and one formal PRE/POST reference (not executed); sources: tc-left.dl, tc-right.dl"
+    }
+  ],
+  "expectedVerdict": "valid"
+}

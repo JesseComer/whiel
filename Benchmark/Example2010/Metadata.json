@@ -1,0 +1,41 @@
+{
+  "canonicalId": "Example2010",
+  "canonicalInput": "Example2010/Input.lean",
+  "canonicalModule": "Benchmark.Example2010.Input",
+  "category": "Production",
+  "compilerCommandCheck": "unavailable",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "datalogSource": "unavailable",
+  "declarationNamespace": "Whiel.Benchmark.Example2010",
+  "formatVersion": 1,
+  "goldInvariantStatus": "missing",
+  "historicalCandidatePresent": false,
+  "historicalClaim": "no-invariant",
+  "notes": [
+    "Historical collaborator claims are unverified provenance."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Production",
+      "sourceId": "production_10"
+    }
+  ],
+  "suites": [
+    "collaborator",
+    "all-benchmark"
+  ],
+  "title": "Semi-naive evaluation ≡ naive/declarative transitive closure",
+  "explanation": "The loop computes transitive closure of Edge using a semi-naive evaluation strategy: it maintains an accumulated result Res and a frontier WorkT of newly derived pairs, extends WorkT through Edge, keeps only pairs not already in Res, and terminates when the frontier is empty, the standard semi-naive optimization of naive bottom-up Datalog evaluation, which would otherwise recompute the full join every round. The Hoare triple is the least-fixpoint correctness statement: the precondition makes RBound a pre-fixpoint of the naive transitive-closure operator, and the postcondition shows Res is itself a pre-fixpoint of that operator and is contained in RBound, which together pin Res to the least fixpoint, i.e. semi-naive evaluation computes exactly the same transitive closure as naive evaluation.",
+  "preInWords": "The precondition asserts RBound contains Edge and is closed under one more step of composing itself with Edge, i.e. RBound is a pre-fixpoint of the naive transitive-closure operator.",
+  "postInWords": "The postcondition asserts the semi-naive result Res is itself a pre-fixpoint of the same operator (contains Edge and is closed under composing with Edge) and is contained in RBound, together forcing Res to equal the least fixpoint.",
+  "notation": "canonical",
+  "datalog": [
+    {
+      "label": "prog_p",
+      "text": "ResC(x1, y1) :- Edge(x1, y1).\nResC(x1, z1) :- ResC(x1, y1), Edge(y1, z1).",
+      "provenance": "production check (the hand-written loop equals this program's naive compilation on the check instances)"
+    }
+  ],
+  "expectedVerdict": "valid"
+}

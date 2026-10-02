@@ -1,0 +1,58 @@
+{
+  "canonicalId": "Example0132",
+  "canonicalInput": "Example0132/Input.lean",
+  "canonicalModule": "Benchmark.Example0132.Input",
+  "category": "Obstructed",
+  "certificatePath": "Example0132/Certificate/Valid.lean",
+  "compilerCommandCheck": "Benchmark.Example0132.Fidelity.Example0132",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "currentValidation": {
+    "attempt": null,
+    "lean": "4.30.0-rc1",
+    "proofBackend": null,
+    "status": "not-attempted"
+  },
+  "datalogSource": "Benchmark.Example0132.Fidelity.Example0132",
+  "declarationNamespace": "Whiel.Benchmark.Example0132",
+  "formatVersion": 1,
+  "goldInvariantStatus": "not-applicable",
+  "historicalCandidatePresent": false,
+  "historicalClaim": null,
+  "notes": [
+    "Origin: one of the twelve root cases of the retired obstructed corpus.",
+    "Old title: \"Joint-loop equivalence: even_odd linear vs non-linear (naive)\" (kind: equiv-pair; algorithm: naive).",
+    "Prior classification and evidence in the retired corpus: valid, by a hand-written Lean kernel certificate (direct Lean kernel proof maintaining path-sound approximants and exact linear/nonlinear even-odd recurrences, converting nonlinear closure to linear closure at termination, and proving the two implementations equal; no external FOL assumptions). The retired corpus records this case among the twelve valid, conjecturally FO-obstructed cases (no archived Vampire refutation for this particular case). That kernel certificate is not carried into this corpus; the classification here is unknown until re-certified.",
+    "The command is not hand-authored: `Fidelity/Example0132.lean` states the two Datalog programs written for this case, compiles each with `Datalog.WhielCompiler.Naive`, writes the two compiled commands one after the other, renames the generated snapshots to the auxiliary input names `X_aux`, and proves the result equal to `inputCmd` by `decide +kernel`; the same module fixes `inputPre` and `inputPost` and pins the single loop `Hoare.preprocess` computes from the sequence. The two programs are independent, so the preprocessor merges them into the flag-free guarded parallel form.",
+    "The retired file's loop iterated destructively, carrying a second copy `SaX` of each relation and stepping the immediate-consequence operator from the empty relation; the compiled form accumulates, `T := T ∪ T_P(T)`, and reaches the same least fixpoint. The retired postcondition `(TaX = TaY) ∧ (TbX = TbY)` was stated over those previous-round copies, which equal the fixpoints at loop exit; the same equalities are stated here over the compiled output relations, so the triple says the same thing. The schema loses the copies `SaX`, `SbX`, `SaY`, `SbY` and gains the compiler's snapshots `TaX_aux`, `TbX_aux`, `TaY_aux`, `TbY_aux`. The precondition `true` is unchanged, and the expected verdict stays valid."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Obstructed",
+      "path": "Example0132/Input.lean",
+      "sourceId": "Example0132"
+    }
+  ],
+  "suites": [
+    "leveled-framework"
+  ],
+  "title": "Odd and even paths: linear versus non-linear program (two compiled loops)",
+  "explanation": "The command runs two independently compiled Datalog programs in sequence — a linear even/odd program producing TaX (even-length paths) and TbX (odd-length paths) via naive accumulation, and a non-linear even/odd program producing TaY and TbY via squaring — and the tool's preprocessor merges the two into a single verified loop. The postcondition states that the two computations agree relation by relation, TaX=TaY and TbX=TbY, i.e. the Hoare triple is an equivalence claim between the linear and non-linear encodings of the even/odd path decomposition, both of which converge to the same least fixpoints since the underlying immediate-consequence operators are monotone.",
+  "preInWords": "The precondition is simply true, imposing no constraint on the input relations.",
+  "postInWords": "The postcondition asserts that the linear program's outputs equal the non-linear program's outputs: TaX = TaY and TbX = TbY.",
+  "notation": "canonical",
+  "datalog": [
+    {
+      "label": "programX — Odd and even paths, linearly.",
+      "text": "TbX(x1, y1) :- E(x1, y1).\nTbX(x1, y1) :- E(x1, z1), TaX(z1, y1).\nTaX(x1, y1) :- E(x1, z1), TbX(z1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example0132/Fidelity/Example0132.lean"
+    },
+    {
+      "label": "programY — Odd and even paths, non-linearly.",
+      "text": "TaY(x1, y1) :- E(x1, z1), E(z1, y1).\nTaY(x1, y1) :- TaY(x1, z1), TaY(z1, y1).\nTaY(x1, y1) :- TbY(x1, z1), TbY(z1, y1).\nTbY(x1, y1) :- E(x1, y1).\nTbY(x1, y1) :- TbY(x1, z1), TaY(z1, y1).\nTbY(x1, y1) :- TaY(x1, z1), TbY(z1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example0132/Fidelity/Example0132.lean"
+    }
+  ]
+}

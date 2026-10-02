@@ -1,0 +1,67 @@
+{
+  "canonicalId": "Example1081",
+  "canonicalInput": "Example1081/Input.lean",
+  "title": "Audited delegation contained in broad authorization closure",
+  "explanation": "This is a query-containment-under-dependencies problem, the setting of the relational chase: program C1 computes Grant, the least fixpoint of a delegation program built from Trusted pairs directly and from Delegated/Audited intermediate relations that compose earlier grants (Composite grants backed by an evidence witness); program C2 computes Permit, the least fixpoint of a broader authorization closure built from Broad pairs, evidence-backed pairs, and a transitive Trace relation. The precondition states the four tuple-generating dependencies (one of them existential) relating the two programs' input relations, and the postcondition claims that whenever those dependencies hold, every pair C1's program grants is also permitted by C2's program: Grant is contained in Permit.",
+  "preInWords": "PRE says every Trusted or Special pair is a Broad pair, every Composite pair has some Evidence witness marked Valid, and every pair with a Valid Evidence witness is itself a Broad pair.",
+  "postInWords": "POST says every pair the delegation program's Grant relation derives is also derived by the authorization program's Permit relation.",
+  "family": "two programs under TGD constraints (LLM-generated, GPT-5.6; legacy raw_new pipeline)",
+  "kind": "containment",
+  "claim": "(Grant ⊆ Permit)",
+  "precondition": "((Trusted ⊆ Broad) ∧ ((Special ⊆ Broad) ∧ ((Composite ⊆ π[0,1] (σ[#2 = #3] ((Evidence × Valid)))) ∧ (π[0,1] (σ[#2 = #3] ((Evidence × Valid))) ⊆ Broad))))",
+  "expectedVerdict": "valid",
+  "obstructionExpectation": "anchored: both sides are naive closures at the same rate and the legacy product loop was certified with a quantifier-free invariant; no prophecy level expected",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "rateMismatch": false,
+  "sides": [
+    "naive compiler: program C1 of the retired corpus case Example1081 (output Grant)",
+    "naive compiler: program C2 of the retired corpus case Example1081 (output Permit)"
+  ],
+  "schemaLinking": "the two programs share the input relations; the dependencies of the precondition relate them",
+  "sourceProgram": null,
+  "sources": [
+    {
+      "system": "LLM-generated (GPT-5.6), legacy raw_new TGD pipeline",
+      "repo": "this repository",
+      "file": "the retired corpus case Example1081 (programs C1, C2 and the TGD list tgd0..)",
+      "function": "TGD pipeline run raw-new-tgd-0002-product: TGDs translated to relational algebra by RelCalc.TGD.listToAssertExpr; programs compiled with the certified naive compiler",
+      "url": null,
+      "read": "2026-09-15"
+    },
+    {
+      "system": "method",
+      "repo": "this repository",
+      "file": "the equivalence-under-constraints paper draft (technical appendix: reduction of containment/equivalence under TGDs to a Hoare triple)",
+      "url": null,
+      "read": "2026-09-15"
+    }
+  ],
+  "encoding": "canonical five-declaration form; both sides naive-compiler output pinned by Fidelity/ (decide +kernel); independent loops merged side by side; the TGD precondition is the legacy text verbatim; the legacy concurrent-product loop compared with the sequence on the check instances",
+  "created": "2026-09-15",
+  "llmGenerated": "GPT-5.6",
+  "tgds": [
+    "∀ x1. ∀ y1. Trusted(x1, y1) → Broad(x1, y1)",
+    "∀ x1. ∀ y1. Special(x1, y1) → Broad(x1, y1)",
+    "∀ x1. ∀ y1. Composite(x1, y1) → ∃ z1. (Evidence(x1, y1, z1) ∧ Valid(z1))",
+    "∀ x1. ∀ y1. ∀ z1. (Evidence(x1, y1, z1) ∧ Valid(z1)) → Broad(x1, y1)"
+  ],
+  "outputs": {
+    "C1": "Grant",
+    "C2": "Permit"
+  },
+  "datalog": [
+    {
+      "label": "prog_c1",
+      "text": "Grant(x1, y1) :- Trusted(x1, y1).\nDelegated(x1, y1) :- Special(x1, y1).\nAudited(x1, y1) :- Composite(x1, y1).\nGrant(x1, z1) :- Delegated(x1, y1), Audited(y1, z1).\nDelegated(x1, z1) :- Grant(x1, y1), Trusted(y1, z1).\nAudited(x1, z1) :- Grant(x1, y1), Evidence(y1, z1, x2), Valid(x2).\nGrant(x1, z1) :- Grant(x1, y1), Audited(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example1081/Fidelity/Example1081.lean"
+    },
+    {
+      "label": "prog_c2",
+      "text": "Permit(x1, y1) :- Broad(x1, y1).\nTrace(x1, y1) :- Broad(x1, y1).\nPermit(x1, y1) :- Evidence(x1, y1, z1), Valid(z1).\nPermit(x1, y1) :- Trace(x1, y1).\nTrace(x1, z1) :- Permit(x1, y1), Permit(y1, z1).\nTrace(x1, z1) :- Permit(x1, y1), Trace(y1, z1).\nTrace(x1, z1) :- Trace(x1, y1), Permit(y1, z1).\nTrace(x1, z1) :- Trace(x1, y1), Trace(y1, z1).\nTrace(x1, z1) :- Permit(x1, y1), Evidence(y1, z1, x2), Valid(x2).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example1081/Fidelity/Example1081.lean"
+    }
+  ]
+}

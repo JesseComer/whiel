@@ -1,0 +1,9 @@
+# The spreadsheet is a convenience rebuilt from the tracked CSV; it is not byte-stable.
+benchmark_tags.xlsx
+# LaTeX by-products of the PDF build.
+benchmark_report.aux
+benchmark_report.fdb_latexmk
+benchmark_report.fls
+benchmark_report.log
+benchmark_report.out
+benchmark_report.toc

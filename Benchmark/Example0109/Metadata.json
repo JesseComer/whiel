@@ -1,0 +1,46 @@
+{
+  "canonicalId": "Example0109",
+  "canonicalInput": "Example0109/Input.lean",
+  "canonicalModule": "Benchmark.Example0109.Input",
+  "category": "Synthetic",
+  "compilerCommandCheck": "unavailable",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "datalogSource": "unavailable",
+  "declarationNamespace": "Whiel.Benchmark.Example0109",
+  "formatVersion": 1,
+  "goldInvariantStatus": "historical-only",
+  "historicalCandidatePresent": true,
+  "historicalClaim": "failed",
+  "notes": [
+    "Historical collaborator claims are unverified provenance."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Synthetic",
+      "sourceId": "synthetic_9"
+    }
+  ],
+  "suites": [
+    "collaborator",
+    "all-benchmark"
+  ],
+  "title": "Containment: red-blue alternating paths ⊆ TC(R ∪ B)",
+  "explanation": "The loop naively evaluates a red/blue alternating-path program: RR and BB collect same-colour-start walks and RB, BR collect colour-switching walks, computed by mutual recursion matching red_blue_linear (e.g. RR(x,y):-R(x,z),BR(z,y), RB(x,y):-RR(x,z),B(z,y), etc.), so together the four relations characterize walks in a two-coloured graph that strictly alternate colour. The Hoare triple is a containment claim rather than an equivalence: it asserts that the union of these four alternating-path relations is contained in any pre-fixpoint bound RBound of the plain transitive closure of the underlying uncoloured graph R∪B, since every colour-alternating walk is in particular an ordinary walk in R∪B.",
+  "preInWords": "The precondition states that RBound is a pre-fixpoint of the transitive-closure program on the union graph R∪B: (R∪B) ∪ (RBound∘(R∪B)) ⊆ RBound.",
+  "postInWords": "The postcondition states that the union of the four computed red/blue relations, RR∪BB∪RB∪BR, is contained in RBound.",
+  "notation": "canonical",
+  "datalog": [
+    {
+      "label": "red_blue_linear",
+      "text": "-- red_blue_linear\n-- Executed WHIEL program\nRR(x,y) :- R(x,y).\nBB(x,y) :- B(x,y).\nRB(x,y) :- RR(x,z), B(z,y).\nBR(x,y) :- BB(x,z), R(z,y).\nRR(x,y) :- R(x,z), BR(z,y).\nBB(x,y) :- B(x,z), RB(z,y).",
+      "provenance": "legacy inventory: catalog/source intent plus actual left-recursive formal PRE/POST reference-operator reconstruction; sources: red_blue_linear.dl, tc_of_union.dl, Benchmark/Example0109/Input.lean"
+    },
+    {
+      "label": "tc_of_union",
+      "text": "-- tc_of_union\n-- Catalog/source target intent only; not executed by the WHIEL command\nE(x,y) :- R(x,y).\nE(x,y) :- B(x,y).\nT(x,y) :- E(x,y).\nT(x,y) :- E(x,z), T(z,y).\n-- Actual formal PRE/POST reference only; not executed (left-recursive T composed with R union B)\nE_union(x,y) :- R(x,y).\nE_union(x,y) :- B(x,y).\nT_left(x,y) :- E_union(x,y).\nT_left(x,z) :- T_left(x,y), E_union(y,z).",
+      "provenance": "legacy inventory: catalog/source intent plus actual left-recursive formal PRE/POST reference-operator reconstruction; sources: red_blue_linear.dl, tc_of_union.dl, Benchmark/Example0109/Input.lean"
+    }
+  ],
+  "expectedVerdict": "valid"
+}

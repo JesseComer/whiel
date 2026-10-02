@@ -1,0 +1,38 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(π[1,0] (op_zEdgeF) ⊆ op_zNodes)"
+    },
+    {
+      "level": 0,
+      "source": "(π[1,0] (op_zEdgeF) ⊆ op_zReach)"
+    },
+    {
+      "level": 0,
+      "source": "(π[3,1] (σ[#0 = #2] ((oa_zReach × op_zEdgeF))) ⊆ op_zReach)"
+    },
+    {
+      "level": 0,
+      "source": "(π[3,1] (σ[#0 = #2] ((op_zNodes × op_zEdgeF))) ⊆ (op_zNodes ∪ π[3,1] (σ[#0 = #2] ((op_zDeltaN × op_zEdgeF)))))"
+    },
+    {
+      "level": 1,
+      "source": "(oa_zReach ⊆ yp_zNodes)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zDeltaN ⊆ yp_zReach)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zNodes ⊆ yp_zReach)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zReach ⊆ yp_zNodes)"
+    }
+  ],
+  "version": 1
+}

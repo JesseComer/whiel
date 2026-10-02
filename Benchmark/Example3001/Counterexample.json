@@ -1,0 +1,158 @@
+{
+  "fuel_consumed": 27,
+  "fuel_policy": {
+    "host_fuel_bound": null,
+    "kind": "structural_replay",
+    "validation_limit_nanos": 30000000000
+  },
+  "instance": {
+    "relations": [
+      {
+        "name": "a::AccessOne",
+        "rows": []
+      },
+      {
+        "name": "a::AccessTwo",
+        "rows": []
+      },
+      {
+        "name": "a::CertStateOne",
+        "rows": []
+      },
+      {
+        "name": "a::CertStateTwo",
+        "rows": []
+      },
+      {
+        "name": "a::JointStateTwo",
+        "rows": []
+      },
+      {
+        "name": "a::ReviewStateOne",
+        "rows": []
+      },
+      {
+        "name": "a::ReviewStateTwo",
+        "rows": []
+      },
+      {
+        "name": "p::AccessOne",
+        "rows": []
+      },
+      {
+        "name": "p::AccessTwo",
+        "rows": []
+      },
+      {
+        "name": "p::CertStateOne",
+        "rows": []
+      },
+      {
+        "name": "p::CertStateTwo",
+        "rows": []
+      },
+      {
+        "name": "p::Certified",
+        "rows": [
+          [
+            "num:0",
+            "num:1"
+          ],
+          [
+            "num:1",
+            "num:4"
+          ]
+        ]
+      },
+      {
+        "name": "p::Delegates",
+        "rows": [
+          [
+            "num:0",
+            "num:1"
+          ],
+          [
+            "num:0",
+            "num:2"
+          ],
+          [
+            "num:0",
+            "num:4"
+          ],
+          [
+            "num:1",
+            "num:2"
+          ],
+          [
+            "num:1",
+            "num:4"
+          ]
+        ]
+      },
+      {
+        "name": "p::JointStateTwo",
+        "rows": []
+      },
+      {
+        "name": "p::Review",
+        "rows": [
+          [
+            "num:0",
+            "num:1",
+            "num:5"
+          ],
+          [
+            "num:1",
+            "num:2",
+            "num:5"
+          ],
+          [
+            "num:1",
+            "num:4",
+            "num:5"
+          ]
+        ]
+      },
+      {
+        "name": "p::ReviewStateOne",
+        "rows": []
+      },
+      {
+        "name": "p::ReviewStateTwo",
+        "rows": []
+      },
+      {
+        "name": "p::Reviewer",
+        "rows": [
+          [
+            "num:5"
+          ]
+        ]
+      },
+      {
+        "name": "p::Root",
+        "rows": [
+          [
+            "num:0"
+          ]
+        ]
+      }
+    ]
+  },
+  "instance_identity": "69251be1a77e273d1d8fe336baf8bd5650ded93a4624dc1b7fee579ce9ec6d32",
+  "kind": "whiel_framework_ii_counterexample",
+  "provenance": {
+    "kind": "recorded_witness",
+    "source": "counterexample instance contributed with the case by Shuo Zhang"
+  },
+  "scope_identity_sha256": "a7b855e24a0ea0f250af0afd43844170c2daf99ebcd8b0e3ad18304409a73a17",
+  "task": {
+    "canonical_id": "Example3001",
+    "encoding_version": 1,
+    "module": "Benchmark.Example3001.Input",
+    "namespace": "Whiel.Benchmark.Example3001",
+    "semantic_version": 1,
+    "source_sha256": "a7d6270b19f17b05b447fb8ee79eb7dc39690f60f9d6cfa5fbaa5fa80ce03b30"
+  },
+  "version": 1
+}

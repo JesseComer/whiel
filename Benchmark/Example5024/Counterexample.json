@@ -1,0 +1,97 @@
+{
+  "fuel_consumed": 17,
+  "fuel_policy": {
+    "host_fuel_bound": null,
+    "kind": "structural_replay",
+    "validation_limit_nanos": 30000000000
+  },
+  "instance": {
+    "relations": [
+      {
+        "name": "a::OverI",
+        "rows": []
+      },
+      {
+        "name": "a::UnderI",
+        "rows": []
+      },
+      {
+        "name": "p::Lose",
+        "rows": []
+      },
+      {
+        "name": "p::LoseP",
+        "rows": []
+      },
+      {
+        "name": "p::Move",
+        "rows": [
+          [
+            "num:0",
+            "num:1"
+          ],
+          [
+            "num:1",
+            "num:0"
+          ]
+        ]
+      },
+      {
+        "name": "p::Nodes",
+        "rows": []
+      },
+      {
+        "name": "p::NotOver",
+        "rows": []
+      },
+      {
+        "name": "p::NotUnder",
+        "rows": []
+      },
+      {
+        "name": "p::Over",
+        "rows": []
+      },
+      {
+        "name": "p::OverI",
+        "rows": []
+      },
+      {
+        "name": "p::Prev",
+        "rows": []
+      },
+      {
+        "name": "p::Under",
+        "rows": []
+      },
+      {
+        "name": "p::UnderI",
+        "rows": []
+      },
+      {
+        "name": "p::Win",
+        "rows": []
+      },
+      {
+        "name": "p::WinP",
+        "rows": []
+      }
+    ]
+  },
+  "instance_identity": "860accc892a4eff8dc8b6f3fe51ae2cabeb7a74024784ff0dc733a2ac2bbf7cb",
+  "kind": "whiel_framework_ii_counterexample",
+  "provenance": {
+    "kind": "recorded_witness",
+    "source": "counterexample instance contributed with the case by Shuo Zhang"
+  },
+  "scope_identity_sha256": "edb26fb233c48d5714a5ae96ba773375c2e496476df75e816e288fcc178001c0",
+  "task": {
+    "canonical_id": "Example5024",
+    "encoding_version": 1,
+    "module": "Benchmark.Example5024.Input",
+    "namespace": "Whiel.Benchmark.Example5024",
+    "semantic_version": 1,
+    "source_sha256": "7003cb2f4a95b0bd84b4c9298be3f8499228112eb2d6a0154ec1b35f756faf81"
+  },
+  "version": 1
+}

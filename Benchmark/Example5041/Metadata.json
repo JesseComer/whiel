@@ -1,0 +1,65 @@
+{
+  "canonicalId": "Example5041",
+  "canonicalInput": "Example5041/Input.lean",
+  "title": "PostgreSQL foreign-key cascade as a trigger worklist with the surviving-reference RESTRICT check versus the declarative delete closure",
+  "explanation": "The Datalog program is a delete-reachability closure, Del(k) :- SeedDel(k); Del(r) :- RefBy(r,k), Del(k), modelling ON DELETE CASCADE foreign keys, together with a RESTRICT check for rows referenced through non-cascading (RESTRICT/NO ACTION) foreign keys. Side 1 encodes PostgreSQL's actual trigger-based implementation (ri_triggers.c): RI_FKey_cascade_del deletes rows via a worklist that re-fires for every newly deleted row (Del/Front/New), and ri_restrict then reports a violation only for rows that still exist and reference a deleted key, i.e. rows not themselves cascaded away in the same statement. Side 2 computes the same delete closure DelC by the naive compiler and applies the identical surviving-reference RESTRICT check to it (ViolC). The Hoare triple claims Del = DelC and Viol = ViolC: PostgreSQL's row-level trigger worklist computes exactly the declarative delete closure, and, since both sides use the same surviving-reference check on equal relations, the reported RESTRICT violations agree too.",
+  "preInWords": "The precondition is simply true; no constraints are placed on SeedDel, RefBy, or RestrictRef.",
+  "postInWords": "Del, the set of keys deleted by PostgreSQL's cascading trigger worklist, equals DelC, the same set computed as a declarative closure, and Viol, the RESTRICT violations reported by the surviving-reference check on Del, equals ViolC, the same check applied to DelC.",
+  "family": "production algorithm pair (replaces legacy correctness case Example2024)",
+  "kind": "equivalence",
+  "claim": "((Del = DelC) ∧ (Viol = ViolC))",
+  "precondition": "true",
+  "expectedVerdict": "valid",
+  "obstructionExpectation": "anchored: both sides advance one reference step per round and the checks are loop-free suffixes; no prophecy level expected",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "rateMismatch": false,
+  "sides": [
+    "hand-written: PostgreSQL RI_FKey_cascade_del as a worklist of newly deleted rows, then ri_restrict as the surviving-reference check",
+    "naive compiler: the delete closure, then the same check as loop-free code"
+  ],
+  "schemaLinking": "same schema; the RESTRICT checks are loop-free code after each loop",
+  "sourceProgram": null,
+  "sources": [
+    {
+      "system": "PostgreSQL",
+      "repo": "postgres/postgres",
+      "branch": "master",
+      "file": "src/backend/utils/adt/ri_triggers.c",
+      "function": "RI_FKey_cascade_del (DELETE FROM ONLY fktable WHERE $1 = fkatt1, queued as an AFTER trigger per deleted row and re-fired transitively), ri_restrict via RI_FKey_restrict_del / RI_FKey_noaction_del (SELECT 1 FROM ONLY fktable x WHERE $1 = fkatt1 FOR KEY SHARE OF x: a violation only if a referencing row still exists when the check runs)",
+      "url": "https://github.com/postgres/postgres/blob/master/src/backend/utils/adt/ri_triggers.c",
+      "read": "2026-09-15"
+    },
+    {
+      "system": "PostgreSQL documentation",
+      "repo": "postgresql.org",
+      "file": "Chapter 5, Constraints, Foreign Keys (ON DELETE CASCADE, RESTRICT, NO ACTION)",
+      "url": "https://www.postgresql.org/docs/current/ddl-constraints.html",
+      "read": "2026-09-15"
+    }
+  ],
+  "encoding": "canonical five-declaration form; side 1 hand-written (worklist plus a loop-free check) and pinned as segments, side 2 naive-compiler output pinned by Fidelity/ (decide +kernel) followed by a loop-free check; independent loops merged side by side; the worklist compared with the naive compilation of the delete closure on the check instances",
+  "created": "2026-09-15",
+  "twin": "Example5042 (invalid: the over-approximating RESTRICT check of legacy Example2024)",
+  "replaces": "Example2024",
+  "datalog": [
+    {
+      "label": "prog_DelC",
+      "text": "DelC(x1) :- SeedDel(x1).\nDelC(x1) :- RefBy(x1, y1), DelC(y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5041/Fidelity/Example5041.lean"
+    },
+    {
+      "label": "prog_DelR",
+      "text": "DelR(x1) :- SeedDel(x1).\nDelR(x1) :- RefBy(x1, y1), DelR(y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5041/Fidelity/Example5041.lean"
+    },
+    {
+      "label": "rules as stated in the header comment of Input.lean",
+      "text": "Del(k) :- SeedDel(k)\nDel(r) :- RefBy(r, k), Del(k)",
+      "provenance": "header comment",
+      "source_file": "Benchmark/Example5041/Input.lean"
+    }
+  ]
+}

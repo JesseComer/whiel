@@ -1,0 +1,41 @@
+{
+  "canonicalId": "Example2012",
+  "canonicalInput": "Example2012/Input.lean",
+  "canonicalModule": "Benchmark.Example2012.Input",
+  "category": "Production",
+  "compilerCommandCheck": "unavailable",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "datalogSource": "unavailable",
+  "declarationNamespace": "Whiel.Benchmark.Example2012",
+  "formatVersion": 1,
+  "goldInvariantStatus": "missing",
+  "historicalCandidatePresent": false,
+  "historicalClaim": "no-invariant",
+  "notes": [
+    "Historical collaborator claims are unverified provenance."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Production",
+      "sourceId": "production_12"
+    }
+  ],
+  "suites": [
+    "collaborator",
+    "all-benchmark"
+  ],
+  "title": "Frontier (grey-set) marking ≡ naive mark propagation",
+  "explanation": "The loop computes reachability from root pointers RootPtr through heap pointers HeapPtr using an explicit grey frontier Grey that is repeatedly advanced and deduplicated against the accumulated Marked set, the tri-color/frontier marking strategy used by a garbage collector's mark phase (e.g. a Go-runtime-style gcDrain), contrasted with naively re-propagating over the whole marked set each round. The Hoare triple is the least-fixpoint correctness statement: the precondition makes RBound a pre-fixpoint of the naive mark-propagation operator, and the postcondition shows the frontier-computed Marked set is itself a pre-fixpoint of that operator and is contained in RBound, together pinning Marked to the least fixpoint, i.e. frontier-based marking with its already-marked dedup marks exactly the same objects naive re-scanning would.",
+  "preInWords": "The precondition asserts RBound contains RootPtr and is closed under one more step of composing itself with HeapPtr, i.e. RBound is a pre-fixpoint of the naive mark-propagation operator.",
+  "postInWords": "The postcondition asserts the frontier-computed Marked set is itself a pre-fixpoint of the same operator (contains RootPtr and is closed under HeapPtr) and is contained in RBound, together forcing Marked to equal the least fixpoint.",
+  "notation": "canonical",
+  "datalog": [
+    {
+      "label": "prog_p",
+      "text": "MarkedC(x1) :- RootPtr(x1).\nMarkedC(y1) :- MarkedC(x1), HeapPtr(x1, y1).",
+      "provenance": "production check (the hand-written loop equals this program's naive compilation on the check instances)"
+    }
+  ],
+  "expectedVerdict": "valid"
+}

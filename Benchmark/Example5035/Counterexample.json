@@ -1,0 +1,122 @@
+{
+  "fuel_consumed": 17,
+  "fuel_policy": {
+    "host_fuel_bound": null,
+    "kind": "structural_replay",
+    "validation_limit_nanos": 30000000000
+  },
+  "instance": {
+    "relations": [
+      {
+        "name": "p::Edge",
+        "rows": [
+          [
+            "num:0",
+            "num:1"
+          ],
+          [
+            "num:1",
+            "num:2"
+          ],
+          [
+            "num:2",
+            "num:3"
+          ]
+        ]
+      },
+      {
+        "name": "p::InA",
+        "rows": []
+      },
+      {
+        "name": "p::InB",
+        "rows": []
+      },
+      {
+        "name": "p::Inter",
+        "rows": []
+      },
+      {
+        "name": "p::KA",
+        "rows": []
+      },
+      {
+        "name": "p::KB",
+        "rows": []
+      },
+      {
+        "name": "p::Lt",
+        "rows": [
+          [
+            "num:0",
+            "num:1"
+          ],
+          [
+            "num:0",
+            "num:2"
+          ],
+          [
+            "num:0",
+            "num:3"
+          ],
+          [
+            "num:1",
+            "num:2"
+          ],
+          [
+            "num:1",
+            "num:3"
+          ],
+          [
+            "num:2",
+            "num:3"
+          ]
+        ]
+      },
+      {
+        "name": "p::OutA",
+        "rows": []
+      },
+      {
+        "name": "p::OutB",
+        "rows": []
+      },
+      {
+        "name": "p::Res",
+        "rows": []
+      },
+      {
+        "name": "p::RestB",
+        "rows": []
+      },
+      {
+        "name": "p::TWa",
+        "rows": []
+      },
+      {
+        "name": "p::TWb",
+        "rows": []
+      },
+      {
+        "name": "p::WorkT",
+        "rows": []
+      }
+    ]
+  },
+  "instance_identity": "9f4bf3195f8853b8bab7d270146d1f39e5aecbc3fd4608f9c38809d1d184e519",
+  "kind": "whiel_framework_ii_counterexample",
+  "provenance": {
+    "kind": "recorded_witness",
+    "source": "counterexample instance contributed with the case by Shuo Zhang"
+  },
+  "scope_identity_sha256": "0020a66a4e025acd4e32fa39b81ca56d92a912755b7c3e5431ed44ccba48b1bc",
+  "task": {
+    "canonical_id": "Example5035",
+    "encoding_version": 1,
+    "module": "Benchmark.Example5035.Input",
+    "namespace": "Whiel.Benchmark.Example5035",
+    "semantic_version": 1,
+    "source_sha256": "c2ae7ed48cd902c24ffb2227fa8180dcfa29e2dc8e289ccc159e442a9de1d6cd"
+  },
+  "version": 1
+}

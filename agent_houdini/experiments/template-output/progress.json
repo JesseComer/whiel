@@ -1,0 +1,181 @@
+{
+  "all_certified": false,
+  "exit_code": 3,
+  "generated_at": "2026-09-17T19:01:02-04:00",
+  "inputs": [
+    {
+      "certificate": "<repo>/artifacts/runs/gpt-5.5-20260917-sample-5-3/verifier/Example0001/Certificate/Valid.lean",
+      "clauses_dropped": 0,
+      "clauses_submitted": 6,
+      "consultations": 1,
+      "core": 6,
+      "dead": 0,
+      "detail": null,
+      "final_state_known": true,
+      "input": "Example0001",
+      "pending": 0,
+      "rounds": [
+        {
+          "agent_seconds": 41.81,
+          "clauses_dropped": 0,
+          "clauses_proposed": 6,
+          "core": 0,
+          "latest": "initial — no round has run yet",
+          "pending": 0,
+          "round": 1,
+          "verifier_seconds": null
+        }
+      ],
+      "seconds": 277.9631578922272,
+      "status": "valid"
+    },
+    {
+      "certificate": null,
+      "clauses_dropped": 0,
+      "clauses_submitted": 30,
+      "consultations": 3,
+      "core": 30,
+      "dead": null,
+      "detail": "overall limit expired after 600s",
+      "final_state_known": false,
+      "input": "Example0134",
+      "pending": 0,
+      "rounds": [
+        {
+          "agent_seconds": 40.38,
+          "clauses_dropped": 0,
+          "clauses_proposed": 8,
+          "core": 0,
+          "latest": "initial — no round has run yet",
+          "pending": 0,
+          "round": 1,
+          "verifier_seconds": 99.48
+        },
+        {
+          "agent_seconds": 89.08,
+          "clauses_dropped": 0,
+          "clauses_proposed": 22,
+          "core": 0,
+          "latest": "postcondition_open — the Core is sound but does not yet entail the postcondition",
+          "pending": 8,
+          "round": 2,
+          "verifier_seconds": 336.39
+        },
+        {
+          "agent_seconds": 30.44,
+          "clauses_dropped": 0,
+          "clauses_proposed": 0,
+          "core": 30,
+          "latest": "postcondition_open — the Core is sound but does not yet entail the postcondition",
+          "pending": 0,
+          "round": 3,
+          "verifier_seconds": null
+        }
+      ],
+      "seconds": 777.0333359241486,
+      "status": "search_timeout"
+    },
+    {
+      "certificate": "<repo>/artifacts/runs/gpt-5.5-20260917-sample-5-3/verifier/Example4001/Certificate/Valid.lean",
+      "clauses_dropped": 0,
+      "clauses_submitted": 3,
+      "consultations": 1,
+      "core": 4,
+      "dead": 0,
+      "detail": null,
+      "final_state_known": true,
+      "input": "Example4001",
+      "pending": 0,
+      "rounds": [
+        {
+          "agent_seconds": 31.72,
+          "clauses_dropped": 0,
+          "clauses_proposed": 3,
+          "core": 0,
+          "latest": "initial — no round has run yet",
+          "pending": 0,
+          "round": 1,
+          "verifier_seconds": null
+        }
+      ],
+      "seconds": 316.24552607536316,
+      "status": "valid"
+    },
+    {
+      "certificate": "<repo>/artifacts/runs/gpt-5.5-20260917-sample-5-3/verifier/Example4041/Certificate/Valid.lean",
+      "clauses_dropped": 0,
+      "clauses_submitted": 17,
+      "consultations": 3,
+      "core": 17,
+      "dead": 0,
+      "detail": null,
+      "final_state_known": true,
+      "input": "Example4041",
+      "pending": 0,
+      "rounds": [
+        {
+          "agent_seconds": 50.14,
+          "clauses_dropped": 0,
+          "clauses_proposed": 3,
+          "core": 0,
+          "latest": "initial — no round has run yet",
+          "pending": 0,
+          "round": 1,
+          "verifier_seconds": 17.59
+        },
+        {
+          "agent_seconds": 59.16,
+          "clauses_dropped": 0,
+          "clauses_proposed": 11,
+          "core": 0,
+          "latest": "postcondition_open — the Core is sound but does not yet entail the postcondition",
+          "pending": 3,
+          "round": 2,
+          "verifier_seconds": 184.38
+        },
+        {
+          "agent_seconds": 95.7,
+          "clauses_dropped": 0,
+          "clauses_proposed": 3,
+          "core": 10,
+          "latest": "postcondition_open — the Core is sound but does not yet entail the postcondition",
+          "pending": 4,
+          "round": 3,
+          "verifier_seconds": null
+        }
+      ],
+      "seconds": 2089.179226398468,
+      "status": "valid"
+    },
+    {
+      "certificate": "<repo>/artifacts/runs/gpt-5.5-20260917-sample-5-3/verifier/Example5040/Certificate/Invalid.lean",
+      "clauses_dropped": 0,
+      "clauses_submitted": 0,
+      "consultations": 1,
+      "core": 0,
+      "dead": 0,
+      "detail": null,
+      "final_state_known": true,
+      "input": "Example5040",
+      "pending": 0,
+      "rounds": [
+        {
+          "agent_seconds": 31.83,
+          "clauses_dropped": 0,
+          "clauses_proposed": 0,
+          "core": 0,
+          "latest": "initial — no round has run yet",
+          "pending": 0,
+          "round": 1,
+          "verifier_seconds": null
+        }
+      ],
+      "seconds": 47.868748903274536,
+      "status": "invalid"
+    }
+  ],
+  "run_directory": "<repo>/artifacts/runs/gpt-5.5-20260917-sample-5-3",
+  "schema_version": 1,
+  "status": "finished",
+  "unrun_inputs": []
+}

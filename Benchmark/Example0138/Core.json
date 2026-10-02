@@ -1,0 +1,42 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(op_zTcY ⊆ (op_zTaY ∪ op_zTbY))"
+    },
+    {
+      "level": 0,
+      "source": "((π[0,3] (σ[#1 = #2] ((op_zE × op_zE))) ∪ (π[0,3] (σ[#1 = #2] ((oa_zTaY × oa_zTaY))) ∪ π[0,3] (σ[#1 = #2] ((oa_zTbY × oa_zTbY))))) ⊆ op_zTaY)"
+    },
+    {
+      "level": 0,
+      "source": "((oa_zTaY ∪ oa_zTbY) ⊆ op_zTcY)"
+    },
+    {
+      "level": 0,
+      "source": "((op_zE ∪ π[0,3] (σ[#1 = #2] ((oa_zTX × oa_zTX)))) ⊆ op_zTX)"
+    },
+    {
+      "level": 0,
+      "source": "((op_zE ∪ (π[0,3] (σ[#1 = #2] ((oa_zTbY × oa_zTaY))) ∪ π[0,3] (σ[#1 = #2] ((oa_zTaY × oa_zTbY))))) ⊆ op_zTbY)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zTX ⊆ yp_zTcY)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zTaY ⊆ yp_zTX)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zTbY ⊆ yp_zTX)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zTcY ⊆ yp_zTX)"
+    }
+  ],
+  "version": 1
+}

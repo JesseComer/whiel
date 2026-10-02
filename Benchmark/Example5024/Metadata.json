@@ -1,0 +1,74 @@
+{
+  "canonicalId": "Example5024",
+  "canonicalInput": "Example5024/Input.lean",
+  "title": "Win-move: alternating fixpoint versus attractor, claiming the odd limit is the win set (invalid twin of Example5023)",
+  "explanation": "Same two computations as Example5023 (Van Gelder's alternating fixpoint versus the game attractor for well-founded win-move), but the postcondition additionally claims Over equals Win directly — that the odd limit of the alternation coincides with the win set, equivalently that the well-founded model has no undefined (drawn) positions. The expected verdict is invalid: on a two-cycle where neither player can force a win, both the true win set and the attractor's Win set are empty, but Over stabilizes at both positions (each has a move to a position not yet known to win), so those positions are genuinely undefined rather than losing, and Over does not equal Win.",
+  "preInWords": "True; no precondition constrains the inputs.",
+  "postInWords": "The claim (which fails) is that both the even limit Under and the odd limit Over of the alternating fixpoint equal the attractor's Win set.",
+  "family": "two computations of one semantics (invalid twin)",
+  "kind": "equivalence",
+  "claim": "((Under = Win) ∧ (Over = Win))",
+  "precondition": "true",
+  "expectedVerdict": "invalid",
+  "obstructionExpectation": "n/a (invalid; kernel counterexample)",
+  "currentClassification": "invalid",
+  "currentEvidence": "kernel counterexample (Certificate/Invalid.lean)",
+  "rateMismatch": true,
+  "sides": [
+    "hand-written: alternating fixpoint as in Example5023",
+    "hand-written: attractor as in Example5023"
+  ],
+  "sourceProgram": "win(X) :- move(X,Y), not win(Y)",
+  "sources": [
+    {
+      "title": "A. Van Gelder, K. A. Ross, J. S. Schlipf, The Well-Founded Semantics for General Logic Programs, JACM 38(3), 1991",
+      "url": "https://doi.org/10.1145/116825.116838",
+      "read": "not retrievable 2026-09-15 (ACM DL 403 / bot check)"
+    },
+    {
+      "title": "A. Van Gelder, The Alternating Fixpoint of Logic Programs with Negation, PODS 1989",
+      "url": "https://doi.org/10.1145/73721.73722",
+      "read": "not retrievable 2026-09-15 (ACM DL 403 / bot check)"
+    },
+    {
+      "title": "A. Van Gelder, The Alternating Fixpoint of Logic Programs with Negation, JCSS 47(1), 1993",
+      "url": "https://doi.org/10.1016/0022-0000(93)90024-Q",
+      "read": "not retrievable 2026-09-15 (ScienceDirect 403, also in the in-app browser)"
+    },
+    {
+      "title": "S. Abiteboul, R. Hull, V. Vianu, Foundations of Databases, chapter 15 (Example 15.3.1; 15.3 A Fixpoint Definition; Example 15.3.8(b); Theorem 15.3.9)",
+      "url": "http://webdam.inria.fr/Alice/pdfs/Chapter-15.pdf",
+      "read": "2026-09-15",
+      "note": "used to check the alternating-fixpoint definitions and the win-move example"
+    },
+    {
+      "title": "Example0162 and the retired corpus case Example2019 (attractor side)",
+      "url": "local",
+      "read": "2026-09-15"
+    }
+  ],
+  "encoding": "same command as Example5023; the claim adds Over = Win",
+  "created": "2026-09-15",
+  "certificatePath": "Example5024/Certificate/Invalid.lean",
+  "twin": "Example5023 (valid)",
+  "datalog": [
+    {
+      "label": "prog_pO — The positive programs P^I of the two half-steps of the alternation (`not win(Y)` read as `NotUnder(Y)`, resp. `NotOver(Y)`); their naive compilation is the inner loop of each half-step.",
+      "text": "OverI(x1) :- Move(x1, y1), NotUnder(y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5024/Fidelity/Example5024.lean"
+    },
+    {
+      "label": "prog_pU",
+      "text": "UnderI(x1) :- Move(x1, y1), NotOver(y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5024/Fidelity/Example5024.lean"
+    },
+    {
+      "label": "rules as stated in the header comment of Input.lean",
+      "text": "win(X) :- move(X, Y), not win(Y)\nOverI(x) :- Move(x, y), NotUnder(y)\nUnderI(x) :- Move(x, y), NotOver(y)",
+      "provenance": "header comment",
+      "source_file": "Benchmark/Example5024/Input.lean"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "canonicalId": "Example5017",
+  "canonicalInput": "Example5017/Input.lean",
+  "title": "Overdeletion without rederivation versus recomputation (invalid twin of Example5016)",
+  "explanation": "Same maintained closure and recomputation side as Example5016, but side 1 performs only the overdeletion phase of DRed (propagating deleted edges through the closure and removing every fact that could depend on them) without the rederivation phase that restores facts with alternative surviving derivations. The expected verdict is invalid: overdeletion is a genuine overestimate, so a closure fact reachable via a deleted edge but also via another surviving path is deleted and never restored, leaving the maintained closure T missing facts that the recomputed closure Tn still contains.",
+  "preInWords": "The set of edges to delete, Del, is a subset of the edge relation E.",
+  "postInWords": "The claim (which fails) is that the overdeletion-only maintained closure T equals the recomputed closure Tn on the edges remaining after deletion.",
+  "family": "maintenance algorithm versus recomputation (invalid twin)",
+  "kind": "equivalence",
+  "claim": "(T = Tn)",
+  "precondition": "(Del ⊆ E)",
+  "expectedVerdict": "invalid",
+  "obstructionExpectation": "n/a (invalid; kernel counterexample)",
+  "currentClassification": "invalid",
+  "currentEvidence": "kernel counterexample (Certificate/Invalid.lean)",
+  "rateMismatch": true,
+  "sides": [
+    "naive compiler: T = closure of E",
+    "hand-written: DRed step 1 only (DR1-DR3: overdeletion, removal), no rederivation",
+    "naive compiler: Tn = closure of EN = E ∖ Del"
+  ],
+  "sourceProgram": null,
+  "sources": [
+    {
+      "title": "A. Gupta, I. S. Mumick, V. S. Subrahmanian, Maintaining Views Incrementally, SIGMOD 1993",
+      "url": "https://doi.org/10.1145/170035.170066",
+      "readFrom": "http://www.cs.umd.edu/projects/hermes/publications/postscripts/sigmod93_1.ps",
+      "sections": "section 7 (Incremental Maintenance of Recursive Views: steps 1-3, Theorem 7.1)",
+      "read": "2026-09-15"
+    },
+    {
+      "title": "B. Motik, Y. Nenov, R. Piro, I. Horrocks, Incremental Update of Datalog Materialisation: the Backward/Forward Algorithm, AAAI 2015",
+      "url": "https://doi.org/10.1609/aaai.v29i1.9409",
+      "readFrom": "https://www.cs.ox.ac.uk/people/ian.horrocks/Publications/download/2015/MNPH15b.pdf",
+      "sections": "section 3 (The Delete/Rederive Algorithm, steps DR1-DR5, rules (5) and (6)); Algorithm 1 and Theorem 1 (B/F)",
+      "read": "2026-09-15"
+    }
+  ],
+  "encoding": "as Example5016 without the rederivation loop",
+  "created": "2026-09-15",
+  "certificatePath": "Example5017/Certificate/Invalid.lean",
+  "twin": "Example5016 (valid)",
+  "datalog": [
+    {
+      "label": "prog_pa — The maintained program: the closure of the old edges.",
+      "text": "T(x1, y1) :- E(x1, y1).\nT(x1, z1) :- T(x1, y1), E(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5017/Fidelity/Example5017.lean"
+    },
+    {
+      "label": "prog_pc — Recomputation: the closure of the updated edges.",
+      "text": "Tn(x1, y1) :- EN(x1, y1).\nTn(x1, z1) :- Tn(x1, y1), EN(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5017/Fidelity/Example5017.lean"
+    },
+    {
+      "label": "rules as stated in the header comment of Input.lean",
+      "text": "T(x, y) :- E(x, y)\nT(x, z) :- T(x, y), E(y, z)\nT⁻(x, y) :- E⁻(x, y)\nT⁻(x, z) :- T(x, y), E⁻(y, z)\nT⁻(x, z) :- T⁻(x, y), E(y, z)\nTn(x, y) :- EN(x, y)\nTn(x, z) :- Tn(x, y), EN(y, z)",
+      "provenance": "header comment",
+      "source_file": "Benchmark/Example5017/Input.lean"
+    }
+  ]
+}

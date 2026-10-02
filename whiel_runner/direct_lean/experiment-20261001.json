@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "kind": "experiment_provenance_not_runner_spec",
+  "experiment_id": "gpt55-medium-unlimited-full86-20261001",
+  "date": "2026-10-01",
+  "runnable_spec": "agent_houdini/experiments/full-benchmark-lean-agent.json",
+  "runnable_spec_sha256": "5ca04390953bca31057317df366498e90d0a5497f97ab0f7dc668935023a3416",
+  "settings": {
+    "model": "gpt-5.5",
+    "reasoning_effort": "medium",
+    "provider_cli_version": "0.148.0",
+    "lean_toolchain": "leanprover/lean4:v4.30.0-rc1",
+    "parallel_cases": 4,
+    "agent_limit_seconds": null,
+    "runtime_memory_limit_bytes": null,
+    "lean_max_heartbeats": 0,
+    "final_check_limit_seconds": 180,
+    "automatic_agent_retries": 0
+  },
+  "prompt": {
+    "path": "agent_houdini/lean_agent.py",
+    "constant": "PROMPT",
+    "sha256": "e9a7c41a0476b96e3291e6b8f7a9eb7fcb378cac4d0183acbc9774cd7d6fc310",
+    "time_budget_in_prompt": false
+  },
+  "original_generation": {
+    "git_head": "c28d3f9451c7df62dae028e90a4c6b94bee7f772",
+    "clean_checkout": false,
+    "note": "Both batches used local source changes beyond this HEAD. Source hashes identify the recorded snapshots; checking out the HEAD alone is insufficient. The implementation was subsequently packaged on latest main in the publication commit below.",
+    "case_count": 86,
+    "batches": [
+      {
+        "run_id": "gpt55-medium-unlimited-easy5-20261001-v1",
+        "case_count": 5,
+        "cases": [
+          "Example0001",
+          "Example0013",
+          "Example2005",
+          "Example2006",
+          "Example2007"
+        ],
+        "source_files_sha256": {
+          "Whiel/DirectLean/Audit.lean": "b9c850b35d36a12e59e23d50bf4569ef2dc51253df091ee5279d331d444066b0",
+          "agent_houdini/lean_agent.py": "a6624681be5c5dd9201b10c9833807da0628a4c36ec8356cb27d6c89b862626a",
+          "agent_houdini/lean_baseline.py": "8df76c6ff94c109b8c3cbc23f800e913be55ef3ea8caf2bea61f1cd231499f66",
+          "agent_houdini/lean_baseline_utils.py": "8caf80dcb6f97b7752c364a01815551cd26ef9b2f0de9faa67bcbe8d87e09a14",
+          "agent_houdini/tests/test_lean_agent.py": "2b197ee1ca7e524acc38a308851e089ae18921c26b1f3bb13e7484bd5f1d1415",
+          "agent_houdini/experiments/full-benchmark-lean-agent-unlimited.json": "5ca04390953bca31057317df366498e90d0a5497f97ab0f7dc668935023a3416",
+          "whiel_runner/direct_lean/src/main.rs": "b5086ecf0f988ed7501e0f9a05ad7d358cbc95fcb82b5c72fbf8cafb4e09265d",
+          "whiel_runner/direct_lean/Cargo.lock": "85ddfdddc97e845dab1484037df533e4c2c1dae7b1016416665903651bae857f"
+        }
+      },
+      {
+        "run_id": "gpt55-medium-unlimited-remaining81-20261001-v1",
+        "case_count": 81,
+        "selection": "All other Benchmark inputs; excludes exactly the five pilot cases.",
+        "source_files_sha256": {
+          "Whiel/DirectLean/Audit.lean": "fa4be9201de59d6042bf15c5264b1fd38fbc75b4e152b325af4b96e109908f45",
+          "agent_houdini/lean_agent.py": "a6624681be5c5dd9201b10c9833807da0628a4c36ec8356cb27d6c89b862626a",
+          "agent_houdini/lean_baseline.py": "8df76c6ff94c109b8c3cbc23f800e913be55ef3ea8caf2bea61f1cd231499f66",
+          "agent_houdini/lean_baseline_utils.py": "8caf80dcb6f97b7752c364a01815551cd26ef9b2f0de9faa67bcbe8d87e09a14",
+          "agent_houdini/tests/test_lean_agent.py": "2b197ee1ca7e524acc38a308851e089ae18921c26b1f3bb13e7484bd5f1d1415",
+          "agent_houdini/experiments/full-benchmark-lean-agent-unlimited.json": "5ca04390953bca31057317df366498e90d0a5497f97ab0f7dc668935023a3416",
+          "whiel_runner/direct_lean/src/main.rs": "f0d13005f69fa6d09f894a7c820d74f8ce3c6a5e6cb1e5b5488f47050563af5f",
+          "whiel_runner/direct_lean/Cargo.lock": "85ddfdddc97e845dab1484037df533e4c2c1dae7b1016416665903651bae857f",
+          "Whiel/DirectLean/Export.lean": "52da80e44a5ebd5360612ea54b38ac39e85c9781fcfc188dac6ff75a765212ca",
+          "whiel_runner/direct_lean/Cargo.toml": "ed8af08fa7e17fa3197a1638594d0375a1c1b2cce475323e5497af73d71e33d5",
+          "whiel_runner/direct_lean/tests/integration.py": "581f3b3bd1c7c8d7c0e0acf62a57158d9d036534a509ecac51ef7a4923fc3baa",
+          "agent_houdini/bwrap.py": "33a6cefaa820836f5825700aabd1dc0bc2a60f9b21d701ed130de0fb532973ce",
+          "agent_houdini/token_usage.py": "0ad38967889f74a3b28aef2ed767e2d4ffaac681faf8ad53381a4c61ad5ba1ed"
+        },
+        "checker_binary_sha256": "f51e2d0ee52c2ea880fe587eb814460df91ab86e9ddf7e9ad04687d173d3f557"
+      }
+    ],
+    "dispatch_recovery": {
+      "completed_before_pause": 24,
+      "unstarted_resumed": 57,
+      "change": "Treat final check_timeout as a proof outcome so dispatch can continue. No completed case rerun; prompt, agent and checker unchanged.",
+      "lean_baseline_py_sha256_after_fix": "a770119968af557d5e38e575c6b859efd7daa99e2933ae6d6010011017fd5653"
+    }
+  },
+  "publication": {
+    "base_main_commit": "e781403000d880860e48192bffe0f810c1569f48",
+    "implementation_commit": "47837eb9e665437f2c60d19ab63a1536a44b3e0b",
+    "acceptance_audit_commit": "33000ac2f1eb550b33782b6094dcfd47c4bc543c",
+    "prompt_tasks_and_generic_libraries_match_original_run": true
+  },
+  "final_acceptance": {
+    "audit_source": "Whiel/DirectLean/Audit.lean",
+    "audit_source_sha256": "65e4281bf4e94a24c2099b2c72d1255529e0680b970039fcb569cf0a68103b59",
+    "checker_source": "whiel_runner/direct_lean/src/main.rs",
+    "checker_source_sha256": "1cf92b981895193a8ed4b2ffe6e1dc55c9be976b756e45910967b268e4393ba6",
+    "recorded_checker_binary_sha256": "68b3d8b80601d7430b172f78938b5495d883b9e7334b7392b0626a6d9d207cf0",
+    "binary_hash_note": "Identifies the archived experimental binary; rebuilding on another machine need not reproduce this binary hash.",
+    "selected_submissions": 39,
+    "selection": "Every submission that compiled successfully.",
+    "check_limit_seconds": 180,
+    "proof_edits": 0,
+    "agent_reruns": 0,
+    "accepted": 20,
+    "accepted_valid": 4,
+    "accepted_invalid": 16,
+    "policy": {
+      "goal": "Exact original Whiel.HoareValid inputPre inputCmd inputPost or its negation",
+      "kernel_replay": true,
+      "forbid_sorry_and_unproved_user_axioms": true,
+      "ordinary_recursive_helpers_allowed": true,
+      "native_decide_allowed": true,
+      "native_computations_independently_rechecked": true,
+      "trusts_lean_native_compiler_and_runtime": true
+    }
+  },
+  "extended_compilation_checks": {
+    "automatic_in_fresh_runs": false,
+    "limit_seconds": 1800,
+    "agent_reruns": 0,
+    "cases": [
+      {
+        "case": "Example1061",
+        "outcome": "compilation_errors",
+        "accepted": false
+      },
+      {
+        "case": "Example5021",
+        "outcome": "compilation_timeout_stopped_at_limit",
+        "accepted": false
+      }
+    ]
+  },
+  "artifact_policy": "Run identifiers and hashes locate retained evidence; original transcripts, responses, result bundles and CSV analysis are not included in this implementation commit."
+}

@@ -1,0 +1,14 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(op_zNewS ⊆ op_zRBound)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zY ⊆ op_zRBound)"
+    }
+  ],
+  "version": 1
+}

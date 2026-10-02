@@ -1,0 +1,14 @@
+{
+  "name": "transcript-replay",
+  "notes": "Starting point for replaying a transcript: edit `transcript` to point at an export-transcript JSON file or a retained run directory (relative to `repo`) whose recorded responses should be replayed consultation by consultation, and edit `inputs` to the ones to replay. A transcript replay pays no model latency, so once its transcript runs out for a non-accepted input, the proposer ends the search at once by closing the connection (measured at about ten milliseconds against the real verifier), recorded as `incomplete`/`InfrastructureFailure` rather than the original's own `search_timeout` -- compare-runs treats every non-accepted status as one class, so this does not read as a fidelity difference. The 90-second search_limit_seconds is a safety net for an *accepted* input's own real proof search, not a target this waits for. Certify the run directory afterwards with `campaign certify --run <run>/verifier`, and check the replay against the transcript with `python3 -m agent_houdini compare-runs transcript.json <run>/verifier`.",
+  "proposer": "replay",
+  "transcript": "artifacts/runs/REPLACE-WITH-transcript.json-OR-A-RUN-DIRECTORY",
+  "inputs": [
+    "Example0001"
+  ],
+  "output_root": "artifacts/runs",
+  "search_limit_seconds": 90,
+  "workers": 4,
+  "retention": "all",
+  "certify": "never"
+}

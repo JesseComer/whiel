@@ -1,0 +1,7 @@
+{
+  "description": "The unpatched emitter built its generic rectify helper over every binder of the original quantifier, so a binder that rectification dropped was printed as `default` or reused a surviving binder's name and the helper did not elaborate.",
+  "patch": "toolchain/leancheck-vampire/patches/0001-leancheck-rectify-retained-binders.patch",
+  "defect": "rectify_default_binder",
+  "uncorrected_error_contains": "Unknown identifier",
+  "differing_steps_suffix": " rectify"
+}

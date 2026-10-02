@@ -1,0 +1,41 @@
+{
+  "canonicalId": "Example1061",
+  "canonicalInput": "Example1061/Input.lean",
+  "canonicalModule": "Benchmark.Example1061.Input",
+  "category": "LLM",
+  "compilerCommandCheck": "unavailable",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "datalogSource": "unavailable",
+  "declarationNamespace": "Whiel.Benchmark.Example1061",
+  "formatVersion": 1,
+  "goldInvariantStatus": "historical-only",
+  "historicalCandidatePresent": true,
+  "historicalClaim": "proved",
+  "notes": [
+    "Historical collaborator claims are unverified provenance."
+  ],
+  "sourceRecords": [
+    {
+      "category": "LLM",
+      "sourceId": "llm_61"
+    }
+  ],
+  "suites": [
+    "collaborator",
+    "all-benchmark"
+  ],
+  "title": "Equivalence of computed same-generation with lfp of the same-generation rules (pre-fixpoint)",
+  "explanation": "The Datalog program computes the classical same-generation query over a hierarchy: SGC holds directly related Flat pairs, plus pairs reached by going Up one level, recursively finding a same-generation pair, then coming Down one level. The Hoare triple is the standard least-fixpoint correctness statement: K is any pre-fixpoint of the same-generation immediate-consequence operator, and the postcondition shows the loop's computed SG is itself a pre-fixpoint of that operator and is contained in every such K, so the loop computes exactly the least fixpoint of the same-generation rules.",
+  "preInWords": "K contains every Flat pair and is closed under composing an Up-edge, a pair already in K, and a Down-edge.",
+  "postInWords": "SG contains every Flat pair and is closed under one more Up/SG/Down composition step, and SG is contained in K, together pinning SG to the least fixpoint of the same-generation rules.",
+  "notation": "canonical",
+  "datalog": [
+    {
+      "label": "prog_p",
+      "text": "SGC(x1, y1) :- Flat(x1, y1).\nSGC(x1, y1) :- Up(x1, z1), SGC(z1, x2), Down(x2, y1).",
+      "provenance": "production check (the hand-written loop equals this program's naive compilation on the check instances)"
+    }
+  ],
+  "expectedVerdict": "valid"
+}

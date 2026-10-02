@@ -1,0 +1,62 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(π[0,1] (oa_zTaintState) ⊆ oa_zFrontierState)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,1] (op_zTaintState) ⊆ op_zFrontierState)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[(#1 = #2 ∧ #4 = #5)] ((oa_zFrontierState × (op_zStateWitness × op_zEnabledMode)))) ⊆ op_zFrontierState)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((oa_zAnalysisReach × oa_zAnalysisReach))) ⊆ op_zAnalysisReach)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((oa_zAnalysisReach × op_zViewEdge))) ⊆ op_zFrontierState)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((oa_zFrontierState × op_zViewEdge))) ⊆ op_zAnalysisReach)"
+    },
+    {
+      "level": 0,
+      "source": "(oa_zAnalysisReach ⊆ oa_zTaintReach)"
+    },
+    {
+      "level": 0,
+      "source": "(oa_zFrontierState ⊆ π[0,1] (oa_zTaintState))"
+    },
+    {
+      "level": 0,
+      "source": "(oa_zTaintReach ⊆ oa_zAnalysisReach)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zAnalysisReach ⊆ op_zTaintReach)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zFrontierState ⊆ π[0,1] (op_zTaintState))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zInputPair ⊆ op_zAnalysisReach)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zInputPair ⊆ op_zFrontierState)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTaintReach ⊆ op_zAnalysisReach)"
+    }
+  ],
+  "version": 1
+}

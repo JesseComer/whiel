@@ -1,0 +1,5 @@
+# Several integration suites start Lean and Vampire under wall-clock limits.
+# Run side by side they starve one another past those limits, so tests run one
+# at a time unless a caller asks otherwise with `--test-threads`.
+[env]
+RUST_TEST_THREADS = "1"

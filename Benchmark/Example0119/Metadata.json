@@ -1,0 +1,47 @@
+{
+  "canonicalId": "Example0119",
+  "canonicalInput": "Example0119/Input.lean",
+  "canonicalModule": "Benchmark.Example0119.Input",
+  "category": "Synthetic",
+  "compilerCommandCheck": "unavailable",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "datalogSource": "unavailable",
+  "declarationNamespace": "Whiel.Benchmark.Example0119",
+  "formatVersion": 1,
+  "goldInvariantStatus": "missing",
+  "historicalCandidatePresent": false,
+  "historicalClaim": null,
+  "notes": [
+    "Converted from the retired classic Datalog-program benchmark collection (the 0428 wave).",
+    "Direct Lean semantic certificate: the kernel proves that the linear even/odd loop computes exactly the nonempty finite paths, whose union is transitive and is contained in every transitive pre-fixed-point bound. It has no external FOL assumptions or successful Vampire jobs."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Synthetic",
+      "sourceId": "v2__prefix_equivalence__tc_nonlin__all_paths_via_even_odd_linear__naive"
+    }
+  ],
+  "suites": [
+    "classic-programs",
+    "classic-prefix-equivalence"
+  ],
+  "title": "Prefix-equivalence: naive all_paths_via_even_odd (linear) computes lfp of tc_nonlinear",
+  "explanation": "The loop naively evaluates the all_paths_via_even_odd program (Tb the odd-length paths via Tb:=E∪(E∘Ta), Ta the even-length paths via Ta:=E∘Tb, and Tc:=Ta∪Tb their union), matching the linear all_paths_via_even_odd.dl program. The Hoare triple is the least-fixpoint introduction obligation for the non-linear transitive-closure program T(x,y):-E(x,y), T(x,y):-T(x,z),T(z,y): given any R that is already a pre-fixpoint of that non-linear program, the computed Tc must itself be a pre-fixpoint of it and lie below R, so the even/odd decomposition computes the (non-linear) transitive closure, since every path has odd or even length.",
+  "preInWords": "The precondition states that R is a pre-fixpoint of the non-linear transitive-closure program: E ∪ (R∘R) ⊆ R.",
+  "postInWords": "The postcondition states that the computed Tc is itself a pre-fixpoint of the non-linear transitive-closure program, E ∪ (Tc∘Tc) ⊆ Tc, and that Tc ⊆ R.",
+  "notation": "canonical",
+  "datalog": [
+    {
+      "label": "all_paths_via_even_odd_linear",
+      "text": "-- all_paths_via_even_odd_linear\n-- Executed WHIEL program\nOL(x,y) :- E(x,y).\nOL(x,y) :- E(x,z), EL(z,y).\nEL(x,y) :- E(x,z), OL(z,y).\nT(x,y) :- EL(x,y).\nT(x,y) :- OL(x,y).",
+      "provenance": "legacy inventory: source programs with one executed WHIEL program and one formal PRE/POST reference (not executed); sources: all_paths_via_even_odd.dl, tc-nonlinear.dl"
+    },
+    {
+      "label": "tc_nonlin",
+      "text": "-- tc_nonlin\n-- Formal PRE/POST reference only; not executed by the WHIEL command\ntc(x, y) :- base(x, y).\ntc(x, y) :- tc(x, z), tc(z, y).",
+      "provenance": "legacy inventory: source programs with one executed WHIEL program and one formal PRE/POST reference (not executed); sources: all_paths_via_even_odd.dl, tc-nonlinear.dl"
+    }
+  ],
+  "expectedVerdict": "valid"
+}

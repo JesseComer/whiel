@@ -1,0 +1,65 @@
+{
+  "canonicalId": "Example4034",
+  "canonicalInput": "Example4034/Input.lean",
+  "canonicalModule": "Benchmark.Example4034.Input",
+  "category": "Core",
+  "certificatePath": "Example4034/Certificate/Valid.lean",
+  "compilerCommandCheck": "Benchmark.Example4034.Fidelity.Example4034",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "currentValidation": {
+    "attempt": "benchmark-fidelity-20260907",
+    "lean": "4.30.0-rc1",
+    "proofBackend": "lean-kernel",
+    "status": "input-only"
+  },
+  "datalogSource": "Benchmark.Example4034.Fidelity.Example4034",
+  "declarationNamespace": "Whiel.Benchmark.Example4034",
+  "formatVersion": 1,
+  "goldInvariantStatus": "not-applicable",
+  "historicalCandidatePresent": false,
+  "historicalClaim": null,
+  "notes": [
+    "`reports/VerificationTasks.pdf` section 10.1, Task 5: verify `T↑ ⊆ T` under the sound views `Vo = To` and `Ve = Te`. Global schema `{E}` (binary) with the standard left-linear transitive closure; local schema `{Vo, Ve}`, whose relations are source tables, with `T↑(x, y) :- Vo(x, y)` and `T↑(x, y) :- Ve(x, y)`; the views themselves are the odd/even path program over `E`.",
+    "The source documents the reformulations task document (sha256 `32a3ac6b428d851f0aaa4fb7acdbf2fe4ad5dacca93ee118837888ff91b7a1c6`) and `reports/VerificationTasks.pdf` (sha256 `796ff97c082c6fc70e75a60c0dd40ec0680b738d7184a8b8aefea8c681b3ebff`) carry the same section 10.1 text, so both name this task.",
+    "The command is not hand-authored: `Fidelity/Example4034.lean` states the PDF's three Datalog programs, compiles each with `Datalog.WhielCompiler.Naive`, writes the three compiled commands one after the other (the reformulation, the views, then the global closure), renames the generated snapshots `TUp_1`, `To_1`, `Te_1` and `T_1` to the auxiliary input names `TUp_aux`, `To_aux`, `Te_aux` and `T_aux`, and proves the result equal to `inputCmd` by `decide +kernel`; the same module fixes `inputPre` as `true` and `inputPost` as the claim and pins the single loop `Hoare.preprocess` computes from the sequence.",
+    "The soundness hypothesis refers to the least fixpoints `To` and `Te` that the loop computes, so it cannot be a first-order precondition; the precondition is `true` and the postcondition states `(¬((Vo ⊆ To) ∧ (Ve ⊆ Te))) ∨ (TUp ⊆ T)`, the reference's formulation of `(Vo ⊆ To ∧ Ve ⊆ Te) → TUp ⊆ T`. `Vo` and `Ve` are never assigned, so at exit the hypothesis compares the given sources with the computed views.",
+    "Expected verdict valid: `Vo ∪ Ve ⊆ To ∪ Te = T`. Nothing is certified in this pass, so the classification stays `unknown`.",
+    "Reference encoding for intent only: `origin/reformulation-multiview:Benchmark/Example4034/Input.lean` at commit `7b793fe36c02d051a0771d110333d1c9bbca40cd`, an `IndexAlphaName` hand-written input in the earlier single-level framework. Nothing is copied from it.",
+    "Interpretation: the PDF's task line writes `Vo = To` and `ve = Te` while calling the views sound (non-exact LAV); sound views are `Vo ⊆ To`, `Ve ⊆ Te`, the reading of the reference encoding and of this one. The encoded statement (containment hypothesis) is stronger than the equality reading, so the expected verdict is unaffected."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Core",
+      "path": "Example4034/Input.lean",
+      "sourceId": "verification-tasks-pdf-10.1-task5"
+    }
+  ],
+  "suites": [
+    "leveled-framework"
+  ],
+  "title": "Containment of a reformulation over sound odd/even views in transitive closure",
+  "explanation": "The global program T is the standard right-linear transitive closure of E. The local reformulation is loop-free: TUp is simply the union of two source relations Vo and Ve, which stand for odd- and even-length path views computed by a separate odd/even mutual-recursion program over E, but are only assumed sound (Vo ⊆ To, Ve ⊆ Te) rather than exact. Because that soundness hypothesis refers to the least fixpoints the loop itself computes, it cannot be phrased as a precondition, so it is folded into the postcondition as an implication written with ¬ and ∨: if Vo and Ve are sound approximations of the odd/even path relations, then the reformulation is contained in transitive closure, TUp ⊆ T. This is a conditional (soundness-guarded) containment claim. The claim is valid, since Vo ∪ Ve ⊆ To ∪ Te = T whenever the hypothesis holds.",
+  "preInWords": "The precondition is simply true; no constraint holds at entry.",
+  "postInWords": "The postcondition states that if Vo is contained in the odd-length-path relation To and Ve is contained in the even-length-path relation Te, then the reformulation TUp is contained in the transitive closure T.",
+  "datalog": [
+    {
+      "label": "localProgram — `T↑ xy :- Vo xy` and `T↑ xy :- Ve xy`.",
+      "text": "TUp(x1, y1) :- Vo(x1, y1).\nTUp(x1, y1) :- Ve(x1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example4034/Fidelity/Example4034.lean"
+    },
+    {
+      "label": "viewProgram — The odd/even program defining the two views.",
+      "text": "To(x1, y1) :- E(x1, y1).\nTo(x1, y1) :- E(x1, z1), Te(z1, y1).\nTe(x1, y1) :- E(x1, z1), To(z1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example4034/Fidelity/Example4034.lean"
+    },
+    {
+      "label": "globalProgram — `T xy :- Exy` and `T xy :- Exz, T zy`.",
+      "text": "T(x1, y1) :- E(x1, y1).\nT(x1, y1) :- E(x1, z1), T(z1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example4034/Fidelity/Example4034.lean"
+    }
+  ]
+}

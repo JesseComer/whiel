@@ -1,0 +1,46 @@
+{
+  "canonicalId": "Example0115",
+  "canonicalInput": "Example0115/Input.lean",
+  "canonicalModule": "Benchmark.Example0115.Input",
+  "category": "Synthetic",
+  "compilerCommandCheck": "unavailable",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "datalogSource": "unavailable",
+  "declarationNamespace": "Whiel.Benchmark.Example0115",
+  "formatVersion": 1,
+  "goldInvariantStatus": "missing",
+  "historicalCandidatePresent": false,
+  "historicalClaim": null,
+  "notes": [
+    "Converted from the retired classic Datalog-program benchmark collection (the 0428 wave)."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Synthetic",
+      "sourceId": "v2__prefix_equivalence__tc_left__all_paths_via_even_odd_linear__naive"
+    }
+  ],
+  "suites": [
+    "classic-programs",
+    "classic-prefix-equivalence"
+  ],
+  "title": "Prefix-equivalence: naive all_paths_via_even_odd (linear) computes lfp of tc_left",
+  "explanation": "The loop naively evaluates the all_paths_via_even_odd program: Ta and Tb are computed by mutual recursion matching the even/odd path relations (Ta(x,y):-E(x,z),Tb(z,y), Tb(x,y):-E(x,y) or E(x,z),Ta(z,y)), and Tc:=Ta∪Tb collects all paths of length one or more. Although the title names tc_left as the reference, the precondition and postcondition actually encode the right-linear closure T(x,y):-E(x,y), T(x,y):-E(x,z),T(z,y) (as the recorded Datalog reference for this case acknowledges), so the Hoare triple is the least-fixpoint introduction obligation stating that the naively computed union Tc of even and odd paths is itself a pre-fixpoint of that right-linear closure program and lies below any given pre-fixpoint R — i.e. the even/odd decomposition computes the transitive closure, since every nonempty path has either even or odd length.",
+  "preInWords": "The precondition states that R is a pre-fixpoint of the right-linear closure program: E ∪ (E∘R) ⊆ R.",
+  "postInWords": "The postcondition states that the computed union Tc is itself a pre-fixpoint of the right-linear closure program, E ∪ (E∘Tc) ⊆ Tc, and that Tc ⊆ R.",
+  "notation": "canonical",
+  "datalog": [
+    {
+      "label": "all_paths_via_even_odd_linear",
+      "text": "-- all_paths_via_even_odd_linear\n-- Executed WHIEL program\nOL(x,y) :- E(x,y).\nOL(x,y) :- E(x,z), EL(z,y).\nEL(x,y) :- E(x,z), OL(z,y).\nT(x,y) :- EL(x,y).\nT(x,y) :- OL(x,y).",
+      "provenance": "legacy inventory: catalog/source intent plus actual right-recursive formal PRE/POST reference-operator reconstruction; sources: all_paths_via_even_odd.dl, tc-left.dl, Benchmark/Example0115/Input.lean"
+    },
+    {
+      "label": "tc_left",
+      "text": "-- tc_left\n-- Catalog/source target intent only; not executed by the WHIEL command\ntcl(x, y) :- base(x, y).\ntcl(x, y) :- tcl(x, z), base(z, y).\n-- Actual formal PRE/POST reference only; not executed (right-recursive E composed with T)\nT_right(x,y) :- E(x,y).\nT_right(x,y) :- E(x,z), T_right(z,y).",
+      "provenance": "legacy inventory: catalog/source intent plus actual right-recursive formal PRE/POST reference-operator reconstruction; sources: all_paths_via_even_odd.dl, tc-left.dl, Benchmark/Example0115/Input.lean"
+    }
+  ],
+  "expectedVerdict": "valid"
+}

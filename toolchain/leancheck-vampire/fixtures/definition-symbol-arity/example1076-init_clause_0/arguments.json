@@ -1,0 +1,17 @@
+{
+  "arguments": [
+    "--proof", "leancheck",
+    "--proof_extra", "lean",
+    "--skolemization", "syntactic",
+    "--output_mode", "lean",
+    "--time_limit", "7",
+    "--avatar", "on",
+    "--mode", "portfolio",
+    "--schedule", "casc_2025",
+    "--cores", "1",
+    "--random_seed", "1",
+    "--randomize_seed_for_portfolio_workers", "off",
+    "--shuffle_on_schedule_repeats", "off",
+    "problem.p"
+  ]
+}

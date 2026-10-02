@@ -1,0 +1,69 @@
+{
+  "canonicalId": "Example3014",
+  "canonicalInput": "Example3014/Input.lean",
+  "title": "Auditor trust diverges from resource trust under recursive elevation",
+  "explanation": "Program C1 computes an access relation AccessA that elevates a principal's access to a new resource via Grant/Scope, re-checks that elevation by requiring a Proof triple whose auditor coordinate (the proof's third argument) is Trusted, and further allows elevation whenever two already-accessible resources are linked by a Proof triple. Program C2 computes AccessB with the analogous elevation structure but tests Trusted against the proof's resource coordinate rather than its auditor coordinate. This models recursive policy elevation comparing which coordinate of a proof triple, auditor versus resource, a trust check should apply to. The Hoare triple claims containment AccessA ⊆ AccessB under five TGDs, including an existential one guaranteeing every request a trusted proof witness, but the claim fails: the recorded witness instance shows the two programs agree on the first trusted endpoint but diverge at the next audited elevation, since trusting the auditor coordinate versus the resource coordinate of the same Proof triple picks out different principals.",
+  "preInWords": "The precondition is five TGDs: every Request pair has a Proof triple whose third coordinate is Trusted, the first two coordinates of every Proof triple are a Permit pair, every Grant pair whose target is in Scope is a Permit pair, the source of an Override pair with a matching Proof witness is in Scope, and the target of a Permit pair composed with a Grant pair is in Scope.",
+  "postInWords": "The postcondition claims AccessA ⊆ AccessB, but the case is invalid: the recorded witness instance shows a resource in AccessA that is not in AccessB.",
+  "family": "two programs under TGD constraints (LLM-generated, GPT (raw_invalid_gpt batch); legacy raw_new pipeline), invalid",
+  "kind": "containment",
+  "claim": "(AccessA ⊆ AccessB)",
+  "precondition": "((Request ⊆ π[0,1] (σ[#2 = #3] ((Proof × Trusted)))) ∧ ((π[0,1] (Proof) ⊆ Permit) ∧ ((π[0,1] (σ[#1 = #2] ((Grant × Scope))) ⊆ Permit) ∧ ((π[0] (σ[#1 = #3] ((Override × Proof))) ⊆ Scope) ∧ (π[3] (σ[#1 = #2] ((Permit × Grant))) ⊆ Scope)))))",
+  "expectedVerdict": "invalid",
+  "obstructionExpectation": "invalid (legacy kernel counterexample)",
+  "currentClassification": "invalid",
+  "currentEvidence": "kernel counterexample (Certificate/Invalid.lean)",
+  "rateMismatch": false,
+  "sides": [
+    "naive compiler: program C1 of the retired corpus case Example3014 (output AccessA)",
+    "naive compiler: program C2 of the retired corpus case Example3014 (output AccessB)"
+  ],
+  "schemaLinking": "the two programs share the input relations; the dependencies of the precondition relate them",
+  "sourceProgram": null,
+  "sources": [
+    {
+      "system": "LLM-generated (GPT (raw_invalid_gpt batch)), legacy raw_new TGD pipeline",
+      "repo": "this repository",
+      "file": "the retired corpus case Example3014 (programs C1, C2 and the TGD list tgd0..)",
+      "function": "TGD pipeline run raw-new-tgd-0002-product: TGDs translated to relational algebra by RelCalc.TGD.listToAssertExpr; programs compiled with the certified naive compiler",
+      "url": null,
+      "read": "2026-09-15"
+    },
+    {
+      "system": "method",
+      "repo": "this repository",
+      "file": "the equivalence-under-constraints paper draft (technical appendix: reduction of containment/equivalence under TGDs to a Hoare triple)",
+      "url": null,
+      "read": "2026-09-15"
+    }
+  ],
+  "encoding": "canonical five-declaration form; both sides naive-compiler output pinned by Fidelity/ (decide +kernel); independent loops merged side by side; the TGD precondition is the legacy text verbatim; the legacy concurrent-product loop compared with the sequence on the check instances",
+  "created": "2026-09-15",
+  "certificatePath": "Example3014/Certificate/Invalid.lean",
+  "llmGenerated": "GPT (raw_invalid_gpt batch)",
+  "tgds": [
+    "∀ x1. ∀ y1. Request(x1, y1) → ∃ z1. (Proof(x1, y1, z1) ∧ Trusted(z1))",
+    "∀ x1. ∀ y1. ∀ z1. Proof(x1, y1, z1) → Permit(x1, y1)",
+    "∀ x1. ∀ y1. (Grant(x1, y1) ∧ Scope(y1)) → Permit(x1, y1)",
+    "∀ x1. ∀ y1. ∀ z1. ∀ x2. (Override(x1, y1) ∧ Proof(z1, y1, x2)) → Scope(x1)",
+    "∀ x1. ∀ y1. ∀ z1. (Permit(x1, y1) ∧ Grant(y1, z1)) → Scope(z1)"
+  ],
+  "outputs": {
+    "C1": "AccessA",
+    "C2": "AccessB"
+  },
+  "datalog": [
+    {
+      "label": "prog_c1",
+      "text": "AccessA(x1, y1) :- Request(x1, y1), Permit(x1, y1).\nElevatedA(x1, z1) :- AccessA(x1, y1), Grant(y1, z1), Scope(z1).\nCheckedA(x1, z1) :- ElevatedA(x1, y1), Override(y1, z1), Proof(x1, z1, x2), Trusted(x2).\nAccessA(x1, z1) :- CheckedA(x1, z1).\nElevatedA(x1, z1) :- AccessA(x1, y1), AccessA(x1, x2), Proof(y1, z1, x2).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example3014/Fidelity/Example3014.lean"
+    },
+    {
+      "label": "prog_c2",
+      "text": "AccessB(x1, y1) :- Request(x1, y1), Permit(x1, y1).\nElevatedB(x1, z1) :- AccessB(x1, y1), Grant(y1, z1), Scope(z1).\nAuditB(x1, z1, x2) :- ElevatedB(x1, y1), Override(y1, z1), Proof(x1, z1, x2).\nAccessB(x1, z1) :- AuditB(x1, z1, x2), Trusted(z1).\nElevatedB(x1, z1) :- AccessB(x1, y1), AccessB(x1, x2), Proof(y1, z1, x2).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example3014/Fidelity/Example3014.lean"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "certificate": null,
+  "clauses_dropped": 0,
+  "clauses_submitted": 30,
+  "consultations": 3,
+  "core": 30,
+  "dead": null,
+  "input": "Example0134",
+  "pending": 0,
+  "rounds": [
+    {
+      "agent_seconds": 40.38,
+      "clauses_dropped": 0,
+      "clauses_proposed": 8,
+      "core": 0,
+      "latest": "initial — no round has run yet",
+      "pending": 0,
+      "round": 1,
+      "verifier_seconds": 99.48
+    },
+    {
+      "agent_seconds": 89.08,
+      "clauses_dropped": 0,
+      "clauses_proposed": 22,
+      "core": 0,
+      "latest": "postcondition_open — the Core is sound but does not yet entail the postcondition",
+      "pending": 8,
+      "round": 2,
+      "verifier_seconds": 336.39
+    },
+    {
+      "agent_seconds": 30.44,
+      "clauses_dropped": 0,
+      "clauses_proposed": 0,
+      "core": 30,
+      "latest": "postcondition_open — the Core is sound but does not yet entail the postcondition",
+      "pending": 0,
+      "round": 3,
+      "verifier_seconds": null
+    }
+  ],
+  "status": "search_timeout",
+  "total_seconds": 777.0333359241486
+}

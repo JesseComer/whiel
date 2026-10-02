@@ -1,0 +1,57 @@
+{
+  "fuel_consumed": 6,
+  "fuel_policy": {
+    "host_fuel_bound": null,
+    "kind": "structural_replay",
+    "validation_limit_nanos": 30000000000
+  },
+  "instance": {
+    "relations": [
+      {
+        "name": "a::T",
+        "rows": []
+      },
+      {
+        "name": "a::TUp",
+        "rows": []
+      },
+      {
+        "name": "p::E",
+        "rows": [
+          [
+            "num:0",
+            "num:1"
+          ]
+        ]
+      },
+      {
+        "name": "p::T",
+        "rows": []
+      },
+      {
+        "name": "p::TUp",
+        "rows": []
+      },
+      {
+        "name": "p::V",
+        "rows": []
+      }
+    ]
+  },
+  "instance_identity": "226ca2fbc49726e8de2a81da805f80a769d40b28ce7db10800e5d22799f99952",
+  "kind": "whiel_framework_ii_counterexample",
+  "provenance": {
+    "kind": "recorded_witness",
+    "source": "Benchmark/Example4002/Counterexample.json (recorded witness, re-frozen)"
+  },
+  "scope_identity_sha256": "37b2f86f9cd621b9eea57dea27a676e9e246a4d129d7e9460faad347b30bbd27",
+  "task": {
+    "canonical_id": "Example4002",
+    "encoding_version": 1,
+    "module": "Benchmark.Example4002.Input",
+    "namespace": "Whiel.Benchmark.Example4002",
+    "semantic_version": 1,
+    "source_sha256": "2893a2e2e97c53e15d17a79cc201a7e50fed531080f4b1ad96452eedb32dfa25"
+  },
+  "version": 1
+}

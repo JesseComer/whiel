@@ -1,0 +1,69 @@
+{
+  "canonicalId": "Example1088",
+  "canonicalInput": "Example1088/Input.lean",
+  "title": "Equivalent forward dependency closure and transposed reverse resolution",
+  "explanation": "This is a query-equivalence-under-dependencies problem, the setting of the relational chase: program C1 computes ForwardReach, the transitive closure of a forward step relation (direct ForwardEdge pairs, plus pairs backed by a valid bridge proof) starting from ForwardSeed; program C2 computes ResolvedPair, the same kind of closure computed instead over the transposed backward relations (BackwardSeed, BackwardEdge) with its own reverse step relation. The precondition's six tuple-generating dependencies (two of them existential) say the forward and backward seed relations are transposes of each other, that ForwardEdge equals the pairs backed by a valid bridge proof, and that BackwardEdge equals the transpose of that same relation; under those dependencies the postcondition claims the two closures agree, ForwardReach = ResolvedPair.",
+  "preInWords": "PRE says ForwardSeed and BackwardSeed are transposes of each other, ForwardEdge equals the pairs backed by a valid bridge proof, and BackwardEdge equals the transpose of that same bridge-proof relation.",
+  "postInWords": "POST says the forward-computed reachability relation ForwardReach equals the reverse-computed relation ResolvedPair.",
+  "family": "two programs under TGD constraints (LLM-generated, GPT-5.6; legacy raw_new pipeline)",
+  "kind": "equivalence",
+  "claim": "(ForwardReach = ResolvedPair)",
+  "precondition": "((ForwardSeed ⊆ π[1,0] (BackwardSeed)) ∧ ((BackwardSeed ⊆ π[1,0] (ForwardSeed)) ∧ ((ForwardEdge ⊆ π[0,1] (σ[#2 = #3] ((BridgeProof × ValidBridge)))) ∧ ((π[0,1] (σ[#2 = #3] ((BridgeProof × ValidBridge))) ⊆ ForwardEdge) ∧ ((π[0,1] (σ[#2 = #3] ((BridgeProof × ValidBridge))) ⊆ π[1,0] (BackwardEdge)) ∧ (BackwardEdge ⊆ π[1,0] (σ[#2 = #3] ((BridgeProof × ValidBridge)))))))))",
+  "expectedVerdict": "valid",
+  "obstructionExpectation": "anchored: both sides are naive closures at the same rate and the legacy product loop was certified with a quantifier-free invariant; no prophecy level expected",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "rateMismatch": false,
+  "sides": [
+    "naive compiler: program C1 of the retired corpus case Example1088 (output ForwardReach)",
+    "naive compiler: program C2 of the retired corpus case Example1088 (output ResolvedPair)"
+  ],
+  "schemaLinking": "the two programs share the input relations; the dependencies of the precondition relate them",
+  "sourceProgram": null,
+  "sources": [
+    {
+      "system": "LLM-generated (GPT-5.6), legacy raw_new TGD pipeline",
+      "repo": "this repository",
+      "file": "the retired corpus case Example1088 (programs C1, C2 and the TGD list tgd0..)",
+      "function": "TGD pipeline run raw-new-tgd-0002-product: TGDs translated to relational algebra by RelCalc.TGD.listToAssertExpr; programs compiled with the certified naive compiler",
+      "url": null,
+      "read": "2026-09-15"
+    },
+    {
+      "system": "method",
+      "repo": "this repository",
+      "file": "the equivalence-under-constraints paper draft (technical appendix: reduction of containment/equivalence under TGDs to a Hoare triple)",
+      "url": null,
+      "read": "2026-09-15"
+    }
+  ],
+  "encoding": "canonical five-declaration form; both sides naive-compiler output pinned by Fidelity/ (decide +kernel); independent loops merged side by side; the TGD precondition is the legacy text verbatim; the legacy concurrent-product loop compared with the sequence on the check instances",
+  "created": "2026-09-15",
+  "llmGenerated": "GPT-5.6",
+  "tgds": [
+    "∀ x1. ∀ y1. ForwardSeed(x1, y1) → BackwardSeed(y1, x1)",
+    "∀ x1. ∀ y1. BackwardSeed(x1, y1) → ForwardSeed(y1, x1)",
+    "∀ x1. ∀ y1. ForwardEdge(x1, y1) → ∃ z1. (BridgeProof(x1, y1, z1) ∧ ValidBridge(z1))",
+    "∀ x1. ∀ y1. ∀ z1. (BridgeProof(x1, y1, z1) ∧ ValidBridge(z1)) → ForwardEdge(x1, y1)",
+    "∀ x1. ∀ y1. ∀ z1. (BridgeProof(x1, y1, z1) ∧ ValidBridge(z1)) → BackwardEdge(y1, x1)",
+    "∀ x1. ∀ y1. BackwardEdge(x1, y1) → ∃ z1. (BridgeProof(y1, x1, z1) ∧ ValidBridge(z1))"
+  ],
+  "outputs": {
+    "C1": "ForwardReach",
+    "C2": "ResolvedPair"
+  },
+  "datalog": [
+    {
+      "label": "prog_c1",
+      "text": "ForwardReach(x1, y1) :- ForwardSeed(x1, y1).\nForwardStep(x1, y1) :- ForwardEdge(x1, y1).\nForwardReach(x1, z1) :- ForwardReach(x1, y1), ForwardStep(y1, z1).\nForwardStep(x1, z1) :- ForwardReach(x1, y1), BridgeProof(y1, z1, x2), ValidBridge(x2).\nForwardReach(x1, z1) :- ForwardStep(x1, y1), ForwardReach(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example1088/Fidelity/Example1088.lean"
+    },
+    {
+      "label": "prog_c2",
+      "text": "ResolvedPair(x1, y1) :- BackwardSeed(y1, x1).\nReverseStep(y1, x1) :- BackwardEdge(y1, x1).\nResolvedPair(x1, z1) :- ResolvedPair(x1, y1), ReverseStep(z1, y1).\nReverseStep(z1, x1) :- ResolvedPair(x1, y1), BridgeProof(y1, z1, x2), ValidBridge(x2).\nResolvedPair(x1, z1) :- ReverseStep(y1, x1), ResolvedPair(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example1088/Fidelity/Example1088.lean"
+    }
+  ]
+}

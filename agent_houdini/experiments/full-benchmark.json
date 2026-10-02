@@ -1,0 +1,19 @@
+{
+  "name": "full-benchmark",
+  "notes": "Full 86-input benchmark run: 56 valid, 16 invalid, 14 unsolved. Search only; certify the run directory afterwards with `campaign certify --run <run>/verifier`.",
+  "provider": "codex",
+  "model": "gpt-5.5",
+  "reasoning_effort": "medium",
+  "provider_cli": "artifacts/provider-cli/0.148.0/x86_64-unknown-linux-musl/codex",
+  "isolation": "bwrap",
+  "all_inputs": true,
+  "output_root": "artifacts/runs",
+  "search_limit_seconds": 600,
+  "certification_limit_seconds": 1800,
+  "iteration_limit": null,
+  "workers": 4,
+  "retention": "all",
+  "agent_retention": "all",
+  "token_usage": "codex-rollout",
+  "certify": "never"
+}

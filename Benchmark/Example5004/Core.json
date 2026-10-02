@@ -1,0 +1,50 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(op_zInh = (oa_zInh ∪ (op_zRoleInh ∪ π[0,3] (σ[#1 = #2] ((oa_zInh × op_zRoleInh))))))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (op_zHas = (oa_zHas ∪ (op_zUserRole ∪ π[0,3] (σ[#1 = #2] ((oa_zHas × op_zRoleInh)))))))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (op_zInh = oa_zInh))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ ((of_z1 = ⊤) ∨ (op_zHas ⊆ oa_zHas)))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (π[0,3] (σ[#1 = #2] ((op_zUserRole × op_zInh))) ⊆ op_zHasM))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (oa_zHas ⊆ op_zHasM))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (op_zHas ⊆ op_zHasM))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (op_zHasM ⊆ (op_zUserRole ∪ π[0,3] (σ[#1 = #2] ((op_zUserRole × op_zInh))))))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ (op_zUserRole ⊆ op_zHasM))"
+    },
+    {
+      "level": 1,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zUserRole × oa_zInh))) ⊆ yp_zHas)"
+    },
+    {
+      "level": 1,
+      "source": "(π[0,3] (σ[#1 = #2] ((op_zUserRole × op_zInh))) ⊆ yp_zHas)"
+    }
+  ],
+  "version": 1
+}

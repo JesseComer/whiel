@@ -1,0 +1,82 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ ((of_z1 = ⊤) ∨ ((op_zdeltaTcS ∪ (op_zdeltaTclS ∪ op_zdeltaTcrS)) = ∅[2])))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ ((op_zbase ∪ π[0,3] (σ[#1 = #2] ((op_zbase × op_ztcr)))) ⊆ op_ztcr))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ ((op_zbase ∪ π[0,3] (σ[#1 = #2] ((op_zbase × op_ztcrS)))) ⊆ (op_ztcrS ∪ op_zdeltaTcrS)))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ ((op_zbase ∪ π[0,3] (σ[#1 = #2] ((op_ztc × op_ztc)))) ⊆ op_ztc))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ ((op_zbase ∪ π[0,3] (σ[#1 = #2] ((op_ztcS × op_ztcS)))) ⊆ (op_ztcS ∪ op_zdeltaTcS)))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ ((op_zbase ∪ π[0,3] (σ[#1 = #2] ((op_ztcl × op_zbase)))) ⊆ op_ztcl))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ ((op_zbase ∪ π[0,3] (σ[#1 = #2] ((op_ztclS × op_zbase)))) ⊆ (op_ztclS ∪ op_zdeltaTclS)))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ ((op_ztcS ∪ op_zdeltaTcS) ⊆ op_ztc))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ ((op_ztclS ∪ op_zdeltaTclS) ⊆ op_ztcl))"
+    },
+    {
+      "level": 0,
+      "source": "((of_z0 = ⊤) ∨ ((op_ztcrS ∪ op_zdeltaTcrS) ⊆ op_ztcr))"
+    },
+    {
+      "level": 0,
+      "source": "((op_zbase ∪ π[0,3] (σ[#1 = #2] ((op_zbase × op_ztcrOld)))) ⊆ op_ztcrNew)"
+    },
+    {
+      "level": 0,
+      "source": "((op_zbase ∪ π[0,3] (σ[#1 = #2] ((op_ztcOld × op_ztcOld)))) ⊆ op_ztcNew)"
+    },
+    {
+      "level": 0,
+      "source": "((op_zbase ∪ π[0,3] (σ[#1 = #2] ((op_ztclOld × op_zbase)))) ⊆ op_ztclNew)"
+    },
+    {
+      "level": 1,
+      "source": "((of_z0 = ⊤) ∨ (op_ztc ⊆ yp_ztcS))"
+    },
+    {
+      "level": 1,
+      "source": "((of_z0 = ⊤) ∨ (op_ztcl ⊆ yp_ztclS))"
+    },
+    {
+      "level": 1,
+      "source": "((of_z0 = ⊤) ∨ (op_ztcr ⊆ yp_ztcrS))"
+    },
+    {
+      "level": 1,
+      "source": "(op_ztcNew ⊆ yp_ztcS)"
+    },
+    {
+      "level": 1,
+      "source": "(op_ztclNew ⊆ yp_ztclS)"
+    },
+    {
+      "level": 1,
+      "source": "(op_ztcrNew ⊆ yp_ztcrS)"
+    }
+  ],
+  "version": 1
+}

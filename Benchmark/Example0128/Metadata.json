@@ -1,0 +1,46 @@
+{
+  "canonicalId": "Example0128",
+  "canonicalInput": "Example0128/Input.lean",
+  "canonicalModule": "Benchmark.Example0128.Input",
+  "category": "Synthetic",
+  "compilerCommandCheck": "unavailable",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "datalogSource": "unavailable",
+  "declarationNamespace": "Whiel.Benchmark.Example0128",
+  "formatVersion": 1,
+  "goldInvariantStatus": "missing",
+  "historicalCandidatePresent": false,
+  "historicalClaim": null,
+  "notes": [
+    "Converted from the retired classic Datalog-program benchmark collection (the 0428 wave)."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Synthetic",
+      "sourceId": "v2__containment__tc_of_union__red_blue_nonlinear__naive"
+    }
+  ],
+  "suites": [
+    "classic-programs",
+    "classic-containment"
+  ],
+  "title": "Containment: naive red_blue_nonlinear outputs ⊆ pre-fixpoint of TC(R ∪ B)",
+  "explanation": "The loop naively evaluates the non-linear red_blue_nonlinear program, computing four colour-alternating path relations (same-colour-start relations analogous to RR/BB and colour-switching relations analogous to RB/BR) by mutual recursion over a red edge relation RX and a blue edge relation B, matching red_blue_nonlinear.dl. The Hoare triple is a containment claim: it asserts that each of the four computed relations is contained in any relation R that is already a pre-fixpoint of the (uncoloured) transitive-closure program on RX∪B, since every colour-alternating walk is in particular an ordinary walk in the union graph.",
+  "preInWords": "The precondition states that R is a pre-fixpoint of the transitive-closure program on the union graph RX∪B: (RX∪B) ∪ (RX∘R) ∪ (B∘R) ⊆ R.",
+  "postInWords": "The postcondition states that all four computed relations Ta, Tb, Tc, Td are each contained in R.",
+  "notation": "canonical",
+  "datalog": [
+    {
+      "label": "red_blue_nonlinear",
+      "text": "-- red_blue_nonlinear\n-- Executed WHIEL program\nRR(x,y) :- R(x,y).\nBB(x,y) :- B(x,y).\nRB(x,y) :- R(x,z), B(z,y).\nBR(x,y) :- B(x,z), R(z,y).\nRR(x,y) :- RR(x,z), BR(z,y).\nBB(x,y) :- BB(x,z), RB(z,y).\nRB(x,y) :- RR(x,z), BB(z,y).\nBR(x,y) :- BB(x,z), RR(z,y).",
+      "provenance": "legacy inventory: source programs with one executed WHIEL program and one formal PRE/POST reference (not executed); sources: red_blue_nonlinear.dl, tc_of_union.dl"
+    },
+    {
+      "label": "tc_of_union",
+      "text": "-- tc_of_union\n-- Formal PRE/POST reference only; not executed by the WHIEL command\nE(x,y) :- R(x,y).\nE(x,y) :- B(x,y).\nT(x,y) :- E(x,y).\nT(x,y) :- E(x,z), T(z,y).",
+      "provenance": "legacy inventory: source programs with one executed WHIEL program and one formal PRE/POST reference (not executed); sources: red_blue_nonlinear.dl, tc_of_union.dl"
+    }
+  ],
+  "expectedVerdict": "valid"
+}

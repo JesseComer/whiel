@@ -1,0 +1,36 @@
+{
+  "canonicalId": "Example1030",
+  "canonicalInput": "Example1030/Input.lean",
+  "canonicalModule": "Benchmark.Example1030.Input",
+  "category": "LLM",
+  "compilerCommandCheck": "unavailable",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "datalogSource": "unavailable",
+  "declarationNamespace": "Whiel.Benchmark.Example1030",
+  "formatVersion": 1,
+  "goldInvariantStatus": "historical-only",
+  "historicalCandidatePresent": true,
+  "historicalClaim": "failed",
+  "notes": [
+    "Historical collaborator claims are unverified provenance.",
+    "Strengthened with a post-fixpoint witness Rb (pre: Rb ⊆ Base, Rb ⊆ Rb ∖ Bad(Rb); post adds Rb ⊆ Keep) so that maximality of the greatest fixpoint is asserted."
+  ],
+  "sourceRecords": [
+    {
+      "category": "LLM",
+      "sourceId": "llm_30"
+    }
+  ],
+  "suites": [
+    "collaborator",
+    "all-benchmark"
+  ],
+  "title": "Foreign-key support core for sharded materialized rows",
+  "explanation": "The Datalog program computes a referential-integrity closure over sharded materialized rows: Removed accumulates ids whose foreign-key requirement (Req) points outside Base, or that depend transitively on another already-removed row, and Keep = Base ∖ Removed is dually the greatest fixpoint of the operator that deletes a row whenever its requirement is unmet within the same shard. The Hoare triple states the greatest-fixpoint correctness result in its maximality form: Rb is a free relation the program never touches, ranging over every subset of Base that is internally self-consistent (a post-fixpoint of the delete operator), and the postcondition asserts that Keep itself is self-consistent (Bad = ∅) and contains every such Rb, i.e. Keep is the greatest self-consistent subset of Base.",
+  "preInWords": "Rb is a subset of Base such that no row of Rb has an unmet foreign-key requirement within Rb itself.",
+  "postInWords": "Keep is a subset of Base in which every row's requirement is satisfied (Bad = ∅), and Keep contains every self-consistent subset Rb of Base, i.e. Keep is the greatest such subset.",
+  "notation": "canonical",
+  "datalog": [],
+  "expectedVerdict": "valid (expected; strengthened claim)"
+}

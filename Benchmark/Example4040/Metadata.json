@@ -1,0 +1,71 @@
+{
+  "canonicalId": "Example4040",
+  "canonicalInput": "Example4040/Input.lean",
+  "canonicalModule": "Benchmark.Example4040.Input",
+  "category": "Core",
+  "certificatePath": "Example4040/Certificate/Valid.lean",
+  "compilerCommandCheck": "Benchmark.Example4040.Fidelity.Example4040",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "currentValidation": {
+    "attempt": "benchmark-fidelity-20260907",
+    "lean": "4.30.0-rc1",
+    "proofBackend": "lean-kernel",
+    "status": "input-only"
+  },
+  "datalogSource": "Benchmark.Example4040.Fidelity.Example4040",
+  "declarationNamespace": "Whiel.Benchmark.Example4040",
+  "formatVersion": 1,
+  "goldInvariantStatus": "not-applicable",
+  "historicalCandidatePresent": false,
+  "historicalClaim": null,
+  "notes": [
+    "`reports/VerificationTasks.pdf` section 10.1, Task 9: verify `T = T↑` under the Datalog views `Vr` (red paths) and `Vb` (blue paths). Global schema `{R, B}` (binary) and the transitive closure of `R ∪ B`. The views are Datalog, so the local side is one program over `{R, B}` with the three outputs `Vr`, `Vb` and `TUp`, the last with the nonlinear rule `TUp(x, y) :- TUp(x, z), TUp(z, y)`. There is no view hypothesis, so the precondition is `true`.",
+    "The source documents the reformulations task document (sha256 `32a3ac6b428d851f0aaa4fb7acdbf2fe4ad5dacca93ee118837888ff91b7a1c6`) and `reports/VerificationTasks.pdf` (sha256 `796ff97c082c6fc70e75a60c0dd40ec0680b738d7184a8b8aefea8c681b3ebff`) carry the same section 10.1 text, so both name this task.",
+    "The command is not hand-authored: `Fidelity/Example4040.lean` states the PDF's three Datalog programs, compiles each with `Datalog.WhielCompiler.Naive`, writes the three compiled commands one after the other (the closure, the views, then the reformulation, which reads what the views compute), renames the generated snapshots `T_1`, `Vr_1`, `Vb_1` and `TUp_1` to the auxiliary input names `T_aux`, `Vr_aux`, `Vb_aux` and `TUp_aux`, and proves the result equal to `inputCmd` by `decide +kernel`; the same module fixes `inputPre` as `true` and `inputPost` as the claim `T = TUp` and pins the single loop `Hoare.preprocess` computes from the sequence.",
+    "Expected verdict valid; the classification stays `unknown` because the reference was never certified. Both programs compute the transitive closure of `R ∪ B`. The naive compiler is fully synchronous, so `TUp` reads the snapshots `Vr_aux` and `Vb_aux` rather than the freshly updated views of the same round as the hand-authored reference did; the least fixpoint is unchanged.",
+    "Regression guard against the retired split halves. The old corpus carried Task 9 as the retired corpus cases Example4038 (the `TUp ⊆ T` half, with the derived nonlinear rule `T(x, y) :- T(x, z), T(z, y)` added to the global program) and Example4039 (the `T ⊆ TUp` half). `Fidelity/Example4040.lean` states the derived-rule variant as a second Datalog program and separates it from the verbatim one by a single immediate-consequence step of the repository's Datalog evaluator: on the instance `R = B = ∅`, `T = {(0, 1), (1, 2)}` the verbatim program is already at a fixed point while the derived rule adds `(0, 2)`, so a regression to the accelerated variant is caught.",
+    "Reference encoding for intent only: the retired unknown-obstruction encoding of this task on `origin/reformulation-multiview` at commit `7b793fe36c02d051a0771d110333d1c9bbca40cd`, an `IndexAlphaName` hand-written input in the earlier single-level framework. Nothing is copied from it.",
+    "No invariant is carried, and the input was measured rather than merely assumed to be out of reach of the pinned `direct` leancheck profile. Its preprocessed loop has the same five-leaf flag-drawing shape as `Example4041`'s, but its `T` round assigns `T ∪ (R ∪ (B ∪ (π[0,3] (σ[#1 = #2] ((R × T_aux))) ∪ π[0,3] (σ[#1 = #2] ((B × T_aux))))))` and its reformulation round carries the self-composition `π[0,3] (σ[#1 = #2] ((TUp_aux × TUp_aux)))`, so every clause's weakest precondition is larger and any invariant needs strictly more composition rows than `Example4041`'s. A four-row probe — `(op_zR ⊆ op_zT)`, `(op_zB ⊆ op_zT)`, `(π[0,3] (σ[#1 = #2] ((op_zR × oa_zT))) ⊆ op_zT)`, `(π[0,3] (σ[#1 = #2] ((op_zB × oa_zT))) ⊆ op_zT)` — was built under `--profile direct`; it fails at the maintenance of the composition-free row `(op_zR ⊆ op_zT)` on the 60-second deadline, where the same row passes instantly on `Example4041`. So this input crosses the profile's limit sooner than `Example4041` does, and it is not a way around it."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Core",
+      "path": "Example4040/Input.lean",
+      "sourceId": "verification-tasks-pdf-10.1-task9-equality"
+    }
+  ],
+  "suites": [
+    "leveled-framework"
+  ],
+  "title": "Closure of red and blue edges versus its reformulation over Datalog path views",
+  "explanation": "The global program T computes the transitive closure of R ∪ B (red and blue edges of a digraph combined), advancing one edge at a time. The local reformulation is itself recursive Datalog: it first computes two monochrome path views, Vr (red-only paths) and Vb (blue-only paths), each by its own right-linear recursion over R or B, then defines TUp(x,y):-Vr(x,y), TUp(x,y):-Vb(x,y), and the nonlinear rule TUp(x,y):-TUp(x,z),TUp(z,y), composing whole monochrome walks together. The Hoare triple claims equality, T = TUp: both compute the same transitive closure of R ∪ B, one by single-edge steps and the other by self-composing entire same-colour walks. Certified valid.",
+  "preInWords": "The precondition is simply true; there is no separate view hypothesis, since the views Vr and Vb are themselves computed by Datalog programs within the command.",
+  "postInWords": "The postcondition asserts T = TUp, that the closure of the combined red/blue edges equals the path-view-composition reformulation.",
+  "datalog": [
+    {
+      "label": "globalProgram — The transitive closure of `R ∪ B`, left-linearly.",
+      "text": "T(x1, y1) :- R(x1, y1).\nT(x1, y1) :- B(x1, y1).\nT(x1, y1) :- R(x1, z1), T(z1, y1).\nT(x1, y1) :- B(x1, z1), T(z1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example4040/Fidelity/Example4040.lean"
+    },
+    {
+      "label": "viewProgram — The red and the blue monochrome path views.",
+      "text": "Vr(x1, y1) :- R(x1, y1).\nVr(x1, y1) :- R(x1, z1), Vr(z1, y1).\nVb(x1, y1) :- B(x1, y1).\nVb(x1, y1) :- B(x1, z1), Vb(z1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example4040/Fidelity/Example4040.lean"
+    },
+    {
+      "label": "reformProgram — The reformulation over the two path views.",
+      "text": "TUp(x1, y1) :- Vr(x1, y1).\nTUp(x1, y1) :- Vb(x1, y1).\nTUp(x1, y1) :- TUp(x1, z1), TUp(z1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example4040/Fidelity/Example4040.lean"
+    },
+    {
+      "label": "program",
+      "text": "T(x1, y1) :- R(x1, y1).\nT(x1, y1) :- B(x1, y1).\nT(x1, y1) :- R(x1, z1), T(z1, y1).\nT(x1, y1) :- B(x1, z1), T(z1, y1).\nT(x1, y1) :- T(x1, z1), T(z1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example4040/Fidelity/Example4040.lean"
+    }
+  ]
+}

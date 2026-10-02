@@ -1,0 +1,50 @@
+{
+  "canonicalId": "Example5019",
+  "canonicalInput": "Example5019/Input.lean",
+  "title": "One pass over the dependencies versus the parallel chase on ChaseBench correctness/tgds (invalid twin of Example5018)",
+  "explanation": "Same scenario and parallel-chase side as Example5018, but side 1 applies the s-t dependencies once and then chases each target dependency to its own fixpoint exactly once in file order, without repeating the sweep over all dependencies. The expected verdict is invalid: that single pass is not a fair chase sequence, since a dependency whose trigger becomes newly active only after a later dependency fires is never re-applied, so the one-pass result falls short of the true least fixpoint the parallel chase computes.",
+  "preInWords": "True; no precondition constrains the inputs.",
+  "postInWords": "The claim (which fails) is that the single-pass target relations (TAQ, TBQ, WAQ, WBQ) equal the parallel chase's fixpoint relations (TA, TB, WA, WB).",
+  "family": "two evaluation orders of one chase (invalid twin)",
+  "kind": "equivalence",
+  "claim": "(((TAQ = TA) ∧ (TBQ = TB)) ∧ ((WAQ = WA) ∧ (WBQ = WB)))",
+  "precondition": "true",
+  "expectedVerdict": "invalid",
+  "obstructionExpectation": "n/a (invalid; kernel counterexample)",
+  "currentClassification": "invalid",
+  "currentEvidence": "kernel counterexample (Certificate/Invalid.lean)",
+  "rateMismatch": true,
+  "sides": [
+    "hand-written: s-t TGDs once, then each target TGD to its fixpoint once in file order, no repetition (not a fair chase sequence)",
+    "naive compiler: the six full TGDs as a Datalog program (parallel chase)"
+  ],
+  "sourceProgram": "ChaseBench scenarios/correctness/tgds (full TGDs)",
+  "sources": [
+    {
+      "title": "ChaseBench (dbunibas/chasebench), scenario scenarios/correctness/tgds",
+      "url": "https://github.com/dbunibas/chasebench",
+      "commit": "7427e1c1e3196769ee4ea04557465965ec26d02b (master, 2017-09-13)",
+      "files": "scenarios/correctness/tgds/dependencies/tgds.st-tgds.txt, tgds.t-tgds.txt; schema/tgds.s-schema.txt, tgds.t-schema.txt; data/s.csv (header only); README.md",
+      "read": "2026-09-15"
+    },
+    {
+      "title": "M. Benedikt, G. Konstantinidis, G. Mecca, B. Motik, P. Papotti, D. Santoro, E. Tsamoura, Benchmarking the Chase, PODS 2017",
+      "url": "https://doi.org/10.1145/3034786.3034796",
+      "readFrom": "https://www.cs.ox.ac.uk/boris.motik/pubs/bkmmpst17becnhmarking-chase.pdf",
+      "sections": "Section 2 (chase sequences, fairness), Section 3 (Algorithm 1, Chase variants), Section 8 (Restricted vs. unrestricted vs. parallel chase)",
+      "read": "2026-09-15"
+    }
+  ],
+  "encoding": "as Example5018 without the outer sweep",
+  "created": "2026-09-15",
+  "certificatePath": "Example5019/Certificate/Invalid.lean",
+  "twin": "Example5018 (valid)",
+  "datalog": [
+    {
+      "label": "prog_p — The full TGDs of ChaseBench scenarios/correctness/tgds as a Datalog program (S = s, TA = t1, TB = t2, TC = t3, WA = w1, WB = w2).",
+      "text": "TA(x1, y1, z1) :- S(x1, y1, z1).\nWA(x1, y1) :- S(x1, y1, z1).\nTB(x1, y1) :- TA(x1, y1, z1).\nTB(y1, y1) :- TC(x1, y1, z1).\nWB(x1, y1) :- WA(x1, y1).\nWA(y1, y1) :- WB(x1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5019/Fidelity/Example5019.lean"
+    }
+  ]
+}

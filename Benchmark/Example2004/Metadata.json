@@ -1,0 +1,57 @@
+{
+  "canonicalId": "Example2004",
+  "canonicalInput": "Example2004/Input.lean",
+  "canonicalModule": "Benchmark.Example2004.Input",
+  "category": "Obstructed",
+  "certificatePath": "Example2004/Certificate/Valid.lean",
+  "compilerCommandCheck": "Benchmark.Example2004.Fidelity.Example2004",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "currentValidation": {
+    "attempt": null,
+    "lean": "4.30.0-rc1",
+    "proofBackend": null,
+    "status": "not-attempted"
+  },
+  "datalogSource": "Benchmark.Example2004.Fidelity.Example2004",
+  "declarationNamespace": "Whiel.Benchmark.Example2004",
+  "formatVersion": 1,
+  "goldInvariantStatus": "not-applicable",
+  "historicalCandidatePresent": false,
+  "historicalClaim": "no-invariant",
+  "notes": [
+    "Origin: one of the twelve root cases of the retired obstructed corpus.",
+    "Old title: \"containment_02: Magic-set completeness on demanded queries: the original program's answers, restricted to demanded sources, are contained in the transformed program's answers\" (method: the equivalence-and-containment paper draft; pair: transitive_closure_07, a Souffle MagicSetTransformer output, against the original right-linear path program; a joint-program encoding, since this direction cannot use the RBound framing).",
+    "Prior classification and evidence in the retired corpus: valid, by a hand-written Lean kernel certificate (direct Lean kernel proof maintaining finite Edge-path soundness for Path and PathBF, deriving successor closure and demanded-path fixed-point rules at loop termination, and proving demanded completeness by induction on finite paths; historical collaborator claim on this case is recorded as no-invariant/unverified provenance). The retired corpus records this case among the twelve valid, conjecturally FO-obstructed cases (no archived Vampire refutation for this particular case). That kernel certificate is not carried into this corpus; the classification here is unknown until re-certified.",
+    "The command is not hand-authored: `Fidelity/Example2004.lean` states the two Datalog programs written for this case, compiles each with `Datalog.WhielCompiler.Naive`, writes the two compiled commands one after the other, renames the generated snapshots to the auxiliary input names `X_aux`, and proves the result equal to `inputCmd` by `decide +kernel`; the same module fixes `inputPre` and `inputPost` and pins the single loop `Hoare.preprocess` computes from the sequence. The two programs are independent, so the preprocessor merges them into the flag-free guarded parallel form.",
+    "The retired file already carried the auxiliary names `MPath_aux`, `PathBF_aux`, `Path_aux`, but its loop iterated destructively; the compiled form accumulates, `T := T ∪ T_P(T)`, and reaches the same least fixpoint, so the postcondition `(π[1, 2] (σ[#0 = #1] (MPath × Path)) ⊆ PathBF) ∧ (PathBF ⊆ Path)` carries over unchanged. One schema change: a Datalog rule head carries no constants, so the seed the retired command wrote inline as `MPath := { \"root\" } ∪ …` becomes a unary source relation `Root`, read by the rule `MPath(x) :- Root(x)` and pinned to `{ \"root\" }` by the precondition, which was `true` before. The two encodings fix the same demand set, and the expected verdict stays valid. That precondition is the corpus's only assertion fixing a relation to a constant set: it is kept so this input poses the same instance the retired command hard-coded, and relaxing it to `true` would be a sound generalisation of the same problem over an arbitrary demand seed."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Obstructed",
+      "path": "Example2004/Input.lean",
+      "sourceId": "Example2004"
+    }
+  ],
+  "suites": [
+    "leveled-framework"
+  ],
+  "title": "Magic-set transformation: demanded answers equal the original program's answers (Soufflé)",
+  "explanation": "This case checks a magic-set transformation of a right-linear reachability program: the transformed program seeds a demand set MPath from Root and propagates it forward along Edge, then computes PathBF only for pairs whose source is in the demand set, while the original program Path computes unrestricted transitive closure of Edge. This is the standard magic-set/demand-driven query optimization used to avoid computing answers a Datalog engine will not need. The postcondition states both directions of correctness for the transformation restricted to the demand set: every original-program answer whose source is demanded is also produced by the transformed program, and every transformed-program answer is also an original-program answer; each relation starts empty and monotonically accumulates until it stops changing, so both hold the least fixpoints of their respective programs.",
+  "preInWords": "The precondition pins the query's demand seed to the single source \"root\", i.e. Root = {\"root\"}.",
+  "postInWords": "The postcondition asserts both completeness and soundness of the transformation on the demanded sources: every Path pair whose source is in MPath is also a PathBF pair, and every PathBF pair is also a Path pair.",
+  "datalog": [
+    {
+      "label": "programM — The magic-set transformation: demand and answers.",
+      "text": "MPath(x1) :- Root(x1).\nMPath(y1) :- MPath(x1), Edge(x1, y1).\nPathBF(x1, y1) :- MPath(x1), Edge(x1, y1).\nPathBF(x1, x2) :- MPath(x1), Edge(x1, y1), PathBF(y1, x2).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example2004/Fidelity/Example2004.lean"
+    },
+    {
+      "label": "programP — The original right-linear path program.",
+      "text": "Path(x1, y1) :- Edge(x1, y1).\nPath(x1, x2) :- Edge(x1, y1), Path(y1, x2).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example2004/Fidelity/Example2004.lean"
+    }
+  ]
+}

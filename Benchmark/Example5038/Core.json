@@ -1,0 +1,26 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "((π[0,2] (σ[#0 = #1] ((op_zQUser × op_zDirectMember))) ∪ π[0,3] (σ[#1 = #2] ((oa_zReach × op_zSubGroup)))) ⊆ op_zReach)"
+    },
+    {
+      "level": 0,
+      "source": "((π[1,0] (σ[(#1 = #2 ∧ #0 = #3)] ((oa_zDemand × (op_zQUser × op_zDirectMember)))) ∪ π[3,0] (σ[(#0 = #2 ∧ #1 = #4)] ((oa_zDemand × (op_zSubGroup × oa_zAns))))) ⊆ op_zAns)"
+    },
+    {
+      "level": 0,
+      "source": "((op_zQuery ∪ π[1] (σ[#0 = #2] ((oa_zDemand × op_zSubGroup)))) ⊆ op_zDemand)"
+    },
+    {
+      "level": 1,
+      "source": "(π[0,1] (σ[#1 = #2] ((op_zReach × yp_zDemand))) ⊆ yp_zAns)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zAns ⊆ yp_zReach)"
+    }
+  ],
+  "version": 1
+}

@@ -1,0 +1,66 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(π[0,3] (σ[#1 = #2] ((oa_zHas × op_zRoleInh))) ⊆ op_zHas)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zUserRole ⊆ op_zHas)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zStepA ⊆ yp_zHas)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zUserRole ⊆ yp_zHas)"
+    },
+    {
+      "level": 2,
+      "source": "(op_zStepB ⊆ yp_zHas)"
+    },
+    {
+      "level": 3,
+      "source": "(op_zStepC ⊆ yp_zHas)"
+    },
+    {
+      "level": 4,
+      "source": "(op_zStepD ⊆ yp_zHas)"
+    },
+    {
+      "level": 5,
+      "source": "(op_zStepE ⊆ yp_zHas)"
+    },
+    {
+      "level": 6,
+      "source": "(op_zStepF ⊆ yp_zHas)"
+    },
+    {
+      "level": 7,
+      "source": "(op_zStepG ⊆ yp_zHas)"
+    },
+    {
+      "level": 8,
+      "source": "(op_zStepH ⊆ yp_zHas)"
+    },
+    {
+      "level": 9,
+      "source": "(op_zStepI ⊆ yp_zHas)"
+    },
+    {
+      "level": 10,
+      "source": "(op_zStepJ ⊆ yp_zHas)"
+    },
+    {
+      "level": 11,
+      "source": "(op_zStepK ⊆ yp_zHas)"
+    },
+    {
+      "level": 12,
+      "source": "(op_zHasB ⊆ yp_zHas)"
+    }
+  ],
+  "version": 1
+}

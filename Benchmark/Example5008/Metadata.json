@@ -1,0 +1,30 @@
+{
+  "canonicalId": "Example5008",
+  "canonicalInput": "Example5008/Input.lean",
+  "title": "Soufflé tc benchmark: naive versus semi-naive evaluation",
+  "explanation": "Soufflé's tc.dl benchmark computes graph transitive closure via three intertwined recursive relations over an edge relation base: tc (the ordinary both-sides closure), tcl (built by left-extending tcl with base), and tcr (built by right-extending base with tcr) — a standard reachability computation. The Hoare triple compares Soufflé's naive fixpoint evaluation of these rules against classical semi-naive (delta-based) evaluation of the same rules, claiming the two strategies compute identical output relations, the standard naive/semi-naive evaluation equivalence for Datalog.",
+  "preInWords": "True; no precondition constrains the inputs.",
+  "postInWords": "The naively evaluated tc, tcl, and tcr each equal the corresponding semi-naively evaluated relation (tcS, tclS, tcrS).",
+  "family": "Soufflé naive vs semi-naive",
+  "kind": "equivalence",
+  "claim": "((tc = tcS) ∧ (tcl = tclS) ∧ (tcr = tcrS))",
+  "precondition": "true",
+  "expectedVerdict": "valid",
+  "currentClassification": "valid",
+  "currentEvidence": "accepted invariant (Core.json); certificate not yet built",
+  "rateMismatch": false,
+  "sides": [
+    "naive translation of tc.dl (Soufflé benchmark suite)",
+    "semi-naive translation of tc.dl (Soufflé benchmark suite)"
+  ],
+  "sourceProgram": "tc.dl of the Soufflé benchmark suite (naive translation)",
+  "encoding": "canonical five-declaration form; programs run in sequence and merged by Hoare.preprocess; compiled sides are naive-compiler output pinned by Fidelity/ (decide +kernel); hand-written sides are the retired corpus commands verbatim under a bijective rename of relation names",
+  "created": "2026-09-15",
+  "datalog": [
+    {
+      "label": "normalized Soufflé source (tc.dl of the Soufflé benchmark suite (naive translation))",
+      "text": ".decl tcl(v0:symbol, v1:symbol) output\n.decl tcr(v0:symbol, v1:symbol) output\n.decl base(v0:symbol, v1:symbol) input\n.decl tc(v0:symbol, v1:symbol) output\n\ntcl(X, Y) :- base(X, Y).\ntcl(X, Y) :- tcl(X, Z), base(Z, Y).\ntcr(X, Y) :- base(X, Y).\ntcr(X, Y) :- base(X, Z), tcr(Z, Y).\ntc(X, Y) :- base(X, Y).\ntc(X, Y) :- tc(X, Z), tc(Z, Y).",
+      "provenance": "Soufflé benchmark program, normalized (both sides are script translations of it)"
+    }
+  ]
+}

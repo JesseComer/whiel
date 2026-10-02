@@ -1,0 +1,66 @@
+{
+  "canonicalId": "Example4004",
+  "canonicalInput": "Example4004/Input.lean",
+  "canonicalModule": "Benchmark.Example4004.Input",
+  "category": "Core",
+  "certificatePath": "Example4004/Certificate/Valid.lean",
+  "compilerCommandCheck": "Benchmark.Example4004.Fidelity.Example4004",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "currentValidation": {
+    "attempt": "benchmark-fidelity-20260907",
+    "lean": "4.30.0-rc1",
+    "proofBackend": "lean-kernel",
+    "status": "input-only"
+  },
+  "datalogSource": "Benchmark.Example4004.Fidelity.Example4004",
+  "declarationNamespace": "Whiel.Benchmark.Example4004",
+  "formatVersion": 1,
+  "goldInvariantStatus": "translated",
+  "historicalCandidatePresent": false,
+  "historicalClaim": null,
+  "notes": [
+    "`reports/VerificationTasks.pdf` section 10.1, Task 3: verify `T↑ = Te` under `V = E ∘ E`. Global schema `{E}` (binary) carrying the odd/even path program `To(x, y) :- E(x, y)`, `To(x, y) :- E(x, z), Te(z, y)`, `Te(x, y) :- E(x, z), To(z, y)` with output IDB `Te`; local schema `{V}` (ternary) with the LAV view `V(a, b, c) ↔ E(a, b) ∧ E(b, c)` and Task 1's reformulation.",
+    "The source documents the reformulations task document (sha256 `32a3ac6b428d851f0aaa4fb7acdbf2fe4ad5dacca93ee118837888ff91b7a1c6`) and `reports/VerificationTasks.pdf` (sha256 `796ff97c082c6fc70e75a60c0dd40ec0680b738d7184a8b8aefea8c681b3ebff`) carry the same section 10.1 text, so both name this task.",
+    "The command is not hand-authored: `Fidelity/Example4004.lean` states the PDF's two Datalog programs, compiles each with `Datalog.WhielCompiler.Naive`, writes the two compiled commands one after the other, renames the generated snapshots `To_1`, `Te_1` and `TUp_1` to the auxiliary input names `To_aux`, `Te_aux` and `TUp_aux`, and proves the result equal to `inputCmd` by `decide +kernel`; the same module fixes `inputPre` as the view constraint and `inputPost` as the claim `TUp = Te` and pins the single loop `Hoare.preprocess` computes from the sequence.",
+    "The mutual recursion between `To` and `Te` is kept as the PDF states it. The reference encoding unfolded `Te`'s rule through `To` into `Te(x, y) :- E(x, z), E(z, y)` and `Te(x, y) :- E(x, z), E(z, w), Te(w, y)` to synchronize the two loops; that variant has the same least fixpoint, and the fidelity module states it as a second Datalog program and separates the two by one immediate-consequence step on `E = {(0, 1), (1, 2)}`, where the verbatim program leaves `Te` empty while the variant already derives `(0, 2)`. A regression to the variant fails that test.",
+    "Expected verdict valid: `Te` is the set of paths of even length at least two, which is exactly what `TUp` collects from the length-two view. Nothing is certified in this pass, so the classification stays `unknown`.",
+    "Reference encoding for intent only: the retired corpus case Example4004, an `IndexAlphaName` hand-written input in the earlier single-level framework carrying the unfolded variant. Nothing is copied from it.",
+    "The the reference encoding's certified invariant into six level-0 clauses over the computed prophecy schema, mapping its previous-round copies onto this encoding's `_aux` names: `(op_zTUp ⊆ op_zTe)`, `(oa_zTUp ⊆ oa_zTe)`, `(op_zTe ⊆ op_zTUp)`, `(oa_zTe ⊆ oa_zTUp)`, `(op_zV ⊆ π[0,1,3] (σ[#1 = #2] ((op_zE × op_zE))))` and `(π[0,1,3] (σ[#1 = #2] ((op_zE × op_zE))) ⊆ op_zV)`. A hint, not evidence.",
+    "That invariant does not close over the re-encoded input, so the classification stays `unknown`. The initialization obligation of `(op_zTUp ⊆ op_zTe)` is not valid, and it is the first obligation the build fails on. At the loop head `To_aux = Te_aux = ∅`, so `Te = π[0,3] (σ[#1 = #2] ((E × To_aux)))` is empty, while `TUp = π[0,2] (V) ∪ π[0,4] (σ[#2 = #3] ((V × TUp_aux)))` already holds every length-two path; on `E = {(0, 1), (1, 2)}` the pair `(0, 2)` is in `TUp` and not in `Te`. The reference encoding unfolded `Te`'s rule through `To` to synchronize the two loops; this corpus keeps the PDF's mutual recursion, so the unfolded encoding's invariant no longer holds at entry. Finding a different invariant is left open."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Core",
+      "path": "Example4004/Input.lean",
+      "sourceId": "verification-tasks-pdf-10.1-task3"
+    }
+  ],
+  "suites": [
+    "leveled-framework"
+  ],
+  "title": "Path-view reformulation versus the even-length path query",
+  "explanation": "The global program computes paths of odd length (To) and even length (Te) over E by mutual recursion — To(x,y):-E(x,y), To(x,y):-E(x,z),Te(z,y), Te(x,y):-E(x,z),To(z,y) — with Te as the relevant output. The local reformulation TUp chains the same length-two path view V = E ∘ E used in the neighboring cases. The Hoare triple claims equality, TUp = Te: that the view-chaining reformulation exactly recovers the even-length-path relation from the odd/even decomposition of transitive closure. The header states the expected verdict is valid, since Te is exactly the paths of even length at least two, which is what TUp collects; no certificate exists yet, so the classification stays unknown.",
+  "preInWords": "The precondition states that V equals the set of length-two paths through E, i.e. V = E ∘ E with the midpoint kept.",
+  "postInWords": "The postcondition asserts TUp = Te, that the view-chaining reformulation equals the even-length-path relation from the odd/even decomposition.",
+  "datalog": [
+    {
+      "label": "globalProgram — The odd/even program, with output IDB `Te`.",
+      "text": "To(x1, y1) :- E(x1, y1).\nTo(x1, y1) :- E(x1, z1), Te(z1, y1).\nTe(x1, y1) :- E(x1, z1), To(z1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example4004/Fidelity/Example4004.lean"
+    },
+    {
+      "label": "localProgram — `T↑ xy :- V xwy` and `T↑ xz :- V xwy, T↑ yz`.",
+      "text": "TUp(x1, y1) :- V(x1, z1, y1).\nTUp(x1, x2) :- V(x1, z1, y1), TUp(y1, x2).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example4004/Fidelity/Example4004.lean"
+    },
+    {
+      "label": "program",
+      "text": "To(x1, y1) :- E(x1, y1).\nTo(x1, y1) :- E(x1, z1), Te(z1, y1).\nTe(x1, y1) :- E(x1, z1), E(z1, y1).\nTe(x1, y1) :- E(x1, z1), E(z1, x2), Te(x2, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example4004/Fidelity/Example4004.lean"
+    }
+  ]
+}

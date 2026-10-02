@@ -1,0 +1,35 @@
+{
+  "canonicalId": "Example0162",
+  "canonicalInput": "Example0162/Input.lean",
+  "canonicalModule": "Benchmark.Example0162.Input",
+  "category": "Synthetic",
+  "compilerCommandCheck": "unavailable",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "datalogSource": "unavailable",
+  "declarationNamespace": "Whiel.Benchmark.Example0162",
+  "formatVersion": 1,
+  "goldInvariantStatus": "missing",
+  "historicalCandidatePresent": false,
+  "historicalClaim": null,
+  "notes": [
+    "Converted from the retired original 19-program invariant-synthesis benchmark (gen-* / hard)."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Synthetic",
+      "sourceId": "hard-game-reach"
+    }
+  ],
+  "suites": [
+    "classic-programs",
+    "classic-hard"
+  ],
+  "title": "Two-player game reachability mixing existential and universal successor steps",
+  "explanation": "The loop computes the attractor set of a two-player reachability game on a graph E: each vertex belongs to the existential player (the Pa vertices) or the universal player (V minus Pa). A Pa-vertex is winning if it has some successor already known to be winning; a non-Pa vertex in V is winning if all of its successors that lie in V are already winning (so it has no escape from the winning set). T is the least fixpoint of this one-step operator starting from Target: the set of positions from which the existential player can force play to reach Target. The precondition says Rc contains Target and is closed under the same one-step operator (a pre-fixpoint); the postcondition says T is itself a fixpoint of that operator and is contained in Rc — the standard least-fixpoint-correctness statement, with Rc a universally quantified dummy standing in for every pre-fixpoint.",
+  "preInWords": "PRE says Rc contains every Target vertex and is closed under the attractor step: any Pa-vertex with an Rc-winning successor, or any non-Pa V-vertex all of whose V-successors are Rc-winning, is itself in Rc.",
+  "postInWords": "POST says T equals the result of one attractor step applied to T itself (T is a fixpoint of the operator), and that T is contained in Rc.",
+  "notation": "canonical",
+  "datalog": [],
+  "expectedVerdict": "valid"
+}

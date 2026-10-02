@@ -1,0 +1,46 @@
+{
+  "skills": [
+    {
+      "id": "ladder-strategy",
+      "description": "How to build a Core in layers: definitional level-0 facts first, then the clauses that need exit facts, then the postcondition with its unsettled occurrences lifted to prophecy copies, in small self-supporting batches.",
+      "applies": "any loop",
+      "file": "ladder-strategy.md",
+      "provenance": "hand-written 2026-09-17, from the former prompt asset 30-strategy.md"
+    },
+    {
+      "id": "bound-and-frame",
+      "description": "A postcondition bound X ⊆ Bound usually holds at every iteration, but its step check needs the frame fact over the input-only relations that the loop never touches.",
+      "applies": "loops whose postcondition bounds an accumulator by a reference relation",
+      "file": "bound-and-frame.md",
+      "provenance": "hand-written 2026-09-17, from the seed templates seed-bound and seed-frame of the retired synthesis library"
+    },
+    {
+      "id": "lagged-closure",
+      "description": "A closure fact F(X) ⊆ X that is only true at exit becomes an invariant when the left side is taken over the snapshot (auxiliary) copy or the prophecy copy of X.",
+      "applies": "naive fixpoint loops with a snapshot relation X_aux or a prophecy copy X∞",
+      "file": "lagged-closure.md",
+      "provenance": "hand-written 2026-09-17, from the seed template seed-lagged"
+    },
+    {
+      "id": "delta-coupling",
+      "description": "For semi-naive loops (guard Delta ≠ ∅), the load-bearing clause couples one step of the accumulator to the accumulator plus one step of the frontier.",
+      "applies": "semi-naive or frontier loops",
+      "file": "delta-coupling.md",
+      "provenance": "hand-written 2026-09-17, from the seed template seed-delta-coupling"
+    },
+    {
+      "id": "mutual-simulation",
+      "description": "When two programs run synchronized and the postcondition equates their outputs, add one-step simulation containments in both directions; the equality alone is rarely inductive.",
+      "applies": "equivalence pairs, two loops merged into one",
+      "file": "mutual-simulation.md",
+      "provenance": "hand-written 2026-09-17, from the seed template seed-product-mutual"
+    },
+    {
+      "id": "reading-a-countermodel",
+      "description": "How to turn a refuted check's countermodel into the one clause that excludes it: find the violating tuple, ask which relation let it in, and add the containment that closes the gap.",
+      "applies": "any round whose latest result or a pending clause reports refuted with an attempt",
+      "file": "reading-a-countermodel.md",
+      "provenance": "hand-written 2026-09-17, from the retired tutorial pattern-counterexample-analysis.md"
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(op_zTA = op_zS)"
+    },
+    {
+      "level": 0,
+      "source": "((of_z4 = ∅[0]) ∨ (π[0,1] (op_zS) ⊆ op_zTB))"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,1] (oa_zTA) ⊆ op_zTB)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,1] (op_zS) ⊆ op_zWA)"
+    },
+    {
+      "level": 0,
+      "source": "(π[0,1] (op_zS) ⊆ op_zWAQ)"
+    },
+    {
+      "level": 0,
+      "source": "(π[1,1] (oa_zWB) ⊆ op_zWA)"
+    },
+    {
+      "level": 0,
+      "source": "(π[1,1] (op_zTC) ⊆ op_zTB)"
+    },
+    {
+      "level": 0,
+      "source": "(oa_zTA ⊆ op_zTA)"
+    },
+    {
+      "level": 0,
+      "source": "(oa_zTB ⊆ op_zTB)"
+    },
+    {
+      "level": 0,
+      "source": "(oa_zWA ⊆ op_zWA)"
+    },
+    {
+      "level": 0,
+      "source": "(oa_zWA ⊆ op_zWB)"
+    },
+    {
+      "level": 0,
+      "source": "(oa_zWB ⊆ op_zWB)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTBQ ⊆ op_zTB)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zTBQ ⊆ (op_zTB ∪ π[0,1] (op_zTA)))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zWA ⊆ (π[0,1] (op_zS) ∪ π[1,1] (op_zWB)))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zWAQ ⊆ op_zWA)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zWAQ ⊆ (op_zWA ∪ π[1,1] (op_zWB)))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zWB ⊆ op_zWA)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zWBQ ⊆ op_zWB)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zWBQ ⊆ (op_zWB ∪ op_zWA))"
+    },
+    {
+      "level": 1,
+      "source": "(op_zTB ⊆ yp_zTBQ)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zTBQ ⊆ yp_zTB)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zWA ⊆ yp_zWAQ)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zWAQ ⊆ yp_zWA)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zWB ⊆ yp_zWBQ)"
+    },
+    {
+      "level": 1,
+      "source": "(op_zWBQ ⊆ yp_zWB)"
+    }
+  ],
+  "version": 1
+}

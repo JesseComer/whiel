@@ -1,0 +1,31 @@
+{
+  "canonicalId": "Example5013",
+  "canonicalInput": "Example5013/Input.lean",
+  "title": "Casbin depth-bounded role resolution versus the unbounded role closure",
+  "explanation": "Same two sides as Example5012 (Casbin's depth-10-bounded role resolution HasB versus the unbounded recursive-closure relation Has), but here the postcondition asserts full equality rather than containment. The expected verdict is invalid: because Casbin stops resolving inheritance after ten steps while the true closure has no such bound, an eleven-edge inheritance chain lets the unbounded closure grant a role that the bounded resolution denies, so HasB is a strict subset of Has, not equal to it.",
+  "preInWords": "True; no precondition constrains the inputs.",
+  "postInWords": "The claim (which fails) is that the depth-bounded role relation HasB equals the unbounded role-closure relation Has.",
+  "family": "production discrepancy pair (Casbin depth bound)",
+  "kind": "equivalence",
+  "claim": "(HasB = Has)",
+  "precondition": "true",
+  "expectedVerdict": "invalid",
+  "currentClassification": "invalid",
+  "currentEvidence": "kernel counterexample (Certificate/Invalid.lean)",
+  "sides": [
+    "Casbin HasLink with maxHierarchyLevel = 10, encoded as StepA = UserRole and ten distinct step relations StepB..StepK (role_manager.go, enforcer.go)",
+    "naive compiler on the recursive has-role program (Example2035 / 5004)"
+  ],
+  "rateMismatch": true,
+  "created": "2026-09-15",
+  "certificatePath": "Example5013/Certificate/Invalid.lean",
+  "reencoded": "distinct step relations StepA..StepK replace the ten reassignments of HasB (same relation computed; keeps the bounded side in the precondition)",
+  "datalog": [
+    {
+      "label": "prog_p",
+      "text": "Has(x1, y1) :- UserRole(x1, y1).\nHas(x1, z1) :- Has(x1, y1), RoleInh(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5013/Fidelity/Example5013.lean"
+    }
+  ]
+}

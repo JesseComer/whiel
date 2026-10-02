@@ -1,0 +1,30 @@
+{
+  "canonicalId": "Example5009",
+  "canonicalInput": "Example5009/Input.lean",
+  "title": "Soufflé family benchmark: naive versus semi-naive evaluation",
+  "explanation": "Soufflé's family.dl benchmark derives standard kinship relations — parent, the transitive-closure relation ancestor, sibling, cousin, grandmother, and relative — from father/mother facts, a typical family-relationships Datalog program with one recursive rule (ancestor) and several non-recursive relations built on top of it. The triple compares naive fixpoint evaluation of the whole program against semi-naive evaluation, claiming every one of the six output relations is computed identically by both strategies.",
+  "preInWords": "True; no precondition constrains the inputs.",
+  "postInWords": "Each of the six output relations (ancestor, cousin, grandmother, parent, relative, sibling) computed by naive evaluation equals its semi-naive counterpart.",
+  "family": "Soufflé naive vs semi-naive",
+  "kind": "equivalence",
+  "claim": "((ancestor = ancestorS) ∧ (cousin = cousinS) ∧ (grandmother = grandmotherS) ∧ (parent = parentS) ∧ (relative = relativeS) ∧ (sibling = siblingS))",
+  "precondition": "true",
+  "expectedVerdict": "valid",
+  "currentClassification": "valid",
+  "currentEvidence": "accepted invariant (Core.json); certificate not yet built",
+  "rateMismatch": false,
+  "sides": [
+    "naive translation of family.dl (Soufflé benchmark suite)",
+    "semi-naive translation of family.dl (Soufflé benchmark suite)"
+  ],
+  "sourceProgram": "family.dl of the Soufflé benchmark suite (naive translation)",
+  "encoding": "canonical five-declaration form; programs run in sequence and merged by Hoare.preprocess; compiled sides are naive-compiler output pinned by Fidelity/ (decide +kernel); hand-written sides are the retired corpus commands verbatim under a bijective rename of relation names",
+  "created": "2026-09-15",
+  "datalog": [
+    {
+      "label": "normalized Soufflé source (family.dl of the Soufflé benchmark suite (naive translation))",
+      "text": ".decl father(v0:symbol, v1:symbol) input\n.decl mother(v0:symbol, v1:symbol) input\n.decl parent(v0:symbol, v1:symbol) output\n.decl ancestor(v0:symbol, v1:symbol) output\n.decl grandmother(v0:symbol, v1:symbol) output\n.decl sibling(v0:symbol, v1:symbol) output\n.decl cousin(v0:symbol, v1:symbol) output\n.decl relative(v0:symbol, v1:symbol) output\n\nparent(X, Y) :- father(X, Y).\nparent(X, Y) :- mother(X, Y).\nancestor(X, Y) :- parent(X, Y).\nancestor(X, Y) :- parent(X, Z), ancestor(Z, Y).\ngrandmother(X, Y) :- mother(X, Z), ancestor(Z, Y).\nsibling(X, Y) :- parent(Z, X), parent(Z, Y), X != Y.\ncousin(X, Y) :- ancestor(Z, X), ancestor(Z, Y), X != Y, !sibling(X, Y), !parent(X, Y).\nrelative(X, Y) :- sibling(X, Z), parent(Z, Y).",
+      "provenance": "Soufflé benchmark program, normalized (both sides are script translations of it)"
+    }
+  ]
+}

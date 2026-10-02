@@ -1,0 +1,71 @@
+{
+  "canonicalId": "Example1090",
+  "canonicalInput": "Example1090/Input.lean",
+  "title": "Equivalent taint reachability with ternary modes and projected frontiers",
+  "explanation": "This is a query-equivalence-under-dependencies problem, the setting of the relational chase: program C1 computes TaintReach, an interprocedural-taint-style reachability relation computed with the help of an auxiliary ternary TaintState that additionally records a mode witness at each frontier vertex; program C2 computes AnalysisReach, the same reachability relation computed with a simpler binary FrontierState that drops the mode tag. The precondition's eight tuple-generating dependencies (three of them existential) say SeedPair equals InputPair, FlowEdge equals ViewEdge, every vertex reached by SeedPair or FlowEdge carries some ModeTag, and FlowEdge coincides exactly with the pairs backed by a valid StateWitness; under these, the postcondition claims the two closures compute the same relation, TaintReach = AnalysisReach — the mode bookkeeping in C1 turns out not to change what gets reached, once the dependencies guarantee a mode witness always exists.",
+  "preInWords": "PRE says SeedPair and InputPair are the same relation, FlowEdge and ViewEdge are the same relation, every vertex reached by SeedPair or FlowEdge carries some ModeTag, and FlowEdge coincides exactly with the pairs backed by a valid StateWitness.",
+  "postInWords": "POST says the ternary mode-carrying reachability relation TaintReach and the binary frontier relation AnalysisReach compute the same pairs.",
+  "family": "two programs under TGD constraints (LLM-generated, GPT-5.6; legacy raw_new pipeline)",
+  "kind": "equivalence",
+  "claim": "(TaintReach = AnalysisReach)",
+  "precondition": "((SeedPair ⊆ InputPair) ∧ ((InputPair ⊆ SeedPair) ∧ ((FlowEdge ⊆ ViewEdge) ∧ ((ViewEdge ⊆ FlowEdge) ∧ ((π[1] (SeedPair) ⊆ π[0] (ModeTag)) ∧ ((π[1] (FlowEdge) ⊆ π[0] (ModeTag)) ∧ ((FlowEdge ⊆ π[0,1] (σ[#2 = #3] ((StateWitness × EnabledMode)))) ∧ (π[0,1] (σ[#2 = #3] ((StateWitness × EnabledMode))) ⊆ FlowEdge))))))))",
+  "expectedVerdict": "valid",
+  "obstructionExpectation": "anchored: both sides are naive closures at the same rate and the legacy product loop was certified with a quantifier-free invariant; no prophecy level expected",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "rateMismatch": false,
+  "sides": [
+    "naive compiler: program C1 of the retired corpus case Example1090 (output TaintReach)",
+    "naive compiler: program C2 of the retired corpus case Example1090 (output AnalysisReach)"
+  ],
+  "schemaLinking": "the two programs share the input relations; the dependencies of the precondition relate them",
+  "sourceProgram": null,
+  "sources": [
+    {
+      "system": "LLM-generated (GPT-5.6), legacy raw_new TGD pipeline",
+      "repo": "this repository",
+      "file": "the retired corpus case Example1090 (programs C1, C2 and the TGD list tgd0..)",
+      "function": "TGD pipeline run raw-new-tgd-0002-product: TGDs translated to relational algebra by RelCalc.TGD.listToAssertExpr; programs compiled with the certified naive compiler",
+      "url": null,
+      "read": "2026-09-15"
+    },
+    {
+      "system": "method",
+      "repo": "this repository",
+      "file": "the equivalence-under-constraints paper draft (technical appendix: reduction of containment/equivalence under TGDs to a Hoare triple)",
+      "url": null,
+      "read": "2026-09-15"
+    }
+  ],
+  "encoding": "canonical five-declaration form; both sides naive-compiler output pinned by Fidelity/ (decide +kernel); independent loops merged side by side; the TGD precondition is the legacy text verbatim; the legacy concurrent-product loop compared with the sequence on the check instances",
+  "created": "2026-09-15",
+  "llmGenerated": "GPT-5.6",
+  "tgds": [
+    "∀ x1. ∀ y1. SeedPair(x1, y1) → InputPair(x1, y1)",
+    "∀ x1. ∀ y1. InputPair(x1, y1) → SeedPair(x1, y1)",
+    "∀ x1. ∀ y1. FlowEdge(x1, y1) → ViewEdge(x1, y1)",
+    "∀ x1. ∀ y1. ViewEdge(x1, y1) → FlowEdge(x1, y1)",
+    "∀ x1. ∀ y1. SeedPair(x1, y1) → ∃ z1. ModeTag(y1, z1)",
+    "∀ x1. ∀ y1. FlowEdge(x1, y1) → ∃ z1. ModeTag(y1, z1)",
+    "∀ x1. ∀ y1. FlowEdge(x1, y1) → ∃ z1. (StateWitness(x1, y1, z1) ∧ EnabledMode(z1))",
+    "∀ x1. ∀ y1. ∀ z1. (StateWitness(x1, y1, z1) ∧ EnabledMode(z1)) → FlowEdge(x1, y1)"
+  ],
+  "outputs": {
+    "C1": "TaintReach",
+    "C2": "AnalysisReach"
+  },
+  "datalog": [
+    {
+      "label": "prog_c1",
+      "text": "TaintReach(x1, y1) :- SeedPair(x1, y1).\nTaintState(x1, y1, z1) :- SeedPair(x1, y1), ModeTag(y1, z1).\nTaintReach(x1, z1) :- TaintState(x1, y1, x2), FlowEdge(y1, z1).\nTaintState(x1, z1, x2) :- TaintReach(x1, y1), FlowEdge(y1, z1), ModeTag(z1, x2).\nTaintState(x1, z1, y2) :- TaintState(x1, y1, x2), FlowEdge(y1, z1), ModeTag(z1, y2).\nTaintReach(x1, z1) :- TaintReach(x1, y1), TaintReach(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example1090/Fidelity/Example1090.lean"
+    },
+    {
+      "label": "prog_c2",
+      "text": "AnalysisReach(x1, y1) :- InputPair(x1, y1).\nFrontierState(x1, y1) :- InputPair(x1, y1).\nAnalysisReach(x1, z1) :- FrontierState(x1, y1), ViewEdge(y1, z1).\nFrontierState(x1, z1) :- AnalysisReach(x1, y1), ViewEdge(y1, z1).\nFrontierState(x1, z1) :- FrontierState(x1, y1), StateWitness(y1, z1, x2), EnabledMode(x2).\nAnalysisReach(x1, z1) :- AnalysisReach(x1, y1), AnalysisReach(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example1090/Fidelity/Example1090.lean"
+    }
+  ]
+}

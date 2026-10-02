@@ -1,0 +1,70 @@
+{
+  "canonicalId": "Example5036",
+  "canonicalInput": "Example5036/Input.lean",
+  "title": "NetworkX DAG transitive closure by a reverse topological sweep versus PostgreSQL recursive-union rounds",
+  "explanation": "The Datalog program is transitive closure, T(x,y) :- Edge(x,y); T(x,y) :- T(x,z), Edge(z,y), over a graph that the precondition forces to be a DAG (Lt is a topological order containing Edge). Side 1 encodes NetworkX's transitive_closure_dag: processing nodes in reverse topological order, it computes each node's full row of descendants in one step by unioning its current row with that row composed with the whole closure built so far, relying on the fact that every successor of the current node, coming earlier in the reverse sweep, already has a complete row. Side 2 is PostgreSQL's recursive-union rounds on Edge. The Hoare triple claims TC = Res: the reverse-topological-sweep algorithm, which is only correct because the order respects the DAG's edges, computes the same transitive closure as PostgreSQL's generic recursive union, which needs no such assumption.",
+  "preInWords": "Lt is a strict total order over the nodes of Edge and additionally contains all of Edge, i.e. Lt is a topological order of the (necessarily acyclic) graph.",
+  "postInWords": "TC, built by sweeping nodes in reverse topological (Lt) order and merging each node's row with the closure computed so far, equals Res, built by PostgreSQL's recursive-union rounds.",
+  "family": "production algorithm pair (rate mismatch)",
+  "kind": "equivalence",
+  "claim": "(TC = Res)",
+  "precondition": "(((((σ[#0 = #1] Lt) = ∅) ∧\n    ((π[0, 3] (σ[#1 = #2] (Lt × Lt))) ⊆ Lt)) ∧\n  ((Lt ⊆ ((π[0] Edge ∪ π[1] Edge) × (π[0] Edge ∪ π[1] Edge))) ∧\n    ((σ[¬(#0 = #1)] ((π[0] Edge ∪ π[1] Edge) × (π[0] Edge ∪ π[1] Edge))) ⊆ (Lt ∪ π[1, 0] Lt)))) ∧\n  (Edge ⊆ Lt))",
+  "expectedVerdict": "valid",
+  "obstructionExpectation": "rate mismatch (one node merges its successors' whole closures per step versus one edge per round); leveled-framework target; TC ⊆ Res∞ needs the transitivity of the executor's result (leastness), as Example5034",
+  "currentClassification": "valid",
+  "currentEvidence": "invariant with every obligation proved by the pinned solver; certificate not yet built",
+  "notes": [
+    "Some maintenance obligations of this invariant are proved only under the pinned solver's portfolio strategy; the direct strategy alone does not prove them.",
+    "Core.json records the accepted rows as the search left them; the emitter re-canonicalises the record when the case is certified."
+  ],
+  "rateMismatch": true,
+  "sides": [
+    "hand-written: NetworkX transitive_closure_dag = for each node in reverse Lt order, add its descendants at distance 2 in the current TC (set-at-a-time: Row ∘ TC)",
+    "hand-written: PostgreSQL ExecRecursiveUnion rounds (legacy Example2037) seeded with Edge"
+  ],
+  "schemaLinking": "same schema on both sides; direct equality of the computed relations",
+  "sourceProgram": null,
+  "sources": [
+    {
+      "system": "NetworkX",
+      "repo": "networkx/networkx",
+      "branch": "main",
+      "commit": "4e74880b0da0 (2026-09-12)",
+      "file": "networkx/algorithms/dag.py",
+      "function": "transitive_closure_dag (TC = G.copy(); for v in reversed(topo_order): TC.add_edges_from((v, u) for u in nx.descendants_at_distance(TC, v, 2)))",
+      "url": "https://github.com/networkx/networkx/blob/main/networkx/algorithms/dag.py",
+      "read": "2026-09-15"
+    },
+    {
+      "system": "NetworkX",
+      "repo": "networkx/networkx",
+      "branch": "main",
+      "commit": "4e74880b0da0 (2026-09-12)",
+      "file": "networkx/algorithms/traversal/breadth_first_search.py",
+      "function": "descendants_at_distance (layer `distance` of bfs_layers(G, source)), bfs_layers",
+      "url": "https://github.com/networkx/networkx/blob/main/networkx/algorithms/traversal/breadth_first_search.py",
+      "read": "2026-09-15"
+    },
+    {
+      "system": "PostgreSQL",
+      "repo": "postgres/postgres",
+      "branch": "master",
+      "commit": "6e58d6356fcb (2026-09-15)",
+      "file": "src/backend/executor/nodeRecursiveunion.c",
+      "function": "ExecRecursiveUnion (header comment steps 2.1-2.6; 'Ignore tuple if already seen'; working/intermediate table swap)",
+      "url": "https://github.com/postgres/postgres/blob/master/src/backend/executor/nodeRecursiveunion.c",
+      "read": "2026-09-15",
+      "encodedAs": "legacy Example2037 / Example5001 hand side with the base term equal to the edge relation"
+    }
+  ],
+  "encoding": "canonical five-declaration form; the topological order is the input relation Lt (strict total order containing Edge by the precondition) and the cursor is the Lt-greatest unprocessed node; single loop per side, merged side by side; both sides hand-written and pinned as the two segments of the command (Fidelity/, decide +kernel); each side compared with the naive compilation of the closure on the check instances",
+  "created": "2026-09-15",
+  "datalog": [
+    {
+      "label": "prog_T — The Datalog program(s) of the header: compiled sides are their naive compilation; reference programs are compared with the hand-written sides on the check instances.",
+      "text": "T(x1, y1) :- Edge(x1, y1).\nT(x1, y1) :- T(x1, z1), Edge(z1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5036/Fidelity/Example5036.lean"
+    }
+  ]
+}

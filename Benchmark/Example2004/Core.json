@@ -1,0 +1,30 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(op_zMPath = (oa_zMPath ∪ (op_zRoot ∪ π[2] (σ[#0 = #1] ((oa_zMPath × op_zEdge))))))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zPath = (oa_zPath ∪ (op_zEdge ∪ π[0,3] (σ[#1 = #2] ((op_zEdge × oa_zPath))))))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zPathBF = (oa_zPathBF ∪ (π[0,2] (σ[#0 = #1] ((oa_zMPath × op_zEdge))) ∪ π[0,4] (σ[(#0 = #1 ∧ #2 = #3)] ((oa_zMPath × (op_zEdge × oa_zPathBF)))))))"
+    },
+    {
+      "level": 0,
+      "source": "(op_zPathBF ⊆ op_zPath)"
+    },
+    {
+      "level": 1,
+      "source": "(π[1,2] (σ[#0 = #1] ((yp_zMPath × oa_zPath))) ⊆ yp_zPathBF)"
+    },
+    {
+      "level": 1,
+      "source": "(π[1,2] (σ[#0 = #1] ((yp_zMPath × op_zPath))) ⊆ yp_zPathBF)"
+    }
+  ],
+  "version": 1
+}

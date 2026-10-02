@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "provider": "codex",
+  "version": "0.148.0",
+  "release_tag": "rust-v0.148.0",
+  "release_commit": "3ba0f711642a888aec92a611a3f3b2211157ff89",
+  "release_tag_object": "ab52d1794d47d47ecaeb0ec37fc00fa31593ecf3",
+  "model": "gpt-5.5",
+  "reasoning_effort": "medium",
+  "transformation": "gpt-5.5-apply-patch-null-v1",
+  "catalog": {
+    "url": "https://raw.githubusercontent.com/openai/codex/3ba0f711642a888aec92a611a3f3b2211157ff89/codex-rs/models-manager/models.json",
+    "original_sha256": "b5b325b1896f25934aa39a16b810b3a357719f43fcbde337537d5d8e0b5081a9",
+    "original_size": 192664,
+    "modified_sha256": "963bbaf5ab8b61378647055f411971f8cfe62576b09c407b259655e760ea8370"
+  },
+  "authenticity": {
+    "package_digest_source": "https://api.github.com/repos/openai/codex/releases/tags/rust-v0.148.0",
+    "package_digest_kind": "github_release_asset_sha256",
+    "tag_signature": "unsigned",
+    "binary_digest_kind": "local_sha256_of_verified_archive_member",
+    "catalog_digest_kind": "local_sha256_of_commit_pinned_https_source"
+  },
+  "packages": {
+    "aarch64-apple-darwin": {
+      "url": "https://github.com/openai/codex/releases/download/rust-v0.148.0/codex-aarch64-apple-darwin.tar.gz",
+      "sha256": "758916aa38efa7ad076a050830fcbef1a7ed6f41efae9c1cceaeef63e428fc2b",
+      "size": 85904015,
+      "archive_member": "codex-aarch64-apple-darwin",
+      "binary_sha256": "b0308517b20543012fa2171aa3d46ce455a7456c4eb2a552ab9468ba4eeb1e50",
+      "binary_size": 214716336,
+      "version_output": "codex-cli 0.148.0",
+      "release_asset_id": 520046725
+    },
+    "aarch64-unknown-linux-musl": {
+      "url": "https://github.com/openai/codex/releases/download/rust-v0.148.0/codex-aarch64-unknown-linux-musl.tar.gz",
+      "sha256": "410c6ae0c763eb39c6da17665e63f9aa4a98e6ee663d81f8e8b779c97cb175ac",
+      "size": 89624716,
+      "archive_member": "codex-aarch64-unknown-linux-musl",
+      "binary_sha256": "7515d0b61e723374c68d4acdcb8815e378f84d088b0c50638f27d1094bffe536",
+      "binary_size": 216858880,
+      "version_output": "codex-cli 0.148.0",
+      "release_asset_id": 520046685
+    },
+    "x86_64-unknown-linux-musl": {
+      "url": "https://github.com/openai/codex/releases/download/rust-v0.148.0/codex-x86_64-unknown-linux-musl.tar.gz",
+      "sha256": "1a36f762f6b3bef533bb86345ad9517661c2d84d53996a250cf2ca89d2cfee5a",
+      "size": 96794627,
+      "archive_member": "codex-x86_64-unknown-linux-musl",
+      "binary_sha256": "ac2cfed85fb647d61e0150b8548102b330e4799d9d81ad5d354de701edf6b074",
+      "binary_size": 251271488,
+      "version_output": "codex-cli 0.148.0",
+      "release_asset_id": 520046585
+    }
+  }
+}

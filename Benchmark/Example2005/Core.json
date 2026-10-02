@@ -1,0 +1,18 @@
+{
+  "kind": "whiel_framework_ii_core_rows",
+  "rows": [
+    {
+      "level": 0,
+      "source": "(oa_zNonOpt ⊆ op_zRBound)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zEdgeHard ⊆ op_zEdgeAll)"
+    },
+    {
+      "level": 0,
+      "source": "(op_zNonOpt ⊆ op_zRBound)"
+    }
+  ],
+  "version": 1
+}

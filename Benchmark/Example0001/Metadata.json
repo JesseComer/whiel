@@ -1,0 +1,53 @@
+{
+  "canonicalId": "Example0001",
+  "canonicalInput": "Example0001/Input.lean",
+  "canonicalModule": "Benchmark.Example0001.Input",
+  "category": "Core",
+  "certificatePath": "Example0001/Certificate/Valid.lean",
+  "compilerCommandCheck": "unavailable",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "currentValidation": {
+    "attempt": "fixed-ambient-framework-ii-avatar-v4-20260908",
+    "lean": "4.30.0-rc1",
+    "obligationJobs": 5,
+    "proofBackend": "lean-kernel",
+    "status": "certificate-validated",
+    "vampireProfile": "direct",
+    "vampireProfileId": "direct-then-casc-2025-single-core-v4",
+    "vampireTimeoutSeconds": 60
+  },
+  "datalogSource": "unavailable",
+  "declarationNamespace": "Whiel.Benchmark.Example0001",
+  "formatVersion": 1,
+  "goldInvariantStatus": "certified",
+  "historicalCandidatePresent": false,
+  "historicalClaim": null,
+  "notes": [
+    "Fixed-ambient production case: the five-declaration ProgramNames input converted from the classic Example0160 (transitive-closure lower-bound specification, hard/naive).",
+    "Certified by the Lean-owned fixed-ambient pipeline over the computed prophecy schema: the two-level Core produces 5 obligations, all proved by the AVATAR-on `direct` profile `direct-then-casc-2025-single-core-v4` and reconstructed through `certify_job`; `Certificate/Valid.lean` audits to exactly propext, Classical.choice, and Quot.sound.",
+    "`Certificate/timing.csv` carries the measured solver, transformation and Lean times of the run that produced this certificate. The solver evidence (problem files and solver output) is not kept in the tree; `Core.json` alone regenerates the certificate."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Core",
+      "path": "Example0001/Input.lean",
+      "sourceId": "Example0001"
+    }
+  ],
+  "suites": [
+    "leveled-framework",
+    "all-benchmark"
+  ],
+  "title": "Transitive closure by naive iteration under the weak transitivity specification",
+  "explanation": "The loop performs naive evaluation of the right-linear transitive-closure program T(x,y):-E(x,y), T(x,y):-E(x,z),T(z,y), iterating S:=E∪(E∘T) until S=T, the classical way to compute reachability (transitive closure) in a directed graph E. The Hoare triple states only a weak postcondition: that the computed T is transitively closed (T∘T⊆T), with no assertion pinning T from above, so it does not claim T is the least or exact transitive closure, only that it is closed under composition with itself.",
+  "preInWords": "The precondition is simply true, imposing no constraint on the input relations.",
+  "postInWords": "The postcondition asserts that the computed relation T is transitively closed, i.e., composing T with itself never leaves T: (T∘T) ⊆ T.",
+  "datalog": [
+    {
+      "label": "Datalog reading of the executed loop (written for this report; right-linear transitive closure, S = E ∪ E∘T, T := S)",
+      "text": "T(x, y) :- E(x, y).\nT(x, y) :- E(x, z), T(z, y).",
+      "provenance": "hand-written reading (this report)"
+    }
+  ]
+}

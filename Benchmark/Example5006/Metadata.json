@@ -1,0 +1,24 @@
+{
+  "canonicalId": "Example5006",
+  "canonicalInput": "Example5006/Input.lean",
+  "title": "Semi-naive closure with an appended delta versus a prepended delta",
+  "explanation": "Both sides compute the transitive closure of E via semi-naive delta evaluation, differing only in which side of the join the growing frontier is placed on: side A appends the delta (joining the frontier on the left of E, Delta ∘ E) while side P prepends it (joining E onto the frontier from the left, E ∘ Delta), each round adding the frontier of walks one edge longer than the previous round. The Hoare triple, running the two independent programs side by side, claims the two evaluation orders produce equal results, AccA = AccP — since both frontiers hold the same set of walks of length n+1 after round n regardless of which side of the join the new edge is added on, the fixpoints coincide.",
+  "preInWords": "The precondition is simply true.",
+  "postInWords": "The postcondition asserts AccA = AccP, that the append-delta and prepend-delta semi-naive evaluations of transitive closure compute the same relation.",
+  "family": "direct-equality pair",
+  "kind": "equivalence",
+  "claim": "(AccA = AccP)",
+  "precondition": "true",
+  "expectedVerdict": "valid",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "rateMismatch": false,
+  "sides": [
+    "legacy Example1042 (append delta)",
+    "legacy Example1058 (prepend delta)"
+  ],
+  "sourceProgram": null,
+  "encoding": "canonical five-declaration form; programs run in sequence and merged by Hoare.preprocess; compiled sides are naive-compiler output pinned by Fidelity/ (decide +kernel); hand-written sides are the retired corpus commands verbatim under a bijective rename of relation names",
+  "created": "2026-09-15",
+  "datalog": []
+}

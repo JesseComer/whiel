@@ -1,0 +1,35 @@
+{
+  "canonicalId": "Example0163",
+  "canonicalInput": "Example0163/Input.lean",
+  "canonicalModule": "Benchmark.Example0163.Input",
+  "category": "Synthetic",
+  "compilerCommandCheck": "unavailable",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "datalogSource": "unavailable",
+  "declarationNamespace": "Whiel.Benchmark.Example0163",
+  "formatVersion": 1,
+  "goldInvariantStatus": "missing",
+  "historicalCandidatePresent": false,
+  "historicalClaim": null,
+  "notes": [
+    "Converted from the retired original 19-program invariant-synthesis benchmark (gen-* / hard)."
+  ],
+  "sourceRecords": [
+    {
+      "category": "Synthetic",
+      "sourceId": "hard-gfp-safeset"
+    }
+  ],
+  "suites": [
+    "classic-programs",
+    "classic-hard"
+  ],
+  "title": "Greatest-fixpoint safe set: shrinking iteration bounded below by Rb",
+  "explanation": "The loop computes a greatest-fixpoint safe set over a graph E with vertex set V and designated bad vertices Bad: starting from T:=V and iterating T:=(V∖Bad)∖{x : some E-successor of x lies outside the current T}, the decreasing iteration converges to the largest set of non-bad vertices all of whose successors also stay in the set — the standard safety/invariant computation used in model checking or as the safe region of a reachability game, equivalently the Datalog reading T(x):-V(x), not Unsafe(x) where Unsafe is the least fixpoint of reachability to Bad. The Hoare triple is the coinduction (greatest-fixpoint elimination) obligation: given any Rb that is already a post-fixpoint of the safe-set operator, the computed T must itself be an exact fixpoint of the operator and dominate Rb from above, establishing that the naive decreasing iteration computes the greatest fixpoint.",
+  "preInWords": "The precondition states that Rb is a post-fixpoint of the safe-set operator: Rb ⊆ (V∖Bad)∖{x : E(x,y) for some y ∉ Rb}, written Rb ⊆ ((V∖Bad)∖π[0](σ[#1=#2](E×(V∖Rb)))).",
+  "postInWords": "The postcondition states that the computed T is an exact fixpoint of the safe-set operator, T = (V∖Bad)∖{x : E(x,y) for some y∉T}, and that Rb ⊆ T.",
+  "notation": "canonical",
+  "datalog": [],
+  "expectedVerdict": "valid"
+}

@@ -1,0 +1,68 @@
+{
+  "canonicalId": "Example1094",
+  "canonicalInput": "Example1094/Input.lean",
+  "title": "Routing table contained in an administratively closed distance view",
+  "explanation": "Program C1 builds a routing table Route from direct peer links (Peer), adjacency hops composed through Hop, ternary relay legs (Relay), and transitive composition of Route with itself, a multi-hop route computation typical of network routing. Program C2 recomputes distances Dist by reading an administrative relation Admin that the TGD constraints force to contain Peer, Adj, and the endpoints of every Relay triple, and to be transitively closed, then closes Dist under Adj-based spans and self-composition. The claim is the containment Route ⊆ Dist under these dependencies (an existential dependency guarantees every Peer edge a Relay witness), expected valid because both sides are naive closures advancing at the same rate.",
+  "preInWords": "The precondition is five TGDs: Peer and Adj are contained in Admin, Admin is transitively closed, the endpoints of every Relay triple are in Admin, and every Peer edge has some Relay triple witnessing it.",
+  "postInWords": "The postcondition is the containment Route ⊆ Dist: every route pair C1 computes is also a distance pair C2 computes.",
+  "family": "two programs under TGD constraints (LLM-generated, Claude Opus; legacy raw_new pipeline)",
+  "kind": "containment",
+  "claim": "(Route ⊆ Dist)",
+  "precondition": "((Peer ⊆ Admin) ∧ ((Adj ⊆ Admin) ∧ ((π[0,3] (σ[#1 = #2] ((Admin × Admin))) ⊆ Admin) ∧ ((π[0,2] (Relay) ⊆ Admin) ∧ (Peer ⊆ π[0,2] (Relay))))))",
+  "expectedVerdict": "valid",
+  "obstructionExpectation": "anchored: both sides are naive closures at the same rate and the legacy product loop was certified with a quantifier-free invariant; no prophecy level expected",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "rateMismatch": false,
+  "sides": [
+    "naive compiler: program C1 of the retired corpus case Example1094 (output Route)",
+    "naive compiler: program C2 of the retired corpus case Example1094 (output Dist)"
+  ],
+  "schemaLinking": "the two programs share the input relations; the dependencies of the precondition relate them",
+  "sourceProgram": null,
+  "sources": [
+    {
+      "system": "LLM-generated (Claude Opus), legacy raw_new TGD pipeline",
+      "repo": "this repository",
+      "file": "the retired corpus case Example1094 (programs C1, C2 and the TGD list tgd0..)",
+      "function": "TGD pipeline run raw-new-tgd-0002-product: TGDs translated to relational algebra by RelCalc.TGD.listToAssertExpr; programs compiled with the certified naive compiler",
+      "url": null,
+      "read": "2026-09-15"
+    },
+    {
+      "system": "method",
+      "repo": "this repository",
+      "file": "the equivalence-under-constraints paper draft (technical appendix: reduction of containment/equivalence under TGDs to a Hoare triple)",
+      "url": null,
+      "read": "2026-09-15"
+    }
+  ],
+  "encoding": "canonical five-declaration form; both sides naive-compiler output pinned by Fidelity/ (decide +kernel); independent loops merged side by side; the TGD precondition is the legacy text verbatim; the legacy concurrent-product loop compared with the sequence on the check instances",
+  "created": "2026-09-15",
+  "llmGenerated": "Claude Opus",
+  "tgds": [
+    "∀ x1. ∀ y1. Peer(x1, y1) → Admin(x1, y1)",
+    "∀ x1. ∀ y1. Adj(x1, y1) → Admin(x1, y1)",
+    "∀ x1. ∀ y1. ∀ z1. (Admin(x1, y1) ∧ Admin(y1, z1)) → Admin(x1, z1)",
+    "∀ x1. ∀ y1. ∀ z1. Relay(x1, y1, z1) → Admin(x1, z1)",
+    "∀ x1. ∀ y1. Peer(x1, y1) → ∃ z1. Relay(x1, z1, y1)"
+  ],
+  "outputs": {
+    "C1": "Route",
+    "C2": "Dist"
+  },
+  "datalog": [
+    {
+      "label": "prog_c1",
+      "text": "Route(x1, y1) :- Peer(x1, y1).\nHop(x1, y1) :- Adj(x1, y1).\nHop(x1, z1) :- Route(x1, y1), Hop(y1, z1).\nRoute(x1, z1) :- Route(x1, y1), Hop(y1, z1).\nRoute(x1, z1) :- Route(x1, y1), Relay(y1, x2, z1).\nRoute(x1, z1) :- Route(x1, y1), Route(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example1094/Fidelity/Example1094.lean"
+    },
+    {
+      "label": "prog_c2",
+      "text": "Dist(x1, y1) :- Admin(x1, y1).\nSpan(x1, y1) :- Adj(x1, y1).\nSpan(x1, z1) :- Span(x1, y1), Span(y1, z1).\nDist(x1, z1) :- Dist(x1, y1), Span(y1, z1).\nDist(x1, z1) :- Dist(x1, y1), Dist(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example1094/Fidelity/Example1094.lean"
+    }
+  ]
+}

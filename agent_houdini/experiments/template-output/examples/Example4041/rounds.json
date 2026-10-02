@@ -1,0 +1,44 @@
+{
+  "certificate": "<repo>/artifacts/runs/gpt-5.5-20260917-sample-5-3/verifier/Example4041/Certificate/Valid.lean",
+  "clauses_dropped": 0,
+  "clauses_submitted": 17,
+  "consultations": 3,
+  "core": 17,
+  "dead": 0,
+  "input": "Example4041",
+  "pending": 0,
+  "rounds": [
+    {
+      "agent_seconds": 50.14,
+      "clauses_dropped": 0,
+      "clauses_proposed": 3,
+      "core": 0,
+      "latest": "initial — no round has run yet",
+      "pending": 0,
+      "round": 1,
+      "verifier_seconds": 17.59
+    },
+    {
+      "agent_seconds": 59.16,
+      "clauses_dropped": 0,
+      "clauses_proposed": 11,
+      "core": 0,
+      "latest": "postcondition_open — the Core is sound but does not yet entail the postcondition",
+      "pending": 3,
+      "round": 2,
+      "verifier_seconds": 184.38
+    },
+    {
+      "agent_seconds": 95.7,
+      "clauses_dropped": 0,
+      "clauses_proposed": 3,
+      "core": 10,
+      "latest": "postcondition_open — the Core is sound but does not yet entail the postcondition",
+      "pending": 4,
+      "round": 3,
+      "verifier_seconds": null
+    }
+  ],
+  "status": "valid",
+  "total_seconds": 2089.179226398468
+}

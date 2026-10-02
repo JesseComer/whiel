@@ -1,0 +1,90 @@
+{
+  "fuel_consumed": 28,
+  "fuel_policy": {
+    "host_fuel_bound": null,
+    "kind": "structural_replay",
+    "validation_limit_nanos": 30000000000
+  },
+  "instance": {
+    "relations": [
+      {
+        "name": "a::TA",
+        "rows": []
+      },
+      {
+        "name": "a::TB",
+        "rows": []
+      },
+      {
+        "name": "a::WA",
+        "rows": []
+      },
+      {
+        "name": "a::WB",
+        "rows": []
+      },
+      {
+        "name": "p::S",
+        "rows": [
+          [
+            "num:1",
+            "num:2",
+            "num:3"
+          ]
+        ]
+      },
+      {
+        "name": "p::TA",
+        "rows": []
+      },
+      {
+        "name": "p::TAQ",
+        "rows": []
+      },
+      {
+        "name": "p::TB",
+        "rows": []
+      },
+      {
+        "name": "p::TBQ",
+        "rows": []
+      },
+      {
+        "name": "p::TC",
+        "rows": []
+      },
+      {
+        "name": "p::WA",
+        "rows": []
+      },
+      {
+        "name": "p::WAQ",
+        "rows": []
+      },
+      {
+        "name": "p::WB",
+        "rows": []
+      },
+      {
+        "name": "p::WBQ",
+        "rows": []
+      }
+    ]
+  },
+  "instance_identity": "520634947171dd177a1859dc810c6e231ce38f19eff1f243607cbd8f29a9ed72",
+  "kind": "whiel_framework_ii_counterexample",
+  "provenance": {
+    "kind": "recorded_witness",
+    "source": "counterexample instance contributed with the case by Shuo Zhang"
+  },
+  "scope_identity_sha256": "b1f814658f5131f668334a327b255445306b6f5c7077c3d0c232970fbfd569f5",
+  "task": {
+    "canonical_id": "Example5019",
+    "encoding_version": 1,
+    "module": "Benchmark.Example5019.Input",
+    "namespace": "Whiel.Benchmark.Example5019",
+    "semantic_version": 1,
+    "source_sha256": "1496d54080696007a8ba84932c28c977f246a8df35de6f8c8dfdea265c0314a1"
+  },
+  "version": 1
+}

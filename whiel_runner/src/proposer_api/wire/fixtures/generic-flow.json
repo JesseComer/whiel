@@ -1,0 +1,224 @@
+[
+  {
+    "direction": "to_verifier",
+    "header": {
+      "wire_version": 3,
+      "endpoint_token": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "sequence": 0,
+      "request_id": null,
+      "operation": {
+        "kind": "hello",
+        "capabilities": {
+          "version": "3.0.0",
+          "supported_operations": [
+            "history"
+          ],
+          "required_operations": []
+        }
+      }
+    },
+    "attachments": []
+  },
+  {
+    "direction": "to_proposer",
+    "header": {
+      "wire_version": 3,
+      "endpoint_token": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "sequence": 0,
+      "request_id": null,
+      "operation": {
+        "kind": "ready",
+        "api": {
+          "version": "3.0.0",
+          "operations": [
+            "history"
+          ]
+        }
+      }
+    },
+    "attachments": []
+  },
+  {
+    "direction": "to_proposer",
+    "header": {
+      "wire_version": 3,
+      "endpoint_token": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "sequence": 1,
+      "request_id": 1,
+      "operation": {
+        "kind": "request",
+        "observation_bytes": 2,
+        "response_example_bytes": 2,
+        "remaining_request_budget_ns": "1000000000"
+      }
+    },
+    "attachments": [
+      "{}",
+      "{}"
+    ]
+  },
+  {
+    "direction": "to_verifier",
+    "header": {
+      "wire_version": 3,
+      "endpoint_token": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "sequence": 1,
+      "request_id": 1,
+      "operation": {
+        "kind": "query",
+        "query_id": 1,
+        "name": "history",
+        "args_bytes": 2
+      }
+    },
+    "attachments": [
+      "{}"
+    ]
+  },
+  {
+    "direction": "to_proposer",
+    "header": {
+      "wire_version": 3,
+      "endpoint_token": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "sequence": 2,
+      "request_id": 1,
+      "operation": {
+        "kind": "query_result",
+        "query_id": 1,
+        "result_bytes": 2
+      }
+    },
+    "attachments": [
+      "{}"
+    ]
+  },
+  {
+    "direction": "to_verifier",
+    "header": {
+      "wire_version": 3,
+      "endpoint_token": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "sequence": 2,
+      "request_id": 1,
+      "operation": {
+        "kind": "submit",
+        "bytes": 2
+      }
+    },
+    "attachments": [
+      "{}"
+    ]
+  },
+  {
+    "direction": "to_proposer",
+    "header": {
+      "wire_version": 3,
+      "endpoint_token": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "sequence": 3,
+      "request_id": 1,
+      "operation": {
+        "kind": "submitted"
+      }
+    },
+    "attachments": []
+  },
+  {
+    "direction": "to_verifier",
+    "header": {
+      "wire_version": 3,
+      "endpoint_token": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "sequence": 3,
+      "request_id": 1,
+      "operation": {
+        "kind": "complete",
+        "outcome": "response"
+      }
+    },
+    "attachments": []
+  },
+  {
+    "direction": "to_proposer",
+    "header": {
+      "wire_version": 3,
+      "endpoint_token": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "sequence": 4,
+      "request_id": 1,
+      "operation": {
+        "kind": "request_closed"
+      }
+    },
+    "attachments": []
+  },
+  {
+    "direction": "to_proposer",
+    "header": {
+      "wire_version": 3,
+      "endpoint_token": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "sequence": 5,
+      "request_id": 2,
+      "operation": {
+        "kind": "request",
+        "observation_bytes": 2,
+        "response_example_bytes": 2,
+        "remaining_request_budget_ns": null
+      }
+    },
+    "attachments": [
+      "{}",
+      "{}"
+    ]
+  },
+  {
+    "direction": "to_verifier",
+    "header": {
+      "wire_version": 3,
+      "endpoint_token": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "sequence": 4,
+      "request_id": 2,
+      "operation": {
+        "kind": "complete",
+        "outcome": "source_exhausted"
+      }
+    },
+    "attachments": []
+  },
+  {
+    "direction": "to_proposer",
+    "header": {
+      "wire_version": 3,
+      "endpoint_token": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "sequence": 6,
+      "request_id": 2,
+      "operation": {
+        "kind": "request_closed"
+      }
+    },
+    "attachments": []
+  },
+  {
+    "direction": "to_proposer",
+    "header": {
+      "wire_version": 3,
+      "endpoint_token": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "sequence": 7,
+      "request_id": null,
+      "operation": {
+        "kind": "shutdown",
+        "reason": "complete"
+      }
+    },
+    "attachments": []
+  },
+  {
+    "direction": "to_verifier",
+    "header": {
+      "wire_version": 3,
+      "endpoint_token": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "sequence": 5,
+      "request_id": null,
+      "operation": {
+        "kind": "closed"
+      }
+    },
+    "attachments": []
+  }
+]

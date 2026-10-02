@@ -1,0 +1,178 @@
+{
+  "format_version": 3,
+  "lean_toolchain": "leanprover/lean4:v4.30.0-rc1",
+  "roles": {
+    "lean": {
+      "resolver": "lake env which lean",
+      "version_contains": [
+        "Lean (version 4.30.0-rc1",
+        "commit 714601baf118066cbf3f282361339c6d06665b2a"
+      ],
+      "sha256": {
+        "Darwin-arm64": "2974847fff2e2621502841f4c2dbac4035b4847d6060a4f2087cbc0d04005e37",
+        "Linux-x86_64": "3e0d0d3d801675359f2d4cf9815bfdb417b20b92fdd9d48b3b14c95bbae28bbf"
+      }
+    },
+    "lake": {
+      "resolver": "adjacent-to-lean",
+      "version": "Lake version 5.0.0-src+714601b (Lean version 4.30.0-rc1)",
+      "sha256": {
+        "Darwin-arm64": "91cacb9dd223e78fb503925d2822661db15ffa76d72c76d220c9e8741fae6198",
+        "Linux-x86_64": "d3e1f322c08d87f0d5850132a0b0309c1edbe53d641276b344717da448c8bc8b"
+      }
+    },
+    "leancheck_vampire": {
+      "path": "toolchain/build/vampire-leancheck-a9e19dacc/build/vampire",
+      "source": {
+        "url": "https://github.com/vprover/vampire.git",
+        "ref": "refs/heads/leancheck",
+        "commit": "d3a6306601ef988fb11438019fba192eb0305a2d",
+        "version_commit": "d3a630660"
+      },
+      "patches": [
+        {
+          "path": "toolchain/leancheck-vampire/patches/0001-leancheck-rectify-retained-binders.patch",
+          "sha256": "08eb1e8291c6aa4c5befc3a18d94dade5d9747f6139401ac9997848d40749d87",
+          "files": {
+            "Shell/LeanChecker/LeanChecker.cpp": {
+              "before_sha256": "c96b2e90151afc08562a9f5fd8d008ce204af987847184b351220ff4fa261e4f",
+              "after_sha256": "5628a6d7126c5ac45fca15ce0ca938a6fdbff41773c80369b585ec88bc0db3f6"
+            }
+          },
+          "commit": {
+            "message": "leancheck: emit rectify helpers over retained binders only",
+            "author": "Whiel Toolchain Pin",
+            "email": "toolchain-pin@whiel.invalid",
+            "date": "2026-09-02T00:00:00+00:00",
+            "abbrev": 9,
+            "sha": "a75412b2650f731ba5fc670d610a28636b4fe8fd",
+            "version_commit": "a75412b26"
+          }
+        },
+        {
+          "path": "toolchain/leancheck-vampire/patches/0002-leancheck-definition-symbol-arity.patch",
+          "sha256": "b546e813bc5a0fb7a7db72e4147a1e0fbf9a7e4d271ad07b5754af86a752a743",
+          "files": {
+            "Shell/LeanChecker/LeanChecker.cpp": {
+              "before_sha256": "5628a6d7126c5ac45fca15ce0ca938a6fdbff41773c80369b585ec88bc0db3f6",
+              "after_sha256": "bc9a7af08ce48b7d536f4d05715b7412f67827c5c531d39b39ec7230a32365c3"
+            },
+            "Shell/TweeGoalTransformation.cpp": {
+              "before_sha256": "d41d509b76f41037305232b1fa147a5985c84e781d3ce02cf3c178f4d9d7a37d",
+              "after_sha256": "db9ff3ff7295cbe7ea34d0a105b200867816040e5e15a510aea57cf7b8ef756e"
+            }
+          },
+          "commit": {
+            "message": "leancheck: give introduced definition symbols a consistent arity",
+            "author": "Whiel Toolchain Pin",
+            "email": "toolchain-pin@whiel.invalid",
+            "date": "2026-09-07T00:00:00+00:00",
+            "abbrev": 9,
+            "sha": "a9e19dacceab58f55e6ac8d56e3b9dc4fede1b76",
+            "version_commit": "a9e19dacc"
+          }
+        }
+      ],
+      "build": {
+        "script": "scripts/build_leancheck_vampire.py",
+        "configure": [
+          "cmake",
+          "-S",
+          ".",
+          "-B",
+          "build",
+          "-G",
+          "Unix Makefiles",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DCMAKE_C_FLAGS=-ffile-prefix-map=${CHECKOUT}=vampire",
+          "-DCMAKE_CXX_FLAGS=-ffile-prefix-map=${CHECKOUT}=vampire"
+        ],
+        "compile": [
+          "cmake",
+          "--build",
+          "build",
+          "--target",
+          "vampire"
+        ],
+        "build_type": "Release",
+        "placeholders": {
+          "${CHECKOUT}": "absolute path of the source checkout, substituted by the build script so embedded __FILE__ strings do not depend on the build location",
+          "SOURCE_DATE_EPOCH": "the applied patch commit date of the last patch in the series (2026-09-07T00:00:00+00:00), exported during configure and compile so compile-time __DATE__/__TIME__ stamps are reproducible"
+        },
+        "environment": {
+          "SOURCE_DATE_EPOCH": "1788739200"
+        }
+      },
+      "probe": {
+        "script": "scripts/probe_leancheck_vampire.py",
+        "arguments": [
+          "--json"
+        ],
+        "version_command": [
+          "--version"
+        ]
+      },
+      "regression": {
+        "script": "scripts/check_leancheck_emitter.py",
+        "fixtures": "toolchain/leancheck-vampire/fixtures"
+      },
+      "version_contains": [
+        "Vampire 5.0.1",
+        "commit a9e19dacc",
+        "CaDiCaL: cadical-2.1.3"
+      ],
+      "sha256": {
+        "Darwin-arm64": "9f602a335d915023296dd422916b1b8576746c6431a000717c6cbf4c37c2738e",
+        "Linux-x86_64": "91c378689dcd9fe2abfef75876e0991de19cdc449d6470f79f466eba070d3db8"
+      },
+      "platforms": {
+        "Darwin-arm64": {
+          "system": "Darwin",
+          "machine": "arm64",
+          "compiler": "Apple clang version 17.0.0 (clang-1700.6.4.2)",
+          "cmake": "cmake version 4.3.4",
+          "generator": "Unix Makefiles",
+          "build_type": "Release",
+          "version": "Vampire 5.0.1 (Release build, commit a9e19dacc on 2026-09-07 00:00:00 +0000)\nCaDiCaL: cadical-2.1.3"
+        },
+        "Linux-x86_64": {
+          "system": "Linux",
+          "machine": "x86_64",
+          "compiler": "cc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-14)",
+          "cmake": "cmake version 3.31.8",
+          "generator": "Unix Makefiles",
+          "build_type": "Release",
+          "version": "Vampire 5.0.1 (Release build, commit a9e19dacc on 2026-09-07 00:00:00 +0000)\nCaDiCaL: cadical-2.1.3"
+        }
+      },
+      "embedded_cadical": {
+        "version": "cadical-2.1.3",
+        "role": "solver backend linked into the leancheck Vampire binary"
+      }
+    },
+    "kernel_lrat_cadical": {
+      "resolver": "adjacent-to-lean",
+      "version": "2.1.2",
+      "arguments": [
+        "--lrat",
+        "--binary=false",
+        "--quiet",
+        "--shrink=0",
+        "--plain",
+        "--seed=0"
+      ],
+      "sha256": {
+        "Darwin-arm64": "1bb78e27137990cace15997980f4de86a5aeb3e4fc39275cfb1bdb0370ad7b21",
+        "Linux-x86_64": "48bbd538966156dedba887201e656549152a9eaf6ac5a72e00d47f26fcf3c846"
+      }
+    },
+    "vamplean_runtime": {
+      "path": ".lake/packages/vamp_lean/VampLean.lean",
+      "source": {
+        "url": "https://github.com/vprover/vamplean",
+        "commit": "8f42ff7d83428848c4a28286a23c3f00dd45766b"
+      },
+      "sha256": "f847c208e118aba993771e4bd50f064c266ecf2711a7b9b2905aa579c277e43c"
+    }
+  }
+}

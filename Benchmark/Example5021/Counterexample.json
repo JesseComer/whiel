@@ -1,0 +1,137 @@
+{
+  "fuel_consumed": 36,
+  "fuel_policy": {
+    "host_fuel_bound": null,
+    "kind": "structural_replay",
+    "validation_limit_nanos": 30000000000
+  },
+  "instance": {
+    "relations": [
+      {
+        "name": "a::IsClass",
+        "rows": []
+      },
+      {
+        "name": "a::IsProp",
+        "rows": []
+      },
+      {
+        "name": "a::SubClassF",
+        "rows": []
+      },
+      {
+        "name": "a::SubClassM",
+        "rows": []
+      },
+      {
+        "name": "a::SubPropF",
+        "rows": []
+      },
+      {
+        "name": "a::SubPropM",
+        "rows": []
+      },
+      {
+        "name": "a::TripleF",
+        "rows": []
+      },
+      {
+        "name": "a::TripleM",
+        "rows": []
+      },
+      {
+        "name": "a::TypeF",
+        "rows": []
+      },
+      {
+        "name": "a::TypeM",
+        "rows": []
+      },
+      {
+        "name": "p::Dom",
+        "rows": []
+      },
+      {
+        "name": "p::IsClass",
+        "rows": []
+      },
+      {
+        "name": "p::IsProp",
+        "rows": []
+      },
+      {
+        "name": "p::Range",
+        "rows": []
+      },
+      {
+        "name": "p::SubClass",
+        "rows": []
+      },
+      {
+        "name": "p::SubClassF",
+        "rows": []
+      },
+      {
+        "name": "p::SubClassM",
+        "rows": []
+      },
+      {
+        "name": "p::SubProp",
+        "rows": []
+      },
+      {
+        "name": "p::SubPropF",
+        "rows": []
+      },
+      {
+        "name": "p::SubPropM",
+        "rows": []
+      },
+      {
+        "name": "p::Triple",
+        "rows": []
+      },
+      {
+        "name": "p::TripleF",
+        "rows": []
+      },
+      {
+        "name": "p::TripleM",
+        "rows": []
+      },
+      {
+        "name": "p::TypeF",
+        "rows": []
+      },
+      {
+        "name": "p::TypeM",
+        "rows": []
+      },
+      {
+        "name": "p::TypeOf",
+        "rows": [
+          [
+            "num:20",
+            "num:10"
+          ]
+        ]
+      }
+    ]
+  },
+  "instance_identity": "449f161b24181b082faebbc64d795264c563bee5da88cf7bfa5f09b97d1846cc",
+  "kind": "whiel_framework_ii_counterexample",
+  "provenance": {
+    "kind": "recorded_witness",
+    "source": "counterexample instance contributed with the case by Shuo Zhang"
+  },
+  "scope_identity_sha256": "242bf3039a6f045f4eb9346209fa8cca150e286fac79db49e6a5283d35505d83",
+  "task": {
+    "canonical_id": "Example5021",
+    "encoding_version": 1,
+    "module": "Benchmark.Example5021.Input",
+    "namespace": "Whiel.Benchmark.Example5021",
+    "semantic_version": 1,
+    "source_sha256": "9f77e5e9ab4aae12d25a87c2ea27d3969dc2d319ce9f27a5c35ecb7dbef66502"
+  },
+  "version": 1
+}

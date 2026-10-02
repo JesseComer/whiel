@@ -1,0 +1,86 @@
+{
+  "canonicalId": "Example5032",
+  "canonicalInput": "Example5032/Input.lean",
+  "title": "Delta-driven incremental maintenance of a transitive closure under insertions versus PostgreSQL recomputation on the updated edges",
+  "explanation": "The case has three phases over an edge set that is split into a base part EBase and an inserted delta EDelta. Phase 1 is the naive fixpoint computation of TOld, the transitive closure of EBase alone. Phase 2 is a hand-written delta-driven maintainer modelled on DBSP/Feldera/Materialize-style incremental view maintenance: it seeds Delta with the consequences of the inserted edges against the already-known old closure (EDelta together with TOld composed with EDelta, minus what TOld already has) and then repeatedly extends only that delta by joining it with the whole new edge set EBase ∪ EDelta, folding the result into T, until the delta is empty — the old view TOld is never recomputed. Phase 3 recomputes the closure Res of EBase ∪ EDelta from scratch via PostgreSQL's recursive-union rounds. The Hoare triple's claim T = Res is the correctness statement for incremental view maintenance under an insertion: propagating only the change from the old fixpoint yields the same relation as recomputing the closure of the updated edge set from scratch.",
+  "preInWords": "The precondition is simply true; no constraints are placed on EBase, EDelta, or their relationship.",
+  "postInWords": "T, the closure obtained by seeding from the old closure TOld and propagating only the delta caused by the inserted edges EDelta, equals Res, the closure of EBase ∪ EDelta recomputed from scratch by PostgreSQL's recursive-union rounds.",
+  "family": "production algorithm pair (dependent phases, rate mismatch)",
+  "kind": "equivalence",
+  "claim": "(T = Res)",
+  "precondition": "true",
+  "expectedVerdict": "valid",
+  "obstructionExpectation": "dependent phases (the maintainer reads the finished old view) and rate mismatch (delta rounds count edges after the first inserted edge, recomputation rounds count path length); leveled-framework target; with prophecy both containments follow from the fixpoint facts (no leastness needed)",
+  "currentClassification": "valid",
+  "currentEvidence": "accepted invariant (Core.json); certificate not yet built",
+  "rateMismatch": true,
+  "sides": [
+    "naive compiler: TOld = closure of EBase (phase 1)",
+    "hand-written: delta-driven maintainer (seed EDelta ∪ TOld ∘ EDelta minus TOld, propagate Delta ∘ (EBase ∪ EDelta) minus T until empty), the set-level delta rule of DBSP/Feldera and Materialize for an insert-only update",
+    "hand-written: PostgreSQL ExecRecursiveUnion rounds (legacy Example2037) on EBase ∪ EDelta"
+  ],
+  "schemaLinking": "same schema on both sides; direct equality of the computed relations",
+  "sourceProgram": null,
+  "sources": [
+    {
+      "system": "Materialize",
+      "repo": "MaterializeInc/materialize",
+      "branch": "main",
+      "commit": "4e1db20efcc4 (2026-09-15)",
+      "file": "doc/user/content/sql/select/recursive-ctes.md",
+      "function": "WITH MUTUALLY RECURSIVE semantics (initialise empty, update bindings in sequence, stop when no binding changes; 'work resulting only from the input changes for this iteration ... feeds back the resulting output changes')",
+      "url": "https://materialize.com/docs/sql/select/recursive-ctes/",
+      "read": "2026-09-15"
+    },
+    {
+      "system": "DBSP",
+      "paper": "Budiu, McSherry, Ryzhyk, Tannen: DBSP: Automatic Incremental View Maintenance for Rich Query Languages, VLDB 2023",
+      "url": "https://arxiv.org/abs/2203.16684",
+      "sections": "5.1 (recursion circuit, D yields the new facts of each iteration, semi-naive form 5.1), 6 (incremental recursive programs), 6.1 (transitive closure example R(x,y) :- E(x,y); R(x,y) :- E(x,z), R(z,y)), 6.2 (complexity)",
+      "read": "2026-09-15"
+    },
+    {
+      "system": "Feldera",
+      "repo": "feldera/feldera",
+      "branch": "main",
+      "commit": "16c3f5324fa0 (2026-09-15)",
+      "file": "crates/dbsp/src/operator/recursive.rs; docs.feldera.com/docs/sql/recursion.mdx",
+      "function": "Circuit::recursive (doc: Δx = y - x with y = f(i+Δi, y); implicit distinct); SQL recursion semantics (least fixed point, DISTINCT, deletions recomputed incrementally)",
+      "url": "https://github.com/feldera/feldera/blob/main/crates/dbsp/src/operator/recursive.rs",
+      "read": "2026-09-15"
+    },
+    {
+      "system": "PostgreSQL",
+      "repo": "postgres/postgres",
+      "branch": "master",
+      "commit": "6e58d6356fcb (2026-09-15)",
+      "file": "src/backend/executor/nodeRecursiveunion.c",
+      "function": "ExecRecursiveUnion (header comment steps 2.1-2.6; 'Ignore tuple if already seen'; working/intermediate table swap)",
+      "url": "https://github.com/postgres/postgres/blob/master/src/backend/executor/nodeRecursiveunion.c",
+      "read": "2026-09-15",
+      "encodedAs": "legacy Example2037 / Example5001 hand side with the base term equal to the edge relation"
+    }
+  ],
+  "encoding": "canonical five-declaration form; phase 1 is naive-compiler output pinned by Fidelity/ (decide +kernel), phases 2 and 3 hand-written and pinned as segments; dependent sequence flattened by Hoare.preprocess (one flag pair: phase 1 first, then phases 2 and 3 side by side); hand sides compared with the naive compilation of the new closure on the check instances",
+  "created": "2026-09-15",
+  "datalog": [
+    {
+      "label": "prog_TOld — The Datalog program(s) of the header: compiled sides are their naive compilation; reference programs are compared with the hand-written sides on the check instances.",
+      "text": "TOld(x1, y1) :- EBase(x1, y1).\nTOld(x1, y1) :- TOld(x1, z1), EBase(z1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5032/Fidelity/Example5032.lean"
+    },
+    {
+      "label": "prog_TNew",
+      "text": "TNew(x1, y1) :- EBase(x1, y1).\nTNew(x1, y1) :- EDelta(x1, y1).\nTNew(x1, y1) :- TNew(x1, z1), EBase(z1, y1).\nTNew(x1, y1) :- TNew(x1, z1), EDelta(z1, y1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5032/Fidelity/Example5032.lean"
+    },
+    {
+      "label": "rules as stated in the header comment of Input.lean",
+      "text": "T(x, y) :- E(x, y)\nT(x, y) :- T(x, z), E(z, y)\nTOld(x, y) :- EBase(x, y)\nTOld(x, y) :- TOld(x, z), EBase(z, y)",
+      "provenance": "header comment",
+      "source_file": "Benchmark/Example5032/Input.lean"
+    }
+  ]
+}

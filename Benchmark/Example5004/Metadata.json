@@ -1,0 +1,43 @@
+{
+  "canonicalId": "Example5004",
+  "canonicalInput": "Example5004/Input.lean",
+  "title": "Materialized role-hierarchy closure with a join versus a recursive has-role query",
+  "explanation": "Both sides answer \"does user u hold role r\" via role-inheritance closure over UserRole and RoleInh. Side 1 models a materialize-then-join strategy (as in Casbin's default role manager): it first computes the full, unbounded role-inheritance closure Inh by recursion over RoleInh, then joins it once against UserRole to get HasM — with the join program reading the closure program's output, making the sequence dependent. Side 2 models an OPA/Zanzibar-style engine that instead recurses directly from a user's own roles without ever materializing the hierarchy: Has(u,r):-UserRole(u,r), Has(u,t):-Has(u,r),RoleInh(r,t). The Hoare triple claims the two access-control strategies agree, HasM = Has — both compute UserRole ∘ RoleInh*, the standard role-hierarchy-closure correctness statement, even though the two loops converge at different rates since the join side must wait for the closure computation to finish first.",
+  "preInWords": "The precondition is simply true.",
+  "postInWords": "The postcondition asserts HasM = Has, that materialize-then-join role resolution and direct recursive role resolution compute the same has-role relation.",
+  "family": "direct-equality pair",
+  "kind": "equivalence",
+  "claim": "(HasM = Has)",
+  "precondition": "true",
+  "expectedVerdict": "valid",
+  "currentClassification": "valid",
+  "currentEvidence": "vampire-backed-certificate",
+  "rateMismatch": true,
+  "sides": [
+    "naive compiler: role closure then join (Casbin RoleManager model)",
+    "naive compiler: recursive has-role (legacy Example2035 program)"
+  ],
+  "sourceProgram": null,
+  "encoding": "canonical five-declaration form; programs run in sequence and merged by Hoare.preprocess; compiled sides are naive-compiler output pinned by Fidelity/ (decide +kernel); hand-written sides are the retired corpus commands verbatim under a bijective rename of relation names",
+  "created": "2026-09-15",
+  "datalog": [
+    {
+      "label": "prog_pa",
+      "text": "Inh(x1, y1) :- RoleInh(x1, y1).\nInh(x1, z1) :- Inh(x1, y1), RoleInh(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5004/Fidelity/Example5004.lean"
+    },
+    {
+      "label": "prog_pb",
+      "text": "HasM(x1, y1) :- UserRole(x1, y1).\nHasM(x1, z1) :- UserRole(x1, y1), Inh(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5004/Fidelity/Example5004.lean"
+    },
+    {
+      "label": "prog_pc",
+      "text": "Has(x1, y1) :- UserRole(x1, y1).\nHas(x1, z1) :- Has(x1, y1), RoleInh(y1, z1).",
+      "provenance": "fidelity module (kernel-checked: the compiled sides of the command are this program's naive compilation)",
+      "source_file": "Benchmark/Example5004/Fidelity/Example5004.lean"
+    }
+  ]
+}
