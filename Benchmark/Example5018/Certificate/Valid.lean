@@ -17,16 +17,6 @@ import Benchmark.Example5018.Certificate.Reconstructions.InitClause13
 import Benchmark.Example5018.Certificate.Reconstructions.InitClause14
 import Benchmark.Example5018.Certificate.Reconstructions.InitClause15
 import Benchmark.Example5018.Certificate.Reconstructions.InitClause16
-import Benchmark.Example5018.Certificate.Reconstructions.InitClause17
-import Benchmark.Example5018.Certificate.Reconstructions.InitClause18
-import Benchmark.Example5018.Certificate.Reconstructions.InitClause19
-import Benchmark.Example5018.Certificate.Reconstructions.InitClause20
-import Benchmark.Example5018.Certificate.Reconstructions.InitClause21
-import Benchmark.Example5018.Certificate.Reconstructions.InitClause22
-import Benchmark.Example5018.Certificate.Reconstructions.InitClause23
-import Benchmark.Example5018.Certificate.Reconstructions.InitClause24
-import Benchmark.Example5018.Certificate.Reconstructions.InitClause25
-import Benchmark.Example5018.Certificate.Reconstructions.InitClause26
 import Benchmark.Example5018.Certificate.Reconstructions.MaintClause0
 import Benchmark.Example5018.Certificate.Reconstructions.MaintClause1
 import Benchmark.Example5018.Certificate.Reconstructions.MaintClause2
@@ -44,16 +34,6 @@ import Benchmark.Example5018.Certificate.Reconstructions.MaintClause13
 import Benchmark.Example5018.Certificate.Reconstructions.MaintClause14
 import Benchmark.Example5018.Certificate.Reconstructions.MaintClause15
 import Benchmark.Example5018.Certificate.Reconstructions.MaintClause16
-import Benchmark.Example5018.Certificate.Reconstructions.MaintClause17
-import Benchmark.Example5018.Certificate.Reconstructions.MaintClause18
-import Benchmark.Example5018.Certificate.Reconstructions.MaintClause19
-import Benchmark.Example5018.Certificate.Reconstructions.MaintClause20
-import Benchmark.Example5018.Certificate.Reconstructions.MaintClause21
-import Benchmark.Example5018.Certificate.Reconstructions.MaintClause22
-import Benchmark.Example5018.Certificate.Reconstructions.MaintClause23
-import Benchmark.Example5018.Certificate.Reconstructions.MaintClause24
-import Benchmark.Example5018.Certificate.Reconstructions.MaintClause25
-import Benchmark.Example5018.Certificate.Reconstructions.MaintClause26
 import Benchmark.Example5018.Certificate.Reconstructions.TermCheck
 
 set_option linter.style.setOption false
@@ -94,16 +74,6 @@ theorem input_hoare_triple_valid :
       .cons ⟨initValid14, maintValid14⟩ <|
       .cons ⟨initValid15, maintValid15⟩ <|
       .cons ⟨initValid16, maintValid16⟩ <|
-      .cons ⟨initValid17, maintValid17⟩ <|
-      .cons ⟨initValid18, maintValid18⟩ <|
-      .cons ⟨initValid19, maintValid19⟩ <|
-      .cons ⟨initValid20, maintValid20⟩ <|
-      .cons ⟨initValid21, maintValid21⟩ <|
-      .cons ⟨initValid22, maintValid22⟩ <|
-      .cons ⟨initValid23, maintValid23⟩ <|
-      .cons ⟨initValid24, maintValid24⟩ <|
-      .cons ⟨initValid25, maintValid25⟩ <|
-      .cons ⟨initValid26, maintValid26⟩ <|
       .nil)
     termValid
 

@@ -24,8 +24,7 @@ open Whiel.Synthesis.FrameworkII.FixedAmbient
 def candidateLevels :
     List (List (QFAssertExpr Data prophecySchema)) :=
   [
-    [candidateClause0, candidateClause1, candidateClause2, candidateClause3, candidateClause4, candidateClause5, candidateClause6, candidateClause7, candidateClause8, candidateClause9, candidateClause10, candidateClause11, candidateClause12, candidateClause13, candidateClause14, candidateClause15, candidateClause16, candidateClause17, candidateClause18, candidateClause19, candidateClause20],
-    [candidateClause21, candidateClause22, candidateClause23, candidateClause24, candidateClause25, candidateClause26]
+    [candidateClause0, candidateClause1, candidateClause2, candidateClause3, candidateClause4, candidateClause5, candidateClause6, candidateClause7, candidateClause8, candidateClause9, candidateClause10, candidateClause11, candidateClause12, candidateClause13, candidateClause14, candidateClause15, candidateClause16]
   ]
 
 abbrev initJob0 := LeveledFamily.initJob certifiedLoop candidateLevels 0
@@ -45,16 +44,6 @@ abbrev initJob13 := LeveledFamily.initJob certifiedLoop candidateLevels 13
 abbrev initJob14 := LeveledFamily.initJob certifiedLoop candidateLevels 14
 abbrev initJob15 := LeveledFamily.initJob certifiedLoop candidateLevels 15
 abbrev initJob16 := LeveledFamily.initJob certifiedLoop candidateLevels 16
-abbrev initJob17 := LeveledFamily.initJob certifiedLoop candidateLevels 17
-abbrev initJob18 := LeveledFamily.initJob certifiedLoop candidateLevels 18
-abbrev initJob19 := LeveledFamily.initJob certifiedLoop candidateLevels 19
-abbrev initJob20 := LeveledFamily.initJob certifiedLoop candidateLevels 20
-abbrev initJob21 := LeveledFamily.initJob certifiedLoop candidateLevels 21
-abbrev initJob22 := LeveledFamily.initJob certifiedLoop candidateLevels 22
-abbrev initJob23 := LeveledFamily.initJob certifiedLoop candidateLevels 23
-abbrev initJob24 := LeveledFamily.initJob certifiedLoop candidateLevels 24
-abbrev initJob25 := LeveledFamily.initJob certifiedLoop candidateLevels 25
-abbrev initJob26 := LeveledFamily.initJob certifiedLoop candidateLevels 26
 abbrev maintJob0 := LeveledFamily.maintJob certifiedLoop candidateLevels 0
 abbrev maintJob1 := LeveledFamily.maintJob certifiedLoop candidateLevels 1
 abbrev maintJob2 := LeveledFamily.maintJob certifiedLoop candidateLevels 2
@@ -72,16 +61,6 @@ abbrev maintJob13 := LeveledFamily.maintJob certifiedLoop candidateLevels 13
 abbrev maintJob14 := LeveledFamily.maintJob certifiedLoop candidateLevels 14
 abbrev maintJob15 := LeveledFamily.maintJob certifiedLoop candidateLevels 15
 abbrev maintJob16 := LeveledFamily.maintJob certifiedLoop candidateLevels 16
-abbrev maintJob17 := LeveledFamily.maintJob certifiedLoop candidateLevels 17
-abbrev maintJob18 := LeveledFamily.maintJob certifiedLoop candidateLevels 18
-abbrev maintJob19 := LeveledFamily.maintJob certifiedLoop candidateLevels 19
-abbrev maintJob20 := LeveledFamily.maintJob certifiedLoop candidateLevels 20
-abbrev maintJob21 := LeveledFamily.maintJob certifiedLoop candidateLevels 21
-abbrev maintJob22 := LeveledFamily.maintJob certifiedLoop candidateLevels 22
-abbrev maintJob23 := LeveledFamily.maintJob certifiedLoop candidateLevels 23
-abbrev maintJob24 := LeveledFamily.maintJob certifiedLoop candidateLevels 24
-abbrev maintJob25 := LeveledFamily.maintJob certifiedLoop candidateLevels 25
-abbrev maintJob26 := LeveledFamily.maintJob certifiedLoop candidateLevels 26
 abbrev termJob := LeveledFamily.termJob certifiedLoop candidateLevels
 
 abbrev candidate_init_clause_0_stmt : Prop :=
@@ -135,36 +114,6 @@ abbrev candidate_init_clause_15_stmt : Prop :=
 abbrev candidate_init_clause_16_stmt : Prop :=
   initJob16.ShallowTarget
 
-abbrev candidate_init_clause_17_stmt : Prop :=
-  initJob17.ShallowTarget
-
-abbrev candidate_init_clause_18_stmt : Prop :=
-  initJob18.ShallowTarget
-
-abbrev candidate_init_clause_19_stmt : Prop :=
-  initJob19.ShallowTarget
-
-abbrev candidate_init_clause_20_stmt : Prop :=
-  initJob20.ShallowTarget
-
-abbrev candidate_init_clause_21_stmt : Prop :=
-  initJob21.ShallowTarget
-
-abbrev candidate_init_clause_22_stmt : Prop :=
-  initJob22.ShallowTarget
-
-abbrev candidate_init_clause_23_stmt : Prop :=
-  initJob23.ShallowTarget
-
-abbrev candidate_init_clause_24_stmt : Prop :=
-  initJob24.ShallowTarget
-
-abbrev candidate_init_clause_25_stmt : Prop :=
-  initJob25.ShallowTarget
-
-abbrev candidate_init_clause_26_stmt : Prop :=
-  initJob26.ShallowTarget
-
 abbrev candidate_maint_clause_0_stmt : Prop :=
   maintJob0.ShallowTarget
 
@@ -215,36 +164,6 @@ abbrev candidate_maint_clause_15_stmt : Prop :=
 
 abbrev candidate_maint_clause_16_stmt : Prop :=
   maintJob16.ShallowTarget
-
-abbrev candidate_maint_clause_17_stmt : Prop :=
-  maintJob17.ShallowTarget
-
-abbrev candidate_maint_clause_18_stmt : Prop :=
-  maintJob18.ShallowTarget
-
-abbrev candidate_maint_clause_19_stmt : Prop :=
-  maintJob19.ShallowTarget
-
-abbrev candidate_maint_clause_20_stmt : Prop :=
-  maintJob20.ShallowTarget
-
-abbrev candidate_maint_clause_21_stmt : Prop :=
-  maintJob21.ShallowTarget
-
-abbrev candidate_maint_clause_22_stmt : Prop :=
-  maintJob22.ShallowTarget
-
-abbrev candidate_maint_clause_23_stmt : Prop :=
-  maintJob23.ShallowTarget
-
-abbrev candidate_maint_clause_24_stmt : Prop :=
-  maintJob24.ShallowTarget
-
-abbrev candidate_maint_clause_25_stmt : Prop :=
-  maintJob25.ShallowTarget
-
-abbrev candidate_maint_clause_26_stmt : Prop :=
-  maintJob26.ShallowTarget
 
 abbrev candidate_term_stmt : Prop :=
   termJob.ShallowTarget

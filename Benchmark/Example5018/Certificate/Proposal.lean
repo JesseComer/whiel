@@ -42,151 +42,91 @@ def candidateClause1 :
 def candidateClause2 :
     QFAssertExpr Data prophecySchema :=
   qfAssert![
-    ((flag_4_0 = ∅[0]) ∨ (π[0, 1] (S) ⊆ TB))
+    (π[0, 1] (TA_aux) ⊆ TB)
   ]
 
 def candidateClause3 :
     QFAssertExpr Data prophecySchema :=
   qfAssert![
-    (π[0, 1] (TA_aux) ⊆ TB)
+    (π[0, 1] (S) ⊆ WA)
   ]
 
 def candidateClause4 :
     QFAssertExpr Data prophecySchema :=
   qfAssert![
-    (π[0, 1] (S) ⊆ WA)
+    (π[0, 1] (S) ⊆ WAQ)
   ]
 
 def candidateClause5 :
     QFAssertExpr Data prophecySchema :=
   qfAssert![
-    (π[0, 1] (S) ⊆ WAQ)
+    (π[1, 1] (WB_aux) ⊆ WA)
   ]
 
 def candidateClause6 :
     QFAssertExpr Data prophecySchema :=
   qfAssert![
-    (π[1, 1] (WB_aux) ⊆ WA)
+    (π[1, 1] (TC) ⊆ TB)
   ]
 
 def candidateClause7 :
     QFAssertExpr Data prophecySchema :=
   qfAssert![
-    (π[1, 1] (TC) ⊆ TB)
+    (TA_aux ⊆ TA)
   ]
 
 def candidateClause8 :
     QFAssertExpr Data prophecySchema :=
   qfAssert![
-    (TA_aux ⊆ TA)
+    (WA_aux ⊆ WA)
   ]
 
 def candidateClause9 :
     QFAssertExpr Data prophecySchema :=
   qfAssert![
-    (TB_aux ⊆ TB)
+    (WA_aux ⊆ WB)
   ]
 
 def candidateClause10 :
     QFAssertExpr Data prophecySchema :=
   qfAssert![
-    (WA_aux ⊆ WA)
+    (WB_aux ⊆ WB)
   ]
 
 def candidateClause11 :
     QFAssertExpr Data prophecySchema :=
   qfAssert![
-    (WA_aux ⊆ WB)
+    (TB ⊆ (π[0, 1] (S) ∪ π[1, 1] (TC)))
   ]
 
 def candidateClause12 :
     QFAssertExpr Data prophecySchema :=
   qfAssert![
-    (WB_aux ⊆ WB)
+    (TBQ ⊆ (π[0, 1] (S) ∪ π[1, 1] (TC)))
   ]
 
 def candidateClause13 :
     QFAssertExpr Data prophecySchema :=
   qfAssert![
-    (TBQ ⊆ TB)
+    (WA ⊆ (π[0, 1] (S) ∪ π[1, 1] (S)))
   ]
 
 def candidateClause14 :
     QFAssertExpr Data prophecySchema :=
   qfAssert![
-    (TBQ ⊆ (TB ∪ π[0, 1] (TA)))
+    (WAQ ⊆ (π[0, 1] (S) ∪ π[1, 1] (S)))
   ]
 
 def candidateClause15 :
     QFAssertExpr Data prophecySchema :=
   qfAssert![
-    (WA ⊆ (π[0, 1] (S) ∪ π[1, 1] (WB)))
+    (WB ⊆ WA)
   ]
 
 def candidateClause16 :
     QFAssertExpr Data prophecySchema :=
   qfAssert![
-    (WAQ ⊆ WA)
-  ]
-
-def candidateClause17 :
-    QFAssertExpr Data prophecySchema :=
-  qfAssert![
-    (WAQ ⊆ (WA ∪ π[1, 1] (WB)))
-  ]
-
-def candidateClause18 :
-    QFAssertExpr Data prophecySchema :=
-  qfAssert![
-    (WB ⊆ WA)
-  ]
-
-def candidateClause19 :
-    QFAssertExpr Data prophecySchema :=
-  qfAssert![
-    (WBQ ⊆ WB)
-  ]
-
-def candidateClause20 :
-    QFAssertExpr Data prophecySchema :=
-  qfAssert![
-    (WBQ ⊆ (WB ∪ WA))
-  ]
-
-def candidateClause21 :
-    QFAssertExpr Data prophecySchema :=
-  qfAssert![
-    (TB ⊆ TBQ∞)
-  ]
-
-def candidateClause22 :
-    QFAssertExpr Data prophecySchema :=
-  qfAssert![
-    (TBQ ⊆ TB∞)
-  ]
-
-def candidateClause23 :
-    QFAssertExpr Data prophecySchema :=
-  qfAssert![
-    (WA ⊆ WAQ∞)
-  ]
-
-def candidateClause24 :
-    QFAssertExpr Data prophecySchema :=
-  qfAssert![
-    (WAQ ⊆ WA∞)
-  ]
-
-def candidateClause25 :
-    QFAssertExpr Data prophecySchema :=
-  qfAssert![
-    (WB ⊆ WBQ∞)
-  ]
-
-def candidateClause26 :
-    QFAssertExpr Data prophecySchema :=
-  qfAssert![
-    (WBQ ⊆ WB∞)
+    (WBQ ⊆ WAQ)
   ]
 
 def candidateClauses :
@@ -208,17 +148,7 @@ def candidateClauses :
     candidateClause13,
     candidateClause14,
     candidateClause15,
-    candidateClause16,
-    candidateClause17,
-    candidateClause18,
-    candidateClause19,
-    candidateClause20,
-    candidateClause21,
-    candidateClause22,
-    candidateClause23,
-    candidateClause24,
-    candidateClause25,
-    candidateClause26
+    candidateClause16
   ]
 
 end Whiel.Benchmark.Example5018.Certificate

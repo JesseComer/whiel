@@ -339,9 +339,9 @@
       "peakKb": 1644816
     },
     "Example5018": {
-      "treeSha256": "15888287c38f584d24bcc1d03fbb62cec02b981dd17569871b5fef506169a227",
+      "treeSha256": "ec2c5ae0d165e5736044e61a60a4f429f306bdada00bdc16e30307d1d5d11144",
       "fits": false,
-      "peakKb": 1755168,
+      "peakKb": 1733456,
       "note": "a proof module imported by Certificate/Valid.lean does not build under the library build's 4194304 KB limit; it builds under 12582912 KB"
     },
     "Example5019": {

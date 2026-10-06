@@ -28,78 +28,48 @@ open Whiel.Synthesis.FrameworkII.FixedAmbient
   "(op_zTAQ = op_zS)"
 
 #guard SurfaceSyntax.source candidateClause2 ==
-  "((of_z4 = ∅[0]) ∨ (π[0,1] (op_zS) ⊆ op_zTB))"
-
-#guard SurfaceSyntax.source candidateClause3 ==
   "(π[0,1] (oa_zTA) ⊆ op_zTB)"
 
-#guard SurfaceSyntax.source candidateClause4 ==
+#guard SurfaceSyntax.source candidateClause3 ==
   "(π[0,1] (op_zS) ⊆ op_zWA)"
 
-#guard SurfaceSyntax.source candidateClause5 ==
+#guard SurfaceSyntax.source candidateClause4 ==
   "(π[0,1] (op_zS) ⊆ op_zWAQ)"
 
-#guard SurfaceSyntax.source candidateClause6 ==
+#guard SurfaceSyntax.source candidateClause5 ==
   "(π[1,1] (oa_zWB) ⊆ op_zWA)"
 
-#guard SurfaceSyntax.source candidateClause7 ==
+#guard SurfaceSyntax.source candidateClause6 ==
   "(π[1,1] (op_zTC) ⊆ op_zTB)"
 
-#guard SurfaceSyntax.source candidateClause8 ==
+#guard SurfaceSyntax.source candidateClause7 ==
   "(oa_zTA ⊆ op_zTA)"
 
-#guard SurfaceSyntax.source candidateClause9 ==
-  "(oa_zTB ⊆ op_zTB)"
-
-#guard SurfaceSyntax.source candidateClause10 ==
+#guard SurfaceSyntax.source candidateClause8 ==
   "(oa_zWA ⊆ op_zWA)"
 
-#guard SurfaceSyntax.source candidateClause11 ==
+#guard SurfaceSyntax.source candidateClause9 ==
   "(oa_zWA ⊆ op_zWB)"
 
-#guard SurfaceSyntax.source candidateClause12 ==
+#guard SurfaceSyntax.source candidateClause10 ==
   "(oa_zWB ⊆ op_zWB)"
 
+#guard SurfaceSyntax.source candidateClause11 ==
+  "(op_zTB ⊆ (π[0,1] (op_zS) ∪ π[1,1] (op_zTC)))"
+
+#guard SurfaceSyntax.source candidateClause12 ==
+  "(op_zTBQ ⊆ (π[0,1] (op_zS) ∪ π[1,1] (op_zTC)))"
+
 #guard SurfaceSyntax.source candidateClause13 ==
-  "(op_zTBQ ⊆ op_zTB)"
+  "(op_zWA ⊆ (π[0,1] (op_zS) ∪ π[1,1] (op_zS)))"
 
 #guard SurfaceSyntax.source candidateClause14 ==
-  "(op_zTBQ ⊆ (op_zTB ∪ π[0,1] (op_zTA)))"
+  "(op_zWAQ ⊆ (π[0,1] (op_zS) ∪ π[1,1] (op_zS)))"
 
 #guard SurfaceSyntax.source candidateClause15 ==
-  "(op_zWA ⊆ (π[0,1] (op_zS) ∪ π[1,1] (op_zWB)))"
-
-#guard SurfaceSyntax.source candidateClause16 ==
-  "(op_zWAQ ⊆ op_zWA)"
-
-#guard SurfaceSyntax.source candidateClause17 ==
-  "(op_zWAQ ⊆ (op_zWA ∪ π[1,1] (op_zWB)))"
-
-#guard SurfaceSyntax.source candidateClause18 ==
   "(op_zWB ⊆ op_zWA)"
 
-#guard SurfaceSyntax.source candidateClause19 ==
-  "(op_zWBQ ⊆ op_zWB)"
-
-#guard SurfaceSyntax.source candidateClause20 ==
-  "(op_zWBQ ⊆ (op_zWB ∪ op_zWA))"
-
-#guard SurfaceSyntax.source candidateClause21 ==
-  "(op_zTB ⊆ yp_zTBQ)"
-
-#guard SurfaceSyntax.source candidateClause22 ==
-  "(op_zTBQ ⊆ yp_zTB)"
-
-#guard SurfaceSyntax.source candidateClause23 ==
-  "(op_zWA ⊆ yp_zWAQ)"
-
-#guard SurfaceSyntax.source candidateClause24 ==
-  "(op_zWAQ ⊆ yp_zWA)"
-
-#guard SurfaceSyntax.source candidateClause25 ==
-  "(op_zWB ⊆ yp_zWBQ)"
-
-#guard SurfaceSyntax.source candidateClause26 ==
-  "(op_zWBQ ⊆ yp_zWB)"
+#guard SurfaceSyntax.source candidateClause16 ==
+  "(op_zWBQ ⊆ op_zWAQ)"
 
 end Whiel.Benchmark.Example5018.Certificate

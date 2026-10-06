@@ -7,10 +7,6 @@
     },
     {
       "level": 0,
-      "source": "((of_z4 = ∅[0]) ∨ (π[0,1] (op_zS) ⊆ op_zTB))"
-    },
-    {
-      "level": 0,
       "source": "(π[0,1] (oa_zTA) ⊆ op_zTB)"
     },
     {
@@ -35,10 +31,6 @@
     },
     {
       "level": 0,
-      "source": "(oa_zTB ⊆ op_zTB)"
-    },
-    {
-      "level": 0,
       "source": "(oa_zWA ⊆ op_zWA)"
     },
     {
@@ -51,23 +43,19 @@
     },
     {
       "level": 0,
-      "source": "(op_zTBQ ⊆ op_zTB)"
+      "source": "(op_zTB ⊆ (π[0,1] (op_zS) ∪ π[1,1] (op_zTC)))"
     },
     {
       "level": 0,
-      "source": "(op_zTBQ ⊆ (op_zTB ∪ π[0,1] (op_zTA)))"
+      "source": "(op_zTBQ ⊆ (π[0,1] (op_zS) ∪ π[1,1] (op_zTC)))"
     },
     {
       "level": 0,
-      "source": "(op_zWA ⊆ (π[0,1] (op_zS) ∪ π[1,1] (op_zWB)))"
+      "source": "(op_zWA ⊆ (π[0,1] (op_zS) ∪ π[1,1] (op_zS)))"
     },
     {
       "level": 0,
-      "source": "(op_zWAQ ⊆ op_zWA)"
-    },
-    {
-      "level": 0,
-      "source": "(op_zWAQ ⊆ (op_zWA ∪ π[1,1] (op_zWB)))"
+      "source": "(op_zWAQ ⊆ (π[0,1] (op_zS) ∪ π[1,1] (op_zS)))"
     },
     {
       "level": 0,
@@ -75,35 +63,7 @@
     },
     {
       "level": 0,
-      "source": "(op_zWBQ ⊆ op_zWB)"
-    },
-    {
-      "level": 0,
-      "source": "(op_zWBQ ⊆ (op_zWB ∪ op_zWA))"
-    },
-    {
-      "level": 1,
-      "source": "(op_zTB ⊆ yp_zTBQ)"
-    },
-    {
-      "level": 1,
-      "source": "(op_zTBQ ⊆ yp_zTB)"
-    },
-    {
-      "level": 1,
-      "source": "(op_zWA ⊆ yp_zWAQ)"
-    },
-    {
-      "level": 1,
-      "source": "(op_zWAQ ⊆ yp_zWA)"
-    },
-    {
-      "level": 1,
-      "source": "(op_zWB ⊆ yp_zWBQ)"
-    },
-    {
-      "level": 1,
-      "source": "(op_zWBQ ⊆ yp_zWB)"
+      "source": "(op_zWBQ ⊆ op_zWAQ)"
     }
   ],
   "version": 1

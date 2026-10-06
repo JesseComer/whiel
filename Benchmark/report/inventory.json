@@ -5861,7 +5861,7 @@
    "status": "certified valid",
    "certificate_outside_library": true,
    "certificate_note": "a proof module imported by Certificate/Valid.lean does not build under the library build's 4194304 KB limit; it builds under 12582912 KB",
-   "certificate_peak_kb": 1755168,
+   "certificate_peak_kb": 1733456,
    "expectation": "valid",
    "notation": "canonical",
    "input_path": "Benchmark/Example5018/Input.lean",
@@ -5917,10 +5917,9 @@
    "tags": [
     "chase",
     "evaluation-strategies",
-    "mutual-recursion",
-    "prophecy"
+    "mutual-recursion"
    ],
-   "prophecy": "kernel-checked certificate with a level-1 prophecy clause (Certificate/Valid.lean, Core.json).",
+   "prophecy": "from the metadata: rate mismatch (parallel round versus one dependency per flattened iteration; nested loops flattened under five flags beside the compiled loop)",
    "twin": "Example5019 (invalid: one pass in file order)",
    "note": "",
    "summary": "Chase order-independence on a full-TGD scenario of ChaseBench: the parallel chase (every dependency applied to every active trigger in each round) against the dependency-at-a-time chase (one dependency chased to its own fixpoint, then the next, the sweep repeated until no dependency has an active trigger).",
