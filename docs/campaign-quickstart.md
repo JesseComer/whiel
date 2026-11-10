@@ -129,9 +129,11 @@ B prints its separate campaign output directory. See the
 ```bash
 python3 -m agent_houdini campaign run \
   --verifier "$PWD/whiel_runner/target/release/whiel-symbolic" \
+  --model <model> \
   -- --repo "$PWD" --input 0001,0013 --destination artifacts/my-first-campaign
 python3 -m agent_houdini campaign run \
   --verifier "$PWD/whiel_runner/target/release/whiel-symbolic" \
+  --model <model> \
   -- --repo "$PWD" --all
 ```
 
@@ -169,6 +171,7 @@ gigabytes per input. For a long campaign, keep it out of the search:
 ```bash
 python3 -m agent_houdini campaign run \
   --verifier "$PWD/whiel_runner/target/release/whiel-symbolic" \
+  --model <model> \
   -- --repo "$PWD" --all --certify never --destination artifacts/searched
 whiel-symbolic campaign certify --repo "$PWD" --run artifacts/searched
 ```
